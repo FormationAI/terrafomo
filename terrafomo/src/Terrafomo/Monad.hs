@@ -22,6 +22,9 @@ module Terrafomo.Monad
     -- * Declarations
     , define
 
+    -- ** Local Values
+    , local
+
     -- ** Outputs
     , output
 
@@ -45,6 +48,7 @@ import Data.Typeable   (Typeable)
 import Terrafomo.Attribute   (Attr (Compute))
 import Terrafomo.Backend
 import Terrafomo.Format      (nformat, (%))
+import Terrafomo.LocalValue
 import Terrafomo.Name
 import Terrafomo.Output
 import Terrafomo.Provider
@@ -89,6 +93,7 @@ data Document = UnsafeDocument
     , backend    :: !(Backend [HCL.Pair])
     , providers  :: !(ValueMap Key  HCL.Section)
     , remotes    :: !(ValueMap Key  HCL.Section)
+    , locals     :: !(ValueMap Name HCL.Section)
     , references :: !(ValueMap Key  HCL.Section)
     , outputs    :: !(ValueMap Name HCL.Section)
     }
@@ -106,6 +111,7 @@ flattenState s =
     HCL.toSection (backend s) :
         concat [ VMap.values (providers  s)
                , VMap.values (remotes    s)
+               , VMap.values (locals     s)
                , VMap.values (references s)
                , VMap.values (outputs    s)
                ]
@@ -136,6 +142,7 @@ runTerraform x m =
                 , backend    = HCL.toObject <$> x
                 , providers  = VMap.empty
                 , remotes    = VMap.empty
+                , locals     = VMap.empty
                 , references = VMap.empty
                 , outputs    = VMap.empty
                 }
@@ -319,6 +326,33 @@ define name x@Schema{_schemaProvider, _schemaConfig, _schemaValidator} =
             MTL.throwError (NonUniqueRef key value)
 
         pure $! UnsafeRef key _schemaConfig
+
+local
+    :: ( MonadTerraform s m
+       , HCL.IsValue a
+       )
+    => Name
+    -> Attr s a
+    -> m (LocalValue a)
+local next attr =
+    liftTerraform $ do
+        b    <- MTL.gets backend
+
+        let name =
+              case attr of
+                  Compute _ _ n -> nformat (fname % "_" % fname) next n
+                  _             -> next
+
+            out   = LocalValue b name attr
+            value = HCL.toSection out
+
+        unique <-
+            insertValue name value locals (\s w -> w { locals = s })
+
+        unless unique $
+            MTL.throwError (NonUniqueOutput name value)
+
+        pure out
 
 -- * Use a unique supply / incrementing counter to generate unique output names
 --   for values and key/name for computed attributes.
