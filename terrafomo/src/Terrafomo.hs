@@ -60,6 +60,11 @@ module Terrafomo
     , output
     , remote
 
+    -- * LocalValues
+    , LocalValue
+    , local
+
+
     -- * Serialization
     , HCL.IsValue    (..)
     , HCL.IsObject   (..)
@@ -72,6 +77,7 @@ import Terrafomo.Lifecycle
 import Terrafomo.Monad
 import Terrafomo.Name
 import Terrafomo.Output
+import Terrafomo.LocalValue
 import Terrafomo.Provider
 import Terrafomo.Schema
 
