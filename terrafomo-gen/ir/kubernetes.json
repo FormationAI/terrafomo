@@ -30971,7 +30971,7 @@
                     "method": "data'",
                     "threaded": true,
                     "conflicts": [],
-                    "type": "TF.Attr s (P.Map P.Text (TF.Attr s P.Text))",
+                    "type": "TF.Attr s (P.Map P.Text (TF.Attr s TF.Value))",
                     "class": "HasData'",
                     "validate": false,
                     "optional": true,
