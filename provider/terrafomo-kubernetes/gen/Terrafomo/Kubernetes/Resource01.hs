@@ -100,7 +100,7 @@ import qualified Terrafomo.Validator           as TF
 -- See the <https://www.terraform.io/docs/providers/kubernetes/r/config_map.html terraform documentation>
 -- for more information.
 data ConfigMapResource s = ConfigMapResource'
-    { _data'    :: TF.Attr s (P.Map P.Text (TF.Attr s P.Text))
+    { _data'    :: TF.Attr s (P.Map P.Text (TF.Attr s TF.Value))
     -- ^ @data@ - (Optional)
     -- A map of the configuration data.
     --
@@ -135,9 +135,9 @@ instance TF.IsValid (ConfigMapResource s) where
                       :: ConfigMapResource s -> TF.Attr s (ConfigMapMetadataSetting s))
                   TF.validator
 
-instance P.HasData' (ConfigMapResource s) (TF.Attr s (P.Map P.Text (TF.Attr s P.Text))) where
+instance P.HasData' (ConfigMapResource s) (TF.Attr s (P.Map P.Text (TF.Attr s TF.Value))) where
     data' =
-        P.lens (_data' :: ConfigMapResource s -> TF.Attr s (P.Map P.Text (TF.Attr s P.Text)))
+        P.lens (_data' :: ConfigMapResource s -> TF.Attr s (P.Map P.Text (TF.Attr s TF.Value)))
                (\s a -> s { _data' = a } :: ConfigMapResource s)
 
 instance P.HasMetadata (ConfigMapResource s) (TF.Attr s (ConfigMapMetadataSetting s)) where

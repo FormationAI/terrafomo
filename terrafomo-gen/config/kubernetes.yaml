@@ -1,2 +1,6 @@
 package-name: terrafomo-kubernetes
 provider-name: Kubernetes
+
+field-overrides:
+  ConfigMapResource:
+    data': TF.Attr s (P.Map P.Text (TF.Attr s TF.Value))
