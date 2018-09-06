@@ -3630,7 +3630,7 @@ data IamUserPolicyResource s = IamUserPolicyResource'
     -- Conflicts with:
     --
     -- * 'name'
-    , _policy     :: TF.Attr s P.Text
+    , _policy     :: TF.Attr s P.Document
     -- ^ @policy@ - (Required)
     --
     , _user       :: TF.Attr s P.Text
@@ -3640,7 +3640,7 @@ data IamUserPolicyResource s = IamUserPolicyResource'
 
 -- | Define a new @aws_iam_user_policy@ resource value.
 iamUserPolicyResource
-    :: TF.Attr s P.Text -- ^ @policy@ ('P._policy', 'P.policy')
+    :: TF.Attr s P.Document -- ^ @policy@ ('P._policy', 'P.policy')
     -> TF.Attr s P.Text -- ^ @user@ ('P._user', 'P.user')
     -> P.Resource (IamUserPolicyResource s)
 iamUserPolicyResource _policy _user =
@@ -3684,9 +3684,9 @@ instance P.HasNamePrefix (IamUserPolicyResource s) (TF.Attr s P.Text) where
         P.lens (_namePrefix :: IamUserPolicyResource s -> TF.Attr s P.Text)
                (\s a -> s { _namePrefix = a } :: IamUserPolicyResource s)
 
-instance P.HasPolicy (IamUserPolicyResource s) (TF.Attr s P.Text) where
+instance P.HasPolicy (IamUserPolicyResource s) (TF.Attr s P.Document) where
     policy =
-        P.lens (_policy :: IamUserPolicyResource s -> TF.Attr s P.Text)
+        P.lens (_policy :: IamUserPolicyResource s -> TF.Attr s P.Document)
                (\s a -> s { _policy = a } :: IamUserPolicyResource s)
 
 instance P.HasUser (IamUserPolicyResource s) (TF.Attr s P.Text) where
