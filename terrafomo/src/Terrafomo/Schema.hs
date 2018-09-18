@@ -18,13 +18,14 @@ import Data.Function       ((&))
 import Data.List.NonEmpty  (NonEmpty ((:|)))
 import Data.Maybe          (catMaybes)
 import Data.Set            (Set)
+import Data.Semigroup      ((<>))
 import Data.Text           (Text)
 
 import Lens.Micro (Lens', lens)
 
 import Terrafomo.Lifecycle
 import Terrafomo.Name
-import Terrafomo.Provider
+import Terrafomo.Provisioner
 import Terrafomo.Validator (Validator)
 
 import qualified Data.Set  as Set
@@ -51,9 +52,9 @@ data Schema l p a where
            , _schemaType        :: !Type
            , _schemaConfig      :: !a
            , _schemaValidator   :: !(Validator a)
+           , _schemaProvisioners :: [Provisioner]
            }
         -> Schema l p a
-
 instance HasLifecycle (Schema (Lifecycle a) p a) a where
     lifecycle = lens _schemaLifecycle (\s a -> s { _schemaLifecycle = a })
 
@@ -62,7 +63,7 @@ instance ( HCL.IsObject l
          ) => HCL.IsSection (Schema l Key a) where
     toSection Schema{..} =
         let k :| ks = _schemaKeywords
-            common  = catMaybes
+            common  = catMaybes $
                 [ HCL.assign "provider" <$> _schemaProvider
                 , if _schemaDependsOn == mempty
                     then Nothing
@@ -72,8 +73,10 @@ instance ( HCL.IsObject l
                     else Just (HCL.block "lifecycle" _schemaLifecycle)
                 ]
 
-         in HCL.section k ks
-                & HCL.pairs (HCL.toObject _schemaConfig ++ common)
+         in HCL.Section
+                (k :| ks)
+                (HCL.toObject _schemaConfig ++ common)
+                (fmap HCL.toSection _schemaProvisioners)
 
 unsafeDataSource
     :: HCL.IsObject a
@@ -89,6 +92,7 @@ unsafeDataSource name validator cfg =
            , _schemaType      = Type (Just "data") name
            , _schemaConfig    = cfg
            , _schemaValidator = validator
+           , _schemaProvisioners = mempty
            }
 
 unsafeResource
@@ -105,6 +109,7 @@ unsafeResource name validator cfg =
            , _schemaType      = Type Nothing name
            , _schemaConfig    = cfg
            , _schemaValidator = validator
+           , _schemaProvisioners = mempty
            }
 
 -- Lenses
