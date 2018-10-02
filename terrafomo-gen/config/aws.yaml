@@ -33,6 +33,9 @@ field-overrides:
   IamUserPolicyResource:
     policy: 'TF.Attr s P.Document'
 
+  KmsKeyResource:
+    policy: 'TF.Attr s P.Document'
+
   S3BucketResource:
     region: 'TF.Attr s P.Region'
 
