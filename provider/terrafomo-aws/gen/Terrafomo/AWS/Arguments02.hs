@@ -14,41 +14,7 @@
 module Terrafomo.AWS.Arguments02
     (
     -- ** Arguments
-      HasContentType (..)
-    , HasContext (..)
-    , HasContinent (..)
-    , HasContinuous (..)
-    , HasConvertDotsInJsonKeysToUnderscores (..)
-    , HasCookieDuration (..)
-    , HasCookieExpirationPeriod (..)
-    , HasCookieName (..)
-    , HasCookies (..)
-    , HasCooldown (..)
-    , HasCopyOptions (..)
-    , HasCopyTagsToSnapshot (..)
-    , HasCoreInstanceCount (..)
-    , HasCoreInstanceType (..)
-    , HasCorsRule (..)
-    , HasCostFilters (..)
-    , HasCostTypes (..)
-    , HasCountry (..)
-    , HasCpu (..)
-    , HasCpuCoreCount (..)
-    , HasCpuCredits (..)
-    , HasCpuThreadsPerCore (..)
-    , HasCreateAuthChallenge (..)
-    , HasCreatedAt (..)
-    , HasCreationToken (..)
-    , HasCredentials (..)
-    , HasCreditSpecification (..)
-    , HasCrlConfiguration (..)
-    , HasCrossRealmTrustPrincipalPassword (..)
-    , HasCrossZoneLoadBalancing (..)
-    , HasCsr (..)
-    , HasCsvDelimiter (..)
-    , HasCsvRowDelimiter (..)
-    , HasCustomAmiId (..)
-    , HasCustomCname (..)
+      HasCustomCname (..)
     , HasCustomConfigureRecipes (..)
     , HasCustomCookbooksSource (..)
     , HasCustomData (..)
@@ -74,6 +40,7 @@ module Terrafomo.AWS.Arguments02
     , HasCutoff (..)
     , HasDagEdge (..)
     , HasDagNode (..)
+    , HasDaily (..)
     , HasDashboardBody (..)
     , HasDashboardName (..)
     , HasData' (..)
@@ -188,6 +155,7 @@ module Terrafomo.AWS.Arguments02
     , HasDisableRollback (..)
     , HasDisableScaleIn (..)
     , HasDiskId (..)
+    , HasDiskNode (..)
     , HasDiskPath (..)
     , HasDisplayAspectRatio (..)
     , HasDisplayName (..)
@@ -196,6 +164,7 @@ module Terrafomo.AWS.Arguments02
     , HasDnsConfig (..)
     , HasDnsIps (..)
     , HasDnsRecords (..)
+    , HasDockerVolumeConfiguration (..)
     , HasDocsToInvestigate (..)
     , HasDocumentFormat (..)
     , HasDocumentRoot (..)
@@ -204,10 +173,13 @@ module Terrafomo.AWS.Arguments02
     , HasDocumentationVersion (..)
     , HasDomain (..)
     , HasDomainArn (..)
+    , HasDomainIamRoleName (..)
     , HasDomainName (..)
     , HasDomainNameServers (..)
     , HasDomains (..)
     , HasDrainElbOnShutdown (..)
+    , HasDriver (..)
+    , HasDriverOpts (..)
     , HasDuration (..)
     , HasDxGatewayId (..)
     , HasDynamodb (..)
@@ -280,14 +252,17 @@ module Terrafomo.AWS.Arguments02
     , HasEnabled (..)
     , HasEnabledCloudwatchLogsExports (..)
     , HasEnabledMetrics (..)
+    , HasEncodedKey (..)
     , HasEncoding (..)
     , HasEncryptAtRest (..)
     , HasEncrypted (..)
     , HasEncryption (..)
     , HasEncryptionContextEquals (..)
     , HasEncryptionContextSubset (..)
+    , HasEncryptionDisabled (..)
     , HasEncryptionKey (..)
     , HasEncryptionType (..)
+    , HasEnd (..)
     , HasEndTime (..)
     , HasEndpoint (..)
     , HasEndpointAutoConfirms (..)
@@ -369,6 +344,7 @@ module Terrafomo.AWS.Arguments02
     , HasFinalSnapshotIdentifier (..)
     , HasFirehose (..)
     , HasFixedGop (..)
+    , HasFixedResponse (..)
     , HasFleetId (..)
     , HasFleetType (..)
     , HasForbiddenAccountIds (..)
@@ -448,6 +424,7 @@ module Terrafomo.AWS.Arguments02
     , HasHiveJsonSerDe (..)
     , HasHorizontalAlign (..)
     , HasHorizontalOffset (..)
+    , HasHost (..)
     , HasHostId (..)
     , HasHostInstanceType (..)
     , HasHostPath (..)
@@ -490,6 +467,7 @@ module Terrafomo.AWS.Arguments02
     , HasImage (..)
     , HasImageId (..)
     , HasImageLocation (..)
+    , HasIncludeBody (..)
     , HasIncludeCookies (..)
     , HasIncludeCredit (..)
     , HasIncludeDiscount (..)
@@ -538,6 +516,7 @@ module Terrafomo.AWS.Arguments02
     , HasInstanceInterruptionBehaviour (..)
     , HasInstanceMarketOptions (..)
     , HasInstanceName (..)
+    , HasInstancePoolsToUseCount (..)
     , HasInstancePort (..)
     , HasInstancePorts (..)
     , HasInstanceProfile (..)
@@ -568,6 +547,7 @@ module Terrafomo.AWS.Arguments02
     , HasIpRange (..)
     , HasIpSetDescriptor (..)
     , HasIpSetDescriptors (..)
+    , HasIpv4AddressCount (..)
     , HasIpv4Addresses (..)
     , HasIpv6AddressCount (..)
     , HasIpv6Addresses (..)
@@ -612,6 +592,7 @@ module Terrafomo.AWS.Arguments02
     , HasKmsKeyArn (..)
     , HasKmsKeyId (..)
     , HasKmsMasterKeyId (..)
+    , HasLabels (..)
     , HasLagId (..)
     , HasLambda (..)
     , HasLambdaAction (..)
@@ -621,6 +602,7 @@ module Terrafomo.AWS.Arguments02
     , HasLambdaFunction (..)
     , HasLambdaFunctionArn (..)
     , HasLambdaFunctionAssociation (..)
+    , HasLambdaFunctionName (..)
     , HasLambdaSuccessFeedbackRoleArn (..)
     , HasLambdaSuccessFeedbackSampleRate (..)
     , HasLanguage (..)
@@ -644,6 +626,7 @@ module Terrafomo.AWS.Arguments02
     , HasLimit (..)
     , HasLimitAmount (..)
     , HasLimitUnit (..)
+    , HasLimits (..)
     , HasLineNumber (..)
     , HasListener (..)
     , HasListenerArn (..)
@@ -711,6 +694,7 @@ module Terrafomo.AWS.Arguments02
     , HasMaxValue (..)
     , HasMaxVcpus (..)
     , HasMaxWidth (..)
+    , HasMaximumDuration (..)
     , HasMaximumExecutionFrequency (..)
     , HasMeasureLatency (..)
     , HasMediumChangerType (..)
@@ -718,10 +702,12 @@ module Terrafomo.AWS.Arguments02
     , HasMemory (..)
     , HasMemorySize (..)
     , HasMessage (..)
+    , HasMessageBody (..)
     , HasMessageFormat (..)
     , HasMessageGroupId (..)
     , HasMessageRetentionSeconds (..)
     , HasMessageType (..)
+    , HasMessagesPerSecond (..)
     , HasMethod (..)
     , HasMethodPath (..)
     , HasMetricAggregationType (..)
@@ -790,6 +776,7 @@ module Terrafomo.AWS.Arguments02
     , HasNewGameSessionsPerCreator (..)
     , HasNfsFileShareDefaults (..)
     , HasNoDevice (..)
+    , HasNodeToNodeEncryption (..)
     , HasNodeType (..)
     , HasNodejsVersion (..)
     , HasNonKeyAttributes (..)
@@ -814,215 +801,24 @@ module Terrafomo.AWS.Arguments02
     , HasNumberOfDisks (..)
     , HasNumberOfNodes (..)
     , HasObjectAcl (..)
+    , HasObjectKeyPrefix (..)
+    , HasOffset (..)
+    , HasOkActions (..)
+    , HasOnFailure (..)
+    , HasOnPremisesInstanceTagFilter (..)
+    , HasOneTime (..)
+    , HasOpacity (..)
+    , HasOpenXJsonSerDe (..)
+    , HasOpenidConnectProviderArns (..)
+    , HasOperatingSystem (..)
+    , HasOperations (..)
+    , HasOption (..)
+    , HasOptionGroupDescription (..)
     ) where
 import GHC.Base ((.))
 
 import qualified Lens.Micro       as P
 import qualified Terrafomo.Schema as TF
-
-class HasContentType a b | a -> b where
-    contentType :: P.Lens' a b
-
-instance HasContentType a b => HasContentType (TF.Schema l p a) b where
-    contentType = TF.configuration . contentType
-
-class HasContext a b | a -> b where
-    context :: P.Lens' a b
-
-instance HasContext a b => HasContext (TF.Schema l p a) b where
-    context = TF.configuration . context
-
-class HasContinent a b | a -> b where
-    continent :: P.Lens' a b
-
-instance HasContinent a b => HasContinent (TF.Schema l p a) b where
-    continent = TF.configuration . continent
-
-class HasContinuous a b | a -> b where
-    continuous :: P.Lens' a b
-
-instance HasContinuous a b => HasContinuous (TF.Schema l p a) b where
-    continuous = TF.configuration . continuous
-
-class HasConvertDotsInJsonKeysToUnderscores a b | a -> b where
-    convertDotsInJsonKeysToUnderscores :: P.Lens' a b
-
-instance HasConvertDotsInJsonKeysToUnderscores a b => HasConvertDotsInJsonKeysToUnderscores (TF.Schema l p a) b where
-    convertDotsInJsonKeysToUnderscores = TF.configuration . convertDotsInJsonKeysToUnderscores
-
-class HasCookieDuration a b | a -> b where
-    cookieDuration :: P.Lens' a b
-
-instance HasCookieDuration a b => HasCookieDuration (TF.Schema l p a) b where
-    cookieDuration = TF.configuration . cookieDuration
-
-class HasCookieExpirationPeriod a b | a -> b where
-    cookieExpirationPeriod :: P.Lens' a b
-
-instance HasCookieExpirationPeriod a b => HasCookieExpirationPeriod (TF.Schema l p a) b where
-    cookieExpirationPeriod = TF.configuration . cookieExpirationPeriod
-
-class HasCookieName a b | a -> b where
-    cookieName :: P.Lens' a b
-
-instance HasCookieName a b => HasCookieName (TF.Schema l p a) b where
-    cookieName = TF.configuration . cookieName
-
-class HasCookies a b | a -> b where
-    cookies :: P.Lens' a b
-
-instance HasCookies a b => HasCookies (TF.Schema l p a) b where
-    cookies = TF.configuration . cookies
-
-class HasCooldown a b | a -> b where
-    cooldown :: P.Lens' a b
-
-instance HasCooldown a b => HasCooldown (TF.Schema l p a) b where
-    cooldown = TF.configuration . cooldown
-
-class HasCopyOptions a b | a -> b where
-    copyOptions :: P.Lens' a b
-
-instance HasCopyOptions a b => HasCopyOptions (TF.Schema l p a) b where
-    copyOptions = TF.configuration . copyOptions
-
-class HasCopyTagsToSnapshot a b | a -> b where
-    copyTagsToSnapshot :: P.Lens' a b
-
-instance HasCopyTagsToSnapshot a b => HasCopyTagsToSnapshot (TF.Schema l p a) b where
-    copyTagsToSnapshot = TF.configuration . copyTagsToSnapshot
-
-class HasCoreInstanceCount a b | a -> b where
-    coreInstanceCount :: P.Lens' a b
-
-instance HasCoreInstanceCount a b => HasCoreInstanceCount (TF.Schema l p a) b where
-    coreInstanceCount = TF.configuration . coreInstanceCount
-
-class HasCoreInstanceType a b | a -> b where
-    coreInstanceType :: P.Lens' a b
-
-instance HasCoreInstanceType a b => HasCoreInstanceType (TF.Schema l p a) b where
-    coreInstanceType = TF.configuration . coreInstanceType
-
-class HasCorsRule a b | a -> b where
-    corsRule :: P.Lens' a b
-
-instance HasCorsRule a b => HasCorsRule (TF.Schema l p a) b where
-    corsRule = TF.configuration . corsRule
-
-class HasCostFilters a b | a -> b where
-    costFilters :: P.Lens' a b
-
-instance HasCostFilters a b => HasCostFilters (TF.Schema l p a) b where
-    costFilters = TF.configuration . costFilters
-
-class HasCostTypes a b | a -> b where
-    costTypes :: P.Lens' a b
-
-instance HasCostTypes a b => HasCostTypes (TF.Schema l p a) b where
-    costTypes = TF.configuration . costTypes
-
-class HasCountry a b | a -> b where
-    country :: P.Lens' a b
-
-instance HasCountry a b => HasCountry (TF.Schema l p a) b where
-    country = TF.configuration . country
-
-class HasCpu a b | a -> b where
-    cpu :: P.Lens' a b
-
-instance HasCpu a b => HasCpu (TF.Schema l p a) b where
-    cpu = TF.configuration . cpu
-
-class HasCpuCoreCount a b | a -> b where
-    cpuCoreCount :: P.Lens' a b
-
-instance HasCpuCoreCount a b => HasCpuCoreCount (TF.Schema l p a) b where
-    cpuCoreCount = TF.configuration . cpuCoreCount
-
-class HasCpuCredits a b | a -> b where
-    cpuCredits :: P.Lens' a b
-
-instance HasCpuCredits a b => HasCpuCredits (TF.Schema l p a) b where
-    cpuCredits = TF.configuration . cpuCredits
-
-class HasCpuThreadsPerCore a b | a -> b where
-    cpuThreadsPerCore :: P.Lens' a b
-
-instance HasCpuThreadsPerCore a b => HasCpuThreadsPerCore (TF.Schema l p a) b where
-    cpuThreadsPerCore = TF.configuration . cpuThreadsPerCore
-
-class HasCreateAuthChallenge a b | a -> b where
-    createAuthChallenge :: P.Lens' a b
-
-instance HasCreateAuthChallenge a b => HasCreateAuthChallenge (TF.Schema l p a) b where
-    createAuthChallenge = TF.configuration . createAuthChallenge
-
-class HasCreatedAt a b | a -> b where
-    createdAt :: P.Lens' a b
-
-instance HasCreatedAt a b => HasCreatedAt (TF.Schema l p a) b where
-    createdAt = TF.configuration . createdAt
-
-class HasCreationToken a b | a -> b where
-    creationToken :: P.Lens' a b
-
-instance HasCreationToken a b => HasCreationToken (TF.Schema l p a) b where
-    creationToken = TF.configuration . creationToken
-
-class HasCredentials a b | a -> b where
-    credentials :: P.Lens' a b
-
-instance HasCredentials a b => HasCredentials (TF.Schema l p a) b where
-    credentials = TF.configuration . credentials
-
-class HasCreditSpecification a b | a -> b where
-    creditSpecification :: P.Lens' a b
-
-instance HasCreditSpecification a b => HasCreditSpecification (TF.Schema l p a) b where
-    creditSpecification = TF.configuration . creditSpecification
-
-class HasCrlConfiguration a b | a -> b where
-    crlConfiguration :: P.Lens' a b
-
-instance HasCrlConfiguration a b => HasCrlConfiguration (TF.Schema l p a) b where
-    crlConfiguration = TF.configuration . crlConfiguration
-
-class HasCrossRealmTrustPrincipalPassword a b | a -> b where
-    crossRealmTrustPrincipalPassword :: P.Lens' a b
-
-instance HasCrossRealmTrustPrincipalPassword a b => HasCrossRealmTrustPrincipalPassword (TF.Schema l p a) b where
-    crossRealmTrustPrincipalPassword = TF.configuration . crossRealmTrustPrincipalPassword
-
-class HasCrossZoneLoadBalancing a b | a -> b where
-    crossZoneLoadBalancing :: P.Lens' a b
-
-instance HasCrossZoneLoadBalancing a b => HasCrossZoneLoadBalancing (TF.Schema l p a) b where
-    crossZoneLoadBalancing = TF.configuration . crossZoneLoadBalancing
-
-class HasCsr a b | a -> b where
-    csr :: P.Lens' a b
-
-instance HasCsr a b => HasCsr (TF.Schema l p a) b where
-    csr = TF.configuration . csr
-
-class HasCsvDelimiter a b | a -> b where
-    csvDelimiter :: P.Lens' a b
-
-instance HasCsvDelimiter a b => HasCsvDelimiter (TF.Schema l p a) b where
-    csvDelimiter = TF.configuration . csvDelimiter
-
-class HasCsvRowDelimiter a b | a -> b where
-    csvRowDelimiter :: P.Lens' a b
-
-instance HasCsvRowDelimiter a b => HasCsvRowDelimiter (TF.Schema l p a) b where
-    csvRowDelimiter = TF.configuration . csvRowDelimiter
-
-class HasCustomAmiId a b | a -> b where
-    customAmiId :: P.Lens' a b
-
-instance HasCustomAmiId a b => HasCustomAmiId (TF.Schema l p a) b where
-    customAmiId = TF.configuration . customAmiId
 
 class HasCustomCname a b | a -> b where
     customCname :: P.Lens' a b
@@ -1179,6 +975,12 @@ class HasDagNode a b | a -> b where
 
 instance HasDagNode a b => HasDagNode (TF.Schema l p a) b where
     dagNode = TF.configuration . dagNode
+
+class HasDaily a b | a -> b where
+    daily :: P.Lens' a b
+
+instance HasDaily a b => HasDaily (TF.Schema l p a) b where
+    daily = TF.configuration . daily
 
 class HasDashboardBody a b | a -> b where
     dashboardBody :: P.Lens' a b
@@ -1864,6 +1666,12 @@ class HasDiskId a b | a -> b where
 instance HasDiskId a b => HasDiskId (TF.Schema l p a) b where
     diskId = TF.configuration . diskId
 
+class HasDiskNode a b | a -> b where
+    diskNode :: P.Lens' a b
+
+instance HasDiskNode a b => HasDiskNode (TF.Schema l p a) b where
+    diskNode = TF.configuration . diskNode
+
 class HasDiskPath a b | a -> b where
     diskPath :: P.Lens' a b
 
@@ -1911,6 +1719,12 @@ class HasDnsRecords a b | a -> b where
 
 instance HasDnsRecords a b => HasDnsRecords (TF.Schema l p a) b where
     dnsRecords = TF.configuration . dnsRecords
+
+class HasDockerVolumeConfiguration a b | a -> b where
+    dockerVolumeConfiguration :: P.Lens' a b
+
+instance HasDockerVolumeConfiguration a b => HasDockerVolumeConfiguration (TF.Schema l p a) b where
+    dockerVolumeConfiguration = TF.configuration . dockerVolumeConfiguration
 
 class HasDocsToInvestigate a b | a -> b where
     docsToInvestigate :: P.Lens' a b
@@ -1960,6 +1774,12 @@ class HasDomainArn a b | a -> b where
 instance HasDomainArn a b => HasDomainArn (TF.Schema l p a) b where
     domainArn = TF.configuration . domainArn
 
+class HasDomainIamRoleName a b | a -> b where
+    domainIamRoleName :: P.Lens' a b
+
+instance HasDomainIamRoleName a b => HasDomainIamRoleName (TF.Schema l p a) b where
+    domainIamRoleName = TF.configuration . domainIamRoleName
+
 class HasDomainName a b | a -> b where
     domainName :: P.Lens' a b
 
@@ -1983,6 +1803,18 @@ class HasDrainElbOnShutdown a b | a -> b where
 
 instance HasDrainElbOnShutdown a b => HasDrainElbOnShutdown (TF.Schema l p a) b where
     drainElbOnShutdown = TF.configuration . drainElbOnShutdown
+
+class HasDriver a b | a -> b where
+    driver :: P.Lens' a b
+
+instance HasDriver a b => HasDriver (TF.Schema l p a) b where
+    driver = TF.configuration . driver
+
+class HasDriverOpts a b | a -> b where
+    driverOpts :: P.Lens' a b
+
+instance HasDriverOpts a b => HasDriverOpts (TF.Schema l p a) b where
+    driverOpts = TF.configuration . driverOpts
 
 class HasDuration a b | a -> b where
     duration :: P.Lens' a b
@@ -2416,6 +2248,12 @@ class HasEnabledMetrics a b | a -> b where
 instance HasEnabledMetrics a b => HasEnabledMetrics (TF.Schema l p a) b where
     enabledMetrics = TF.configuration . enabledMetrics
 
+class HasEncodedKey a b | a -> b where
+    encodedKey :: P.Lens' a b
+
+instance HasEncodedKey a b => HasEncodedKey (TF.Schema l p a) b where
+    encodedKey = TF.configuration . encodedKey
+
 class HasEncoding a b | a -> b where
     encoding :: P.Lens' a b
 
@@ -2452,6 +2290,12 @@ class HasEncryptionContextSubset a b | a -> b where
 instance HasEncryptionContextSubset a b => HasEncryptionContextSubset (TF.Schema l p a) b where
     encryptionContextSubset = TF.configuration . encryptionContextSubset
 
+class HasEncryptionDisabled a b | a -> b where
+    encryptionDisabled :: P.Lens' a b
+
+instance HasEncryptionDisabled a b => HasEncryptionDisabled (TF.Schema l p a) b where
+    encryptionDisabled = TF.configuration . encryptionDisabled
+
 class HasEncryptionKey a b | a -> b where
     encryptionKey :: P.Lens' a b
 
@@ -2463,6 +2307,12 @@ class HasEncryptionType a b | a -> b where
 
 instance HasEncryptionType a b => HasEncryptionType (TF.Schema l p a) b where
     encryptionType = TF.configuration . encryptionType
+
+class HasEnd a b | a -> b where
+    end :: P.Lens' a b
+
+instance HasEnd a b => HasEnd (TF.Schema l p a) b where
+    end = TF.configuration . end
 
 class HasEndTime a b | a -> b where
     endTime :: P.Lens' a b
@@ -2950,6 +2800,12 @@ class HasFixedGop a b | a -> b where
 instance HasFixedGop a b => HasFixedGop (TF.Schema l p a) b where
     fixedGop = TF.configuration . fixedGop
 
+class HasFixedResponse a b | a -> b where
+    fixedResponse :: P.Lens' a b
+
+instance HasFixedResponse a b => HasFixedResponse (TF.Schema l p a) b where
+    fixedResponse = TF.configuration . fixedResponse
+
 class HasFleetId a b | a -> b where
     fleetId :: P.Lens' a b
 
@@ -3424,6 +3280,12 @@ class HasHorizontalOffset a b | a -> b where
 instance HasHorizontalOffset a b => HasHorizontalOffset (TF.Schema l p a) b where
     horizontalOffset = TF.configuration . horizontalOffset
 
+class HasHost a b | a -> b where
+    host :: P.Lens' a b
+
+instance HasHost a b => HasHost (TF.Schema l p a) b where
+    host = TF.configuration . host
+
 class HasHostId a b | a -> b where
     hostId :: P.Lens' a b
 
@@ -3675,6 +3537,12 @@ class HasImageLocation a b | a -> b where
 
 instance HasImageLocation a b => HasImageLocation (TF.Schema l p a) b where
     imageLocation = TF.configuration . imageLocation
+
+class HasIncludeBody a b | a -> b where
+    includeBody :: P.Lens' a b
+
+instance HasIncludeBody a b => HasIncludeBody (TF.Schema l p a) b where
+    includeBody = TF.configuration . includeBody
 
 class HasIncludeCookies a b | a -> b where
     includeCookies :: P.Lens' a b
@@ -3964,6 +3832,12 @@ class HasInstanceName a b | a -> b where
 instance HasInstanceName a b => HasInstanceName (TF.Schema l p a) b where
     instanceName = TF.configuration . instanceName
 
+class HasInstancePoolsToUseCount a b | a -> b where
+    instancePoolsToUseCount :: P.Lens' a b
+
+instance HasInstancePoolsToUseCount a b => HasInstancePoolsToUseCount (TF.Schema l p a) b where
+    instancePoolsToUseCount = TF.configuration . instancePoolsToUseCount
+
 class HasInstancePort a b | a -> b where
     instancePort :: P.Lens' a b
 
@@ -4143,6 +4017,12 @@ class HasIpSetDescriptors a b | a -> b where
 
 instance HasIpSetDescriptors a b => HasIpSetDescriptors (TF.Schema l p a) b where
     ipSetDescriptors = TF.configuration . ipSetDescriptors
+
+class HasIpv4AddressCount a b | a -> b where
+    ipv4AddressCount :: P.Lens' a b
+
+instance HasIpv4AddressCount a b => HasIpv4AddressCount (TF.Schema l p a) b where
+    ipv4AddressCount = TF.configuration . ipv4AddressCount
 
 class HasIpv4Addresses a b | a -> b where
     ipv4Addresses :: P.Lens' a b
@@ -4408,6 +4288,12 @@ class HasKmsMasterKeyId a b | a -> b where
 instance HasKmsMasterKeyId a b => HasKmsMasterKeyId (TF.Schema l p a) b where
     kmsMasterKeyId = TF.configuration . kmsMasterKeyId
 
+class HasLabels a b | a -> b where
+    labels :: P.Lens' a b
+
+instance HasLabels a b => HasLabels (TF.Schema l p a) b where
+    labels = TF.configuration . labels
+
 class HasLagId a b | a -> b where
     lagId :: P.Lens' a b
 
@@ -4461,6 +4347,12 @@ class HasLambdaFunctionAssociation a b | a -> b where
 
 instance HasLambdaFunctionAssociation a b => HasLambdaFunctionAssociation (TF.Schema l p a) b where
     lambdaFunctionAssociation = TF.configuration . lambdaFunctionAssociation
+
+class HasLambdaFunctionName a b | a -> b where
+    lambdaFunctionName :: P.Lens' a b
+
+instance HasLambdaFunctionName a b => HasLambdaFunctionName (TF.Schema l p a) b where
+    lambdaFunctionName = TF.configuration . lambdaFunctionName
 
 class HasLambdaSuccessFeedbackRoleArn a b | a -> b where
     lambdaSuccessFeedbackRoleArn :: P.Lens' a b
@@ -4599,6 +4491,12 @@ class HasLimitUnit a b | a -> b where
 
 instance HasLimitUnit a b => HasLimitUnit (TF.Schema l p a) b where
     limitUnit = TF.configuration . limitUnit
+
+class HasLimits a b | a -> b where
+    limits :: P.Lens' a b
+
+instance HasLimits a b => HasLimits (TF.Schema l p a) b where
+    limits = TF.configuration . limits
 
 class HasLineNumber a b | a -> b where
     lineNumber :: P.Lens' a b
@@ -5002,6 +4900,12 @@ class HasMaxWidth a b | a -> b where
 instance HasMaxWidth a b => HasMaxWidth (TF.Schema l p a) b where
     maxWidth = TF.configuration . maxWidth
 
+class HasMaximumDuration a b | a -> b where
+    maximumDuration :: P.Lens' a b
+
+instance HasMaximumDuration a b => HasMaximumDuration (TF.Schema l p a) b where
+    maximumDuration = TF.configuration . maximumDuration
+
 class HasMaximumExecutionFrequency a b | a -> b where
     maximumExecutionFrequency :: P.Lens' a b
 
@@ -5044,6 +4948,12 @@ class HasMessage a b | a -> b where
 instance HasMessage a b => HasMessage (TF.Schema l p a) b where
     message = TF.configuration . message
 
+class HasMessageBody a b | a -> b where
+    messageBody :: P.Lens' a b
+
+instance HasMessageBody a b => HasMessageBody (TF.Schema l p a) b where
+    messageBody = TF.configuration . messageBody
+
 class HasMessageFormat a b | a -> b where
     messageFormat :: P.Lens' a b
 
@@ -5067,6 +4977,12 @@ class HasMessageType a b | a -> b where
 
 instance HasMessageType a b => HasMessageType (TF.Schema l p a) b where
     messageType = TF.configuration . messageType
+
+class HasMessagesPerSecond a b | a -> b where
+    messagesPerSecond :: P.Lens' a b
+
+instance HasMessagesPerSecond a b => HasMessagesPerSecond (TF.Schema l p a) b where
+    messagesPerSecond = TF.configuration . messagesPerSecond
 
 class HasMethod a b | a -> b where
     method :: P.Lens' a b
@@ -5476,6 +5392,12 @@ class HasNoDevice a b | a -> b where
 instance HasNoDevice a b => HasNoDevice (TF.Schema l p a) b where
     noDevice = TF.configuration . noDevice
 
+class HasNodeToNodeEncryption a b | a -> b where
+    nodeToNodeEncryption :: P.Lens' a b
+
+instance HasNodeToNodeEncryption a b => HasNodeToNodeEncryption (TF.Schema l p a) b where
+    nodeToNodeEncryption = TF.configuration . nodeToNodeEncryption
+
 class HasNodeType a b | a -> b where
     nodeType :: P.Lens' a b
 
@@ -5619,3 +5541,81 @@ class HasObjectAcl a b | a -> b where
 
 instance HasObjectAcl a b => HasObjectAcl (TF.Schema l p a) b where
     objectAcl = TF.configuration . objectAcl
+
+class HasObjectKeyPrefix a b | a -> b where
+    objectKeyPrefix :: P.Lens' a b
+
+instance HasObjectKeyPrefix a b => HasObjectKeyPrefix (TF.Schema l p a) b where
+    objectKeyPrefix = TF.configuration . objectKeyPrefix
+
+class HasOffset a b | a -> b where
+    offset :: P.Lens' a b
+
+instance HasOffset a b => HasOffset (TF.Schema l p a) b where
+    offset = TF.configuration . offset
+
+class HasOkActions a b | a -> b where
+    okActions :: P.Lens' a b
+
+instance HasOkActions a b => HasOkActions (TF.Schema l p a) b where
+    okActions = TF.configuration . okActions
+
+class HasOnFailure a b | a -> b where
+    onFailure :: P.Lens' a b
+
+instance HasOnFailure a b => HasOnFailure (TF.Schema l p a) b where
+    onFailure = TF.configuration . onFailure
+
+class HasOnPremisesInstanceTagFilter a b | a -> b where
+    onPremisesInstanceTagFilter :: P.Lens' a b
+
+instance HasOnPremisesInstanceTagFilter a b => HasOnPremisesInstanceTagFilter (TF.Schema l p a) b where
+    onPremisesInstanceTagFilter = TF.configuration . onPremisesInstanceTagFilter
+
+class HasOneTime a b | a -> b where
+    oneTime :: P.Lens' a b
+
+instance HasOneTime a b => HasOneTime (TF.Schema l p a) b where
+    oneTime = TF.configuration . oneTime
+
+class HasOpacity a b | a -> b where
+    opacity :: P.Lens' a b
+
+instance HasOpacity a b => HasOpacity (TF.Schema l p a) b where
+    opacity = TF.configuration . opacity
+
+class HasOpenXJsonSerDe a b | a -> b where
+    openXJsonSerDe :: P.Lens' a b
+
+instance HasOpenXJsonSerDe a b => HasOpenXJsonSerDe (TF.Schema l p a) b where
+    openXJsonSerDe = TF.configuration . openXJsonSerDe
+
+class HasOpenidConnectProviderArns a b | a -> b where
+    openidConnectProviderArns :: P.Lens' a b
+
+instance HasOpenidConnectProviderArns a b => HasOpenidConnectProviderArns (TF.Schema l p a) b where
+    openidConnectProviderArns = TF.configuration . openidConnectProviderArns
+
+class HasOperatingSystem a b | a -> b where
+    operatingSystem :: P.Lens' a b
+
+instance HasOperatingSystem a b => HasOperatingSystem (TF.Schema l p a) b where
+    operatingSystem = TF.configuration . operatingSystem
+
+class HasOperations a b | a -> b where
+    operations :: P.Lens' a b
+
+instance HasOperations a b => HasOperations (TF.Schema l p a) b where
+    operations = TF.configuration . operations
+
+class HasOption a b | a -> b where
+    option :: P.Lens' a b
+
+instance HasOption a b => HasOption (TF.Schema l p a) b where
+    option = TF.configuration . option
+
+class HasOptionGroupDescription a b | a -> b where
+    optionGroupDescription :: P.Lens' a b
+
+instance HasOptionGroupDescription a b => HasOptionGroupDescription (TF.Schema l p a) b where
+    optionGroupDescription = TF.configuration . optionGroupDescription

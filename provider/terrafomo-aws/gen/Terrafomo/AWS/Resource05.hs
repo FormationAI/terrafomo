@@ -17,12 +17,8 @@
 --
 module Terrafomo.AWS.Resource05
     (
-    -- ** aws_macie_s3_bucket_association
-      MacieS3BucketAssociationResource (..)
-    , macieS3BucketAssociationResource
-
     -- ** aws_main_route_table_association
-    , MainRouteTableAssociationResource (..)
+      MainRouteTableAssociationResource (..)
     , mainRouteTableAssociationResource
 
     -- ** aws_media_store_container_policy
@@ -172,6 +168,10 @@ module Terrafomo.AWS.Resource05
     -- ** aws_organizations_policy
     , OrganizationsPolicyResource (..)
     , organizationsPolicyResource
+
+    -- ** aws_pinpoint_app
+    , PinpointAppResource (..)
+    , pinpointAppResource
 
     -- ** aws_placement_group
     , PlacementGroupResource (..)
@@ -362,79 +362,6 @@ import qualified Terrafomo.HCL          as TF
 import qualified Terrafomo.Name         as TF
 import qualified Terrafomo.Schema       as TF
 import qualified Terrafomo.Validator    as TF
-
--- | @aws_macie_s3_bucket_association@ Resource.
---
--- See the <https://www.terraform.io/docs/providers/aws/r/macie_s3_bucket_association.html terraform documentation>
--- for more information.
-data MacieS3BucketAssociationResource s = MacieS3BucketAssociationResource'
-    { _bucketName :: TF.Attr s P.Text
-    -- ^ @bucket_name@ - (Required, Forces New)
-    --
-    , _classificationType :: TF.Attr s (MacieS3BucketAssociationClassificationTypeSetting s)
-    -- ^ @classification_type@ - (Optional)
-    --
-    , _memberAccountId :: TF.Attr s P.Text
-    -- ^ @member_account_id@ - (Optional, Forces New)
-    --
-    , _prefix :: TF.Attr s P.Text
-    -- ^ @prefix@ - (Optional, Forces New)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Define a new @aws_macie_s3_bucket_association@ resource value.
-macieS3BucketAssociationResource
-    :: TF.Attr s P.Text -- ^ @bucket_name@ ('P._bucketName', 'P.bucketName')
-    -> P.Resource (MacieS3BucketAssociationResource s)
-macieS3BucketAssociationResource _bucketName =
-    TF.unsafeResource "aws_macie_s3_bucket_association" TF.validator $
-        MacieS3BucketAssociationResource'
-            { _bucketName = _bucketName
-            , _classificationType = TF.Nil
-            , _memberAccountId = TF.Nil
-            , _prefix = TF.Nil
-            }
-
-instance TF.IsObject (MacieS3BucketAssociationResource s) where
-    toObject MacieS3BucketAssociationResource'{..} = P.catMaybes
-        [ TF.assign "bucket_name" <$> TF.attribute _bucketName
-        , TF.assign "classification_type" <$> TF.attribute _classificationType
-        , TF.assign "member_account_id" <$> TF.attribute _memberAccountId
-        , TF.assign "prefix" <$> TF.attribute _prefix
-        ]
-
-instance TF.IsValid (MacieS3BucketAssociationResource s) where
-    validator = P.mempty
-           P.<> TF.settingsValidator "_classificationType"
-                  (_classificationType
-                      :: MacieS3BucketAssociationResource s -> TF.Attr s (MacieS3BucketAssociationClassificationTypeSetting s))
-                  TF.validator
-
-instance P.HasBucketName (MacieS3BucketAssociationResource s) (TF.Attr s P.Text) where
-    bucketName =
-        P.lens (_bucketName :: MacieS3BucketAssociationResource s -> TF.Attr s P.Text)
-               (\s a -> s { _bucketName = a } :: MacieS3BucketAssociationResource s)
-
-instance P.HasClassificationType (MacieS3BucketAssociationResource s) (TF.Attr s (MacieS3BucketAssociationClassificationTypeSetting s)) where
-    classificationType =
-        P.lens (_classificationType :: MacieS3BucketAssociationResource s -> TF.Attr s (MacieS3BucketAssociationClassificationTypeSetting s))
-               (\s a -> s { _classificationType = a } :: MacieS3BucketAssociationResource s)
-
-instance P.HasMemberAccountId (MacieS3BucketAssociationResource s) (TF.Attr s P.Text) where
-    memberAccountId =
-        P.lens (_memberAccountId :: MacieS3BucketAssociationResource s -> TF.Attr s P.Text)
-               (\s a -> s { _memberAccountId = a } :: MacieS3BucketAssociationResource s)
-
-instance P.HasPrefix (MacieS3BucketAssociationResource s) (TF.Attr s P.Text) where
-    prefix =
-        P.lens (_prefix :: MacieS3BucketAssociationResource s -> TF.Attr s P.Text)
-               (\s a -> s { _prefix = a } :: MacieS3BucketAssociationResource s)
-
-instance s ~ s' => P.HasComputedId (TF.Ref s' (MacieS3BucketAssociationResource s)) (TF.Attr s P.Text) where
-    computedId x = TF.compute (TF.refKey x) "id"
-
-instance s ~ s' => P.HasComputedClassificationType (TF.Ref s' (MacieS3BucketAssociationResource s)) (TF.Attr s (MacieS3BucketAssociationClassificationTypeSetting s)) where
-    computedClassificationType x = TF.compute (TF.refKey x) "classification_type"
 
 -- | @aws_main_route_table_association@ Resource.
 --
@@ -6534,6 +6461,116 @@ instance s ~ s' => P.HasComputedId (TF.Ref s' (OrganizationsPolicyResource s)) (
 instance s ~ s' => P.HasComputedArn (TF.Ref s' (OrganizationsPolicyResource s)) (TF.Attr s P.Text) where
     computedArn x = TF.compute (TF.refKey x) "arn"
 
+-- | @aws_pinpoint_app@ Resource.
+--
+-- See the <https://www.terraform.io/docs/providers/aws/r/pinpoint_app.html terraform documentation>
+-- for more information.
+data PinpointAppResource s = PinpointAppResource'
+    { _campaignHook :: TF.Attr s (PinpointAppCampaignHookSetting s)
+    -- ^ @campaign_hook@ - (Optional)
+    --
+    , _limits       :: TF.Attr s (PinpointAppLimitsSetting s)
+    -- ^ @limits@ - (Optional)
+    --
+    , _name         :: TF.Attr s P.Text
+    -- ^ @name@ - (Optional, Forces New)
+    --
+    -- Conflicts with:
+    --
+    -- * 'namePrefix'
+    , _namePrefix   :: TF.Attr s P.Text
+    -- ^ @name_prefix@ - (Optional, Forces New)
+    --
+    -- Conflicts with:
+    --
+    -- * 'name'
+    , _quietTime    :: TF.Attr s (PinpointAppQuietTimeSetting s)
+    -- ^ @quiet_time@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Define a new @aws_pinpoint_app@ resource value.
+pinpointAppResource
+    :: P.Resource (PinpointAppResource s)
+pinpointAppResource =
+    TF.unsafeResource "aws_pinpoint_app" TF.validator $
+        PinpointAppResource'
+            { _campaignHook = TF.Nil
+            , _limits = TF.Nil
+            , _name = TF.Nil
+            , _namePrefix = TF.Nil
+            , _quietTime = TF.Nil
+            }
+
+instance TF.IsObject (PinpointAppResource s) where
+    toObject PinpointAppResource'{..} = P.catMaybes
+        [ TF.assign "campaign_hook" <$> TF.attribute _campaignHook
+        , TF.assign "limits" <$> TF.attribute _limits
+        , TF.assign "name" <$> TF.attribute _name
+        , TF.assign "name_prefix" <$> TF.attribute _namePrefix
+        , TF.assign "quiet_time" <$> TF.attribute _quietTime
+        ]
+
+instance TF.IsValid (PinpointAppResource s) where
+    validator = TF.fieldsValidator (\PinpointAppResource'{..} -> Map.fromList $ P.catMaybes
+        [ if (_name P.== TF.Nil)
+              then P.Nothing
+              else P.Just ("_name",
+                            [ "_namePrefix"
+                            ])
+        , if (_namePrefix P.== TF.Nil)
+              then P.Nothing
+              else P.Just ("_namePrefix",
+                            [ "_name"
+                            ])
+        ])
+           P.<> TF.settingsValidator "_campaignHook"
+                  (_campaignHook
+                      :: PinpointAppResource s -> TF.Attr s (PinpointAppCampaignHookSetting s))
+                  TF.validator
+           P.<> TF.settingsValidator "_limits"
+                  (_limits
+                      :: PinpointAppResource s -> TF.Attr s (PinpointAppLimitsSetting s))
+                  TF.validator
+           P.<> TF.settingsValidator "_quietTime"
+                  (_quietTime
+                      :: PinpointAppResource s -> TF.Attr s (PinpointAppQuietTimeSetting s))
+                  TF.validator
+
+instance P.HasCampaignHook (PinpointAppResource s) (TF.Attr s (PinpointAppCampaignHookSetting s)) where
+    campaignHook =
+        P.lens (_campaignHook :: PinpointAppResource s -> TF.Attr s (PinpointAppCampaignHookSetting s))
+               (\s a -> s { _campaignHook = a } :: PinpointAppResource s)
+
+instance P.HasLimits (PinpointAppResource s) (TF.Attr s (PinpointAppLimitsSetting s)) where
+    limits =
+        P.lens (_limits :: PinpointAppResource s -> TF.Attr s (PinpointAppLimitsSetting s))
+               (\s a -> s { _limits = a } :: PinpointAppResource s)
+
+instance P.HasName (PinpointAppResource s) (TF.Attr s P.Text) where
+    name =
+        P.lens (_name :: PinpointAppResource s -> TF.Attr s P.Text)
+               (\s a -> s { _name = a } :: PinpointAppResource s)
+
+instance P.HasNamePrefix (PinpointAppResource s) (TF.Attr s P.Text) where
+    namePrefix =
+        P.lens (_namePrefix :: PinpointAppResource s -> TF.Attr s P.Text)
+               (\s a -> s { _namePrefix = a } :: PinpointAppResource s)
+
+instance P.HasQuietTime (PinpointAppResource s) (TF.Attr s (PinpointAppQuietTimeSetting s)) where
+    quietTime =
+        P.lens (_quietTime :: PinpointAppResource s -> TF.Attr s (PinpointAppQuietTimeSetting s))
+               (\s a -> s { _quietTime = a } :: PinpointAppResource s)
+
+instance s ~ s' => P.HasComputedId (TF.Ref s' (PinpointAppResource s)) (TF.Attr s P.Text) where
+    computedId x = TF.compute (TF.refKey x) "id"
+
+instance s ~ s' => P.HasComputedApplicationId (TF.Ref s' (PinpointAppResource s)) (TF.Attr s P.Text) where
+    computedApplicationId x = TF.compute (TF.refKey x) "application_id"
+
+instance s ~ s' => P.HasComputedName (TF.Ref s' (PinpointAppResource s)) (TF.Attr s P.Text) where
+    computedName x = TF.compute (TF.refKey x) "name"
+
 -- | @aws_placement_group@ Resource.
 --
 -- See the <https://www.terraform.io/docs/providers/aws/r/placement_group.html terraform documentation>
@@ -7130,6 +7167,9 @@ data RdsClusterResource s = RdsClusterResource'
     -- Conflicts with:
     --
     -- * 'snapshotIdentifier'
+    , _scalingConfiguration :: TF.Attr s (RdsClusterScalingConfigurationSetting s)
+    -- ^ @scaling_configuration@ - (Optional)
+    --
     , _skipFinalSnapshot :: TF.Attr s P.Bool
     -- ^ @skip_final_snapshot@ - (Optional)
     --
@@ -7184,6 +7224,7 @@ rdsClusterResource =
             , _preferredMaintenanceWindow = TF.Nil
             , _replicationSourceIdentifier = TF.Nil
             , _s3Import = TF.Nil
+            , _scalingConfiguration = TF.Nil
             , _skipFinalSnapshot = TF.value P.False
             , _snapshotIdentifier = TF.Nil
             , _sourceRegion = TF.Nil
@@ -7219,6 +7260,7 @@ instance TF.IsObject (RdsClusterResource s) where
         , TF.assign "preferred_maintenance_window" <$> TF.attribute _preferredMaintenanceWindow
         , TF.assign "replication_source_identifier" <$> TF.attribute _replicationSourceIdentifier
         , TF.assign "s3_import" <$> TF.attribute _s3Import
+        , TF.assign "scaling_configuration" <$> TF.attribute _scalingConfiguration
         , TF.assign "skip_final_snapshot" <$> TF.attribute _skipFinalSnapshot
         , TF.assign "snapshot_identifier" <$> TF.attribute _snapshotIdentifier
         , TF.assign "source_region" <$> TF.attribute _sourceRegion
@@ -7253,6 +7295,10 @@ instance TF.IsValid (RdsClusterResource s) where
            P.<> TF.settingsValidator "_s3Import"
                   (_s3Import
                       :: RdsClusterResource s -> TF.Attr s (RdsClusterS3ImportSetting s))
+                  TF.validator
+           P.<> TF.settingsValidator "_scalingConfiguration"
+                  (_scalingConfiguration
+                      :: RdsClusterResource s -> TF.Attr s (RdsClusterScalingConfigurationSetting s))
                   TF.validator
 
 instance P.HasApplyImmediately (RdsClusterResource s) (TF.Attr s P.Bool) where
@@ -7380,6 +7426,11 @@ instance P.HasS3Import (RdsClusterResource s) (TF.Attr s (RdsClusterS3ImportSett
         P.lens (_s3Import :: RdsClusterResource s -> TF.Attr s (RdsClusterS3ImportSetting s))
                (\s a -> s { _s3Import = a } :: RdsClusterResource s)
 
+instance P.HasScalingConfiguration (RdsClusterResource s) (TF.Attr s (RdsClusterScalingConfigurationSetting s)) where
+    scalingConfiguration =
+        P.lens (_scalingConfiguration :: RdsClusterResource s -> TF.Attr s (RdsClusterScalingConfigurationSetting s))
+               (\s a -> s { _scalingConfiguration = a } :: RdsClusterResource s)
+
 instance P.HasSkipFinalSnapshot (RdsClusterResource s) (TF.Attr s P.Bool) where
     skipFinalSnapshot =
         P.lens (_skipFinalSnapshot :: RdsClusterResource s -> TF.Attr s P.Bool)
@@ -7485,7 +7536,7 @@ data RedshiftClusterResource s = RedshiftClusterResource'
     -- ^ @automated_snapshot_retention_period@ - (Optional)
     --
     , _availabilityZone :: TF.Attr s P.Text
-    -- ^ @availability_zone@ - (Optional)
+    -- ^ @availability_zone@ - (Optional, Forces New)
     --
     , _clusterIdentifier :: TF.Attr s P.Text
     -- ^ @cluster_identifier@ - (Required, Forces New)

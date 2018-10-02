@@ -17,88 +17,8 @@
 --
 module Terrafomo.AWS.Settings03
     (
-    -- ** on_premises_instance_tag_filter
-      CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting (..)
-    , newCodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting
-
-    -- ** trigger_configuration
-    , CodedeployDeploymentGroupTriggerConfigurationSetting (..)
-    , newCodedeployDeploymentGroupTriggerConfigurationSetting
-
-    -- ** encryption_key
-    , CodepipelineArtifactStoreEncryptionKeySetting (..)
-    , newCodepipelineArtifactStoreEncryptionKeySetting
-
-    -- ** artifact_store
-    , CodepipelineArtifactStoreSetting (..)
-    , newCodepipelineArtifactStoreSetting
-
-    -- ** action
-    , CodepipelineStageActionSetting (..)
-    , newCodepipelineStageActionSetting
-
-    -- ** stage
-    , CodepipelineStageSetting (..)
-    , newCodepipelineStageSetting
-
-    -- ** cognito_identity_providers
-    , CognitoIdentityPoolCognitoIdentityProvidersSetting (..)
-    , newCognitoIdentityPoolCognitoIdentityProvidersSetting
-
-    -- ** mapping_rule
-    , CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting (..)
-    , newCognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting
-
-    -- ** role_mapping
-    , CognitoIdentityPoolRolesAttachmentRoleMappingSetting (..)
-    , newCognitoIdentityPoolRolesAttachmentRoleMappingSetting
-
-    -- ** roles
-    , CognitoIdentityPoolRolesAttachmentRolesSetting (..)
-    , newCognitoIdentityPoolRolesAttachmentRolesSetting
-
-    -- ** scope
-    , CognitoResourceServerScopeSetting (..)
-    , newCognitoResourceServerScopeSetting
-
-    -- ** invite_message_template
-    , CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting (..)
-    , newCognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting
-
-    -- ** admin_create_user_config
-    , CognitoUserPoolAdminCreateUserConfigSetting (..)
-    , newCognitoUserPoolAdminCreateUserConfigSetting
-
-    -- ** device_configuration
-    , CognitoUserPoolDeviceConfigurationSetting (..)
-    , newCognitoUserPoolDeviceConfigurationSetting
-
-    -- ** email_configuration
-    , CognitoUserPoolEmailConfigurationSetting (..)
-    , newCognitoUserPoolEmailConfigurationSetting
-
-    -- ** lambda_config
-    , CognitoUserPoolLambdaConfigSetting (..)
-    , newCognitoUserPoolLambdaConfigSetting
-
-    -- ** password_policy
-    , CognitoUserPoolPasswordPolicySetting (..)
-    , newCognitoUserPoolPasswordPolicySetting
-
-    -- ** number_attribute_constraints
-    , CognitoUserPoolSchemaNumberAttributeConstraintsSetting (..)
-    , newCognitoUserPoolSchemaNumberAttributeConstraintsSetting
-
-    -- ** schema
-    , CognitoUserPoolSchemaSetting (..)
-    , newCognitoUserPoolSchemaSetting
-
-    -- ** string_attribute_constraints
-    , CognitoUserPoolSchemaStringAttributeConstraintsSetting (..)
-    , newCognitoUserPoolSchemaStringAttributeConstraintsSetting
-
     -- ** sms_configuration
-    , CognitoUserPoolSmsConfigurationSetting (..)
+      CognitoUserPoolSmsConfigurationSetting (..)
     , newCognitoUserPoolSmsConfigurationSetting
 
     -- ** verification_message_template
@@ -136,6 +56,10 @@ module Terrafomo.AWS.Settings03
     -- ** nodes
     , DaxClusterNodesSetting (..)
     , newDaxClusterNodesSetting
+
+    -- ** server_side_encryption
+    , DaxClusterServerSideEncryptionSetting (..)
+    , newDaxClusterServerSideEncryptionSetting
 
     -- ** parameters
     , DaxParameterGroupParametersSetting (..)
@@ -261,6 +185,10 @@ module Terrafomo.AWS.Settings03
     , EcsTaskDefinitionPlacementConstraintsSetting (..)
     , newEcsTaskDefinitionPlacementConstraintsSetting
 
+    -- ** docker_volume_configuration
+    , EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting (..)
+    , newEcsTaskDefinitionVolumeDockerVolumeConfigurationSetting
+
     -- ** volume
     , EcsTaskDefinitionVolumeSetting (..)
     , newEcsTaskDefinitionVolumeSetting
@@ -321,6 +249,10 @@ module Terrafomo.AWS.Settings03
     , ElasticsearchDomainLogPublishingOptionsSetting (..)
     , newElasticsearchDomainLogPublishingOptionsSetting
 
+    -- ** node_to_node_encryption
+    , ElasticsearchDomainNodeToNodeEncryptionSetting (..)
+    , newElasticsearchDomainNodeToNodeEncryptionSetting
+
     -- ** snapshot_options
     , ElasticsearchDomainSnapshotOptionsSetting (..)
     , newElasticsearchDomainSnapshotOptionsSetting
@@ -332,6 +264,74 @@ module Terrafomo.AWS.Settings03
     -- ** content_config_permissions
     , ElastictranscoderPipelineContentConfigPermissionsSetting (..)
     , newElastictranscoderPipelineContentConfigPermissionsSetting
+
+    -- ** content_config
+    , ElastictranscoderPipelineContentConfigSetting (..)
+    , newElastictranscoderPipelineContentConfigSetting
+
+    -- ** notifications
+    , ElastictranscoderPipelineNotificationsSetting (..)
+    , newElastictranscoderPipelineNotificationsSetting
+
+    -- ** thumbnail_config_permissions
+    , ElastictranscoderPipelineThumbnailConfigPermissionsSetting (..)
+    , newElastictranscoderPipelineThumbnailConfigPermissionsSetting
+
+    -- ** thumbnail_config
+    , ElastictranscoderPipelineThumbnailConfigSetting (..)
+    , newElastictranscoderPipelineThumbnailConfigSetting
+
+    -- ** audio_codec_options
+    , ElastictranscoderPresetAudioCodecOptionsSetting (..)
+    , newElastictranscoderPresetAudioCodecOptionsSetting
+
+    -- ** audio
+    , ElastictranscoderPresetAudioSetting (..)
+    , newElastictranscoderPresetAudioSetting
+
+    -- ** thumbnails
+    , ElastictranscoderPresetThumbnailsSetting (..)
+    , newElastictranscoderPresetThumbnailsSetting
+
+    -- ** video
+    , ElastictranscoderPresetVideoSetting (..)
+    , newElastictranscoderPresetVideoSetting
+
+    -- ** video_watermarks
+    , ElastictranscoderPresetVideoWatermarksSetting (..)
+    , newElastictranscoderPresetVideoWatermarksSetting
+
+    -- ** access_logs
+    , ElbAccessLogsSetting (..)
+    , newElbAccessLogsSetting
+
+    -- ** health_check
+    , ElbHealthCheckSetting (..)
+    , newElbHealthCheckSetting
+
+    -- ** listener
+    , ElbListenerSetting (..)
+    , newElbListenerSetting
+
+    -- ** bootstrap_action
+    , EmrClusterBootstrapActionSetting (..)
+    , newEmrClusterBootstrapActionSetting
+
+    -- ** ec2_attributes
+    , EmrClusterEc2AttributesSetting (..)
+    , newEmrClusterEc2AttributesSetting
+
+    -- ** ebs_config
+    , EmrClusterInstanceGroupEbsConfigSetting (..)
+    , newEmrClusterInstanceGroupEbsConfigSetting
+
+    -- ** instance_group
+    , EmrClusterInstanceGroupSetting (..)
+    , newEmrClusterInstanceGroupSetting
+
+    -- ** kerberos_attributes
+    , EmrClusterKerberosAttributesSetting (..)
+    , newEmrClusterKerberosAttributesSetting
 
     ) where
 
@@ -355,1169 +355,6 @@ import qualified Terrafomo.AWS.Types as P
 import qualified Terrafomo.HCL       as TF
 import qualified Terrafomo.Name      as TF
 import qualified Terrafomo.Validator as TF
-
--- | @on_premises_instance_tag_filter@ nested settings.
-data CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s = CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting'
-    { _key   :: TF.Attr s P.Text
-    -- ^ @key@ - (Optional)
-    --
-    , _type' :: TF.Attr s P.Text
-    -- ^ @type@ - (Optional)
-    --
-    , _value :: TF.Attr s P.Text
-    -- ^ @value@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @on_premises_instance_tag_filter@ settings value.
-newCodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting
-    :: CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s
-newCodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting =
-    CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting'
-        { _key = TF.Nil
-        , _type' = TF.Nil
-        , _value = TF.Nil
-        }
-
-instance TF.IsValue  (CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s)
-instance TF.IsObject (CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s) where
-    toObject CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting'{..} = P.catMaybes
-        [ TF.assign "key" <$> TF.attribute _key
-        , TF.assign "type" <$> TF.attribute _type'
-        , TF.assign "value" <$> TF.attribute _value
-        ]
-
-instance TF.IsValid (CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s) where
-    validator = P.mempty
-
-instance P.HasKey (CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s) (TF.Attr s P.Text) where
-    key =
-        P.lens (_key :: CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _key = a } :: CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s)
-
-instance P.HasType' (CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s) (TF.Attr s P.Text) where
-    type' =
-        P.lens (_type' :: CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _type' = a } :: CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s)
-
-instance P.HasValue (CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s) (TF.Attr s P.Text) where
-    value =
-        P.lens (_value :: CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _value = a } :: CodedeployDeploymentGroupOnPremisesInstanceTagFilterSetting s)
-
--- | @trigger_configuration@ nested settings.
-data CodedeployDeploymentGroupTriggerConfigurationSetting s = CodedeployDeploymentGroupTriggerConfigurationSetting'
-    { _triggerEvents    :: TF.Attr s [TF.Attr s P.Text]
-    -- ^ @trigger_events@ - (Required)
-    --
-    , _triggerName      :: TF.Attr s P.Text
-    -- ^ @trigger_name@ - (Required)
-    --
-    , _triggerTargetArn :: TF.Attr s P.Text
-    -- ^ @trigger_target_arn@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @trigger_configuration@ settings value.
-newCodedeployDeploymentGroupTriggerConfigurationSetting
-    :: TF.Attr s P.Text -- ^ 'P._triggerTargetArn': @trigger_target_arn@
-    -> TF.Attr s [TF.Attr s P.Text] -- ^ 'P._triggerEvents': @trigger_events@
-    -> TF.Attr s P.Text -- ^ 'P._triggerName': @trigger_name@
-    -> CodedeployDeploymentGroupTriggerConfigurationSetting s
-newCodedeployDeploymentGroupTriggerConfigurationSetting _triggerTargetArn _triggerEvents _triggerName =
-    CodedeployDeploymentGroupTriggerConfigurationSetting'
-        { _triggerEvents = _triggerEvents
-        , _triggerName = _triggerName
-        , _triggerTargetArn = _triggerTargetArn
-        }
-
-instance TF.IsValue  (CodedeployDeploymentGroupTriggerConfigurationSetting s)
-instance TF.IsObject (CodedeployDeploymentGroupTriggerConfigurationSetting s) where
-    toObject CodedeployDeploymentGroupTriggerConfigurationSetting'{..} = P.catMaybes
-        [ TF.assign "trigger_events" <$> TF.attribute _triggerEvents
-        , TF.assign "trigger_name" <$> TF.attribute _triggerName
-        , TF.assign "trigger_target_arn" <$> TF.attribute _triggerTargetArn
-        ]
-
-instance TF.IsValid (CodedeployDeploymentGroupTriggerConfigurationSetting s) where
-    validator = P.mempty
-
-instance P.HasTriggerEvents (CodedeployDeploymentGroupTriggerConfigurationSetting s) (TF.Attr s [TF.Attr s P.Text]) where
-    triggerEvents =
-        P.lens (_triggerEvents :: CodedeployDeploymentGroupTriggerConfigurationSetting s -> TF.Attr s [TF.Attr s P.Text])
-               (\s a -> s { _triggerEvents = a } :: CodedeployDeploymentGroupTriggerConfigurationSetting s)
-
-instance P.HasTriggerName (CodedeployDeploymentGroupTriggerConfigurationSetting s) (TF.Attr s P.Text) where
-    triggerName =
-        P.lens (_triggerName :: CodedeployDeploymentGroupTriggerConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _triggerName = a } :: CodedeployDeploymentGroupTriggerConfigurationSetting s)
-
-instance P.HasTriggerTargetArn (CodedeployDeploymentGroupTriggerConfigurationSetting s) (TF.Attr s P.Text) where
-    triggerTargetArn =
-        P.lens (_triggerTargetArn :: CodedeployDeploymentGroupTriggerConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _triggerTargetArn = a } :: CodedeployDeploymentGroupTriggerConfigurationSetting s)
-
--- | @encryption_key@ nested settings.
-data CodepipelineArtifactStoreEncryptionKeySetting s = CodepipelineArtifactStoreEncryptionKeySetting'
-    { _id    :: TF.Attr s P.Text
-    -- ^ @id@ - (Required)
-    --
-    , _type' :: TF.Attr s P.Text
-    -- ^ @type@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @encryption_key@ settings value.
-newCodepipelineArtifactStoreEncryptionKeySetting
-    :: TF.Attr s P.Text -- ^ 'P._id': @id@
-    -> TF.Attr s P.Text -- ^ 'P._type'': @type@
-    -> CodepipelineArtifactStoreEncryptionKeySetting s
-newCodepipelineArtifactStoreEncryptionKeySetting _id _type' =
-    CodepipelineArtifactStoreEncryptionKeySetting'
-        { _id = _id
-        , _type' = _type'
-        }
-
-instance TF.IsValue  (CodepipelineArtifactStoreEncryptionKeySetting s)
-instance TF.IsObject (CodepipelineArtifactStoreEncryptionKeySetting s) where
-    toObject CodepipelineArtifactStoreEncryptionKeySetting'{..} = P.catMaybes
-        [ TF.assign "id" <$> TF.attribute _id
-        , TF.assign "type" <$> TF.attribute _type'
-        ]
-
-instance TF.IsValid (CodepipelineArtifactStoreEncryptionKeySetting s) where
-    validator = P.mempty
-
-instance P.HasId (CodepipelineArtifactStoreEncryptionKeySetting s) (TF.Attr s P.Text) where
-    id =
-        P.lens (_id :: CodepipelineArtifactStoreEncryptionKeySetting s -> TF.Attr s P.Text)
-               (\s a -> s { _id = a } :: CodepipelineArtifactStoreEncryptionKeySetting s)
-
-instance P.HasType' (CodepipelineArtifactStoreEncryptionKeySetting s) (TF.Attr s P.Text) where
-    type' =
-        P.lens (_type' :: CodepipelineArtifactStoreEncryptionKeySetting s -> TF.Attr s P.Text)
-               (\s a -> s { _type' = a } :: CodepipelineArtifactStoreEncryptionKeySetting s)
-
--- | @artifact_store@ nested settings.
-data CodepipelineArtifactStoreSetting s = CodepipelineArtifactStoreSetting'
-    { _encryptionKey :: TF.Attr s (CodepipelineArtifactStoreEncryptionKeySetting s)
-    -- ^ @encryption_key@ - (Optional)
-    --
-    , _location :: TF.Attr s P.Text
-    -- ^ @location@ - (Required)
-    --
-    , _type' :: TF.Attr s P.Text
-    -- ^ @type@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @artifact_store@ settings value.
-newCodepipelineArtifactStoreSetting
-    :: TF.Attr s P.Text -- ^ 'P._location': @location@
-    -> TF.Attr s P.Text -- ^ 'P._type'': @type@
-    -> CodepipelineArtifactStoreSetting s
-newCodepipelineArtifactStoreSetting _location _type' =
-    CodepipelineArtifactStoreSetting'
-        { _encryptionKey = TF.Nil
-        , _location = _location
-        , _type' = _type'
-        }
-
-instance TF.IsValue  (CodepipelineArtifactStoreSetting s)
-instance TF.IsObject (CodepipelineArtifactStoreSetting s) where
-    toObject CodepipelineArtifactStoreSetting'{..} = P.catMaybes
-        [ TF.assign "encryption_key" <$> TF.attribute _encryptionKey
-        , TF.assign "location" <$> TF.attribute _location
-        , TF.assign "type" <$> TF.attribute _type'
-        ]
-
-instance TF.IsValid (CodepipelineArtifactStoreSetting s) where
-    validator = P.mempty
-           P.<> TF.settingsValidator "_encryptionKey"
-                  (_encryptionKey
-                      :: CodepipelineArtifactStoreSetting s -> TF.Attr s (CodepipelineArtifactStoreEncryptionKeySetting s))
-                  TF.validator
-
-instance P.HasEncryptionKey (CodepipelineArtifactStoreSetting s) (TF.Attr s (CodepipelineArtifactStoreEncryptionKeySetting s)) where
-    encryptionKey =
-        P.lens (_encryptionKey :: CodepipelineArtifactStoreSetting s -> TF.Attr s (CodepipelineArtifactStoreEncryptionKeySetting s))
-               (\s a -> s { _encryptionKey = a } :: CodepipelineArtifactStoreSetting s)
-
-instance P.HasLocation (CodepipelineArtifactStoreSetting s) (TF.Attr s P.Text) where
-    location =
-        P.lens (_location :: CodepipelineArtifactStoreSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _location = a } :: CodepipelineArtifactStoreSetting s)
-
-instance P.HasType' (CodepipelineArtifactStoreSetting s) (TF.Attr s P.Text) where
-    type' =
-        P.lens (_type' :: CodepipelineArtifactStoreSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _type' = a } :: CodepipelineArtifactStoreSetting s)
-
--- | @action@ nested settings.
-data CodepipelineStageActionSetting s = CodepipelineStageActionSetting'
-    { _category        :: TF.Attr s P.Text
-    -- ^ @category@ - (Required)
-    --
-    , _configuration   :: TF.Attr s (P.Map P.Text (TF.Attr s P.Text))
-    -- ^ @configuration@ - (Optional)
-    --
-    , _inputArtifacts  :: TF.Attr s [TF.Attr s P.Text]
-    -- ^ @input_artifacts@ - (Optional)
-    --
-    , _name            :: TF.Attr s P.Text
-    -- ^ @name@ - (Required)
-    --
-    , _outputArtifacts :: TF.Attr s [TF.Attr s P.Text]
-    -- ^ @output_artifacts@ - (Optional)
-    --
-    , _owner           :: TF.Attr s P.Text
-    -- ^ @owner@ - (Required)
-    --
-    , _provider'       :: TF.Attr s P.Text
-    -- ^ @provider@ - (Required)
-    --
-    , _roleArn         :: TF.Attr s P.Text
-    -- ^ @role_arn@ - (Optional)
-    --
-    , _runOrder        :: TF.Attr s P.Int
-    -- ^ @run_order@ - (Optional)
-    --
-    , _version         :: TF.Attr s P.Text
-    -- ^ @version@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @action@ settings value.
-newCodepipelineStageActionSetting
-    :: TF.Attr s P.Text -- ^ 'P._category': @category@
-    -> TF.Attr s P.Text -- ^ 'P._name': @name@
-    -> TF.Attr s P.Text -- ^ 'P._owner': @owner@
-    -> TF.Attr s P.Text -- ^ 'P._provider'': @provider@
-    -> TF.Attr s P.Text -- ^ 'P._version': @version@
-    -> CodepipelineStageActionSetting s
-newCodepipelineStageActionSetting _category _name _owner _provider' _version =
-    CodepipelineStageActionSetting'
-        { _category = _category
-        , _configuration = TF.Nil
-        , _inputArtifacts = TF.Nil
-        , _name = _name
-        , _outputArtifacts = TF.Nil
-        , _owner = _owner
-        , _provider' = _provider'
-        , _roleArn = TF.Nil
-        , _runOrder = TF.Nil
-        , _version = _version
-        }
-
-instance TF.IsValue  (CodepipelineStageActionSetting s)
-instance TF.IsObject (CodepipelineStageActionSetting s) where
-    toObject CodepipelineStageActionSetting'{..} = P.catMaybes
-        [ TF.assign "category" <$> TF.attribute _category
-        , TF.assign "configuration" <$> TF.attribute _configuration
-        , TF.assign "input_artifacts" <$> TF.attribute _inputArtifacts
-        , TF.assign "name" <$> TF.attribute _name
-        , TF.assign "output_artifacts" <$> TF.attribute _outputArtifacts
-        , TF.assign "owner" <$> TF.attribute _owner
-        , TF.assign "provider" <$> TF.attribute _provider'
-        , TF.assign "role_arn" <$> TF.attribute _roleArn
-        , TF.assign "run_order" <$> TF.attribute _runOrder
-        , TF.assign "version" <$> TF.attribute _version
-        ]
-
-instance TF.IsValid (CodepipelineStageActionSetting s) where
-    validator = P.mempty
-
-instance P.HasCategory (CodepipelineStageActionSetting s) (TF.Attr s P.Text) where
-    category =
-        P.lens (_category :: CodepipelineStageActionSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _category = a } :: CodepipelineStageActionSetting s)
-
-instance P.HasConfiguration (CodepipelineStageActionSetting s) (TF.Attr s (P.Map P.Text (TF.Attr s P.Text))) where
-    configuration =
-        P.lens (_configuration :: CodepipelineStageActionSetting s -> TF.Attr s (P.Map P.Text (TF.Attr s P.Text)))
-               (\s a -> s { _configuration = a } :: CodepipelineStageActionSetting s)
-
-instance P.HasInputArtifacts (CodepipelineStageActionSetting s) (TF.Attr s [TF.Attr s P.Text]) where
-    inputArtifacts =
-        P.lens (_inputArtifacts :: CodepipelineStageActionSetting s -> TF.Attr s [TF.Attr s P.Text])
-               (\s a -> s { _inputArtifacts = a } :: CodepipelineStageActionSetting s)
-
-instance P.HasName (CodepipelineStageActionSetting s) (TF.Attr s P.Text) where
-    name =
-        P.lens (_name :: CodepipelineStageActionSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _name = a } :: CodepipelineStageActionSetting s)
-
-instance P.HasOutputArtifacts (CodepipelineStageActionSetting s) (TF.Attr s [TF.Attr s P.Text]) where
-    outputArtifacts =
-        P.lens (_outputArtifacts :: CodepipelineStageActionSetting s -> TF.Attr s [TF.Attr s P.Text])
-               (\s a -> s { _outputArtifacts = a } :: CodepipelineStageActionSetting s)
-
-instance P.HasOwner (CodepipelineStageActionSetting s) (TF.Attr s P.Text) where
-    owner =
-        P.lens (_owner :: CodepipelineStageActionSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _owner = a } :: CodepipelineStageActionSetting s)
-
-instance P.HasProvider' (CodepipelineStageActionSetting s) (TF.Attr s P.Text) where
-    provider' =
-        P.lens (_provider' :: CodepipelineStageActionSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _provider' = a } :: CodepipelineStageActionSetting s)
-
-instance P.HasRoleArn (CodepipelineStageActionSetting s) (TF.Attr s P.Text) where
-    roleArn =
-        P.lens (_roleArn :: CodepipelineStageActionSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _roleArn = a } :: CodepipelineStageActionSetting s)
-
-instance P.HasRunOrder (CodepipelineStageActionSetting s) (TF.Attr s P.Int) where
-    runOrder =
-        P.lens (_runOrder :: CodepipelineStageActionSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _runOrder = a } :: CodepipelineStageActionSetting s)
-
-instance P.HasVersion (CodepipelineStageActionSetting s) (TF.Attr s P.Text) where
-    version =
-        P.lens (_version :: CodepipelineStageActionSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _version = a } :: CodepipelineStageActionSetting s)
-
-instance s ~ s' => P.HasComputedRunOrder (TF.Ref s' (CodepipelineStageActionSetting s)) (TF.Attr s P.Int) where
-    computedRunOrder x = TF.compute (TF.refKey x) "run_order"
-
--- | @stage@ nested settings.
-data CodepipelineStageSetting s = CodepipelineStageSetting'
-    { _action :: TF.Attr s [TF.Attr s (CodepipelineStageActionSetting s)]
-    -- ^ @action@ - (Required)
-    --
-    , _name   :: TF.Attr s P.Text
-    -- ^ @name@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @stage@ settings value.
-newCodepipelineStageSetting
-    :: TF.Attr s [TF.Attr s (CodepipelineStageActionSetting s)] -- ^ 'P._action': @action@
-    -> TF.Attr s P.Text -- ^ 'P._name': @name@
-    -> CodepipelineStageSetting s
-newCodepipelineStageSetting _action _name =
-    CodepipelineStageSetting'
-        { _action = _action
-        , _name = _name
-        }
-
-instance TF.IsValue  (CodepipelineStageSetting s)
-instance TF.IsObject (CodepipelineStageSetting s) where
-    toObject CodepipelineStageSetting'{..} = P.catMaybes
-        [ TF.assign "action" <$> TF.attribute _action
-        , TF.assign "name" <$> TF.attribute _name
-        ]
-
-instance TF.IsValid (CodepipelineStageSetting s) where
-    validator = P.mempty
-
-instance P.HasAction (CodepipelineStageSetting s) (TF.Attr s [TF.Attr s (CodepipelineStageActionSetting s)]) where
-    action =
-        P.lens (_action :: CodepipelineStageSetting s -> TF.Attr s [TF.Attr s (CodepipelineStageActionSetting s)])
-               (\s a -> s { _action = a } :: CodepipelineStageSetting s)
-
-instance P.HasName (CodepipelineStageSetting s) (TF.Attr s P.Text) where
-    name =
-        P.lens (_name :: CodepipelineStageSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _name = a } :: CodepipelineStageSetting s)
-
--- | @cognito_identity_providers@ nested settings.
-data CognitoIdentityPoolCognitoIdentityProvidersSetting s = CognitoIdentityPoolCognitoIdentityProvidersSetting'
-    { _clientId             :: TF.Attr s P.Text
-    -- ^ @client_id@ - (Optional)
-    --
-    , _providerName         :: TF.Attr s P.Text
-    -- ^ @provider_name@ - (Optional)
-    --
-    , _serverSideTokenCheck :: TF.Attr s P.Bool
-    -- ^ @server_side_token_check@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @cognito_identity_providers@ settings value.
-newCognitoIdentityPoolCognitoIdentityProvidersSetting
-    :: CognitoIdentityPoolCognitoIdentityProvidersSetting s
-newCognitoIdentityPoolCognitoIdentityProvidersSetting =
-    CognitoIdentityPoolCognitoIdentityProvidersSetting'
-        { _clientId = TF.Nil
-        , _providerName = TF.Nil
-        , _serverSideTokenCheck = TF.value P.False
-        }
-
-instance TF.IsValue  (CognitoIdentityPoolCognitoIdentityProvidersSetting s)
-instance TF.IsObject (CognitoIdentityPoolCognitoIdentityProvidersSetting s) where
-    toObject CognitoIdentityPoolCognitoIdentityProvidersSetting'{..} = P.catMaybes
-        [ TF.assign "client_id" <$> TF.attribute _clientId
-        , TF.assign "provider_name" <$> TF.attribute _providerName
-        , TF.assign "server_side_token_check" <$> TF.attribute _serverSideTokenCheck
-        ]
-
-instance TF.IsValid (CognitoIdentityPoolCognitoIdentityProvidersSetting s) where
-    validator = P.mempty
-
-instance P.HasClientId (CognitoIdentityPoolCognitoIdentityProvidersSetting s) (TF.Attr s P.Text) where
-    clientId =
-        P.lens (_clientId :: CognitoIdentityPoolCognitoIdentityProvidersSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _clientId = a } :: CognitoIdentityPoolCognitoIdentityProvidersSetting s)
-
-instance P.HasProviderName (CognitoIdentityPoolCognitoIdentityProvidersSetting s) (TF.Attr s P.Text) where
-    providerName =
-        P.lens (_providerName :: CognitoIdentityPoolCognitoIdentityProvidersSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _providerName = a } :: CognitoIdentityPoolCognitoIdentityProvidersSetting s)
-
-instance P.HasServerSideTokenCheck (CognitoIdentityPoolCognitoIdentityProvidersSetting s) (TF.Attr s P.Bool) where
-    serverSideTokenCheck =
-        P.lens (_serverSideTokenCheck :: CognitoIdentityPoolCognitoIdentityProvidersSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _serverSideTokenCheck = a } :: CognitoIdentityPoolCognitoIdentityProvidersSetting s)
-
--- | @mapping_rule@ nested settings.
-data CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s = CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting'
-    { _claim     :: TF.Attr s P.Text
-    -- ^ @claim@ - (Required)
-    --
-    , _matchType :: TF.Attr s P.Text
-    -- ^ @match_type@ - (Required)
-    --
-    , _roleArn   :: TF.Attr s P.Text
-    -- ^ @role_arn@ - (Required)
-    --
-    , _value     :: TF.Attr s P.Text
-    -- ^ @value@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @mapping_rule@ settings value.
-newCognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting
-    :: TF.Attr s P.Text -- ^ 'P._roleArn': @role_arn@
-    -> TF.Attr s P.Text -- ^ 'P._claim': @claim@
-    -> TF.Attr s P.Text -- ^ 'P._matchType': @match_type@
-    -> TF.Attr s P.Text -- ^ 'P._value': @value@
-    -> CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s
-newCognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting _roleArn _claim _matchType _value =
-    CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting'
-        { _claim = _claim
-        , _matchType = _matchType
-        , _roleArn = _roleArn
-        , _value = _value
-        }
-
-instance TF.IsValue  (CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s)
-instance TF.IsObject (CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s) where
-    toObject CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting'{..} = P.catMaybes
-        [ TF.assign "claim" <$> TF.attribute _claim
-        , TF.assign "match_type" <$> TF.attribute _matchType
-        , TF.assign "role_arn" <$> TF.attribute _roleArn
-        , TF.assign "value" <$> TF.attribute _value
-        ]
-
-instance TF.IsValid (CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s) where
-    validator = P.mempty
-
-instance P.HasClaim (CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s) (TF.Attr s P.Text) where
-    claim =
-        P.lens (_claim :: CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _claim = a } :: CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s)
-
-instance P.HasMatchType (CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s) (TF.Attr s P.Text) where
-    matchType =
-        P.lens (_matchType :: CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _matchType = a } :: CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s)
-
-instance P.HasRoleArn (CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s) (TF.Attr s P.Text) where
-    roleArn =
-        P.lens (_roleArn :: CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _roleArn = a } :: CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s)
-
-instance P.HasValue (CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s) (TF.Attr s P.Text) where
-    value =
-        P.lens (_value :: CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _value = a } :: CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s)
-
--- | @role_mapping@ nested settings.
-data CognitoIdentityPoolRolesAttachmentRoleMappingSetting s = CognitoIdentityPoolRolesAttachmentRoleMappingSetting'
-    { _ambiguousRoleResolution :: TF.Attr s P.Text
-    -- ^ @ambiguous_role_resolution@ - (Optional)
-    --
-    , _identityProvider :: TF.Attr s P.Text
-    -- ^ @identity_provider@ - (Required)
-    --
-    , _mappingRule :: TF.Attr s [TF.Attr s (CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s)]
-    -- ^ @mapping_rule@ - (Optional)
-    --
-    , _type' :: TF.Attr s P.Text
-    -- ^ @type@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @role_mapping@ settings value.
-newCognitoIdentityPoolRolesAttachmentRoleMappingSetting
-    :: TF.Attr s P.Text -- ^ 'P._identityProvider': @identity_provider@
-    -> TF.Attr s P.Text -- ^ 'P._type'': @type@
-    -> CognitoIdentityPoolRolesAttachmentRoleMappingSetting s
-newCognitoIdentityPoolRolesAttachmentRoleMappingSetting _identityProvider _type' =
-    CognitoIdentityPoolRolesAttachmentRoleMappingSetting'
-        { _ambiguousRoleResolution = TF.Nil
-        , _identityProvider = _identityProvider
-        , _mappingRule = TF.Nil
-        , _type' = _type'
-        }
-
-instance TF.IsValue  (CognitoIdentityPoolRolesAttachmentRoleMappingSetting s)
-instance TF.IsObject (CognitoIdentityPoolRolesAttachmentRoleMappingSetting s) where
-    toObject CognitoIdentityPoolRolesAttachmentRoleMappingSetting'{..} = P.catMaybes
-        [ TF.assign "ambiguous_role_resolution" <$> TF.attribute _ambiguousRoleResolution
-        , TF.assign "identity_provider" <$> TF.attribute _identityProvider
-        , TF.assign "mapping_rule" <$> TF.attribute _mappingRule
-        , TF.assign "type" <$> TF.attribute _type'
-        ]
-
-instance TF.IsValid (CognitoIdentityPoolRolesAttachmentRoleMappingSetting s) where
-    validator = P.mempty
-
-instance P.HasAmbiguousRoleResolution (CognitoIdentityPoolRolesAttachmentRoleMappingSetting s) (TF.Attr s P.Text) where
-    ambiguousRoleResolution =
-        P.lens (_ambiguousRoleResolution :: CognitoIdentityPoolRolesAttachmentRoleMappingSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _ambiguousRoleResolution = a } :: CognitoIdentityPoolRolesAttachmentRoleMappingSetting s)
-
-instance P.HasIdentityProvider (CognitoIdentityPoolRolesAttachmentRoleMappingSetting s) (TF.Attr s P.Text) where
-    identityProvider =
-        P.lens (_identityProvider :: CognitoIdentityPoolRolesAttachmentRoleMappingSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _identityProvider = a } :: CognitoIdentityPoolRolesAttachmentRoleMappingSetting s)
-
-instance P.HasMappingRule (CognitoIdentityPoolRolesAttachmentRoleMappingSetting s) (TF.Attr s [TF.Attr s (CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s)]) where
-    mappingRule =
-        P.lens (_mappingRule :: CognitoIdentityPoolRolesAttachmentRoleMappingSetting s -> TF.Attr s [TF.Attr s (CognitoIdentityPoolRolesAttachmentRoleMappingMappingRuleSetting s)])
-               (\s a -> s { _mappingRule = a } :: CognitoIdentityPoolRolesAttachmentRoleMappingSetting s)
-
-instance P.HasType' (CognitoIdentityPoolRolesAttachmentRoleMappingSetting s) (TF.Attr s P.Text) where
-    type' =
-        P.lens (_type' :: CognitoIdentityPoolRolesAttachmentRoleMappingSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _type' = a } :: CognitoIdentityPoolRolesAttachmentRoleMappingSetting s)
-
--- | @roles@ nested settings.
-data CognitoIdentityPoolRolesAttachmentRolesSetting s = CognitoIdentityPoolRolesAttachmentRolesSetting'
-    { _authenticated   :: TF.Attr s P.Text
-    -- ^ @authenticated@ - (Optional)
-    --
-    , _unauthenticated :: TF.Attr s P.Text
-    -- ^ @unauthenticated@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @roles@ settings value.
-newCognitoIdentityPoolRolesAttachmentRolesSetting
-    :: CognitoIdentityPoolRolesAttachmentRolesSetting s
-newCognitoIdentityPoolRolesAttachmentRolesSetting =
-    CognitoIdentityPoolRolesAttachmentRolesSetting'
-        { _authenticated = TF.Nil
-        , _unauthenticated = TF.Nil
-        }
-
-instance TF.IsValue  (CognitoIdentityPoolRolesAttachmentRolesSetting s)
-instance TF.IsObject (CognitoIdentityPoolRolesAttachmentRolesSetting s) where
-    toObject CognitoIdentityPoolRolesAttachmentRolesSetting'{..} = P.catMaybes
-        [ TF.assign "authenticated" <$> TF.attribute _authenticated
-        , TF.assign "unauthenticated" <$> TF.attribute _unauthenticated
-        ]
-
-instance TF.IsValid (CognitoIdentityPoolRolesAttachmentRolesSetting s) where
-    validator = P.mempty
-
-instance P.HasAuthenticated (CognitoIdentityPoolRolesAttachmentRolesSetting s) (TF.Attr s P.Text) where
-    authenticated =
-        P.lens (_authenticated :: CognitoIdentityPoolRolesAttachmentRolesSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _authenticated = a } :: CognitoIdentityPoolRolesAttachmentRolesSetting s)
-
-instance P.HasUnauthenticated (CognitoIdentityPoolRolesAttachmentRolesSetting s) (TF.Attr s P.Text) where
-    unauthenticated =
-        P.lens (_unauthenticated :: CognitoIdentityPoolRolesAttachmentRolesSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _unauthenticated = a } :: CognitoIdentityPoolRolesAttachmentRolesSetting s)
-
--- | @scope@ nested settings.
-data CognitoResourceServerScopeSetting s = CognitoResourceServerScopeSetting'
-    { _scopeDescription :: TF.Attr s P.Text
-    -- ^ @scope_description@ - (Required)
-    --
-    , _scopeName        :: TF.Attr s P.Text
-    -- ^ @scope_name@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @scope@ settings value.
-newCognitoResourceServerScopeSetting
-    :: TF.Attr s P.Text -- ^ 'P._scopeDescription': @scope_description@
-    -> TF.Attr s P.Text -- ^ 'P._scopeName': @scope_name@
-    -> CognitoResourceServerScopeSetting s
-newCognitoResourceServerScopeSetting _scopeDescription _scopeName =
-    CognitoResourceServerScopeSetting'
-        { _scopeDescription = _scopeDescription
-        , _scopeName = _scopeName
-        }
-
-instance TF.IsValue  (CognitoResourceServerScopeSetting s)
-instance TF.IsObject (CognitoResourceServerScopeSetting s) where
-    toObject CognitoResourceServerScopeSetting'{..} = P.catMaybes
-        [ TF.assign "scope_description" <$> TF.attribute _scopeDescription
-        , TF.assign "scope_name" <$> TF.attribute _scopeName
-        ]
-
-instance TF.IsValid (CognitoResourceServerScopeSetting s) where
-    validator = P.mempty
-
-instance P.HasScopeDescription (CognitoResourceServerScopeSetting s) (TF.Attr s P.Text) where
-    scopeDescription =
-        P.lens (_scopeDescription :: CognitoResourceServerScopeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _scopeDescription = a } :: CognitoResourceServerScopeSetting s)
-
-instance P.HasScopeName (CognitoResourceServerScopeSetting s) (TF.Attr s P.Text) where
-    scopeName =
-        P.lens (_scopeName :: CognitoResourceServerScopeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _scopeName = a } :: CognitoResourceServerScopeSetting s)
-
--- | @invite_message_template@ nested settings.
-data CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s = CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting'
-    { _emailMessage :: TF.Attr s P.Text
-    -- ^ @email_message@ - (Optional)
-    --
-    , _emailSubject :: TF.Attr s P.Text
-    -- ^ @email_subject@ - (Optional)
-    --
-    , _smsMessage   :: TF.Attr s P.Text
-    -- ^ @sms_message@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @invite_message_template@ settings value.
-newCognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting
-    :: CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s
-newCognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting =
-    CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting'
-        { _emailMessage = TF.Nil
-        , _emailSubject = TF.Nil
-        , _smsMessage = TF.Nil
-        }
-
-instance TF.IsValue  (CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s)
-instance TF.IsObject (CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s) where
-    toObject CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting'{..} = P.catMaybes
-        [ TF.assign "email_message" <$> TF.attribute _emailMessage
-        , TF.assign "email_subject" <$> TF.attribute _emailSubject
-        , TF.assign "sms_message" <$> TF.attribute _smsMessage
-        ]
-
-instance TF.IsValid (CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s) where
-    validator = P.mempty
-
-instance P.HasEmailMessage (CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s) (TF.Attr s P.Text) where
-    emailMessage =
-        P.lens (_emailMessage :: CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _emailMessage = a } :: CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s)
-
-instance P.HasEmailSubject (CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s) (TF.Attr s P.Text) where
-    emailSubject =
-        P.lens (_emailSubject :: CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _emailSubject = a } :: CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s)
-
-instance P.HasSmsMessage (CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s) (TF.Attr s P.Text) where
-    smsMessage =
-        P.lens (_smsMessage :: CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _smsMessage = a } :: CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s)
-
--- | @admin_create_user_config@ nested settings.
-data CognitoUserPoolAdminCreateUserConfigSetting s = CognitoUserPoolAdminCreateUserConfigSetting'
-    { _allowAdminCreateUserOnly :: TF.Attr s P.Bool
-    -- ^ @allow_admin_create_user_only@ - (Optional)
-    --
-    , _inviteMessageTemplate :: TF.Attr s (CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s)
-    -- ^ @invite_message_template@ - (Optional)
-    --
-    , _unusedAccountValidityDays :: TF.Attr s P.Int
-    -- ^ @unused_account_validity_days@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @admin_create_user_config@ settings value.
-newCognitoUserPoolAdminCreateUserConfigSetting
-    :: CognitoUserPoolAdminCreateUserConfigSetting s
-newCognitoUserPoolAdminCreateUserConfigSetting =
-    CognitoUserPoolAdminCreateUserConfigSetting'
-        { _allowAdminCreateUserOnly = TF.Nil
-        , _inviteMessageTemplate = TF.Nil
-        , _unusedAccountValidityDays = TF.value 7
-        }
-
-instance TF.IsValue  (CognitoUserPoolAdminCreateUserConfigSetting s)
-instance TF.IsObject (CognitoUserPoolAdminCreateUserConfigSetting s) where
-    toObject CognitoUserPoolAdminCreateUserConfigSetting'{..} = P.catMaybes
-        [ TF.assign "allow_admin_create_user_only" <$> TF.attribute _allowAdminCreateUserOnly
-        , TF.assign "invite_message_template" <$> TF.attribute _inviteMessageTemplate
-        , TF.assign "unused_account_validity_days" <$> TF.attribute _unusedAccountValidityDays
-        ]
-
-instance TF.IsValid (CognitoUserPoolAdminCreateUserConfigSetting s) where
-    validator = P.mempty
-           P.<> TF.settingsValidator "_inviteMessageTemplate"
-                  (_inviteMessageTemplate
-                      :: CognitoUserPoolAdminCreateUserConfigSetting s -> TF.Attr s (CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s))
-                  TF.validator
-
-instance P.HasAllowAdminCreateUserOnly (CognitoUserPoolAdminCreateUserConfigSetting s) (TF.Attr s P.Bool) where
-    allowAdminCreateUserOnly =
-        P.lens (_allowAdminCreateUserOnly :: CognitoUserPoolAdminCreateUserConfigSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _allowAdminCreateUserOnly = a } :: CognitoUserPoolAdminCreateUserConfigSetting s)
-
-instance P.HasInviteMessageTemplate (CognitoUserPoolAdminCreateUserConfigSetting s) (TF.Attr s (CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s)) where
-    inviteMessageTemplate =
-        P.lens (_inviteMessageTemplate :: CognitoUserPoolAdminCreateUserConfigSetting s -> TF.Attr s (CognitoUserPoolAdminCreateUserConfigInviteMessageTemplateSetting s))
-               (\s a -> s { _inviteMessageTemplate = a } :: CognitoUserPoolAdminCreateUserConfigSetting s)
-
-instance P.HasUnusedAccountValidityDays (CognitoUserPoolAdminCreateUserConfigSetting s) (TF.Attr s P.Int) where
-    unusedAccountValidityDays =
-        P.lens (_unusedAccountValidityDays :: CognitoUserPoolAdminCreateUserConfigSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _unusedAccountValidityDays = a } :: CognitoUserPoolAdminCreateUserConfigSetting s)
-
--- | @device_configuration@ nested settings.
-data CognitoUserPoolDeviceConfigurationSetting s = CognitoUserPoolDeviceConfigurationSetting'
-    { _challengeRequiredOnNewDevice     :: TF.Attr s P.Bool
-    -- ^ @challenge_required_on_new_device@ - (Optional)
-    --
-    , _deviceOnlyRememberedOnUserPrompt :: TF.Attr s P.Bool
-    -- ^ @device_only_remembered_on_user_prompt@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @device_configuration@ settings value.
-newCognitoUserPoolDeviceConfigurationSetting
-    :: CognitoUserPoolDeviceConfigurationSetting s
-newCognitoUserPoolDeviceConfigurationSetting =
-    CognitoUserPoolDeviceConfigurationSetting'
-        { _challengeRequiredOnNewDevice = TF.Nil
-        , _deviceOnlyRememberedOnUserPrompt = TF.Nil
-        }
-
-instance TF.IsValue  (CognitoUserPoolDeviceConfigurationSetting s)
-instance TF.IsObject (CognitoUserPoolDeviceConfigurationSetting s) where
-    toObject CognitoUserPoolDeviceConfigurationSetting'{..} = P.catMaybes
-        [ TF.assign "challenge_required_on_new_device" <$> TF.attribute _challengeRequiredOnNewDevice
-        , TF.assign "device_only_remembered_on_user_prompt" <$> TF.attribute _deviceOnlyRememberedOnUserPrompt
-        ]
-
-instance TF.IsValid (CognitoUserPoolDeviceConfigurationSetting s) where
-    validator = P.mempty
-
-instance P.HasChallengeRequiredOnNewDevice (CognitoUserPoolDeviceConfigurationSetting s) (TF.Attr s P.Bool) where
-    challengeRequiredOnNewDevice =
-        P.lens (_challengeRequiredOnNewDevice :: CognitoUserPoolDeviceConfigurationSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _challengeRequiredOnNewDevice = a } :: CognitoUserPoolDeviceConfigurationSetting s)
-
-instance P.HasDeviceOnlyRememberedOnUserPrompt (CognitoUserPoolDeviceConfigurationSetting s) (TF.Attr s P.Bool) where
-    deviceOnlyRememberedOnUserPrompt =
-        P.lens (_deviceOnlyRememberedOnUserPrompt :: CognitoUserPoolDeviceConfigurationSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _deviceOnlyRememberedOnUserPrompt = a } :: CognitoUserPoolDeviceConfigurationSetting s)
-
--- | @email_configuration@ nested settings.
-data CognitoUserPoolEmailConfigurationSetting s = CognitoUserPoolEmailConfigurationSetting'
-    { _replyToEmailAddress :: TF.Attr s P.Text
-    -- ^ @reply_to_email_address@ - (Optional)
-    --
-    , _sourceArn           :: TF.Attr s P.Text
-    -- ^ @source_arn@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @email_configuration@ settings value.
-newCognitoUserPoolEmailConfigurationSetting
-    :: CognitoUserPoolEmailConfigurationSetting s
-newCognitoUserPoolEmailConfigurationSetting =
-    CognitoUserPoolEmailConfigurationSetting'
-        { _replyToEmailAddress = TF.Nil
-        , _sourceArn = TF.Nil
-        }
-
-instance TF.IsValue  (CognitoUserPoolEmailConfigurationSetting s)
-instance TF.IsObject (CognitoUserPoolEmailConfigurationSetting s) where
-    toObject CognitoUserPoolEmailConfigurationSetting'{..} = P.catMaybes
-        [ TF.assign "reply_to_email_address" <$> TF.attribute _replyToEmailAddress
-        , TF.assign "source_arn" <$> TF.attribute _sourceArn
-        ]
-
-instance TF.IsValid (CognitoUserPoolEmailConfigurationSetting s) where
-    validator = P.mempty
-
-instance P.HasReplyToEmailAddress (CognitoUserPoolEmailConfigurationSetting s) (TF.Attr s P.Text) where
-    replyToEmailAddress =
-        P.lens (_replyToEmailAddress :: CognitoUserPoolEmailConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _replyToEmailAddress = a } :: CognitoUserPoolEmailConfigurationSetting s)
-
-instance P.HasSourceArn (CognitoUserPoolEmailConfigurationSetting s) (TF.Attr s P.Text) where
-    sourceArn =
-        P.lens (_sourceArn :: CognitoUserPoolEmailConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _sourceArn = a } :: CognitoUserPoolEmailConfigurationSetting s)
-
--- | @lambda_config@ nested settings.
-data CognitoUserPoolLambdaConfigSetting s = CognitoUserPoolLambdaConfigSetting'
-    { _createAuthChallenge         :: TF.Attr s P.Text
-    -- ^ @create_auth_challenge@ - (Optional)
-    --
-    , _customMessage               :: TF.Attr s P.Text
-    -- ^ @custom_message@ - (Optional)
-    --
-    , _defineAuthChallenge         :: TF.Attr s P.Text
-    -- ^ @define_auth_challenge@ - (Optional)
-    --
-    , _postAuthentication          :: TF.Attr s P.Text
-    -- ^ @post_authentication@ - (Optional)
-    --
-    , _postConfirmation            :: TF.Attr s P.Text
-    -- ^ @post_confirmation@ - (Optional)
-    --
-    , _preAuthentication           :: TF.Attr s P.Text
-    -- ^ @pre_authentication@ - (Optional)
-    --
-    , _preSignUp                   :: TF.Attr s P.Text
-    -- ^ @pre_sign_up@ - (Optional)
-    --
-    , _preTokenGeneration          :: TF.Attr s P.Text
-    -- ^ @pre_token_generation@ - (Optional)
-    --
-    , _userMigration               :: TF.Attr s P.Text
-    -- ^ @user_migration@ - (Optional)
-    --
-    , _verifyAuthChallengeResponse :: TF.Attr s P.Text
-    -- ^ @verify_auth_challenge_response@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @lambda_config@ settings value.
-newCognitoUserPoolLambdaConfigSetting
-    :: CognitoUserPoolLambdaConfigSetting s
-newCognitoUserPoolLambdaConfigSetting =
-    CognitoUserPoolLambdaConfigSetting'
-        { _createAuthChallenge = TF.Nil
-        , _customMessage = TF.Nil
-        , _defineAuthChallenge = TF.Nil
-        , _postAuthentication = TF.Nil
-        , _postConfirmation = TF.Nil
-        , _preAuthentication = TF.Nil
-        , _preSignUp = TF.Nil
-        , _preTokenGeneration = TF.Nil
-        , _userMigration = TF.Nil
-        , _verifyAuthChallengeResponse = TF.Nil
-        }
-
-instance TF.IsValue  (CognitoUserPoolLambdaConfigSetting s)
-instance TF.IsObject (CognitoUserPoolLambdaConfigSetting s) where
-    toObject CognitoUserPoolLambdaConfigSetting'{..} = P.catMaybes
-        [ TF.assign "create_auth_challenge" <$> TF.attribute _createAuthChallenge
-        , TF.assign "custom_message" <$> TF.attribute _customMessage
-        , TF.assign "define_auth_challenge" <$> TF.attribute _defineAuthChallenge
-        , TF.assign "post_authentication" <$> TF.attribute _postAuthentication
-        , TF.assign "post_confirmation" <$> TF.attribute _postConfirmation
-        , TF.assign "pre_authentication" <$> TF.attribute _preAuthentication
-        , TF.assign "pre_sign_up" <$> TF.attribute _preSignUp
-        , TF.assign "pre_token_generation" <$> TF.attribute _preTokenGeneration
-        , TF.assign "user_migration" <$> TF.attribute _userMigration
-        , TF.assign "verify_auth_challenge_response" <$> TF.attribute _verifyAuthChallengeResponse
-        ]
-
-instance TF.IsValid (CognitoUserPoolLambdaConfigSetting s) where
-    validator = P.mempty
-
-instance P.HasCreateAuthChallenge (CognitoUserPoolLambdaConfigSetting s) (TF.Attr s P.Text) where
-    createAuthChallenge =
-        P.lens (_createAuthChallenge :: CognitoUserPoolLambdaConfigSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _createAuthChallenge = a } :: CognitoUserPoolLambdaConfigSetting s)
-
-instance P.HasCustomMessage (CognitoUserPoolLambdaConfigSetting s) (TF.Attr s P.Text) where
-    customMessage =
-        P.lens (_customMessage :: CognitoUserPoolLambdaConfigSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _customMessage = a } :: CognitoUserPoolLambdaConfigSetting s)
-
-instance P.HasDefineAuthChallenge (CognitoUserPoolLambdaConfigSetting s) (TF.Attr s P.Text) where
-    defineAuthChallenge =
-        P.lens (_defineAuthChallenge :: CognitoUserPoolLambdaConfigSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _defineAuthChallenge = a } :: CognitoUserPoolLambdaConfigSetting s)
-
-instance P.HasPostAuthentication (CognitoUserPoolLambdaConfigSetting s) (TF.Attr s P.Text) where
-    postAuthentication =
-        P.lens (_postAuthentication :: CognitoUserPoolLambdaConfigSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _postAuthentication = a } :: CognitoUserPoolLambdaConfigSetting s)
-
-instance P.HasPostConfirmation (CognitoUserPoolLambdaConfigSetting s) (TF.Attr s P.Text) where
-    postConfirmation =
-        P.lens (_postConfirmation :: CognitoUserPoolLambdaConfigSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _postConfirmation = a } :: CognitoUserPoolLambdaConfigSetting s)
-
-instance P.HasPreAuthentication (CognitoUserPoolLambdaConfigSetting s) (TF.Attr s P.Text) where
-    preAuthentication =
-        P.lens (_preAuthentication :: CognitoUserPoolLambdaConfigSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _preAuthentication = a } :: CognitoUserPoolLambdaConfigSetting s)
-
-instance P.HasPreSignUp (CognitoUserPoolLambdaConfigSetting s) (TF.Attr s P.Text) where
-    preSignUp =
-        P.lens (_preSignUp :: CognitoUserPoolLambdaConfigSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _preSignUp = a } :: CognitoUserPoolLambdaConfigSetting s)
-
-instance P.HasPreTokenGeneration (CognitoUserPoolLambdaConfigSetting s) (TF.Attr s P.Text) where
-    preTokenGeneration =
-        P.lens (_preTokenGeneration :: CognitoUserPoolLambdaConfigSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _preTokenGeneration = a } :: CognitoUserPoolLambdaConfigSetting s)
-
-instance P.HasUserMigration (CognitoUserPoolLambdaConfigSetting s) (TF.Attr s P.Text) where
-    userMigration =
-        P.lens (_userMigration :: CognitoUserPoolLambdaConfigSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _userMigration = a } :: CognitoUserPoolLambdaConfigSetting s)
-
-instance P.HasVerifyAuthChallengeResponse (CognitoUserPoolLambdaConfigSetting s) (TF.Attr s P.Text) where
-    verifyAuthChallengeResponse =
-        P.lens (_verifyAuthChallengeResponse :: CognitoUserPoolLambdaConfigSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _verifyAuthChallengeResponse = a } :: CognitoUserPoolLambdaConfigSetting s)
-
--- | @password_policy@ nested settings.
-data CognitoUserPoolPasswordPolicySetting s = CognitoUserPoolPasswordPolicySetting'
-    { _minimumLength    :: TF.Attr s P.Int
-    -- ^ @minimum_length@ - (Optional)
-    --
-    , _requireLowercase :: TF.Attr s P.Bool
-    -- ^ @require_lowercase@ - (Optional)
-    --
-    , _requireNumbers   :: TF.Attr s P.Bool
-    -- ^ @require_numbers@ - (Optional)
-    --
-    , _requireSymbols   :: TF.Attr s P.Bool
-    -- ^ @require_symbols@ - (Optional)
-    --
-    , _requireUppercase :: TF.Attr s P.Bool
-    -- ^ @require_uppercase@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @password_policy@ settings value.
-newCognitoUserPoolPasswordPolicySetting
-    :: CognitoUserPoolPasswordPolicySetting s
-newCognitoUserPoolPasswordPolicySetting =
-    CognitoUserPoolPasswordPolicySetting'
-        { _minimumLength = TF.Nil
-        , _requireLowercase = TF.Nil
-        , _requireNumbers = TF.Nil
-        , _requireSymbols = TF.Nil
-        , _requireUppercase = TF.Nil
-        }
-
-instance TF.IsValue  (CognitoUserPoolPasswordPolicySetting s)
-instance TF.IsObject (CognitoUserPoolPasswordPolicySetting s) where
-    toObject CognitoUserPoolPasswordPolicySetting'{..} = P.catMaybes
-        [ TF.assign "minimum_length" <$> TF.attribute _minimumLength
-        , TF.assign "require_lowercase" <$> TF.attribute _requireLowercase
-        , TF.assign "require_numbers" <$> TF.attribute _requireNumbers
-        , TF.assign "require_symbols" <$> TF.attribute _requireSymbols
-        , TF.assign "require_uppercase" <$> TF.attribute _requireUppercase
-        ]
-
-instance TF.IsValid (CognitoUserPoolPasswordPolicySetting s) where
-    validator = P.mempty
-
-instance P.HasMinimumLength (CognitoUserPoolPasswordPolicySetting s) (TF.Attr s P.Int) where
-    minimumLength =
-        P.lens (_minimumLength :: CognitoUserPoolPasswordPolicySetting s -> TF.Attr s P.Int)
-               (\s a -> s { _minimumLength = a } :: CognitoUserPoolPasswordPolicySetting s)
-
-instance P.HasRequireLowercase (CognitoUserPoolPasswordPolicySetting s) (TF.Attr s P.Bool) where
-    requireLowercase =
-        P.lens (_requireLowercase :: CognitoUserPoolPasswordPolicySetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _requireLowercase = a } :: CognitoUserPoolPasswordPolicySetting s)
-
-instance P.HasRequireNumbers (CognitoUserPoolPasswordPolicySetting s) (TF.Attr s P.Bool) where
-    requireNumbers =
-        P.lens (_requireNumbers :: CognitoUserPoolPasswordPolicySetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _requireNumbers = a } :: CognitoUserPoolPasswordPolicySetting s)
-
-instance P.HasRequireSymbols (CognitoUserPoolPasswordPolicySetting s) (TF.Attr s P.Bool) where
-    requireSymbols =
-        P.lens (_requireSymbols :: CognitoUserPoolPasswordPolicySetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _requireSymbols = a } :: CognitoUserPoolPasswordPolicySetting s)
-
-instance P.HasRequireUppercase (CognitoUserPoolPasswordPolicySetting s) (TF.Attr s P.Bool) where
-    requireUppercase =
-        P.lens (_requireUppercase :: CognitoUserPoolPasswordPolicySetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _requireUppercase = a } :: CognitoUserPoolPasswordPolicySetting s)
-
--- | @number_attribute_constraints@ nested settings.
-data CognitoUserPoolSchemaNumberAttributeConstraintsSetting s = CognitoUserPoolSchemaNumberAttributeConstraintsSetting'
-    { _maxValue :: TF.Attr s P.Text
-    -- ^ @max_value@ - (Optional, Forces New)
-    --
-    , _minValue :: TF.Attr s P.Text
-    -- ^ @min_value@ - (Optional, Forces New)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @number_attribute_constraints@ settings value.
-newCognitoUserPoolSchemaNumberAttributeConstraintsSetting
-    :: CognitoUserPoolSchemaNumberAttributeConstraintsSetting s
-newCognitoUserPoolSchemaNumberAttributeConstraintsSetting =
-    CognitoUserPoolSchemaNumberAttributeConstraintsSetting'
-        { _maxValue = TF.Nil
-        , _minValue = TF.Nil
-        }
-
-instance TF.IsValue  (CognitoUserPoolSchemaNumberAttributeConstraintsSetting s)
-instance TF.IsObject (CognitoUserPoolSchemaNumberAttributeConstraintsSetting s) where
-    toObject CognitoUserPoolSchemaNumberAttributeConstraintsSetting'{..} = P.catMaybes
-        [ TF.assign "max_value" <$> TF.attribute _maxValue
-        , TF.assign "min_value" <$> TF.attribute _minValue
-        ]
-
-instance TF.IsValid (CognitoUserPoolSchemaNumberAttributeConstraintsSetting s) where
-    validator = P.mempty
-
-instance P.HasMaxValue (CognitoUserPoolSchemaNumberAttributeConstraintsSetting s) (TF.Attr s P.Text) where
-    maxValue =
-        P.lens (_maxValue :: CognitoUserPoolSchemaNumberAttributeConstraintsSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _maxValue = a } :: CognitoUserPoolSchemaNumberAttributeConstraintsSetting s)
-
-instance P.HasMinValue (CognitoUserPoolSchemaNumberAttributeConstraintsSetting s) (TF.Attr s P.Text) where
-    minValue =
-        P.lens (_minValue :: CognitoUserPoolSchemaNumberAttributeConstraintsSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _minValue = a } :: CognitoUserPoolSchemaNumberAttributeConstraintsSetting s)
-
--- | @schema@ nested settings.
-data CognitoUserPoolSchemaSetting s = CognitoUserPoolSchemaSetting'
-    { _attributeDataType :: TF.Attr s P.Text
-    -- ^ @attribute_data_type@ - (Required, Forces New)
-    --
-    , _developerOnlyAttribute :: TF.Attr s P.Bool
-    -- ^ @developer_only_attribute@ - (Optional, Forces New)
-    --
-    , _mutable :: TF.Attr s P.Bool
-    -- ^ @mutable@ - (Optional, Forces New)
-    --
-    , _name :: TF.Attr s P.Text
-    -- ^ @name@ - (Required, Forces New)
-    --
-    , _numberAttributeConstraints :: TF.Attr s (CognitoUserPoolSchemaNumberAttributeConstraintsSetting s)
-    -- ^ @number_attribute_constraints@ - (Optional, Forces New)
-    --
-    , _required :: TF.Attr s P.Bool
-    -- ^ @required@ - (Optional, Forces New)
-    --
-    , _stringAttributeConstraints :: TF.Attr s (CognitoUserPoolSchemaStringAttributeConstraintsSetting s)
-    -- ^ @string_attribute_constraints@ - (Optional, Forces New)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @schema@ settings value.
-newCognitoUserPoolSchemaSetting
-    :: TF.Attr s P.Text -- ^ 'P._name': @name@
-    -> TF.Attr s P.Text -- ^ 'P._attributeDataType': @attribute_data_type@
-    -> CognitoUserPoolSchemaSetting s
-newCognitoUserPoolSchemaSetting _name _attributeDataType =
-    CognitoUserPoolSchemaSetting'
-        { _attributeDataType = _attributeDataType
-        , _developerOnlyAttribute = TF.Nil
-        , _mutable = TF.Nil
-        , _name = _name
-        , _numberAttributeConstraints = TF.Nil
-        , _required = TF.Nil
-        , _stringAttributeConstraints = TF.Nil
-        }
-
-instance TF.IsValue  (CognitoUserPoolSchemaSetting s)
-instance TF.IsObject (CognitoUserPoolSchemaSetting s) where
-    toObject CognitoUserPoolSchemaSetting'{..} = P.catMaybes
-        [ TF.assign "attribute_data_type" <$> TF.attribute _attributeDataType
-        , TF.assign "developer_only_attribute" <$> TF.attribute _developerOnlyAttribute
-        , TF.assign "mutable" <$> TF.attribute _mutable
-        , TF.assign "name" <$> TF.attribute _name
-        , TF.assign "number_attribute_constraints" <$> TF.attribute _numberAttributeConstraints
-        , TF.assign "required" <$> TF.attribute _required
-        , TF.assign "string_attribute_constraints" <$> TF.attribute _stringAttributeConstraints
-        ]
-
-instance TF.IsValid (CognitoUserPoolSchemaSetting s) where
-    validator = P.mempty
-           P.<> TF.settingsValidator "_numberAttributeConstraints"
-                  (_numberAttributeConstraints
-                      :: CognitoUserPoolSchemaSetting s -> TF.Attr s (CognitoUserPoolSchemaNumberAttributeConstraintsSetting s))
-                  TF.validator
-           P.<> TF.settingsValidator "_stringAttributeConstraints"
-                  (_stringAttributeConstraints
-                      :: CognitoUserPoolSchemaSetting s -> TF.Attr s (CognitoUserPoolSchemaStringAttributeConstraintsSetting s))
-                  TF.validator
-
-instance P.HasAttributeDataType (CognitoUserPoolSchemaSetting s) (TF.Attr s P.Text) where
-    attributeDataType =
-        P.lens (_attributeDataType :: CognitoUserPoolSchemaSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _attributeDataType = a } :: CognitoUserPoolSchemaSetting s)
-
-instance P.HasDeveloperOnlyAttribute (CognitoUserPoolSchemaSetting s) (TF.Attr s P.Bool) where
-    developerOnlyAttribute =
-        P.lens (_developerOnlyAttribute :: CognitoUserPoolSchemaSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _developerOnlyAttribute = a } :: CognitoUserPoolSchemaSetting s)
-
-instance P.HasMutable (CognitoUserPoolSchemaSetting s) (TF.Attr s P.Bool) where
-    mutable =
-        P.lens (_mutable :: CognitoUserPoolSchemaSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _mutable = a } :: CognitoUserPoolSchemaSetting s)
-
-instance P.HasName (CognitoUserPoolSchemaSetting s) (TF.Attr s P.Text) where
-    name =
-        P.lens (_name :: CognitoUserPoolSchemaSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _name = a } :: CognitoUserPoolSchemaSetting s)
-
-instance P.HasNumberAttributeConstraints (CognitoUserPoolSchemaSetting s) (TF.Attr s (CognitoUserPoolSchemaNumberAttributeConstraintsSetting s)) where
-    numberAttributeConstraints =
-        P.lens (_numberAttributeConstraints :: CognitoUserPoolSchemaSetting s -> TF.Attr s (CognitoUserPoolSchemaNumberAttributeConstraintsSetting s))
-               (\s a -> s { _numberAttributeConstraints = a } :: CognitoUserPoolSchemaSetting s)
-
-instance P.HasRequired (CognitoUserPoolSchemaSetting s) (TF.Attr s P.Bool) where
-    required =
-        P.lens (_required :: CognitoUserPoolSchemaSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _required = a } :: CognitoUserPoolSchemaSetting s)
-
-instance P.HasStringAttributeConstraints (CognitoUserPoolSchemaSetting s) (TF.Attr s (CognitoUserPoolSchemaStringAttributeConstraintsSetting s)) where
-    stringAttributeConstraints =
-        P.lens (_stringAttributeConstraints :: CognitoUserPoolSchemaSetting s -> TF.Attr s (CognitoUserPoolSchemaStringAttributeConstraintsSetting s))
-               (\s a -> s { _stringAttributeConstraints = a } :: CognitoUserPoolSchemaSetting s)
-
--- | @string_attribute_constraints@ nested settings.
-data CognitoUserPoolSchemaStringAttributeConstraintsSetting s = CognitoUserPoolSchemaStringAttributeConstraintsSetting'
-    { _maxLength :: TF.Attr s P.Text
-    -- ^ @max_length@ - (Optional, Forces New)
-    --
-    , _minLength :: TF.Attr s P.Text
-    -- ^ @min_length@ - (Optional, Forces New)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @string_attribute_constraints@ settings value.
-newCognitoUserPoolSchemaStringAttributeConstraintsSetting
-    :: CognitoUserPoolSchemaStringAttributeConstraintsSetting s
-newCognitoUserPoolSchemaStringAttributeConstraintsSetting =
-    CognitoUserPoolSchemaStringAttributeConstraintsSetting'
-        { _maxLength = TF.Nil
-        , _minLength = TF.Nil
-        }
-
-instance TF.IsValue  (CognitoUserPoolSchemaStringAttributeConstraintsSetting s)
-instance TF.IsObject (CognitoUserPoolSchemaStringAttributeConstraintsSetting s) where
-    toObject CognitoUserPoolSchemaStringAttributeConstraintsSetting'{..} = P.catMaybes
-        [ TF.assign "max_length" <$> TF.attribute _maxLength
-        , TF.assign "min_length" <$> TF.attribute _minLength
-        ]
-
-instance TF.IsValid (CognitoUserPoolSchemaStringAttributeConstraintsSetting s) where
-    validator = P.mempty
-
-instance P.HasMaxLength (CognitoUserPoolSchemaStringAttributeConstraintsSetting s) (TF.Attr s P.Text) where
-    maxLength =
-        P.lens (_maxLength :: CognitoUserPoolSchemaStringAttributeConstraintsSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _maxLength = a } :: CognitoUserPoolSchemaStringAttributeConstraintsSetting s)
-
-instance P.HasMinLength (CognitoUserPoolSchemaStringAttributeConstraintsSetting s) (TF.Attr s P.Text) where
-    minLength =
-        P.lens (_minLength :: CognitoUserPoolSchemaStringAttributeConstraintsSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _minLength = a } :: CognitoUserPoolSchemaStringAttributeConstraintsSetting s)
 
 -- | @sms_configuration@ nested settings.
 data CognitoUserPoolSmsConfigurationSetting s = CognitoUserPoolSmsConfigurationSetting'
@@ -2019,6 +856,35 @@ instance s ~ s' => P.HasComputedId (TF.Ref s' (DaxClusterNodesSetting s)) (TF.At
 
 instance s ~ s' => P.HasComputedPort (TF.Ref s' (DaxClusterNodesSetting s)) (TF.Attr s P.Int) where
     computedPort x = TF.compute (TF.refKey x) "port"
+
+-- | @server_side_encryption@ nested settings.
+data DaxClusterServerSideEncryptionSetting s = DaxClusterServerSideEncryptionSetting'
+    { _enabled :: TF.Attr s P.Bool
+    -- ^ @enabled@ - (Optional, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @server_side_encryption@ settings value.
+newDaxClusterServerSideEncryptionSetting
+    :: DaxClusterServerSideEncryptionSetting s
+newDaxClusterServerSideEncryptionSetting =
+    DaxClusterServerSideEncryptionSetting'
+        { _enabled = TF.value P.False
+        }
+
+instance TF.IsValue  (DaxClusterServerSideEncryptionSetting s)
+instance TF.IsObject (DaxClusterServerSideEncryptionSetting s) where
+    toObject DaxClusterServerSideEncryptionSetting'{..} = P.catMaybes
+        [ TF.assign "enabled" <$> TF.attribute _enabled
+        ]
+
+instance TF.IsValid (DaxClusterServerSideEncryptionSetting s) where
+    validator = P.mempty
+
+instance P.HasEnabled (DaxClusterServerSideEncryptionSetting s) (TF.Attr s P.Bool) where
+    enabled =
+        P.lens (_enabled :: DaxClusterServerSideEncryptionSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _enabled = a } :: DaxClusterServerSideEncryptionSetting s)
 
 -- | @parameters@ nested settings.
 data DaxParameterGroupParametersSetting s = DaxParameterGroupParametersSetting'
@@ -2827,6 +1693,9 @@ data DefaultSecurityGroupIngressSetting s = DefaultSecurityGroupIngressSetting'
     , _ipv6CidrBlocks :: TF.Attr s [TF.Attr s P.Text]
     -- ^ @ipv6_cidr_blocks@ - (Optional)
     --
+    , _prefixListIds  :: TF.Attr s [TF.Attr s P.Text]
+    -- ^ @prefix_list_ids@ - (Optional)
+    --
     , _protocol       :: TF.Attr s P.Text
     -- ^ @protocol@ - (Required)
     --
@@ -2853,6 +1722,7 @@ newDefaultSecurityGroupIngressSetting _fromPort _toPort _protocol =
         , _description = TF.Nil
         , _fromPort = _fromPort
         , _ipv6CidrBlocks = TF.Nil
+        , _prefixListIds = TF.Nil
         , _protocol = _protocol
         , _securityGroups = TF.Nil
         , _self = TF.value P.False
@@ -2866,6 +1736,7 @@ instance TF.IsObject (DefaultSecurityGroupIngressSetting s) where
         , TF.assign "description" <$> TF.attribute _description
         , TF.assign "from_port" <$> TF.attribute _fromPort
         , TF.assign "ipv6_cidr_blocks" <$> TF.attribute _ipv6CidrBlocks
+        , TF.assign "prefix_list_ids" <$> TF.attribute _prefixListIds
         , TF.assign "protocol" <$> TF.attribute _protocol
         , TF.assign "security_groups" <$> TF.attribute _securityGroups
         , TF.assign "self" <$> TF.attribute _self
@@ -2894,6 +1765,11 @@ instance P.HasIpv6CidrBlocks (DefaultSecurityGroupIngressSetting s) (TF.Attr s [
     ipv6CidrBlocks =
         P.lens (_ipv6CidrBlocks :: DefaultSecurityGroupIngressSetting s -> TF.Attr s [TF.Attr s P.Text])
                (\s a -> s { _ipv6CidrBlocks = a } :: DefaultSecurityGroupIngressSetting s)
+
+instance P.HasPrefixListIds (DefaultSecurityGroupIngressSetting s) (TF.Attr s [TF.Attr s P.Text]) where
+    prefixListIds =
+        P.lens (_prefixListIds :: DefaultSecurityGroupIngressSetting s -> TF.Attr s [TF.Attr s P.Text])
+               (\s a -> s { _prefixListIds = a } :: DefaultSecurityGroupIngressSetting s)
 
 instance P.HasProtocol (DefaultSecurityGroupIngressSetting s) (TF.Attr s P.Text) where
     protocol =
@@ -3977,12 +2853,87 @@ instance P.HasType' (EcsTaskDefinitionPlacementConstraintsSetting s) (TF.Attr s 
         P.lens (_type' :: EcsTaskDefinitionPlacementConstraintsSetting s -> TF.Attr s P.Text)
                (\s a -> s { _type' = a } :: EcsTaskDefinitionPlacementConstraintsSetting s)
 
+-- | @docker_volume_configuration@ nested settings.
+data EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s = EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting'
+    { _autoprovision :: TF.Attr s P.Bool
+    -- ^ @autoprovision@ - (Optional, Forces New)
+    --
+    , _driver        :: TF.Attr s P.Text
+    -- ^ @driver@ - (Optional, Forces New)
+    --
+    , _driverOpts    :: TF.Attr s (P.Map P.Text (TF.Attr s P.Text))
+    -- ^ @driver_opts@ - (Optional, Forces New)
+    --
+    , _labels        :: TF.Attr s (P.Map P.Text (TF.Attr s P.Text))
+    -- ^ @labels@ - (Optional, Forces New)
+    --
+    , _scope         :: TF.Attr s P.Text
+    -- ^ @scope@ - (Optional, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @docker_volume_configuration@ settings value.
+newEcsTaskDefinitionVolumeDockerVolumeConfigurationSetting
+    :: EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s
+newEcsTaskDefinitionVolumeDockerVolumeConfigurationSetting =
+    EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting'
+        { _autoprovision = TF.value P.False
+        , _driver = TF.Nil
+        , _driverOpts = TF.Nil
+        , _labels = TF.Nil
+        , _scope = TF.Nil
+        }
+
+instance TF.IsValue  (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s)
+instance TF.IsObject (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s) where
+    toObject EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting'{..} = P.catMaybes
+        [ TF.assign "autoprovision" <$> TF.attribute _autoprovision
+        , TF.assign "driver" <$> TF.attribute _driver
+        , TF.assign "driver_opts" <$> TF.attribute _driverOpts
+        , TF.assign "labels" <$> TF.attribute _labels
+        , TF.assign "scope" <$> TF.attribute _scope
+        ]
+
+instance TF.IsValid (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s) where
+    validator = P.mempty
+
+instance P.HasAutoprovision (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s) (TF.Attr s P.Bool) where
+    autoprovision =
+        P.lens (_autoprovision :: EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _autoprovision = a } :: EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s)
+
+instance P.HasDriver (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s) (TF.Attr s P.Text) where
+    driver =
+        P.lens (_driver :: EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _driver = a } :: EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s)
+
+instance P.HasDriverOpts (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s) (TF.Attr s (P.Map P.Text (TF.Attr s P.Text))) where
+    driverOpts =
+        P.lens (_driverOpts :: EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s -> TF.Attr s (P.Map P.Text (TF.Attr s P.Text)))
+               (\s a -> s { _driverOpts = a } :: EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s)
+
+instance P.HasLabels (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s) (TF.Attr s (P.Map P.Text (TF.Attr s P.Text))) where
+    labels =
+        P.lens (_labels :: EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s -> TF.Attr s (P.Map P.Text (TF.Attr s P.Text)))
+               (\s a -> s { _labels = a } :: EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s)
+
+instance P.HasScope (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s) (TF.Attr s P.Text) where
+    scope =
+        P.lens (_scope :: EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _scope = a } :: EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s)
+
+instance s ~ s' => P.HasComputedScope (TF.Ref s' (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s)) (TF.Attr s P.Text) where
+    computedScope x = TF.compute (TF.refKey x) "scope"
+
 -- | @volume@ nested settings.
 data EcsTaskDefinitionVolumeSetting s = EcsTaskDefinitionVolumeSetting'
-    { _hostPath :: TF.Attr s P.Text
+    { _dockerVolumeConfiguration :: TF.Attr s (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s)
+    -- ^ @docker_volume_configuration@ - (Optional, Forces New)
+    --
+    , _hostPath :: TF.Attr s P.Text
     -- ^ @host_path@ - (Optional, Forces New)
     --
-    , _name     :: TF.Attr s P.Text
+    , _name :: TF.Attr s P.Text
     -- ^ @name@ - (Required, Forces New)
     --
     } deriving (P.Show, P.Eq, P.Ord)
@@ -3993,19 +2944,30 @@ newEcsTaskDefinitionVolumeSetting
     -> EcsTaskDefinitionVolumeSetting s
 newEcsTaskDefinitionVolumeSetting _name =
     EcsTaskDefinitionVolumeSetting'
-        { _hostPath = TF.Nil
+        { _dockerVolumeConfiguration = TF.Nil
+        , _hostPath = TF.Nil
         , _name = _name
         }
 
 instance TF.IsValue  (EcsTaskDefinitionVolumeSetting s)
 instance TF.IsObject (EcsTaskDefinitionVolumeSetting s) where
     toObject EcsTaskDefinitionVolumeSetting'{..} = P.catMaybes
-        [ TF.assign "host_path" <$> TF.attribute _hostPath
+        [ TF.assign "docker_volume_configuration" <$> TF.attribute _dockerVolumeConfiguration
+        , TF.assign "host_path" <$> TF.attribute _hostPath
         , TF.assign "name" <$> TF.attribute _name
         ]
 
 instance TF.IsValid (EcsTaskDefinitionVolumeSetting s) where
     validator = P.mempty
+           P.<> TF.settingsValidator "_dockerVolumeConfiguration"
+                  (_dockerVolumeConfiguration
+                      :: EcsTaskDefinitionVolumeSetting s -> TF.Attr s (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s))
+                  TF.validator
+
+instance P.HasDockerVolumeConfiguration (EcsTaskDefinitionVolumeSetting s) (TF.Attr s (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s)) where
+    dockerVolumeConfiguration =
+        P.lens (_dockerVolumeConfiguration :: EcsTaskDefinitionVolumeSetting s -> TF.Attr s (EcsTaskDefinitionVolumeDockerVolumeConfigurationSetting s))
+               (\s a -> s { _dockerVolumeConfiguration = a } :: EcsTaskDefinitionVolumeSetting s)
 
 instance P.HasHostPath (EcsTaskDefinitionVolumeSetting s) (TF.Attr s P.Text) where
     hostPath =
@@ -4741,6 +3703,36 @@ instance P.HasLogType (ElasticsearchDomainLogPublishingOptionsSetting s) (TF.Att
         P.lens (_logType :: ElasticsearchDomainLogPublishingOptionsSetting s -> TF.Attr s P.Text)
                (\s a -> s { _logType = a } :: ElasticsearchDomainLogPublishingOptionsSetting s)
 
+-- | @node_to_node_encryption@ nested settings.
+data ElasticsearchDomainNodeToNodeEncryptionSetting s = ElasticsearchDomainNodeToNodeEncryptionSetting'
+    { _enabled :: TF.Attr s P.Bool
+    -- ^ @enabled@ - (Required, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @node_to_node_encryption@ settings value.
+newElasticsearchDomainNodeToNodeEncryptionSetting
+    :: TF.Attr s P.Bool -- ^ 'P._enabled': @enabled@
+    -> ElasticsearchDomainNodeToNodeEncryptionSetting s
+newElasticsearchDomainNodeToNodeEncryptionSetting _enabled =
+    ElasticsearchDomainNodeToNodeEncryptionSetting'
+        { _enabled = _enabled
+        }
+
+instance TF.IsValue  (ElasticsearchDomainNodeToNodeEncryptionSetting s)
+instance TF.IsObject (ElasticsearchDomainNodeToNodeEncryptionSetting s) where
+    toObject ElasticsearchDomainNodeToNodeEncryptionSetting'{..} = P.catMaybes
+        [ TF.assign "enabled" <$> TF.attribute _enabled
+        ]
+
+instance TF.IsValid (ElasticsearchDomainNodeToNodeEncryptionSetting s) where
+    validator = P.mempty
+
+instance P.HasEnabled (ElasticsearchDomainNodeToNodeEncryptionSetting s) (TF.Attr s P.Bool) where
+    enabled =
+        P.lens (_enabled :: ElasticsearchDomainNodeToNodeEncryptionSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _enabled = a } :: ElasticsearchDomainNodeToNodeEncryptionSetting s)
+
 -- | @snapshot_options@ nested settings.
 data ElasticsearchDomainSnapshotOptionsSetting s = ElasticsearchDomainSnapshotOptionsSetting'
     { _automatedSnapshotStartHour :: TF.Attr s P.Int
@@ -4864,3 +3856,1313 @@ instance P.HasGranteeType (ElastictranscoderPipelineContentConfigPermissionsSett
     granteeType =
         P.lens (_granteeType :: ElastictranscoderPipelineContentConfigPermissionsSetting s -> TF.Attr s P.Text)
                (\s a -> s { _granteeType = a } :: ElastictranscoderPipelineContentConfigPermissionsSetting s)
+
+-- | @content_config@ nested settings.
+data ElastictranscoderPipelineContentConfigSetting s = ElastictranscoderPipelineContentConfigSetting'
+    { _bucket       :: TF.Attr s P.Text
+    -- ^ @bucket@ - (Optional)
+    --
+    , _storageClass :: TF.Attr s P.Text
+    -- ^ @storage_class@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @content_config@ settings value.
+newElastictranscoderPipelineContentConfigSetting
+    :: ElastictranscoderPipelineContentConfigSetting s
+newElastictranscoderPipelineContentConfigSetting =
+    ElastictranscoderPipelineContentConfigSetting'
+        { _bucket = TF.Nil
+        , _storageClass = TF.Nil
+        }
+
+instance TF.IsValue  (ElastictranscoderPipelineContentConfigSetting s)
+instance TF.IsObject (ElastictranscoderPipelineContentConfigSetting s) where
+    toObject ElastictranscoderPipelineContentConfigSetting'{..} = P.catMaybes
+        [ TF.assign "bucket" <$> TF.attribute _bucket
+        , TF.assign "storage_class" <$> TF.attribute _storageClass
+        ]
+
+instance TF.IsValid (ElastictranscoderPipelineContentConfigSetting s) where
+    validator = P.mempty
+
+instance P.HasBucket (ElastictranscoderPipelineContentConfigSetting s) (TF.Attr s P.Text) where
+    bucket =
+        P.lens (_bucket :: ElastictranscoderPipelineContentConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _bucket = a } :: ElastictranscoderPipelineContentConfigSetting s)
+
+instance P.HasStorageClass (ElastictranscoderPipelineContentConfigSetting s) (TF.Attr s P.Text) where
+    storageClass =
+        P.lens (_storageClass :: ElastictranscoderPipelineContentConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _storageClass = a } :: ElastictranscoderPipelineContentConfigSetting s)
+
+instance s ~ s' => P.HasComputedBucket (TF.Ref s' (ElastictranscoderPipelineContentConfigSetting s)) (TF.Attr s P.Text) where
+    computedBucket x = TF.compute (TF.refKey x) "bucket"
+
+-- | @notifications@ nested settings.
+data ElastictranscoderPipelineNotificationsSetting s = ElastictranscoderPipelineNotificationsSetting'
+    { _completed   :: TF.Attr s P.Text
+    -- ^ @completed@ - (Optional)
+    --
+    , _error       :: TF.Attr s P.Text
+    -- ^ @error@ - (Optional)
+    --
+    , _progressing :: TF.Attr s P.Text
+    -- ^ @progressing@ - (Optional)
+    --
+    , _warning     :: TF.Attr s P.Text
+    -- ^ @warning@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @notifications@ settings value.
+newElastictranscoderPipelineNotificationsSetting
+    :: ElastictranscoderPipelineNotificationsSetting s
+newElastictranscoderPipelineNotificationsSetting =
+    ElastictranscoderPipelineNotificationsSetting'
+        { _completed = TF.Nil
+        , _error = TF.Nil
+        , _progressing = TF.Nil
+        , _warning = TF.Nil
+        }
+
+instance TF.IsValue  (ElastictranscoderPipelineNotificationsSetting s)
+instance TF.IsObject (ElastictranscoderPipelineNotificationsSetting s) where
+    toObject ElastictranscoderPipelineNotificationsSetting'{..} = P.catMaybes
+        [ TF.assign "completed" <$> TF.attribute _completed
+        , TF.assign "error" <$> TF.attribute _error
+        , TF.assign "progressing" <$> TF.attribute _progressing
+        , TF.assign "warning" <$> TF.attribute _warning
+        ]
+
+instance TF.IsValid (ElastictranscoderPipelineNotificationsSetting s) where
+    validator = P.mempty
+
+instance P.HasCompleted (ElastictranscoderPipelineNotificationsSetting s) (TF.Attr s P.Text) where
+    completed =
+        P.lens (_completed :: ElastictranscoderPipelineNotificationsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _completed = a } :: ElastictranscoderPipelineNotificationsSetting s)
+
+instance P.HasError (ElastictranscoderPipelineNotificationsSetting s) (TF.Attr s P.Text) where
+    error =
+        P.lens (_error :: ElastictranscoderPipelineNotificationsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _error = a } :: ElastictranscoderPipelineNotificationsSetting s)
+
+instance P.HasProgressing (ElastictranscoderPipelineNotificationsSetting s) (TF.Attr s P.Text) where
+    progressing =
+        P.lens (_progressing :: ElastictranscoderPipelineNotificationsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _progressing = a } :: ElastictranscoderPipelineNotificationsSetting s)
+
+instance P.HasWarning (ElastictranscoderPipelineNotificationsSetting s) (TF.Attr s P.Text) where
+    warning =
+        P.lens (_warning :: ElastictranscoderPipelineNotificationsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _warning = a } :: ElastictranscoderPipelineNotificationsSetting s)
+
+-- | @thumbnail_config_permissions@ nested settings.
+data ElastictranscoderPipelineThumbnailConfigPermissionsSetting s = ElastictranscoderPipelineThumbnailConfigPermissionsSetting'
+    { _access      :: TF.Attr s [TF.Attr s P.Text]
+    -- ^ @access@ - (Optional)
+    --
+    , _grantee     :: TF.Attr s P.Text
+    -- ^ @grantee@ - (Optional)
+    --
+    , _granteeType :: TF.Attr s P.Text
+    -- ^ @grantee_type@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @thumbnail_config_permissions@ settings value.
+newElastictranscoderPipelineThumbnailConfigPermissionsSetting
+    :: ElastictranscoderPipelineThumbnailConfigPermissionsSetting s
+newElastictranscoderPipelineThumbnailConfigPermissionsSetting =
+    ElastictranscoderPipelineThumbnailConfigPermissionsSetting'
+        { _access = TF.Nil
+        , _grantee = TF.Nil
+        , _granteeType = TF.Nil
+        }
+
+instance TF.IsValue  (ElastictranscoderPipelineThumbnailConfigPermissionsSetting s)
+instance TF.IsObject (ElastictranscoderPipelineThumbnailConfigPermissionsSetting s) where
+    toObject ElastictranscoderPipelineThumbnailConfigPermissionsSetting'{..} = P.catMaybes
+        [ TF.assign "access" <$> TF.attribute _access
+        , TF.assign "grantee" <$> TF.attribute _grantee
+        , TF.assign "grantee_type" <$> TF.attribute _granteeType
+        ]
+
+instance TF.IsValid (ElastictranscoderPipelineThumbnailConfigPermissionsSetting s) where
+    validator = P.mempty
+
+instance P.HasAccess (ElastictranscoderPipelineThumbnailConfigPermissionsSetting s) (TF.Attr s [TF.Attr s P.Text]) where
+    access =
+        P.lens (_access :: ElastictranscoderPipelineThumbnailConfigPermissionsSetting s -> TF.Attr s [TF.Attr s P.Text])
+               (\s a -> s { _access = a } :: ElastictranscoderPipelineThumbnailConfigPermissionsSetting s)
+
+instance P.HasGrantee (ElastictranscoderPipelineThumbnailConfigPermissionsSetting s) (TF.Attr s P.Text) where
+    grantee =
+        P.lens (_grantee :: ElastictranscoderPipelineThumbnailConfigPermissionsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _grantee = a } :: ElastictranscoderPipelineThumbnailConfigPermissionsSetting s)
+
+instance P.HasGranteeType (ElastictranscoderPipelineThumbnailConfigPermissionsSetting s) (TF.Attr s P.Text) where
+    granteeType =
+        P.lens (_granteeType :: ElastictranscoderPipelineThumbnailConfigPermissionsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _granteeType = a } :: ElastictranscoderPipelineThumbnailConfigPermissionsSetting s)
+
+-- | @thumbnail_config@ nested settings.
+data ElastictranscoderPipelineThumbnailConfigSetting s = ElastictranscoderPipelineThumbnailConfigSetting'
+    { _bucket       :: TF.Attr s P.Text
+    -- ^ @bucket@ - (Optional)
+    --
+    , _storageClass :: TF.Attr s P.Text
+    -- ^ @storage_class@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @thumbnail_config@ settings value.
+newElastictranscoderPipelineThumbnailConfigSetting
+    :: ElastictranscoderPipelineThumbnailConfigSetting s
+newElastictranscoderPipelineThumbnailConfigSetting =
+    ElastictranscoderPipelineThumbnailConfigSetting'
+        { _bucket = TF.Nil
+        , _storageClass = TF.Nil
+        }
+
+instance TF.IsValue  (ElastictranscoderPipelineThumbnailConfigSetting s)
+instance TF.IsObject (ElastictranscoderPipelineThumbnailConfigSetting s) where
+    toObject ElastictranscoderPipelineThumbnailConfigSetting'{..} = P.catMaybes
+        [ TF.assign "bucket" <$> TF.attribute _bucket
+        , TF.assign "storage_class" <$> TF.attribute _storageClass
+        ]
+
+instance TF.IsValid (ElastictranscoderPipelineThumbnailConfigSetting s) where
+    validator = P.mempty
+
+instance P.HasBucket (ElastictranscoderPipelineThumbnailConfigSetting s) (TF.Attr s P.Text) where
+    bucket =
+        P.lens (_bucket :: ElastictranscoderPipelineThumbnailConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _bucket = a } :: ElastictranscoderPipelineThumbnailConfigSetting s)
+
+instance P.HasStorageClass (ElastictranscoderPipelineThumbnailConfigSetting s) (TF.Attr s P.Text) where
+    storageClass =
+        P.lens (_storageClass :: ElastictranscoderPipelineThumbnailConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _storageClass = a } :: ElastictranscoderPipelineThumbnailConfigSetting s)
+
+instance s ~ s' => P.HasComputedBucket (TF.Ref s' (ElastictranscoderPipelineThumbnailConfigSetting s)) (TF.Attr s P.Text) where
+    computedBucket x = TF.compute (TF.refKey x) "bucket"
+
+-- | @audio_codec_options@ nested settings.
+data ElastictranscoderPresetAudioCodecOptionsSetting s = ElastictranscoderPresetAudioCodecOptionsSetting'
+    { _bitDepth :: TF.Attr s P.Text
+    -- ^ @bit_depth@ - (Optional, Forces New)
+    --
+    , _bitOrder :: TF.Attr s P.Text
+    -- ^ @bit_order@ - (Optional, Forces New)
+    --
+    , _profile  :: TF.Attr s P.Text
+    -- ^ @profile@ - (Optional, Forces New)
+    --
+    , _signed   :: TF.Attr s P.Text
+    -- ^ @signed@ - (Optional, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @audio_codec_options@ settings value.
+newElastictranscoderPresetAudioCodecOptionsSetting
+    :: ElastictranscoderPresetAudioCodecOptionsSetting s
+newElastictranscoderPresetAudioCodecOptionsSetting =
+    ElastictranscoderPresetAudioCodecOptionsSetting'
+        { _bitDepth = TF.Nil
+        , _bitOrder = TF.Nil
+        , _profile = TF.Nil
+        , _signed = TF.Nil
+        }
+
+instance TF.IsValue  (ElastictranscoderPresetAudioCodecOptionsSetting s)
+instance TF.IsObject (ElastictranscoderPresetAudioCodecOptionsSetting s) where
+    toObject ElastictranscoderPresetAudioCodecOptionsSetting'{..} = P.catMaybes
+        [ TF.assign "bit_depth" <$> TF.attribute _bitDepth
+        , TF.assign "bit_order" <$> TF.attribute _bitOrder
+        , TF.assign "profile" <$> TF.attribute _profile
+        , TF.assign "signed" <$> TF.attribute _signed
+        ]
+
+instance TF.IsValid (ElastictranscoderPresetAudioCodecOptionsSetting s) where
+    validator = P.mempty
+
+instance P.HasBitDepth (ElastictranscoderPresetAudioCodecOptionsSetting s) (TF.Attr s P.Text) where
+    bitDepth =
+        P.lens (_bitDepth :: ElastictranscoderPresetAudioCodecOptionsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _bitDepth = a } :: ElastictranscoderPresetAudioCodecOptionsSetting s)
+
+instance P.HasBitOrder (ElastictranscoderPresetAudioCodecOptionsSetting s) (TF.Attr s P.Text) where
+    bitOrder =
+        P.lens (_bitOrder :: ElastictranscoderPresetAudioCodecOptionsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _bitOrder = a } :: ElastictranscoderPresetAudioCodecOptionsSetting s)
+
+instance P.HasProfile (ElastictranscoderPresetAudioCodecOptionsSetting s) (TF.Attr s P.Text) where
+    profile =
+        P.lens (_profile :: ElastictranscoderPresetAudioCodecOptionsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _profile = a } :: ElastictranscoderPresetAudioCodecOptionsSetting s)
+
+instance P.HasSigned (ElastictranscoderPresetAudioCodecOptionsSetting s) (TF.Attr s P.Text) where
+    signed =
+        P.lens (_signed :: ElastictranscoderPresetAudioCodecOptionsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _signed = a } :: ElastictranscoderPresetAudioCodecOptionsSetting s)
+
+-- | @audio@ nested settings.
+data ElastictranscoderPresetAudioSetting s = ElastictranscoderPresetAudioSetting'
+    { _audioPackingMode :: TF.Attr s P.Text
+    -- ^ @audio_packing_mode@ - (Optional, Forces New)
+    --
+    , _bitRate          :: TF.Attr s P.Text
+    -- ^ @bit_rate@ - (Optional, Forces New)
+    --
+    , _channels         :: TF.Attr s P.Text
+    -- ^ @channels@ - (Optional, Forces New)
+    --
+    , _codec            :: TF.Attr s P.Text
+    -- ^ @codec@ - (Optional, Forces New)
+    --
+    , _sampleRate       :: TF.Attr s P.Text
+    -- ^ @sample_rate@ - (Optional, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @audio@ settings value.
+newElastictranscoderPresetAudioSetting
+    :: ElastictranscoderPresetAudioSetting s
+newElastictranscoderPresetAudioSetting =
+    ElastictranscoderPresetAudioSetting'
+        { _audioPackingMode = TF.Nil
+        , _bitRate = TF.Nil
+        , _channels = TF.Nil
+        , _codec = TF.Nil
+        , _sampleRate = TF.Nil
+        }
+
+instance TF.IsValue  (ElastictranscoderPresetAudioSetting s)
+instance TF.IsObject (ElastictranscoderPresetAudioSetting s) where
+    toObject ElastictranscoderPresetAudioSetting'{..} = P.catMaybes
+        [ TF.assign "audio_packing_mode" <$> TF.attribute _audioPackingMode
+        , TF.assign "bit_rate" <$> TF.attribute _bitRate
+        , TF.assign "channels" <$> TF.attribute _channels
+        , TF.assign "codec" <$> TF.attribute _codec
+        , TF.assign "sample_rate" <$> TF.attribute _sampleRate
+        ]
+
+instance TF.IsValid (ElastictranscoderPresetAudioSetting s) where
+    validator = P.mempty
+
+instance P.HasAudioPackingMode (ElastictranscoderPresetAudioSetting s) (TF.Attr s P.Text) where
+    audioPackingMode =
+        P.lens (_audioPackingMode :: ElastictranscoderPresetAudioSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _audioPackingMode = a } :: ElastictranscoderPresetAudioSetting s)
+
+instance P.HasBitRate (ElastictranscoderPresetAudioSetting s) (TF.Attr s P.Text) where
+    bitRate =
+        P.lens (_bitRate :: ElastictranscoderPresetAudioSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _bitRate = a } :: ElastictranscoderPresetAudioSetting s)
+
+instance P.HasChannels (ElastictranscoderPresetAudioSetting s) (TF.Attr s P.Text) where
+    channels =
+        P.lens (_channels :: ElastictranscoderPresetAudioSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _channels = a } :: ElastictranscoderPresetAudioSetting s)
+
+instance P.HasCodec (ElastictranscoderPresetAudioSetting s) (TF.Attr s P.Text) where
+    codec =
+        P.lens (_codec :: ElastictranscoderPresetAudioSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _codec = a } :: ElastictranscoderPresetAudioSetting s)
+
+instance P.HasSampleRate (ElastictranscoderPresetAudioSetting s) (TF.Attr s P.Text) where
+    sampleRate =
+        P.lens (_sampleRate :: ElastictranscoderPresetAudioSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _sampleRate = a } :: ElastictranscoderPresetAudioSetting s)
+
+-- | @thumbnails@ nested settings.
+data ElastictranscoderPresetThumbnailsSetting s = ElastictranscoderPresetThumbnailsSetting'
+    { _aspectRatio   :: TF.Attr s P.Text
+    -- ^ @aspect_ratio@ - (Optional, Forces New)
+    --
+    , _format        :: TF.Attr s P.Text
+    -- ^ @format@ - (Optional, Forces New)
+    --
+    , _interval      :: TF.Attr s P.Text
+    -- ^ @interval@ - (Optional, Forces New)
+    --
+    , _maxHeight     :: TF.Attr s P.Text
+    -- ^ @max_height@ - (Optional, Forces New)
+    --
+    , _maxWidth      :: TF.Attr s P.Text
+    -- ^ @max_width@ - (Optional, Forces New)
+    --
+    , _paddingPolicy :: TF.Attr s P.Text
+    -- ^ @padding_policy@ - (Optional, Forces New)
+    --
+    , _resolution    :: TF.Attr s P.Text
+    -- ^ @resolution@ - (Optional, Forces New)
+    --
+    , _sizingPolicy  :: TF.Attr s P.Text
+    -- ^ @sizing_policy@ - (Optional, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @thumbnails@ settings value.
+newElastictranscoderPresetThumbnailsSetting
+    :: ElastictranscoderPresetThumbnailsSetting s
+newElastictranscoderPresetThumbnailsSetting =
+    ElastictranscoderPresetThumbnailsSetting'
+        { _aspectRatio = TF.Nil
+        , _format = TF.Nil
+        , _interval = TF.Nil
+        , _maxHeight = TF.Nil
+        , _maxWidth = TF.Nil
+        , _paddingPolicy = TF.Nil
+        , _resolution = TF.Nil
+        , _sizingPolicy = TF.Nil
+        }
+
+instance TF.IsValue  (ElastictranscoderPresetThumbnailsSetting s)
+instance TF.IsObject (ElastictranscoderPresetThumbnailsSetting s) where
+    toObject ElastictranscoderPresetThumbnailsSetting'{..} = P.catMaybes
+        [ TF.assign "aspect_ratio" <$> TF.attribute _aspectRatio
+        , TF.assign "format" <$> TF.attribute _format
+        , TF.assign "interval" <$> TF.attribute _interval
+        , TF.assign "max_height" <$> TF.attribute _maxHeight
+        , TF.assign "max_width" <$> TF.attribute _maxWidth
+        , TF.assign "padding_policy" <$> TF.attribute _paddingPolicy
+        , TF.assign "resolution" <$> TF.attribute _resolution
+        , TF.assign "sizing_policy" <$> TF.attribute _sizingPolicy
+        ]
+
+instance TF.IsValid (ElastictranscoderPresetThumbnailsSetting s) where
+    validator = P.mempty
+
+instance P.HasAspectRatio (ElastictranscoderPresetThumbnailsSetting s) (TF.Attr s P.Text) where
+    aspectRatio =
+        P.lens (_aspectRatio :: ElastictranscoderPresetThumbnailsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _aspectRatio = a } :: ElastictranscoderPresetThumbnailsSetting s)
+
+instance P.HasFormat (ElastictranscoderPresetThumbnailsSetting s) (TF.Attr s P.Text) where
+    format =
+        P.lens (_format :: ElastictranscoderPresetThumbnailsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _format = a } :: ElastictranscoderPresetThumbnailsSetting s)
+
+instance P.HasInterval (ElastictranscoderPresetThumbnailsSetting s) (TF.Attr s P.Text) where
+    interval =
+        P.lens (_interval :: ElastictranscoderPresetThumbnailsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _interval = a } :: ElastictranscoderPresetThumbnailsSetting s)
+
+instance P.HasMaxHeight (ElastictranscoderPresetThumbnailsSetting s) (TF.Attr s P.Text) where
+    maxHeight =
+        P.lens (_maxHeight :: ElastictranscoderPresetThumbnailsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _maxHeight = a } :: ElastictranscoderPresetThumbnailsSetting s)
+
+instance P.HasMaxWidth (ElastictranscoderPresetThumbnailsSetting s) (TF.Attr s P.Text) where
+    maxWidth =
+        P.lens (_maxWidth :: ElastictranscoderPresetThumbnailsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _maxWidth = a } :: ElastictranscoderPresetThumbnailsSetting s)
+
+instance P.HasPaddingPolicy (ElastictranscoderPresetThumbnailsSetting s) (TF.Attr s P.Text) where
+    paddingPolicy =
+        P.lens (_paddingPolicy :: ElastictranscoderPresetThumbnailsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _paddingPolicy = a } :: ElastictranscoderPresetThumbnailsSetting s)
+
+instance P.HasResolution (ElastictranscoderPresetThumbnailsSetting s) (TF.Attr s P.Text) where
+    resolution =
+        P.lens (_resolution :: ElastictranscoderPresetThumbnailsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _resolution = a } :: ElastictranscoderPresetThumbnailsSetting s)
+
+instance P.HasSizingPolicy (ElastictranscoderPresetThumbnailsSetting s) (TF.Attr s P.Text) where
+    sizingPolicy =
+        P.lens (_sizingPolicy :: ElastictranscoderPresetThumbnailsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _sizingPolicy = a } :: ElastictranscoderPresetThumbnailsSetting s)
+
+-- | @video@ nested settings.
+data ElastictranscoderPresetVideoSetting s = ElastictranscoderPresetVideoSetting'
+    { _aspectRatio        :: TF.Attr s P.Text
+    -- ^ @aspect_ratio@ - (Optional, Forces New)
+    --
+    , _bitRate            :: TF.Attr s P.Text
+    -- ^ @bit_rate@ - (Optional, Forces New)
+    --
+    , _codec              :: TF.Attr s P.Text
+    -- ^ @codec@ - (Optional, Forces New)
+    --
+    , _displayAspectRatio :: TF.Attr s P.Text
+    -- ^ @display_aspect_ratio@ - (Optional, Forces New)
+    --
+    , _fixedGop           :: TF.Attr s P.Text
+    -- ^ @fixed_gop@ - (Optional, Forces New)
+    --
+    , _frameRate          :: TF.Attr s P.Text
+    -- ^ @frame_rate@ - (Optional, Forces New)
+    --
+    , _keyframesMaxDist   :: TF.Attr s P.Text
+    -- ^ @keyframes_max_dist@ - (Optional, Forces New)
+    --
+    , _maxFrameRate       :: TF.Attr s P.Text
+    -- ^ @max_frame_rate@ - (Optional, Forces New)
+    --
+    , _maxHeight          :: TF.Attr s P.Text
+    -- ^ @max_height@ - (Optional, Forces New)
+    --
+    , _maxWidth           :: TF.Attr s P.Text
+    -- ^ @max_width@ - (Optional, Forces New)
+    --
+    , _paddingPolicy      :: TF.Attr s P.Text
+    -- ^ @padding_policy@ - (Optional, Forces New)
+    --
+    , _resolution         :: TF.Attr s P.Text
+    -- ^ @resolution@ - (Optional, Forces New)
+    --
+    , _sizingPolicy       :: TF.Attr s P.Text
+    -- ^ @sizing_policy@ - (Optional, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @video@ settings value.
+newElastictranscoderPresetVideoSetting
+    :: ElastictranscoderPresetVideoSetting s
+newElastictranscoderPresetVideoSetting =
+    ElastictranscoderPresetVideoSetting'
+        { _aspectRatio = TF.Nil
+        , _bitRate = TF.Nil
+        , _codec = TF.Nil
+        , _displayAspectRatio = TF.Nil
+        , _fixedGop = TF.Nil
+        , _frameRate = TF.Nil
+        , _keyframesMaxDist = TF.Nil
+        , _maxFrameRate = TF.value "30"
+        , _maxHeight = TF.Nil
+        , _maxWidth = TF.Nil
+        , _paddingPolicy = TF.Nil
+        , _resolution = TF.Nil
+        , _sizingPolicy = TF.value "Fit"
+        }
+
+instance TF.IsValue  (ElastictranscoderPresetVideoSetting s)
+instance TF.IsObject (ElastictranscoderPresetVideoSetting s) where
+    toObject ElastictranscoderPresetVideoSetting'{..} = P.catMaybes
+        [ TF.assign "aspect_ratio" <$> TF.attribute _aspectRatio
+        , TF.assign "bit_rate" <$> TF.attribute _bitRate
+        , TF.assign "codec" <$> TF.attribute _codec
+        , TF.assign "display_aspect_ratio" <$> TF.attribute _displayAspectRatio
+        , TF.assign "fixed_gop" <$> TF.attribute _fixedGop
+        , TF.assign "frame_rate" <$> TF.attribute _frameRate
+        , TF.assign "keyframes_max_dist" <$> TF.attribute _keyframesMaxDist
+        , TF.assign "max_frame_rate" <$> TF.attribute _maxFrameRate
+        , TF.assign "max_height" <$> TF.attribute _maxHeight
+        , TF.assign "max_width" <$> TF.attribute _maxWidth
+        , TF.assign "padding_policy" <$> TF.attribute _paddingPolicy
+        , TF.assign "resolution" <$> TF.attribute _resolution
+        , TF.assign "sizing_policy" <$> TF.attribute _sizingPolicy
+        ]
+
+instance TF.IsValid (ElastictranscoderPresetVideoSetting s) where
+    validator = P.mempty
+
+instance P.HasAspectRatio (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    aspectRatio =
+        P.lens (_aspectRatio :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _aspectRatio = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasBitRate (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    bitRate =
+        P.lens (_bitRate :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _bitRate = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasCodec (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    codec =
+        P.lens (_codec :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _codec = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasDisplayAspectRatio (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    displayAspectRatio =
+        P.lens (_displayAspectRatio :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _displayAspectRatio = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasFixedGop (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    fixedGop =
+        P.lens (_fixedGop :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _fixedGop = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasFrameRate (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    frameRate =
+        P.lens (_frameRate :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _frameRate = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasKeyframesMaxDist (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    keyframesMaxDist =
+        P.lens (_keyframesMaxDist :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _keyframesMaxDist = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasMaxFrameRate (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    maxFrameRate =
+        P.lens (_maxFrameRate :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _maxFrameRate = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasMaxHeight (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    maxHeight =
+        P.lens (_maxHeight :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _maxHeight = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasMaxWidth (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    maxWidth =
+        P.lens (_maxWidth :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _maxWidth = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasPaddingPolicy (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    paddingPolicy =
+        P.lens (_paddingPolicy :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _paddingPolicy = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasResolution (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    resolution =
+        P.lens (_resolution :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _resolution = a } :: ElastictranscoderPresetVideoSetting s)
+
+instance P.HasSizingPolicy (ElastictranscoderPresetVideoSetting s) (TF.Attr s P.Text) where
+    sizingPolicy =
+        P.lens (_sizingPolicy :: ElastictranscoderPresetVideoSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _sizingPolicy = a } :: ElastictranscoderPresetVideoSetting s)
+
+-- | @video_watermarks@ nested settings.
+data ElastictranscoderPresetVideoWatermarksSetting s = ElastictranscoderPresetVideoWatermarksSetting'
+    { _horizontalAlign  :: TF.Attr s P.Text
+    -- ^ @horizontal_align@ - (Optional, Forces New)
+    --
+    , _horizontalOffset :: TF.Attr s P.Text
+    -- ^ @horizontal_offset@ - (Optional, Forces New)
+    --
+    , _id               :: TF.Attr s P.Text
+    -- ^ @id@ - (Optional, Forces New)
+    --
+    , _maxHeight        :: TF.Attr s P.Text
+    -- ^ @max_height@ - (Optional, Forces New)
+    --
+    , _maxWidth         :: TF.Attr s P.Text
+    -- ^ @max_width@ - (Optional, Forces New)
+    --
+    , _opacity          :: TF.Attr s P.Text
+    -- ^ @opacity@ - (Optional, Forces New)
+    --
+    , _sizingPolicy     :: TF.Attr s P.Text
+    -- ^ @sizing_policy@ - (Optional, Forces New)
+    --
+    , _target           :: TF.Attr s P.Text
+    -- ^ @target@ - (Optional, Forces New)
+    --
+    , _verticalAlign    :: TF.Attr s P.Text
+    -- ^ @vertical_align@ - (Optional, Forces New)
+    --
+    , _verticalOffset   :: TF.Attr s P.Text
+    -- ^ @vertical_offset@ - (Optional, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @video_watermarks@ settings value.
+newElastictranscoderPresetVideoWatermarksSetting
+    :: ElastictranscoderPresetVideoWatermarksSetting s
+newElastictranscoderPresetVideoWatermarksSetting =
+    ElastictranscoderPresetVideoWatermarksSetting'
+        { _horizontalAlign = TF.Nil
+        , _horizontalOffset = TF.Nil
+        , _id = TF.Nil
+        , _maxHeight = TF.Nil
+        , _maxWidth = TF.Nil
+        , _opacity = TF.Nil
+        , _sizingPolicy = TF.Nil
+        , _target = TF.Nil
+        , _verticalAlign = TF.Nil
+        , _verticalOffset = TF.Nil
+        }
+
+instance TF.IsValue  (ElastictranscoderPresetVideoWatermarksSetting s)
+instance TF.IsObject (ElastictranscoderPresetVideoWatermarksSetting s) where
+    toObject ElastictranscoderPresetVideoWatermarksSetting'{..} = P.catMaybes
+        [ TF.assign "horizontal_align" <$> TF.attribute _horizontalAlign
+        , TF.assign "horizontal_offset" <$> TF.attribute _horizontalOffset
+        , TF.assign "id" <$> TF.attribute _id
+        , TF.assign "max_height" <$> TF.attribute _maxHeight
+        , TF.assign "max_width" <$> TF.attribute _maxWidth
+        , TF.assign "opacity" <$> TF.attribute _opacity
+        , TF.assign "sizing_policy" <$> TF.attribute _sizingPolicy
+        , TF.assign "target" <$> TF.attribute _target
+        , TF.assign "vertical_align" <$> TF.attribute _verticalAlign
+        , TF.assign "vertical_offset" <$> TF.attribute _verticalOffset
+        ]
+
+instance TF.IsValid (ElastictranscoderPresetVideoWatermarksSetting s) where
+    validator = P.mempty
+
+instance P.HasHorizontalAlign (ElastictranscoderPresetVideoWatermarksSetting s) (TF.Attr s P.Text) where
+    horizontalAlign =
+        P.lens (_horizontalAlign :: ElastictranscoderPresetVideoWatermarksSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _horizontalAlign = a } :: ElastictranscoderPresetVideoWatermarksSetting s)
+
+instance P.HasHorizontalOffset (ElastictranscoderPresetVideoWatermarksSetting s) (TF.Attr s P.Text) where
+    horizontalOffset =
+        P.lens (_horizontalOffset :: ElastictranscoderPresetVideoWatermarksSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _horizontalOffset = a } :: ElastictranscoderPresetVideoWatermarksSetting s)
+
+instance P.HasId (ElastictranscoderPresetVideoWatermarksSetting s) (TF.Attr s P.Text) where
+    id =
+        P.lens (_id :: ElastictranscoderPresetVideoWatermarksSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _id = a } :: ElastictranscoderPresetVideoWatermarksSetting s)
+
+instance P.HasMaxHeight (ElastictranscoderPresetVideoWatermarksSetting s) (TF.Attr s P.Text) where
+    maxHeight =
+        P.lens (_maxHeight :: ElastictranscoderPresetVideoWatermarksSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _maxHeight = a } :: ElastictranscoderPresetVideoWatermarksSetting s)
+
+instance P.HasMaxWidth (ElastictranscoderPresetVideoWatermarksSetting s) (TF.Attr s P.Text) where
+    maxWidth =
+        P.lens (_maxWidth :: ElastictranscoderPresetVideoWatermarksSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _maxWidth = a } :: ElastictranscoderPresetVideoWatermarksSetting s)
+
+instance P.HasOpacity (ElastictranscoderPresetVideoWatermarksSetting s) (TF.Attr s P.Text) where
+    opacity =
+        P.lens (_opacity :: ElastictranscoderPresetVideoWatermarksSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _opacity = a } :: ElastictranscoderPresetVideoWatermarksSetting s)
+
+instance P.HasSizingPolicy (ElastictranscoderPresetVideoWatermarksSetting s) (TF.Attr s P.Text) where
+    sizingPolicy =
+        P.lens (_sizingPolicy :: ElastictranscoderPresetVideoWatermarksSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _sizingPolicy = a } :: ElastictranscoderPresetVideoWatermarksSetting s)
+
+instance P.HasTarget (ElastictranscoderPresetVideoWatermarksSetting s) (TF.Attr s P.Text) where
+    target =
+        P.lens (_target :: ElastictranscoderPresetVideoWatermarksSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _target = a } :: ElastictranscoderPresetVideoWatermarksSetting s)
+
+instance P.HasVerticalAlign (ElastictranscoderPresetVideoWatermarksSetting s) (TF.Attr s P.Text) where
+    verticalAlign =
+        P.lens (_verticalAlign :: ElastictranscoderPresetVideoWatermarksSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _verticalAlign = a } :: ElastictranscoderPresetVideoWatermarksSetting s)
+
+instance P.HasVerticalOffset (ElastictranscoderPresetVideoWatermarksSetting s) (TF.Attr s P.Text) where
+    verticalOffset =
+        P.lens (_verticalOffset :: ElastictranscoderPresetVideoWatermarksSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _verticalOffset = a } :: ElastictranscoderPresetVideoWatermarksSetting s)
+
+-- | @access_logs@ nested settings.
+data ElbAccessLogsSetting s = ElbAccessLogsSetting'
+    { _bucket       :: TF.Attr s P.Text
+    -- ^ @bucket@ - (Required)
+    --
+    , _bucketPrefix :: TF.Attr s P.Text
+    -- ^ @bucket_prefix@ - (Optional)
+    --
+    , _enabled      :: TF.Attr s P.Bool
+    -- ^ @enabled@ - (Optional)
+    --
+    , _interval     :: TF.Attr s P.Int
+    -- ^ @interval@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @access_logs@ settings value.
+newElbAccessLogsSetting
+    :: TF.Attr s P.Text -- ^ 'P._bucket': @bucket@
+    -> ElbAccessLogsSetting s
+newElbAccessLogsSetting _bucket =
+    ElbAccessLogsSetting'
+        { _bucket = _bucket
+        , _bucketPrefix = TF.Nil
+        , _enabled = TF.value P.True
+        , _interval = TF.value 60
+        }
+
+instance TF.IsValue  (ElbAccessLogsSetting s)
+instance TF.IsObject (ElbAccessLogsSetting s) where
+    toObject ElbAccessLogsSetting'{..} = P.catMaybes
+        [ TF.assign "bucket" <$> TF.attribute _bucket
+        , TF.assign "bucket_prefix" <$> TF.attribute _bucketPrefix
+        , TF.assign "enabled" <$> TF.attribute _enabled
+        , TF.assign "interval" <$> TF.attribute _interval
+        ]
+
+instance TF.IsValid (ElbAccessLogsSetting s) where
+    validator = P.mempty
+
+instance P.HasBucket (ElbAccessLogsSetting s) (TF.Attr s P.Text) where
+    bucket =
+        P.lens (_bucket :: ElbAccessLogsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _bucket = a } :: ElbAccessLogsSetting s)
+
+instance P.HasBucketPrefix (ElbAccessLogsSetting s) (TF.Attr s P.Text) where
+    bucketPrefix =
+        P.lens (_bucketPrefix :: ElbAccessLogsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _bucketPrefix = a } :: ElbAccessLogsSetting s)
+
+instance P.HasEnabled (ElbAccessLogsSetting s) (TF.Attr s P.Bool) where
+    enabled =
+        P.lens (_enabled :: ElbAccessLogsSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _enabled = a } :: ElbAccessLogsSetting s)
+
+instance P.HasInterval (ElbAccessLogsSetting s) (TF.Attr s P.Int) where
+    interval =
+        P.lens (_interval :: ElbAccessLogsSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _interval = a } :: ElbAccessLogsSetting s)
+
+instance s ~ s' => P.HasComputedBucket (TF.Ref s' (ElbAccessLogsSetting s)) (TF.Attr s P.Text) where
+    computedBucket x = TF.compute (TF.refKey x) "bucket"
+
+instance s ~ s' => P.HasComputedBucketPrefix (TF.Ref s' (ElbAccessLogsSetting s)) (TF.Attr s P.Text) where
+    computedBucketPrefix x = TF.compute (TF.refKey x) "bucket_prefix"
+
+instance s ~ s' => P.HasComputedEnabled (TF.Ref s' (ElbAccessLogsSetting s)) (TF.Attr s P.Bool) where
+    computedEnabled x = TF.compute (TF.refKey x) "enabled"
+
+instance s ~ s' => P.HasComputedInterval (TF.Ref s' (ElbAccessLogsSetting s)) (TF.Attr s P.Int) where
+    computedInterval x = TF.compute (TF.refKey x) "interval"
+
+-- | @health_check@ nested settings.
+data ElbHealthCheckSetting s = ElbHealthCheckSetting'
+    { _healthyThreshold   :: TF.Attr s P.Int
+    -- ^ @healthy_threshold@ - (Required)
+    --
+    , _interval           :: TF.Attr s P.Int
+    -- ^ @interval@ - (Required)
+    --
+    , _target             :: TF.Attr s P.Text
+    -- ^ @target@ - (Required)
+    --
+    , _timeout            :: TF.Attr s P.Int
+    -- ^ @timeout@ - (Required)
+    --
+    , _unhealthyThreshold :: TF.Attr s P.Int
+    -- ^ @unhealthy_threshold@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @health_check@ settings value.
+newElbHealthCheckSetting
+    :: TF.Attr s P.Int -- ^ 'P._interval': @interval@
+    -> TF.Attr s P.Text -- ^ 'P._target': @target@
+    -> TF.Attr s P.Int -- ^ 'P._healthyThreshold': @healthy_threshold@
+    -> TF.Attr s P.Int -- ^ 'P._unhealthyThreshold': @unhealthy_threshold@
+    -> TF.Attr s P.Int -- ^ 'P._timeout': @timeout@
+    -> ElbHealthCheckSetting s
+newElbHealthCheckSetting _interval _target _healthyThreshold _unhealthyThreshold _timeout =
+    ElbHealthCheckSetting'
+        { _healthyThreshold = _healthyThreshold
+        , _interval = _interval
+        , _target = _target
+        , _timeout = _timeout
+        , _unhealthyThreshold = _unhealthyThreshold
+        }
+
+instance TF.IsValue  (ElbHealthCheckSetting s)
+instance TF.IsObject (ElbHealthCheckSetting s) where
+    toObject ElbHealthCheckSetting'{..} = P.catMaybes
+        [ TF.assign "healthy_threshold" <$> TF.attribute _healthyThreshold
+        , TF.assign "interval" <$> TF.attribute _interval
+        , TF.assign "target" <$> TF.attribute _target
+        , TF.assign "timeout" <$> TF.attribute _timeout
+        , TF.assign "unhealthy_threshold" <$> TF.attribute _unhealthyThreshold
+        ]
+
+instance TF.IsValid (ElbHealthCheckSetting s) where
+    validator = P.mempty
+
+instance P.HasHealthyThreshold (ElbHealthCheckSetting s) (TF.Attr s P.Int) where
+    healthyThreshold =
+        P.lens (_healthyThreshold :: ElbHealthCheckSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _healthyThreshold = a } :: ElbHealthCheckSetting s)
+
+instance P.HasInterval (ElbHealthCheckSetting s) (TF.Attr s P.Int) where
+    interval =
+        P.lens (_interval :: ElbHealthCheckSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _interval = a } :: ElbHealthCheckSetting s)
+
+instance P.HasTarget (ElbHealthCheckSetting s) (TF.Attr s P.Text) where
+    target =
+        P.lens (_target :: ElbHealthCheckSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _target = a } :: ElbHealthCheckSetting s)
+
+instance P.HasTimeout (ElbHealthCheckSetting s) (TF.Attr s P.Int) where
+    timeout =
+        P.lens (_timeout :: ElbHealthCheckSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _timeout = a } :: ElbHealthCheckSetting s)
+
+instance P.HasUnhealthyThreshold (ElbHealthCheckSetting s) (TF.Attr s P.Int) where
+    unhealthyThreshold =
+        P.lens (_unhealthyThreshold :: ElbHealthCheckSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _unhealthyThreshold = a } :: ElbHealthCheckSetting s)
+
+instance s ~ s' => P.HasComputedHealthyThreshold (TF.Ref s' (ElbHealthCheckSetting s)) (TF.Attr s P.Int) where
+    computedHealthyThreshold x = TF.compute (TF.refKey x) "healthy_threshold"
+
+instance s ~ s' => P.HasComputedInterval (TF.Ref s' (ElbHealthCheckSetting s)) (TF.Attr s P.Int) where
+    computedInterval x = TF.compute (TF.refKey x) "interval"
+
+instance s ~ s' => P.HasComputedTarget (TF.Ref s' (ElbHealthCheckSetting s)) (TF.Attr s P.Text) where
+    computedTarget x = TF.compute (TF.refKey x) "target"
+
+instance s ~ s' => P.HasComputedTimeout (TF.Ref s' (ElbHealthCheckSetting s)) (TF.Attr s P.Int) where
+    computedTimeout x = TF.compute (TF.refKey x) "timeout"
+
+instance s ~ s' => P.HasComputedUnhealthyThreshold (TF.Ref s' (ElbHealthCheckSetting s)) (TF.Attr s P.Int) where
+    computedUnhealthyThreshold x = TF.compute (TF.refKey x) "unhealthy_threshold"
+
+-- | @listener@ nested settings.
+data ElbListenerSetting s = ElbListenerSetting'
+    { _instancePort     :: TF.Attr s P.Int
+    -- ^ @instance_port@ - (Required)
+    --
+    , _instanceProtocol :: TF.Attr s P.Text
+    -- ^ @instance_protocol@ - (Required)
+    --
+    , _lbPort           :: TF.Attr s P.Int
+    -- ^ @lb_port@ - (Required)
+    --
+    , _lbProtocol       :: TF.Attr s P.Text
+    -- ^ @lb_protocol@ - (Required)
+    --
+    , _sslCertificateId :: TF.Attr s P.Text
+    -- ^ @ssl_certificate_id@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @listener@ settings value.
+newElbListenerSetting
+    :: TF.Attr s P.Int -- ^ 'P._instancePort': @instance_port@
+    -> TF.Attr s P.Int -- ^ 'P._lbPort': @lb_port@
+    -> TF.Attr s P.Text -- ^ 'P._instanceProtocol': @instance_protocol@
+    -> TF.Attr s P.Text -- ^ 'P._lbProtocol': @lb_protocol@
+    -> ElbListenerSetting s
+newElbListenerSetting _instancePort _lbPort _instanceProtocol _lbProtocol =
+    ElbListenerSetting'
+        { _instancePort = _instancePort
+        , _instanceProtocol = _instanceProtocol
+        , _lbPort = _lbPort
+        , _lbProtocol = _lbProtocol
+        , _sslCertificateId = TF.Nil
+        }
+
+instance TF.IsValue  (ElbListenerSetting s)
+instance TF.IsObject (ElbListenerSetting s) where
+    toObject ElbListenerSetting'{..} = P.catMaybes
+        [ TF.assign "instance_port" <$> TF.attribute _instancePort
+        , TF.assign "instance_protocol" <$> TF.attribute _instanceProtocol
+        , TF.assign "lb_port" <$> TF.attribute _lbPort
+        , TF.assign "lb_protocol" <$> TF.attribute _lbProtocol
+        , TF.assign "ssl_certificate_id" <$> TF.attribute _sslCertificateId
+        ]
+
+instance TF.IsValid (ElbListenerSetting s) where
+    validator = P.mempty
+
+instance P.HasInstancePort (ElbListenerSetting s) (TF.Attr s P.Int) where
+    instancePort =
+        P.lens (_instancePort :: ElbListenerSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _instancePort = a } :: ElbListenerSetting s)
+
+instance P.HasInstanceProtocol (ElbListenerSetting s) (TF.Attr s P.Text) where
+    instanceProtocol =
+        P.lens (_instanceProtocol :: ElbListenerSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _instanceProtocol = a } :: ElbListenerSetting s)
+
+instance P.HasLbPort (ElbListenerSetting s) (TF.Attr s P.Int) where
+    lbPort =
+        P.lens (_lbPort :: ElbListenerSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _lbPort = a } :: ElbListenerSetting s)
+
+instance P.HasLbProtocol (ElbListenerSetting s) (TF.Attr s P.Text) where
+    lbProtocol =
+        P.lens (_lbProtocol :: ElbListenerSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _lbProtocol = a } :: ElbListenerSetting s)
+
+instance P.HasSslCertificateId (ElbListenerSetting s) (TF.Attr s P.Text) where
+    sslCertificateId =
+        P.lens (_sslCertificateId :: ElbListenerSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _sslCertificateId = a } :: ElbListenerSetting s)
+
+instance s ~ s' => P.HasComputedInstancePort (TF.Ref s' (ElbListenerSetting s)) (TF.Attr s P.Int) where
+    computedInstancePort x = TF.compute (TF.refKey x) "instance_port"
+
+instance s ~ s' => P.HasComputedInstanceProtocol (TF.Ref s' (ElbListenerSetting s)) (TF.Attr s P.Text) where
+    computedInstanceProtocol x = TF.compute (TF.refKey x) "instance_protocol"
+
+instance s ~ s' => P.HasComputedLbPort (TF.Ref s' (ElbListenerSetting s)) (TF.Attr s P.Int) where
+    computedLbPort x = TF.compute (TF.refKey x) "lb_port"
+
+instance s ~ s' => P.HasComputedLbProtocol (TF.Ref s' (ElbListenerSetting s)) (TF.Attr s P.Text) where
+    computedLbProtocol x = TF.compute (TF.refKey x) "lb_protocol"
+
+instance s ~ s' => P.HasComputedSslCertificateId (TF.Ref s' (ElbListenerSetting s)) (TF.Attr s P.Text) where
+    computedSslCertificateId x = TF.compute (TF.refKey x) "ssl_certificate_id"
+
+-- | @bootstrap_action@ nested settings.
+data EmrClusterBootstrapActionSetting s = EmrClusterBootstrapActionSetting'
+    { _args :: TF.Attr s [TF.Attr s P.Text]
+    -- ^ @args@ - (Optional, Forces New)
+    --
+    , _name :: TF.Attr s P.Text
+    -- ^ @name@ - (Required)
+    --
+    , _path :: TF.Attr s P.Text
+    -- ^ @path@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @bootstrap_action@ settings value.
+newEmrClusterBootstrapActionSetting
+    :: TF.Attr s P.Text -- ^ 'P._name': @name@
+    -> TF.Attr s P.Text -- ^ 'P._path': @path@
+    -> EmrClusterBootstrapActionSetting s
+newEmrClusterBootstrapActionSetting _name _path =
+    EmrClusterBootstrapActionSetting'
+        { _args = TF.Nil
+        , _name = _name
+        , _path = _path
+        }
+
+instance TF.IsValue  (EmrClusterBootstrapActionSetting s)
+instance TF.IsObject (EmrClusterBootstrapActionSetting s) where
+    toObject EmrClusterBootstrapActionSetting'{..} = P.catMaybes
+        [ TF.assign "args" <$> TF.attribute _args
+        , TF.assign "name" <$> TF.attribute _name
+        , TF.assign "path" <$> TF.attribute _path
+        ]
+
+instance TF.IsValid (EmrClusterBootstrapActionSetting s) where
+    validator = P.mempty
+
+instance P.HasArgs (EmrClusterBootstrapActionSetting s) (TF.Attr s [TF.Attr s P.Text]) where
+    args =
+        P.lens (_args :: EmrClusterBootstrapActionSetting s -> TF.Attr s [TF.Attr s P.Text])
+               (\s a -> s { _args = a } :: EmrClusterBootstrapActionSetting s)
+
+instance P.HasName (EmrClusterBootstrapActionSetting s) (TF.Attr s P.Text) where
+    name =
+        P.lens (_name :: EmrClusterBootstrapActionSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _name = a } :: EmrClusterBootstrapActionSetting s)
+
+instance P.HasPath (EmrClusterBootstrapActionSetting s) (TF.Attr s P.Text) where
+    path =
+        P.lens (_path :: EmrClusterBootstrapActionSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _path = a } :: EmrClusterBootstrapActionSetting s)
+
+-- | @ec2_attributes@ nested settings.
+data EmrClusterEc2AttributesSetting s = EmrClusterEc2AttributesSetting'
+    { _additionalMasterSecurityGroups :: TF.Attr s P.Text
+    -- ^ @additional_master_security_groups@ - (Optional, Forces New)
+    --
+    , _additionalSlaveSecurityGroups  :: TF.Attr s P.Text
+    -- ^ @additional_slave_security_groups@ - (Optional, Forces New)
+    --
+    , _emrManagedMasterSecurityGroup  :: TF.Attr s P.Text
+    -- ^ @emr_managed_master_security_group@ - (Optional, Forces New)
+    --
+    , _emrManagedSlaveSecurityGroup   :: TF.Attr s P.Text
+    -- ^ @emr_managed_slave_security_group@ - (Optional, Forces New)
+    --
+    , _instanceProfile                :: TF.Attr s P.Text
+    -- ^ @instance_profile@ - (Required, Forces New)
+    --
+    , _keyName                        :: TF.Attr s P.Text
+    -- ^ @key_name@ - (Optional, Forces New)
+    --
+    , _serviceAccessSecurityGroup     :: TF.Attr s P.Text
+    -- ^ @service_access_security_group@ - (Optional, Forces New)
+    --
+    , _subnetId                       :: TF.Attr s P.Text
+    -- ^ @subnet_id@ - (Optional, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @ec2_attributes@ settings value.
+newEmrClusterEc2AttributesSetting
+    :: TF.Attr s P.Text -- ^ 'P._instanceProfile': @instance_profile@
+    -> EmrClusterEc2AttributesSetting s
+newEmrClusterEc2AttributesSetting _instanceProfile =
+    EmrClusterEc2AttributesSetting'
+        { _additionalMasterSecurityGroups = TF.Nil
+        , _additionalSlaveSecurityGroups = TF.Nil
+        , _emrManagedMasterSecurityGroup = TF.Nil
+        , _emrManagedSlaveSecurityGroup = TF.Nil
+        , _instanceProfile = _instanceProfile
+        , _keyName = TF.Nil
+        , _serviceAccessSecurityGroup = TF.Nil
+        , _subnetId = TF.Nil
+        }
+
+instance TF.IsValue  (EmrClusterEc2AttributesSetting s)
+instance TF.IsObject (EmrClusterEc2AttributesSetting s) where
+    toObject EmrClusterEc2AttributesSetting'{..} = P.catMaybes
+        [ TF.assign "additional_master_security_groups" <$> TF.attribute _additionalMasterSecurityGroups
+        , TF.assign "additional_slave_security_groups" <$> TF.attribute _additionalSlaveSecurityGroups
+        , TF.assign "emr_managed_master_security_group" <$> TF.attribute _emrManagedMasterSecurityGroup
+        , TF.assign "emr_managed_slave_security_group" <$> TF.attribute _emrManagedSlaveSecurityGroup
+        , TF.assign "instance_profile" <$> TF.attribute _instanceProfile
+        , TF.assign "key_name" <$> TF.attribute _keyName
+        , TF.assign "service_access_security_group" <$> TF.attribute _serviceAccessSecurityGroup
+        , TF.assign "subnet_id" <$> TF.attribute _subnetId
+        ]
+
+instance TF.IsValid (EmrClusterEc2AttributesSetting s) where
+    validator = P.mempty
+
+instance P.HasAdditionalMasterSecurityGroups (EmrClusterEc2AttributesSetting s) (TF.Attr s P.Text) where
+    additionalMasterSecurityGroups =
+        P.lens (_additionalMasterSecurityGroups :: EmrClusterEc2AttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _additionalMasterSecurityGroups = a } :: EmrClusterEc2AttributesSetting s)
+
+instance P.HasAdditionalSlaveSecurityGroups (EmrClusterEc2AttributesSetting s) (TF.Attr s P.Text) where
+    additionalSlaveSecurityGroups =
+        P.lens (_additionalSlaveSecurityGroups :: EmrClusterEc2AttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _additionalSlaveSecurityGroups = a } :: EmrClusterEc2AttributesSetting s)
+
+instance P.HasEmrManagedMasterSecurityGroup (EmrClusterEc2AttributesSetting s) (TF.Attr s P.Text) where
+    emrManagedMasterSecurityGroup =
+        P.lens (_emrManagedMasterSecurityGroup :: EmrClusterEc2AttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _emrManagedMasterSecurityGroup = a } :: EmrClusterEc2AttributesSetting s)
+
+instance P.HasEmrManagedSlaveSecurityGroup (EmrClusterEc2AttributesSetting s) (TF.Attr s P.Text) where
+    emrManagedSlaveSecurityGroup =
+        P.lens (_emrManagedSlaveSecurityGroup :: EmrClusterEc2AttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _emrManagedSlaveSecurityGroup = a } :: EmrClusterEc2AttributesSetting s)
+
+instance P.HasInstanceProfile (EmrClusterEc2AttributesSetting s) (TF.Attr s P.Text) where
+    instanceProfile =
+        P.lens (_instanceProfile :: EmrClusterEc2AttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _instanceProfile = a } :: EmrClusterEc2AttributesSetting s)
+
+instance P.HasKeyName (EmrClusterEc2AttributesSetting s) (TF.Attr s P.Text) where
+    keyName =
+        P.lens (_keyName :: EmrClusterEc2AttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _keyName = a } :: EmrClusterEc2AttributesSetting s)
+
+instance P.HasServiceAccessSecurityGroup (EmrClusterEc2AttributesSetting s) (TF.Attr s P.Text) where
+    serviceAccessSecurityGroup =
+        P.lens (_serviceAccessSecurityGroup :: EmrClusterEc2AttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _serviceAccessSecurityGroup = a } :: EmrClusterEc2AttributesSetting s)
+
+instance P.HasSubnetId (EmrClusterEc2AttributesSetting s) (TF.Attr s P.Text) where
+    subnetId =
+        P.lens (_subnetId :: EmrClusterEc2AttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _subnetId = a } :: EmrClusterEc2AttributesSetting s)
+
+-- | @ebs_config@ nested settings.
+data EmrClusterInstanceGroupEbsConfigSetting s = EmrClusterInstanceGroupEbsConfigSetting'
+    { _iops               :: TF.Attr s P.Int
+    -- ^ @iops@ - (Optional)
+    --
+    , _size               :: TF.Attr s P.Int
+    -- ^ @size@ - (Required)
+    --
+    , _type'              :: TF.Attr s P.Text
+    -- ^ @type@ - (Required)
+    --
+    , _volumesPerInstance :: TF.Attr s P.Int
+    -- ^ @volumes_per_instance@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @ebs_config@ settings value.
+newEmrClusterInstanceGroupEbsConfigSetting
+    :: TF.Attr s P.Int -- ^ 'P._size': @size@
+    -> TF.Attr s P.Text -- ^ 'P._type'': @type@
+    -> EmrClusterInstanceGroupEbsConfigSetting s
+newEmrClusterInstanceGroupEbsConfigSetting _size _type' =
+    EmrClusterInstanceGroupEbsConfigSetting'
+        { _iops = TF.Nil
+        , _size = _size
+        , _type' = _type'
+        , _volumesPerInstance = TF.value 1
+        }
+
+instance TF.IsValue  (EmrClusterInstanceGroupEbsConfigSetting s)
+instance TF.IsObject (EmrClusterInstanceGroupEbsConfigSetting s) where
+    toObject EmrClusterInstanceGroupEbsConfigSetting'{..} = P.catMaybes
+        [ TF.assign "iops" <$> TF.attribute _iops
+        , TF.assign "size" <$> TF.attribute _size
+        , TF.assign "type" <$> TF.attribute _type'
+        , TF.assign "volumes_per_instance" <$> TF.attribute _volumesPerInstance
+        ]
+
+instance TF.IsValid (EmrClusterInstanceGroupEbsConfigSetting s) where
+    validator = P.mempty
+
+instance P.HasIops (EmrClusterInstanceGroupEbsConfigSetting s) (TF.Attr s P.Int) where
+    iops =
+        P.lens (_iops :: EmrClusterInstanceGroupEbsConfigSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _iops = a } :: EmrClusterInstanceGroupEbsConfigSetting s)
+
+instance P.HasSize (EmrClusterInstanceGroupEbsConfigSetting s) (TF.Attr s P.Int) where
+    size =
+        P.lens (_size :: EmrClusterInstanceGroupEbsConfigSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _size = a } :: EmrClusterInstanceGroupEbsConfigSetting s)
+
+instance P.HasType' (EmrClusterInstanceGroupEbsConfigSetting s) (TF.Attr s P.Text) where
+    type' =
+        P.lens (_type' :: EmrClusterInstanceGroupEbsConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _type' = a } :: EmrClusterInstanceGroupEbsConfigSetting s)
+
+instance P.HasVolumesPerInstance (EmrClusterInstanceGroupEbsConfigSetting s) (TF.Attr s P.Int) where
+    volumesPerInstance =
+        P.lens (_volumesPerInstance :: EmrClusterInstanceGroupEbsConfigSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _volumesPerInstance = a } :: EmrClusterInstanceGroupEbsConfigSetting s)
+
+-- | @instance_group@ nested settings.
+data EmrClusterInstanceGroupSetting s = EmrClusterInstanceGroupSetting'
+    { _autoscalingPolicy :: TF.Attr s P.Text
+    -- ^ @autoscaling_policy@ - (Optional)
+    --
+    , _bidPrice :: TF.Attr s P.Text
+    -- ^ @bid_price@ - (Optional)
+    --
+    , _ebsConfig :: TF.Attr s [TF.Attr s (EmrClusterInstanceGroupEbsConfigSetting s)]
+    -- ^ @ebs_config@ - (Optional, Forces New)
+    --
+    , _instanceCount :: TF.Attr s P.Int
+    -- ^ @instance_count@ - (Optional)
+    --
+    , _instanceRole :: TF.Attr s P.Text
+    -- ^ @instance_role@ - (Required)
+    --
+    , _instanceType :: TF.Attr s P.Text
+    -- ^ @instance_type@ - (Required, Forces New)
+    --
+    , _name :: TF.Attr s P.Text
+    -- ^ @name@ - (Optional, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @instance_group@ settings value.
+newEmrClusterInstanceGroupSetting
+    :: TF.Attr s P.Text -- ^ 'P._instanceRole': @instance_role@
+    -> TF.Attr s P.Text -- ^ 'P._instanceType': @instance_type@
+    -> EmrClusterInstanceGroupSetting s
+newEmrClusterInstanceGroupSetting _instanceRole _instanceType =
+    EmrClusterInstanceGroupSetting'
+        { _autoscalingPolicy = TF.Nil
+        , _bidPrice = TF.Nil
+        , _ebsConfig = TF.Nil
+        , _instanceCount = TF.value 0
+        , _instanceRole = _instanceRole
+        , _instanceType = _instanceType
+        , _name = TF.Nil
+        }
+
+instance TF.IsValue  (EmrClusterInstanceGroupSetting s)
+instance TF.IsObject (EmrClusterInstanceGroupSetting s) where
+    toObject EmrClusterInstanceGroupSetting'{..} = P.catMaybes
+        [ TF.assign "autoscaling_policy" <$> TF.attribute _autoscalingPolicy
+        , TF.assign "bid_price" <$> TF.attribute _bidPrice
+        , TF.assign "ebs_config" <$> TF.attribute _ebsConfig
+        , TF.assign "instance_count" <$> TF.attribute _instanceCount
+        , TF.assign "instance_role" <$> TF.attribute _instanceRole
+        , TF.assign "instance_type" <$> TF.attribute _instanceType
+        , TF.assign "name" <$> TF.attribute _name
+        ]
+
+instance TF.IsValid (EmrClusterInstanceGroupSetting s) where
+    validator = P.mempty
+
+instance P.HasAutoscalingPolicy (EmrClusterInstanceGroupSetting s) (TF.Attr s P.Text) where
+    autoscalingPolicy =
+        P.lens (_autoscalingPolicy :: EmrClusterInstanceGroupSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _autoscalingPolicy = a } :: EmrClusterInstanceGroupSetting s)
+
+instance P.HasBidPrice (EmrClusterInstanceGroupSetting s) (TF.Attr s P.Text) where
+    bidPrice =
+        P.lens (_bidPrice :: EmrClusterInstanceGroupSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _bidPrice = a } :: EmrClusterInstanceGroupSetting s)
+
+instance P.HasEbsConfig (EmrClusterInstanceGroupSetting s) (TF.Attr s [TF.Attr s (EmrClusterInstanceGroupEbsConfigSetting s)]) where
+    ebsConfig =
+        P.lens (_ebsConfig :: EmrClusterInstanceGroupSetting s -> TF.Attr s [TF.Attr s (EmrClusterInstanceGroupEbsConfigSetting s)])
+               (\s a -> s { _ebsConfig = a } :: EmrClusterInstanceGroupSetting s)
+
+instance P.HasInstanceCount (EmrClusterInstanceGroupSetting s) (TF.Attr s P.Int) where
+    instanceCount =
+        P.lens (_instanceCount :: EmrClusterInstanceGroupSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _instanceCount = a } :: EmrClusterInstanceGroupSetting s)
+
+instance P.HasInstanceRole (EmrClusterInstanceGroupSetting s) (TF.Attr s P.Text) where
+    instanceRole =
+        P.lens (_instanceRole :: EmrClusterInstanceGroupSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _instanceRole = a } :: EmrClusterInstanceGroupSetting s)
+
+instance P.HasInstanceType (EmrClusterInstanceGroupSetting s) (TF.Attr s P.Text) where
+    instanceType =
+        P.lens (_instanceType :: EmrClusterInstanceGroupSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _instanceType = a } :: EmrClusterInstanceGroupSetting s)
+
+instance P.HasName (EmrClusterInstanceGroupSetting s) (TF.Attr s P.Text) where
+    name =
+        P.lens (_name :: EmrClusterInstanceGroupSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _name = a } :: EmrClusterInstanceGroupSetting s)
+
+-- | @kerberos_attributes@ nested settings.
+data EmrClusterKerberosAttributesSetting s = EmrClusterKerberosAttributesSetting'
+    { _adDomainJoinPassword             :: TF.Attr s P.Text
+    -- ^ @ad_domain_join_password@ - (Optional, Forces New)
+    --
+    , _adDomainJoinUser                 :: TF.Attr s P.Text
+    -- ^ @ad_domain_join_user@ - (Optional, Forces New)
+    --
+    , _crossRealmTrustPrincipalPassword :: TF.Attr s P.Text
+    -- ^ @cross_realm_trust_principal_password@ - (Optional, Forces New)
+    --
+    , _kdcAdminPassword                 :: TF.Attr s P.Text
+    -- ^ @kdc_admin_password@ - (Required, Forces New)
+    --
+    , _realm                            :: TF.Attr s P.Text
+    -- ^ @realm@ - (Required, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @kerberos_attributes@ settings value.
+newEmrClusterKerberosAttributesSetting
+    :: TF.Attr s P.Text -- ^ 'P._kdcAdminPassword': @kdc_admin_password@
+    -> TF.Attr s P.Text -- ^ 'P._realm': @realm@
+    -> EmrClusterKerberosAttributesSetting s
+newEmrClusterKerberosAttributesSetting _kdcAdminPassword _realm =
+    EmrClusterKerberosAttributesSetting'
+        { _adDomainJoinPassword = TF.Nil
+        , _adDomainJoinUser = TF.Nil
+        , _crossRealmTrustPrincipalPassword = TF.Nil
+        , _kdcAdminPassword = _kdcAdminPassword
+        , _realm = _realm
+        }
+
+instance TF.IsValue  (EmrClusterKerberosAttributesSetting s)
+instance TF.IsObject (EmrClusterKerberosAttributesSetting s) where
+    toObject EmrClusterKerberosAttributesSetting'{..} = P.catMaybes
+        [ TF.assign "ad_domain_join_password" <$> TF.attribute _adDomainJoinPassword
+        , TF.assign "ad_domain_join_user" <$> TF.attribute _adDomainJoinUser
+        , TF.assign "cross_realm_trust_principal_password" <$> TF.attribute _crossRealmTrustPrincipalPassword
+        , TF.assign "kdc_admin_password" <$> TF.attribute _kdcAdminPassword
+        , TF.assign "realm" <$> TF.attribute _realm
+        ]
+
+instance TF.IsValid (EmrClusterKerberosAttributesSetting s) where
+    validator = P.mempty
+
+instance P.HasAdDomainJoinPassword (EmrClusterKerberosAttributesSetting s) (TF.Attr s P.Text) where
+    adDomainJoinPassword =
+        P.lens (_adDomainJoinPassword :: EmrClusterKerberosAttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _adDomainJoinPassword = a } :: EmrClusterKerberosAttributesSetting s)
+
+instance P.HasAdDomainJoinUser (EmrClusterKerberosAttributesSetting s) (TF.Attr s P.Text) where
+    adDomainJoinUser =
+        P.lens (_adDomainJoinUser :: EmrClusterKerberosAttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _adDomainJoinUser = a } :: EmrClusterKerberosAttributesSetting s)
+
+instance P.HasCrossRealmTrustPrincipalPassword (EmrClusterKerberosAttributesSetting s) (TF.Attr s P.Text) where
+    crossRealmTrustPrincipalPassword =
+        P.lens (_crossRealmTrustPrincipalPassword :: EmrClusterKerberosAttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _crossRealmTrustPrincipalPassword = a } :: EmrClusterKerberosAttributesSetting s)
+
+instance P.HasKdcAdminPassword (EmrClusterKerberosAttributesSetting s) (TF.Attr s P.Text) where
+    kdcAdminPassword =
+        P.lens (_kdcAdminPassword :: EmrClusterKerberosAttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _kdcAdminPassword = a } :: EmrClusterKerberosAttributesSetting s)
+
+instance P.HasRealm (EmrClusterKerberosAttributesSetting s) (TF.Attr s P.Text) where
+    realm =
+        P.lens (_realm :: EmrClusterKerberosAttributesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _realm = a } :: EmrClusterKerberosAttributesSetting s)

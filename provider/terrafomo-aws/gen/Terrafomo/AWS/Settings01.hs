@@ -41,13 +41,29 @@ module Terrafomo.AWS.Settings01
     , AlbAccessLogsSetting (..)
     , newAlbAccessLogsSetting
 
+    -- ** fixed_response
+    , AlbListenerDefaultActionFixedResponseSetting (..)
+    , newAlbListenerDefaultActionFixedResponseSetting
+
     -- ** default_action
     , AlbListenerDefaultActionSetting (..)
     , newAlbListenerDefaultActionSetting
 
+    -- ** redirect
+    , AlbListenerDefaultActionRedirectSetting (..)
+    , newAlbListenerDefaultActionRedirectSetting
+
+    -- ** fixed_response
+    , AlbListenerRuleActionFixedResponseSetting (..)
+    , newAlbListenerRuleActionFixedResponseSetting
+
     -- ** action
     , AlbListenerRuleActionSetting (..)
     , newAlbListenerRuleActionSetting
+
+    -- ** redirect
+    , AlbListenerRuleActionRedirectSetting (..)
+    , newAlbListenerRuleActionRedirectSetting
 
     -- ** condition
     , AlbListenerRuleConditionSetting (..)
@@ -116,6 +132,114 @@ module Terrafomo.AWS.Settings01
     -- ** endpoint_configuration
     , ApiGatewayDomainNameEndpointConfigurationSetting (..)
     , newApiGatewayDomainNameEndpointConfigurationSetting
+
+    -- ** settings
+    , ApiGatewayMethodSettingsSettingsSetting (..)
+    , newApiGatewayMethodSettingsSettingsSetting
+
+    -- ** endpoint_configuration
+    , ApiGatewayRestApiEndpointConfigurationSetting (..)
+    , newApiGatewayRestApiEndpointConfigurationSetting
+
+    -- ** access_log_settings
+    , ApiGatewayStageAccessLogSettingsSetting (..)
+    , newApiGatewayStageAccessLogSettingsSetting
+
+    -- ** api_stages
+    , ApiGatewayUsagePlanApiStagesSetting (..)
+    , newApiGatewayUsagePlanApiStagesSetting
+
+    -- ** quota_settings
+    , ApiGatewayUsagePlanQuotaSettingsSetting (..)
+    , newApiGatewayUsagePlanQuotaSettingsSetting
+
+    -- ** throttle_settings
+    , ApiGatewayUsagePlanThrottleSettingsSetting (..)
+    , newApiGatewayUsagePlanThrottleSettingsSetting
+
+    -- ** step_scaling_policy_configuration
+    , AppautoscalingPolicyStepScalingPolicyConfigurationSetting (..)
+    , newAppautoscalingPolicyStepScalingPolicyConfigurationSetting
+
+    -- ** step_adjustment
+    , AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting (..)
+    , newAppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting
+
+    -- ** dimensions
+    , AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting (..)
+    , newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting
+
+    -- ** customized_metric_specification
+    , AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting (..)
+    , newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting
+
+    -- ** target_tracking_scaling_policy_configuration
+    , AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting (..)
+    , newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting
+
+    -- ** predefined_metric_specification
+    , AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting (..)
+    , newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting
+
+    -- ** scalable_target_action
+    , AppautoscalingScheduledActionScalableTargetActionSetting (..)
+    , newAppautoscalingScheduledActionScalableTargetActionSetting
+
+    -- ** dynamodb_config
+    , AppsyncDatasourceDynamodbConfigSetting (..)
+    , newAppsyncDatasourceDynamodbConfigSetting
+
+    -- ** elasticsearch_config
+    , AppsyncDatasourceElasticsearchConfigSetting (..)
+    , newAppsyncDatasourceElasticsearchConfigSetting
+
+    -- ** lambda_config
+    , AppsyncDatasourceLambdaConfigSetting (..)
+    , newAppsyncDatasourceLambdaConfigSetting
+
+    -- ** user_pool_config
+    , AppsyncGraphqlApiUserPoolConfigSetting (..)
+    , newAppsyncGraphqlApiUserPoolConfigSetting
+
+    -- ** assume_role
+    , AssumeRoleSetting (..)
+    , newAssumeRoleSetting
+
+    -- ** initial_lifecycle_hook
+    , AutoscalingGroupInitialLifecycleHookSetting (..)
+    , newAutoscalingGroupInitialLifecycleHookSetting
+
+    -- ** launch_template
+    , AutoscalingGroupLaunchTemplateSetting (..)
+    , newAutoscalingGroupLaunchTemplateSetting
+
+    -- ** tag
+    , AutoscalingGroupTagSetting (..)
+    , newAutoscalingGroupTagSetting
+
+    -- ** filter
+    , AutoscalingGroupsFilterSetting (..)
+    , newAutoscalingGroupsFilterSetting
+
+    -- ** step_adjustment
+    , AutoscalingPolicyStepAdjustmentSetting (..)
+    , newAutoscalingPolicyStepAdjustmentSetting
+
+    -- ** metric_dimension
+    , AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting (..)
+    , newAutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting
+
+    -- ** customized_metric_specification
+    , AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting (..)
+    , newAutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting
+
+    -- ** target_tracking_configuration
+    , AutoscalingPolicyTargetTrackingConfigurationSetting (..)
+    , newAutoscalingPolicyTargetTrackingConfigurationSetting
+
+    -- ** predefined_metric_specification
+    , AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting (..)
+    , newAutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting
 
     ) where
 
@@ -537,36 +661,116 @@ instance s ~ s' => P.HasComputedEnabled (TF.Ref s' (AlbAccessLogsSetting s)) (TF
 instance s ~ s' => P.HasComputedPrefix (TF.Ref s' (AlbAccessLogsSetting s)) (TF.Attr s P.Text) where
     computedPrefix x = TF.compute (TF.refKey x) "prefix"
 
+-- | @fixed_response@ nested settings.
+data AlbListenerDefaultActionFixedResponseSetting s = AlbListenerDefaultActionFixedResponseSetting'
+    { _contentType :: TF.Attr s P.Text
+    -- ^ @content_type@ - (Required)
+    --
+    , _messageBody :: TF.Attr s P.Text
+    -- ^ @message_body@ - (Optional)
+    --
+    , _statusCode  :: TF.Attr s P.Text
+    -- ^ @status_code@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @fixed_response@ settings value.
+newAlbListenerDefaultActionFixedResponseSetting
+    :: TF.Attr s P.Text -- ^ 'P._contentType': @content_type@
+    -> AlbListenerDefaultActionFixedResponseSetting s
+newAlbListenerDefaultActionFixedResponseSetting _contentType =
+    AlbListenerDefaultActionFixedResponseSetting'
+        { _contentType = _contentType
+        , _messageBody = TF.Nil
+        , _statusCode = TF.Nil
+        }
+
+instance TF.IsValue  (AlbListenerDefaultActionFixedResponseSetting s)
+instance TF.IsObject (AlbListenerDefaultActionFixedResponseSetting s) where
+    toObject AlbListenerDefaultActionFixedResponseSetting'{..} = P.catMaybes
+        [ TF.assign "content_type" <$> TF.attribute _contentType
+        , TF.assign "message_body" <$> TF.attribute _messageBody
+        , TF.assign "status_code" <$> TF.attribute _statusCode
+        ]
+
+instance TF.IsValid (AlbListenerDefaultActionFixedResponseSetting s) where
+    validator = P.mempty
+
+instance P.HasContentType (AlbListenerDefaultActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    contentType =
+        P.lens (_contentType :: AlbListenerDefaultActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _contentType = a } :: AlbListenerDefaultActionFixedResponseSetting s)
+
+instance P.HasMessageBody (AlbListenerDefaultActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    messageBody =
+        P.lens (_messageBody :: AlbListenerDefaultActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _messageBody = a } :: AlbListenerDefaultActionFixedResponseSetting s)
+
+instance P.HasStatusCode (AlbListenerDefaultActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    statusCode =
+        P.lens (_statusCode :: AlbListenerDefaultActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _statusCode = a } :: AlbListenerDefaultActionFixedResponseSetting s)
+
+instance s ~ s' => P.HasComputedStatusCode (TF.Ref s' (AlbListenerDefaultActionFixedResponseSetting s)) (TF.Attr s P.Text) where
+    computedStatusCode x = TF.compute (TF.refKey x) "status_code"
+
 -- | @default_action@ nested settings.
 data AlbListenerDefaultActionSetting s = AlbListenerDefaultActionSetting'
-    { _targetGroupArn :: TF.Attr s P.Text
-    -- ^ @target_group_arn@ - (Required)
+    { _fixedResponse :: TF.Attr s (AlbListenerDefaultActionFixedResponseSetting s)
+    -- ^ @fixed_response@ - (Optional)
     --
-    , _type'          :: TF.Attr s P.Text
+    , _redirect :: TF.Attr s (AlbListenerDefaultActionRedirectSetting s)
+    -- ^ @redirect@ - (Optional)
+    --
+    , _targetGroupArn :: TF.Attr s P.Text
+    -- ^ @target_group_arn@ - (Optional)
+    --
+    , _type' :: TF.Attr s P.Text
     -- ^ @type@ - (Required)
     --
     } deriving (P.Show, P.Eq, P.Ord)
 
 -- | Construct a new @default_action@ settings value.
 newAlbListenerDefaultActionSetting
-    :: TF.Attr s P.Text -- ^ 'P._targetGroupArn': @target_group_arn@
-    -> TF.Attr s P.Text -- ^ 'P._type'': @type@
+    :: TF.Attr s P.Text -- ^ 'P._type'': @type@
     -> AlbListenerDefaultActionSetting s
-newAlbListenerDefaultActionSetting _targetGroupArn _type' =
+newAlbListenerDefaultActionSetting _type' =
     AlbListenerDefaultActionSetting'
-        { _targetGroupArn = _targetGroupArn
+        { _fixedResponse = TF.Nil
+        , _redirect = TF.Nil
+        , _targetGroupArn = TF.Nil
         , _type' = _type'
         }
 
 instance TF.IsValue  (AlbListenerDefaultActionSetting s)
 instance TF.IsObject (AlbListenerDefaultActionSetting s) where
     toObject AlbListenerDefaultActionSetting'{..} = P.catMaybes
-        [ TF.assign "target_group_arn" <$> TF.attribute _targetGroupArn
+        [ TF.assign "fixed_response" <$> TF.attribute _fixedResponse
+        , TF.assign "redirect" <$> TF.attribute _redirect
+        , TF.assign "target_group_arn" <$> TF.attribute _targetGroupArn
         , TF.assign "type" <$> TF.attribute _type'
         ]
 
 instance TF.IsValid (AlbListenerDefaultActionSetting s) where
     validator = P.mempty
+           P.<> TF.settingsValidator "_fixedResponse"
+                  (_fixedResponse
+                      :: AlbListenerDefaultActionSetting s -> TF.Attr s (AlbListenerDefaultActionFixedResponseSetting s))
+                  TF.validator
+           P.<> TF.settingsValidator "_redirect"
+                  (_redirect
+                      :: AlbListenerDefaultActionSetting s -> TF.Attr s (AlbListenerDefaultActionRedirectSetting s))
+                  TF.validator
+
+instance P.HasFixedResponse (AlbListenerDefaultActionSetting s) (TF.Attr s (AlbListenerDefaultActionFixedResponseSetting s)) where
+    fixedResponse =
+        P.lens (_fixedResponse :: AlbListenerDefaultActionSetting s -> TF.Attr s (AlbListenerDefaultActionFixedResponseSetting s))
+               (\s a -> s { _fixedResponse = a } :: AlbListenerDefaultActionSetting s)
+
+instance P.HasRedirect (AlbListenerDefaultActionSetting s) (TF.Attr s (AlbListenerDefaultActionRedirectSetting s)) where
+    redirect =
+        P.lens (_redirect :: AlbListenerDefaultActionSetting s -> TF.Attr s (AlbListenerDefaultActionRedirectSetting s))
+               (\s a -> s { _redirect = a } :: AlbListenerDefaultActionSetting s)
 
 instance P.HasTargetGroupArn (AlbListenerDefaultActionSetting s) (TF.Attr s P.Text) where
     targetGroupArn =
@@ -584,10 +788,149 @@ instance s ~ s' => P.HasComputedTargetGroupArn (TF.Ref s' (AlbListenerDefaultAct
 instance s ~ s' => P.HasComputedType (TF.Ref s' (AlbListenerDefaultActionSetting s)) (TF.Attr s P.Text) where
     computedType x = TF.compute (TF.refKey x) "type"
 
+-- | @redirect@ nested settings.
+data AlbListenerDefaultActionRedirectSetting s = AlbListenerDefaultActionRedirectSetting'
+    { _host       :: TF.Attr s P.Text
+    -- ^ @host@ - (Optional)
+    --
+    , _path       :: TF.Attr s P.Text
+    -- ^ @path@ - (Optional)
+    --
+    , _port       :: TF.Attr s P.Text
+    -- ^ @port@ - (Optional)
+    --
+    , _protocol   :: TF.Attr s P.Text
+    -- ^ @protocol@ - (Optional)
+    --
+    , _query      :: TF.Attr s P.Text
+    -- ^ @query@ - (Optional)
+    --
+    , _statusCode :: TF.Attr s P.Text
+    -- ^ @status_code@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @redirect@ settings value.
+newAlbListenerDefaultActionRedirectSetting
+    :: TF.Attr s P.Text -- ^ 'P._statusCode': @status_code@
+    -> AlbListenerDefaultActionRedirectSetting s
+newAlbListenerDefaultActionRedirectSetting _statusCode =
+    AlbListenerDefaultActionRedirectSetting'
+        { _host = TF.value "#{host}"
+        , _path = TF.value "/#{path}"
+        , _port = TF.value "#{port}"
+        , _protocol = TF.value "#{protocol}"
+        , _query = TF.value "#{query}"
+        , _statusCode = _statusCode
+        }
+
+instance TF.IsValue  (AlbListenerDefaultActionRedirectSetting s)
+instance TF.IsObject (AlbListenerDefaultActionRedirectSetting s) where
+    toObject AlbListenerDefaultActionRedirectSetting'{..} = P.catMaybes
+        [ TF.assign "host" <$> TF.attribute _host
+        , TF.assign "path" <$> TF.attribute _path
+        , TF.assign "port" <$> TF.attribute _port
+        , TF.assign "protocol" <$> TF.attribute _protocol
+        , TF.assign "query" <$> TF.attribute _query
+        , TF.assign "status_code" <$> TF.attribute _statusCode
+        ]
+
+instance TF.IsValid (AlbListenerDefaultActionRedirectSetting s) where
+    validator = P.mempty
+
+instance P.HasHost (AlbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    host =
+        P.lens (_host :: AlbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _host = a } :: AlbListenerDefaultActionRedirectSetting s)
+
+instance P.HasPath (AlbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    path =
+        P.lens (_path :: AlbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _path = a } :: AlbListenerDefaultActionRedirectSetting s)
+
+instance P.HasPort (AlbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    port =
+        P.lens (_port :: AlbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _port = a } :: AlbListenerDefaultActionRedirectSetting s)
+
+instance P.HasProtocol (AlbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    protocol =
+        P.lens (_protocol :: AlbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _protocol = a } :: AlbListenerDefaultActionRedirectSetting s)
+
+instance P.HasQuery (AlbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    query =
+        P.lens (_query :: AlbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _query = a } :: AlbListenerDefaultActionRedirectSetting s)
+
+instance P.HasStatusCode (AlbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    statusCode =
+        P.lens (_statusCode :: AlbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _statusCode = a } :: AlbListenerDefaultActionRedirectSetting s)
+
+-- | @fixed_response@ nested settings.
+data AlbListenerRuleActionFixedResponseSetting s = AlbListenerRuleActionFixedResponseSetting'
+    { _contentType :: TF.Attr s P.Text
+    -- ^ @content_type@ - (Required)
+    --
+    , _messageBody :: TF.Attr s P.Text
+    -- ^ @message_body@ - (Optional)
+    --
+    , _statusCode  :: TF.Attr s P.Text
+    -- ^ @status_code@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @fixed_response@ settings value.
+newAlbListenerRuleActionFixedResponseSetting
+    :: TF.Attr s P.Text -- ^ 'P._contentType': @content_type@
+    -> AlbListenerRuleActionFixedResponseSetting s
+newAlbListenerRuleActionFixedResponseSetting _contentType =
+    AlbListenerRuleActionFixedResponseSetting'
+        { _contentType = _contentType
+        , _messageBody = TF.Nil
+        , _statusCode = TF.Nil
+        }
+
+instance TF.IsValue  (AlbListenerRuleActionFixedResponseSetting s)
+instance TF.IsObject (AlbListenerRuleActionFixedResponseSetting s) where
+    toObject AlbListenerRuleActionFixedResponseSetting'{..} = P.catMaybes
+        [ TF.assign "content_type" <$> TF.attribute _contentType
+        , TF.assign "message_body" <$> TF.attribute _messageBody
+        , TF.assign "status_code" <$> TF.attribute _statusCode
+        ]
+
+instance TF.IsValid (AlbListenerRuleActionFixedResponseSetting s) where
+    validator = P.mempty
+
+instance P.HasContentType (AlbListenerRuleActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    contentType =
+        P.lens (_contentType :: AlbListenerRuleActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _contentType = a } :: AlbListenerRuleActionFixedResponseSetting s)
+
+instance P.HasMessageBody (AlbListenerRuleActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    messageBody =
+        P.lens (_messageBody :: AlbListenerRuleActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _messageBody = a } :: AlbListenerRuleActionFixedResponseSetting s)
+
+instance P.HasStatusCode (AlbListenerRuleActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    statusCode =
+        P.lens (_statusCode :: AlbListenerRuleActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _statusCode = a } :: AlbListenerRuleActionFixedResponseSetting s)
+
+instance s ~ s' => P.HasComputedStatusCode (TF.Ref s' (AlbListenerRuleActionFixedResponseSetting s)) (TF.Attr s P.Text) where
+    computedStatusCode x = TF.compute (TF.refKey x) "status_code"
+
 -- | @action@ nested settings.
 data AlbListenerRuleActionSetting s = AlbListenerRuleActionSetting'
-    { _targetGroupArn :: TF.Attr s P.Text
-    -- ^ @target_group_arn@ - (Required)
+    { _fixedResponse  :: TF.Attr s (AlbListenerRuleActionFixedResponseSetting s)
+    -- ^ @fixed_response@ - (Optional)
+    --
+    , _redirect       :: TF.Attr s (AlbListenerRuleActionRedirectSetting s)
+    -- ^ @redirect@ - (Optional)
+    --
+    , _targetGroupArn :: TF.Attr s P.Text
+    -- ^ @target_group_arn@ - (Optional)
     --
     , _type'          :: TF.Attr s P.Text
     -- ^ @type@ - (Required)
@@ -596,24 +939,45 @@ data AlbListenerRuleActionSetting s = AlbListenerRuleActionSetting'
 
 -- | Construct a new @action@ settings value.
 newAlbListenerRuleActionSetting
-    :: TF.Attr s P.Text -- ^ 'P._targetGroupArn': @target_group_arn@
-    -> TF.Attr s P.Text -- ^ 'P._type'': @type@
+    :: TF.Attr s P.Text -- ^ 'P._type'': @type@
     -> AlbListenerRuleActionSetting s
-newAlbListenerRuleActionSetting _targetGroupArn _type' =
+newAlbListenerRuleActionSetting _type' =
     AlbListenerRuleActionSetting'
-        { _targetGroupArn = _targetGroupArn
+        { _fixedResponse = TF.Nil
+        , _redirect = TF.Nil
+        , _targetGroupArn = TF.Nil
         , _type' = _type'
         }
 
 instance TF.IsValue  (AlbListenerRuleActionSetting s)
 instance TF.IsObject (AlbListenerRuleActionSetting s) where
     toObject AlbListenerRuleActionSetting'{..} = P.catMaybes
-        [ TF.assign "target_group_arn" <$> TF.attribute _targetGroupArn
+        [ TF.assign "fixed_response" <$> TF.attribute _fixedResponse
+        , TF.assign "redirect" <$> TF.attribute _redirect
+        , TF.assign "target_group_arn" <$> TF.attribute _targetGroupArn
         , TF.assign "type" <$> TF.attribute _type'
         ]
 
 instance TF.IsValid (AlbListenerRuleActionSetting s) where
     validator = P.mempty
+           P.<> TF.settingsValidator "_fixedResponse"
+                  (_fixedResponse
+                      :: AlbListenerRuleActionSetting s -> TF.Attr s (AlbListenerRuleActionFixedResponseSetting s))
+                  TF.validator
+           P.<> TF.settingsValidator "_redirect"
+                  (_redirect
+                      :: AlbListenerRuleActionSetting s -> TF.Attr s (AlbListenerRuleActionRedirectSetting s))
+                  TF.validator
+
+instance P.HasFixedResponse (AlbListenerRuleActionSetting s) (TF.Attr s (AlbListenerRuleActionFixedResponseSetting s)) where
+    fixedResponse =
+        P.lens (_fixedResponse :: AlbListenerRuleActionSetting s -> TF.Attr s (AlbListenerRuleActionFixedResponseSetting s))
+               (\s a -> s { _fixedResponse = a } :: AlbListenerRuleActionSetting s)
+
+instance P.HasRedirect (AlbListenerRuleActionSetting s) (TF.Attr s (AlbListenerRuleActionRedirectSetting s)) where
+    redirect =
+        P.lens (_redirect :: AlbListenerRuleActionSetting s -> TF.Attr s (AlbListenerRuleActionRedirectSetting s))
+               (\s a -> s { _redirect = a } :: AlbListenerRuleActionSetting s)
 
 instance P.HasTargetGroupArn (AlbListenerRuleActionSetting s) (TF.Attr s P.Text) where
     targetGroupArn =
@@ -624,6 +988,86 @@ instance P.HasType' (AlbListenerRuleActionSetting s) (TF.Attr s P.Text) where
     type' =
         P.lens (_type' :: AlbListenerRuleActionSetting s -> TF.Attr s P.Text)
                (\s a -> s { _type' = a } :: AlbListenerRuleActionSetting s)
+
+-- | @redirect@ nested settings.
+data AlbListenerRuleActionRedirectSetting s = AlbListenerRuleActionRedirectSetting'
+    { _host       :: TF.Attr s P.Text
+    -- ^ @host@ - (Optional)
+    --
+    , _path       :: TF.Attr s P.Text
+    -- ^ @path@ - (Optional)
+    --
+    , _port       :: TF.Attr s P.Text
+    -- ^ @port@ - (Optional)
+    --
+    , _protocol   :: TF.Attr s P.Text
+    -- ^ @protocol@ - (Optional)
+    --
+    , _query      :: TF.Attr s P.Text
+    -- ^ @query@ - (Optional)
+    --
+    , _statusCode :: TF.Attr s P.Text
+    -- ^ @status_code@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @redirect@ settings value.
+newAlbListenerRuleActionRedirectSetting
+    :: TF.Attr s P.Text -- ^ 'P._statusCode': @status_code@
+    -> AlbListenerRuleActionRedirectSetting s
+newAlbListenerRuleActionRedirectSetting _statusCode =
+    AlbListenerRuleActionRedirectSetting'
+        { _host = TF.value "#{host}"
+        , _path = TF.value "/#{path}"
+        , _port = TF.value "#{port}"
+        , _protocol = TF.value "#{protocol}"
+        , _query = TF.value "#{query}"
+        , _statusCode = _statusCode
+        }
+
+instance TF.IsValue  (AlbListenerRuleActionRedirectSetting s)
+instance TF.IsObject (AlbListenerRuleActionRedirectSetting s) where
+    toObject AlbListenerRuleActionRedirectSetting'{..} = P.catMaybes
+        [ TF.assign "host" <$> TF.attribute _host
+        , TF.assign "path" <$> TF.attribute _path
+        , TF.assign "port" <$> TF.attribute _port
+        , TF.assign "protocol" <$> TF.attribute _protocol
+        , TF.assign "query" <$> TF.attribute _query
+        , TF.assign "status_code" <$> TF.attribute _statusCode
+        ]
+
+instance TF.IsValid (AlbListenerRuleActionRedirectSetting s) where
+    validator = P.mempty
+
+instance P.HasHost (AlbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    host =
+        P.lens (_host :: AlbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _host = a } :: AlbListenerRuleActionRedirectSetting s)
+
+instance P.HasPath (AlbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    path =
+        P.lens (_path :: AlbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _path = a } :: AlbListenerRuleActionRedirectSetting s)
+
+instance P.HasPort (AlbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    port =
+        P.lens (_port :: AlbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _port = a } :: AlbListenerRuleActionRedirectSetting s)
+
+instance P.HasProtocol (AlbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    protocol =
+        P.lens (_protocol :: AlbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _protocol = a } :: AlbListenerRuleActionRedirectSetting s)
+
+instance P.HasQuery (AlbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    query =
+        P.lens (_query :: AlbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _query = a } :: AlbListenerRuleActionRedirectSetting s)
+
+instance P.HasStatusCode (AlbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    statusCode =
+        P.lens (_statusCode :: AlbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _statusCode = a } :: AlbListenerRuleActionRedirectSetting s)
 
 -- | @condition@ nested settings.
 data AlbListenerRuleConditionSetting s = AlbListenerRuleConditionSetting'
@@ -1398,3 +1842,1538 @@ instance P.HasTypes (ApiGatewayDomainNameEndpointConfigurationSetting s) (TF.Att
     types =
         P.lens (_types :: ApiGatewayDomainNameEndpointConfigurationSetting s -> TF.Attr s P.Text)
                (\s a -> s { _types = a } :: ApiGatewayDomainNameEndpointConfigurationSetting s)
+
+-- | @settings@ nested settings.
+data ApiGatewayMethodSettingsSettingsSetting s = ApiGatewayMethodSettingsSettingsSetting'
+    { _cacheDataEncrypted                     :: TF.Attr s P.Bool
+    -- ^ @cache_data_encrypted@ - (Optional)
+    --
+    , _cacheTtlInSeconds                      :: TF.Attr s P.Int
+    -- ^ @cache_ttl_in_seconds@ - (Optional)
+    --
+    , _cachingEnabled                         :: TF.Attr s P.Bool
+    -- ^ @caching_enabled@ - (Optional)
+    --
+    , _dataTraceEnabled                       :: TF.Attr s P.Bool
+    -- ^ @data_trace_enabled@ - (Optional)
+    --
+    , _loggingLevel                           :: TF.Attr s P.Text
+    -- ^ @logging_level@ - (Optional)
+    --
+    , _metricsEnabled                         :: TF.Attr s P.Bool
+    -- ^ @metrics_enabled@ - (Optional)
+    --
+    , _requireAuthorizationForCacheControl    :: TF.Attr s P.Bool
+    -- ^ @require_authorization_for_cache_control@ - (Optional)
+    --
+    , _throttlingBurstLimit                   :: TF.Attr s P.Int
+    -- ^ @throttling_burst_limit@ - (Optional)
+    --
+    , _throttlingRateLimit                    :: TF.Attr s P.Double
+    -- ^ @throttling_rate_limit@ - (Optional)
+    --
+    , _unauthorizedCacheControlHeaderStrategy :: TF.Attr s P.Text
+    -- ^ @unauthorized_cache_control_header_strategy@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @settings@ settings value.
+newApiGatewayMethodSettingsSettingsSetting
+    :: ApiGatewayMethodSettingsSettingsSetting s
+newApiGatewayMethodSettingsSettingsSetting =
+    ApiGatewayMethodSettingsSettingsSetting'
+        { _cacheDataEncrypted = TF.Nil
+        , _cacheTtlInSeconds = TF.Nil
+        , _cachingEnabled = TF.Nil
+        , _dataTraceEnabled = TF.Nil
+        , _loggingLevel = TF.Nil
+        , _metricsEnabled = TF.Nil
+        , _requireAuthorizationForCacheControl = TF.Nil
+        , _throttlingBurstLimit = TF.Nil
+        , _throttlingRateLimit = TF.Nil
+        , _unauthorizedCacheControlHeaderStrategy = TF.Nil
+        }
+
+instance TF.IsValue  (ApiGatewayMethodSettingsSettingsSetting s)
+instance TF.IsObject (ApiGatewayMethodSettingsSettingsSetting s) where
+    toObject ApiGatewayMethodSettingsSettingsSetting'{..} = P.catMaybes
+        [ TF.assign "cache_data_encrypted" <$> TF.attribute _cacheDataEncrypted
+        , TF.assign "cache_ttl_in_seconds" <$> TF.attribute _cacheTtlInSeconds
+        , TF.assign "caching_enabled" <$> TF.attribute _cachingEnabled
+        , TF.assign "data_trace_enabled" <$> TF.attribute _dataTraceEnabled
+        , TF.assign "logging_level" <$> TF.attribute _loggingLevel
+        , TF.assign "metrics_enabled" <$> TF.attribute _metricsEnabled
+        , TF.assign "require_authorization_for_cache_control" <$> TF.attribute _requireAuthorizationForCacheControl
+        , TF.assign "throttling_burst_limit" <$> TF.attribute _throttlingBurstLimit
+        , TF.assign "throttling_rate_limit" <$> TF.attribute _throttlingRateLimit
+        , TF.assign "unauthorized_cache_control_header_strategy" <$> TF.attribute _unauthorizedCacheControlHeaderStrategy
+        ]
+
+instance TF.IsValid (ApiGatewayMethodSettingsSettingsSetting s) where
+    validator = P.mempty
+
+instance P.HasCacheDataEncrypted (ApiGatewayMethodSettingsSettingsSetting s) (TF.Attr s P.Bool) where
+    cacheDataEncrypted =
+        P.lens (_cacheDataEncrypted :: ApiGatewayMethodSettingsSettingsSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _cacheDataEncrypted = a } :: ApiGatewayMethodSettingsSettingsSetting s)
+
+instance P.HasCacheTtlInSeconds (ApiGatewayMethodSettingsSettingsSetting s) (TF.Attr s P.Int) where
+    cacheTtlInSeconds =
+        P.lens (_cacheTtlInSeconds :: ApiGatewayMethodSettingsSettingsSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _cacheTtlInSeconds = a } :: ApiGatewayMethodSettingsSettingsSetting s)
+
+instance P.HasCachingEnabled (ApiGatewayMethodSettingsSettingsSetting s) (TF.Attr s P.Bool) where
+    cachingEnabled =
+        P.lens (_cachingEnabled :: ApiGatewayMethodSettingsSettingsSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _cachingEnabled = a } :: ApiGatewayMethodSettingsSettingsSetting s)
+
+instance P.HasDataTraceEnabled (ApiGatewayMethodSettingsSettingsSetting s) (TF.Attr s P.Bool) where
+    dataTraceEnabled =
+        P.lens (_dataTraceEnabled :: ApiGatewayMethodSettingsSettingsSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _dataTraceEnabled = a } :: ApiGatewayMethodSettingsSettingsSetting s)
+
+instance P.HasLoggingLevel (ApiGatewayMethodSettingsSettingsSetting s) (TF.Attr s P.Text) where
+    loggingLevel =
+        P.lens (_loggingLevel :: ApiGatewayMethodSettingsSettingsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _loggingLevel = a } :: ApiGatewayMethodSettingsSettingsSetting s)
+
+instance P.HasMetricsEnabled (ApiGatewayMethodSettingsSettingsSetting s) (TF.Attr s P.Bool) where
+    metricsEnabled =
+        P.lens (_metricsEnabled :: ApiGatewayMethodSettingsSettingsSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _metricsEnabled = a } :: ApiGatewayMethodSettingsSettingsSetting s)
+
+instance P.HasRequireAuthorizationForCacheControl (ApiGatewayMethodSettingsSettingsSetting s) (TF.Attr s P.Bool) where
+    requireAuthorizationForCacheControl =
+        P.lens (_requireAuthorizationForCacheControl :: ApiGatewayMethodSettingsSettingsSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _requireAuthorizationForCacheControl = a } :: ApiGatewayMethodSettingsSettingsSetting s)
+
+instance P.HasThrottlingBurstLimit (ApiGatewayMethodSettingsSettingsSetting s) (TF.Attr s P.Int) where
+    throttlingBurstLimit =
+        P.lens (_throttlingBurstLimit :: ApiGatewayMethodSettingsSettingsSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _throttlingBurstLimit = a } :: ApiGatewayMethodSettingsSettingsSetting s)
+
+instance P.HasThrottlingRateLimit (ApiGatewayMethodSettingsSettingsSetting s) (TF.Attr s P.Double) where
+    throttlingRateLimit =
+        P.lens (_throttlingRateLimit :: ApiGatewayMethodSettingsSettingsSetting s -> TF.Attr s P.Double)
+               (\s a -> s { _throttlingRateLimit = a } :: ApiGatewayMethodSettingsSettingsSetting s)
+
+instance P.HasUnauthorizedCacheControlHeaderStrategy (ApiGatewayMethodSettingsSettingsSetting s) (TF.Attr s P.Text) where
+    unauthorizedCacheControlHeaderStrategy =
+        P.lens (_unauthorizedCacheControlHeaderStrategy :: ApiGatewayMethodSettingsSettingsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _unauthorizedCacheControlHeaderStrategy = a } :: ApiGatewayMethodSettingsSettingsSetting s)
+
+-- | @endpoint_configuration@ nested settings.
+data ApiGatewayRestApiEndpointConfigurationSetting s = ApiGatewayRestApiEndpointConfigurationSetting'
+    { _types :: TF.Attr s P.Text
+    -- ^ @types@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @endpoint_configuration@ settings value.
+newApiGatewayRestApiEndpointConfigurationSetting
+    :: TF.Attr s P.Text -- ^ 'P._types': @types@
+    -> ApiGatewayRestApiEndpointConfigurationSetting s
+newApiGatewayRestApiEndpointConfigurationSetting _types =
+    ApiGatewayRestApiEndpointConfigurationSetting'
+        { _types = _types
+        }
+
+instance TF.IsValue  (ApiGatewayRestApiEndpointConfigurationSetting s)
+instance TF.IsObject (ApiGatewayRestApiEndpointConfigurationSetting s) where
+    toObject ApiGatewayRestApiEndpointConfigurationSetting'{..} = P.catMaybes
+        [ TF.assign "types" <$> TF.attribute _types
+        ]
+
+instance TF.IsValid (ApiGatewayRestApiEndpointConfigurationSetting s) where
+    validator = P.mempty
+
+instance P.HasTypes (ApiGatewayRestApiEndpointConfigurationSetting s) (TF.Attr s P.Text) where
+    types =
+        P.lens (_types :: ApiGatewayRestApiEndpointConfigurationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _types = a } :: ApiGatewayRestApiEndpointConfigurationSetting s)
+
+-- | @access_log_settings@ nested settings.
+data ApiGatewayStageAccessLogSettingsSetting s = ApiGatewayStageAccessLogSettingsSetting'
+    { _destinationArn :: TF.Attr s P.Text
+    -- ^ @destination_arn@ - (Required)
+    --
+    , _format         :: TF.Attr s P.Text
+    -- ^ @format@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @access_log_settings@ settings value.
+newApiGatewayStageAccessLogSettingsSetting
+    :: TF.Attr s P.Text -- ^ 'P._destinationArn': @destination_arn@
+    -> TF.Attr s P.Text -- ^ 'P._format': @format@
+    -> ApiGatewayStageAccessLogSettingsSetting s
+newApiGatewayStageAccessLogSettingsSetting _destinationArn _format =
+    ApiGatewayStageAccessLogSettingsSetting'
+        { _destinationArn = _destinationArn
+        , _format = _format
+        }
+
+instance TF.IsValue  (ApiGatewayStageAccessLogSettingsSetting s)
+instance TF.IsObject (ApiGatewayStageAccessLogSettingsSetting s) where
+    toObject ApiGatewayStageAccessLogSettingsSetting'{..} = P.catMaybes
+        [ TF.assign "destination_arn" <$> TF.attribute _destinationArn
+        , TF.assign "format" <$> TF.attribute _format
+        ]
+
+instance TF.IsValid (ApiGatewayStageAccessLogSettingsSetting s) where
+    validator = P.mempty
+
+instance P.HasDestinationArn (ApiGatewayStageAccessLogSettingsSetting s) (TF.Attr s P.Text) where
+    destinationArn =
+        P.lens (_destinationArn :: ApiGatewayStageAccessLogSettingsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _destinationArn = a } :: ApiGatewayStageAccessLogSettingsSetting s)
+
+instance P.HasFormat (ApiGatewayStageAccessLogSettingsSetting s) (TF.Attr s P.Text) where
+    format =
+        P.lens (_format :: ApiGatewayStageAccessLogSettingsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _format = a } :: ApiGatewayStageAccessLogSettingsSetting s)
+
+-- | @api_stages@ nested settings.
+data ApiGatewayUsagePlanApiStagesSetting s = ApiGatewayUsagePlanApiStagesSetting'
+    { _apiId :: TF.Attr s P.Text
+    -- ^ @api_id@ - (Required)
+    --
+    , _stage :: TF.Attr s P.Text
+    -- ^ @stage@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @api_stages@ settings value.
+newApiGatewayUsagePlanApiStagesSetting
+    :: TF.Attr s P.Text -- ^ 'P._apiId': @api_id@
+    -> TF.Attr s P.Text -- ^ 'P._stage': @stage@
+    -> ApiGatewayUsagePlanApiStagesSetting s
+newApiGatewayUsagePlanApiStagesSetting _apiId _stage =
+    ApiGatewayUsagePlanApiStagesSetting'
+        { _apiId = _apiId
+        , _stage = _stage
+        }
+
+instance TF.IsValue  (ApiGatewayUsagePlanApiStagesSetting s)
+instance TF.IsObject (ApiGatewayUsagePlanApiStagesSetting s) where
+    toObject ApiGatewayUsagePlanApiStagesSetting'{..} = P.catMaybes
+        [ TF.assign "api_id" <$> TF.attribute _apiId
+        , TF.assign "stage" <$> TF.attribute _stage
+        ]
+
+instance TF.IsValid (ApiGatewayUsagePlanApiStagesSetting s) where
+    validator = P.mempty
+
+instance P.HasApiId (ApiGatewayUsagePlanApiStagesSetting s) (TF.Attr s P.Text) where
+    apiId =
+        P.lens (_apiId :: ApiGatewayUsagePlanApiStagesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _apiId = a } :: ApiGatewayUsagePlanApiStagesSetting s)
+
+instance P.HasStage (ApiGatewayUsagePlanApiStagesSetting s) (TF.Attr s P.Text) where
+    stage =
+        P.lens (_stage :: ApiGatewayUsagePlanApiStagesSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _stage = a } :: ApiGatewayUsagePlanApiStagesSetting s)
+
+-- | @quota_settings@ nested settings.
+data ApiGatewayUsagePlanQuotaSettingsSetting s = ApiGatewayUsagePlanQuotaSettingsSetting'
+    { _limit  :: TF.Attr s P.Int
+    -- ^ @limit@ - (Required)
+    --
+    , _offset :: TF.Attr s P.Int
+    -- ^ @offset@ - (Optional)
+    --
+    , _period :: TF.Attr s P.Text
+    -- ^ @period@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @quota_settings@ settings value.
+newApiGatewayUsagePlanQuotaSettingsSetting
+    :: TF.Attr s P.Int -- ^ 'P._limit': @limit@
+    -> TF.Attr s P.Text -- ^ 'P._period': @period@
+    -> ApiGatewayUsagePlanQuotaSettingsSetting s
+newApiGatewayUsagePlanQuotaSettingsSetting _limit _period =
+    ApiGatewayUsagePlanQuotaSettingsSetting'
+        { _limit = _limit
+        , _offset = TF.value 0
+        , _period = _period
+        }
+
+instance TF.IsValue  (ApiGatewayUsagePlanQuotaSettingsSetting s)
+instance TF.IsObject (ApiGatewayUsagePlanQuotaSettingsSetting s) where
+    toObject ApiGatewayUsagePlanQuotaSettingsSetting'{..} = P.catMaybes
+        [ TF.assign "limit" <$> TF.attribute _limit
+        , TF.assign "offset" <$> TF.attribute _offset
+        , TF.assign "period" <$> TF.attribute _period
+        ]
+
+instance TF.IsValid (ApiGatewayUsagePlanQuotaSettingsSetting s) where
+    validator = P.mempty
+
+instance P.HasLimit (ApiGatewayUsagePlanQuotaSettingsSetting s) (TF.Attr s P.Int) where
+    limit =
+        P.lens (_limit :: ApiGatewayUsagePlanQuotaSettingsSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _limit = a } :: ApiGatewayUsagePlanQuotaSettingsSetting s)
+
+instance P.HasOffset (ApiGatewayUsagePlanQuotaSettingsSetting s) (TF.Attr s P.Int) where
+    offset =
+        P.lens (_offset :: ApiGatewayUsagePlanQuotaSettingsSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _offset = a } :: ApiGatewayUsagePlanQuotaSettingsSetting s)
+
+instance P.HasPeriod (ApiGatewayUsagePlanQuotaSettingsSetting s) (TF.Attr s P.Text) where
+    period =
+        P.lens (_period :: ApiGatewayUsagePlanQuotaSettingsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _period = a } :: ApiGatewayUsagePlanQuotaSettingsSetting s)
+
+-- | @throttle_settings@ nested settings.
+data ApiGatewayUsagePlanThrottleSettingsSetting s = ApiGatewayUsagePlanThrottleSettingsSetting'
+    { _burstLimit :: TF.Attr s P.Int
+    -- ^ @burst_limit@ - (Optional)
+    --
+    , _rateLimit  :: TF.Attr s P.Double
+    -- ^ @rate_limit@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @throttle_settings@ settings value.
+newApiGatewayUsagePlanThrottleSettingsSetting
+    :: ApiGatewayUsagePlanThrottleSettingsSetting s
+newApiGatewayUsagePlanThrottleSettingsSetting =
+    ApiGatewayUsagePlanThrottleSettingsSetting'
+        { _burstLimit = TF.value 0
+        , _rateLimit = TF.value 0.0
+        }
+
+instance TF.IsValue  (ApiGatewayUsagePlanThrottleSettingsSetting s)
+instance TF.IsObject (ApiGatewayUsagePlanThrottleSettingsSetting s) where
+    toObject ApiGatewayUsagePlanThrottleSettingsSetting'{..} = P.catMaybes
+        [ TF.assign "burst_limit" <$> TF.attribute _burstLimit
+        , TF.assign "rate_limit" <$> TF.attribute _rateLimit
+        ]
+
+instance TF.IsValid (ApiGatewayUsagePlanThrottleSettingsSetting s) where
+    validator = P.mempty
+
+instance P.HasBurstLimit (ApiGatewayUsagePlanThrottleSettingsSetting s) (TF.Attr s P.Int) where
+    burstLimit =
+        P.lens (_burstLimit :: ApiGatewayUsagePlanThrottleSettingsSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _burstLimit = a } :: ApiGatewayUsagePlanThrottleSettingsSetting s)
+
+instance P.HasRateLimit (ApiGatewayUsagePlanThrottleSettingsSetting s) (TF.Attr s P.Double) where
+    rateLimit =
+        P.lens (_rateLimit :: ApiGatewayUsagePlanThrottleSettingsSetting s -> TF.Attr s P.Double)
+               (\s a -> s { _rateLimit = a } :: ApiGatewayUsagePlanThrottleSettingsSetting s)
+
+-- | @step_scaling_policy_configuration@ nested settings.
+data AppautoscalingPolicyStepScalingPolicyConfigurationSetting s = AppautoscalingPolicyStepScalingPolicyConfigurationSetting'
+    { _adjustmentType :: TF.Attr s P.Text
+    -- ^ @adjustment_type@ - (Optional)
+    --
+    , _cooldown :: TF.Attr s P.Int
+    -- ^ @cooldown@ - (Optional)
+    --
+    , _metricAggregationType :: TF.Attr s P.Text
+    -- ^ @metric_aggregation_type@ - (Optional)
+    --
+    , _minAdjustmentMagnitude :: TF.Attr s P.Int
+    -- ^ @min_adjustment_magnitude@ - (Optional)
+    --
+    , _stepAdjustment :: TF.Attr s [TF.Attr s (AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s)]
+    -- ^ @step_adjustment@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @step_scaling_policy_configuration@ settings value.
+newAppautoscalingPolicyStepScalingPolicyConfigurationSetting
+    :: AppautoscalingPolicyStepScalingPolicyConfigurationSetting s
+newAppautoscalingPolicyStepScalingPolicyConfigurationSetting =
+    AppautoscalingPolicyStepScalingPolicyConfigurationSetting'
+        { _adjustmentType = TF.Nil
+        , _cooldown = TF.Nil
+        , _metricAggregationType = TF.Nil
+        , _minAdjustmentMagnitude = TF.Nil
+        , _stepAdjustment = TF.Nil
+        }
+
+instance TF.IsValue  (AppautoscalingPolicyStepScalingPolicyConfigurationSetting s)
+instance TF.IsObject (AppautoscalingPolicyStepScalingPolicyConfigurationSetting s) where
+    toObject AppautoscalingPolicyStepScalingPolicyConfigurationSetting'{..} = P.catMaybes
+        [ TF.assign "adjustment_type" <$> TF.attribute _adjustmentType
+        , TF.assign "cooldown" <$> TF.attribute _cooldown
+        , TF.assign "metric_aggregation_type" <$> TF.attribute _metricAggregationType
+        , TF.assign "min_adjustment_magnitude" <$> TF.attribute _minAdjustmentMagnitude
+        , TF.assign "step_adjustment" <$> TF.attribute _stepAdjustment
+        ]
+
+instance TF.IsValid (AppautoscalingPolicyStepScalingPolicyConfigurationSetting s) where
+    validator = P.mempty
+
+instance P.HasAdjustmentType (AppautoscalingPolicyStepScalingPolicyConfigurationSetting s) (TF.Attr s P.Text) where
+    adjustmentType =
+        P.lens (_adjustmentType :: AppautoscalingPolicyStepScalingPolicyConfigurationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _adjustmentType = a } :: AppautoscalingPolicyStepScalingPolicyConfigurationSetting s)
+
+instance P.HasCooldown (AppautoscalingPolicyStepScalingPolicyConfigurationSetting s) (TF.Attr s P.Int) where
+    cooldown =
+        P.lens (_cooldown :: AppautoscalingPolicyStepScalingPolicyConfigurationSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _cooldown = a } :: AppautoscalingPolicyStepScalingPolicyConfigurationSetting s)
+
+instance P.HasMetricAggregationType (AppautoscalingPolicyStepScalingPolicyConfigurationSetting s) (TF.Attr s P.Text) where
+    metricAggregationType =
+        P.lens (_metricAggregationType :: AppautoscalingPolicyStepScalingPolicyConfigurationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _metricAggregationType = a } :: AppautoscalingPolicyStepScalingPolicyConfigurationSetting s)
+
+instance P.HasMinAdjustmentMagnitude (AppautoscalingPolicyStepScalingPolicyConfigurationSetting s) (TF.Attr s P.Int) where
+    minAdjustmentMagnitude =
+        P.lens (_minAdjustmentMagnitude :: AppautoscalingPolicyStepScalingPolicyConfigurationSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _minAdjustmentMagnitude = a } :: AppautoscalingPolicyStepScalingPolicyConfigurationSetting s)
+
+instance P.HasStepAdjustment (AppautoscalingPolicyStepScalingPolicyConfigurationSetting s) (TF.Attr s [TF.Attr s (AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s)]) where
+    stepAdjustment =
+        P.lens (_stepAdjustment :: AppautoscalingPolicyStepScalingPolicyConfigurationSetting s -> TF.Attr s [TF.Attr s (AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s)])
+               (\s a -> s { _stepAdjustment = a } :: AppautoscalingPolicyStepScalingPolicyConfigurationSetting s)
+
+-- | @step_adjustment@ nested settings.
+data AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s = AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting'
+    { _metricIntervalLowerBound :: TF.Attr s P.Double
+    -- ^ @metric_interval_lower_bound@ - (Optional)
+    --
+    , _metricIntervalUpperBound :: TF.Attr s P.Double
+    -- ^ @metric_interval_upper_bound@ - (Optional)
+    --
+    , _scalingAdjustment        :: TF.Attr s P.Int
+    -- ^ @scaling_adjustment@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @step_adjustment@ settings value.
+newAppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting
+    :: TF.Attr s P.Int -- ^ 'P._scalingAdjustment': @scaling_adjustment@
+    -> AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s
+newAppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting _scalingAdjustment =
+    AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting'
+        { _metricIntervalLowerBound = TF.value (-1.0)
+        , _metricIntervalUpperBound = TF.value (-1.0)
+        , _scalingAdjustment = _scalingAdjustment
+        }
+
+instance TF.IsValue  (AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s)
+instance TF.IsObject (AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s) where
+    toObject AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting'{..} = P.catMaybes
+        [ TF.assign "metric_interval_lower_bound" <$> TF.attribute _metricIntervalLowerBound
+        , TF.assign "metric_interval_upper_bound" <$> TF.attribute _metricIntervalUpperBound
+        , TF.assign "scaling_adjustment" <$> TF.attribute _scalingAdjustment
+        ]
+
+instance TF.IsValid (AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s) where
+    validator = P.mempty
+
+instance P.HasMetricIntervalLowerBound (AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s) (TF.Attr s P.Double) where
+    metricIntervalLowerBound =
+        P.lens (_metricIntervalLowerBound :: AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s -> TF.Attr s P.Double)
+               (\s a -> s { _metricIntervalLowerBound = a } :: AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s)
+
+instance P.HasMetricIntervalUpperBound (AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s) (TF.Attr s P.Double) where
+    metricIntervalUpperBound =
+        P.lens (_metricIntervalUpperBound :: AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s -> TF.Attr s P.Double)
+               (\s a -> s { _metricIntervalUpperBound = a } :: AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s)
+
+instance P.HasScalingAdjustment (AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s) (TF.Attr s P.Int) where
+    scalingAdjustment =
+        P.lens (_scalingAdjustment :: AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _scalingAdjustment = a } :: AppautoscalingPolicyStepScalingPolicyConfigurationStepAdjustmentSetting s)
+
+-- | @dimensions@ nested settings.
+data AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s = AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting'
+    { _name  :: TF.Attr s P.Text
+    -- ^ @name@ - (Required)
+    --
+    , _value :: TF.Attr s P.Text
+    -- ^ @value@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @dimensions@ settings value.
+newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting
+    :: TF.Attr s P.Text -- ^ 'P._name': @name@
+    -> TF.Attr s P.Text -- ^ 'P._value': @value@
+    -> AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s
+newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting _name _value =
+    AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting'
+        { _name = _name
+        , _value = _value
+        }
+
+instance TF.IsValue  (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s)
+instance TF.IsObject (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s) where
+    toObject AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting'{..} = P.catMaybes
+        [ TF.assign "name" <$> TF.attribute _name
+        , TF.assign "value" <$> TF.attribute _value
+        ]
+
+instance TF.IsValid (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s) where
+    validator = P.mempty
+
+instance P.HasName (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s) (TF.Attr s P.Text) where
+    name =
+        P.lens (_name :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _name = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s)
+
+instance P.HasValue (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s) (TF.Attr s P.Text) where
+    value =
+        P.lens (_value :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _value = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s)
+
+-- | @customized_metric_specification@ nested settings.
+data AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s = AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting'
+    { _dimensions :: TF.Attr s [TF.Attr s (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s)]
+    -- ^ @dimensions@ - (Optional)
+    --
+    , _metricName :: TF.Attr s P.Text
+    -- ^ @metric_name@ - (Required)
+    --
+    , _namespace :: TF.Attr s P.Text
+    -- ^ @namespace@ - (Required)
+    --
+    , _statistic :: TF.Attr s P.Text
+    -- ^ @statistic@ - (Required)
+    --
+    , _unit :: TF.Attr s P.Text
+    -- ^ @unit@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @customized_metric_specification@ settings value.
+newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting
+    :: TF.Attr s P.Text -- ^ 'P._metricName': @metric_name@
+    -> TF.Attr s P.Text -- ^ 'P._namespace': @namespace@
+    -> TF.Attr s P.Text -- ^ 'P._statistic': @statistic@
+    -> AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s
+newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting _metricName _namespace _statistic =
+    AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting'
+        { _dimensions = TF.Nil
+        , _metricName = _metricName
+        , _namespace = _namespace
+        , _statistic = _statistic
+        , _unit = TF.Nil
+        }
+
+instance TF.IsValue  (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s)
+instance TF.IsObject (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s) where
+    toObject AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting'{..} = P.catMaybes
+        [ TF.assign "dimensions" <$> TF.attribute _dimensions
+        , TF.assign "metric_name" <$> TF.attribute _metricName
+        , TF.assign "namespace" <$> TF.attribute _namespace
+        , TF.assign "statistic" <$> TF.attribute _statistic
+        , TF.assign "unit" <$> TF.attribute _unit
+        ]
+
+instance TF.IsValid (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s) where
+    validator = P.mempty
+
+instance P.HasDimensions (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s) (TF.Attr s [TF.Attr s (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s)]) where
+    dimensions =
+        P.lens (_dimensions :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s -> TF.Attr s [TF.Attr s (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationDimensionsSetting s)])
+               (\s a -> s { _dimensions = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s)
+
+instance P.HasMetricName (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    metricName =
+        P.lens (_metricName :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _metricName = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s)
+
+instance P.HasNamespace (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    namespace =
+        P.lens (_namespace :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _namespace = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s)
+
+instance P.HasStatistic (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    statistic =
+        P.lens (_statistic :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _statistic = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s)
+
+instance P.HasUnit (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    unit =
+        P.lens (_unit :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _unit = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s)
+
+-- | @target_tracking_scaling_policy_configuration@ nested settings.
+data AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s = AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting'
+    { _customizedMetricSpecification :: TF.Attr s (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s)
+    -- ^ @customized_metric_specification@ - (Optional)
+    --
+    -- Conflicts with:
+    --
+    -- * 'predefinedMetricSpecification'
+    , _disableScaleIn :: TF.Attr s P.Bool
+    -- ^ @disable_scale_in@ - (Optional)
+    --
+    , _predefinedMetricSpecification :: TF.Attr s (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s)
+    -- ^ @predefined_metric_specification@ - (Optional)
+    --
+    -- Conflicts with:
+    --
+    -- * 'customizedMetricSpecification'
+    , _scaleInCooldown :: TF.Attr s P.Int
+    -- ^ @scale_in_cooldown@ - (Optional)
+    --
+    , _scaleOutCooldown :: TF.Attr s P.Int
+    -- ^ @scale_out_cooldown@ - (Optional)
+    --
+    , _targetValue :: TF.Attr s P.Double
+    -- ^ @target_value@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @target_tracking_scaling_policy_configuration@ settings value.
+newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting
+    :: TF.Attr s P.Double -- ^ 'P._targetValue': @target_value@
+    -> AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s
+newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting _targetValue =
+    AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting'
+        { _customizedMetricSpecification = TF.Nil
+        , _disableScaleIn = TF.value P.False
+        , _predefinedMetricSpecification = TF.Nil
+        , _scaleInCooldown = TF.Nil
+        , _scaleOutCooldown = TF.Nil
+        , _targetValue = _targetValue
+        }
+
+instance TF.IsValue  (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s)
+instance TF.IsObject (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s) where
+    toObject AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting'{..} = P.catMaybes
+        [ TF.assign "customized_metric_specification" <$> TF.attribute _customizedMetricSpecification
+        , TF.assign "disable_scale_in" <$> TF.attribute _disableScaleIn
+        , TF.assign "predefined_metric_specification" <$> TF.attribute _predefinedMetricSpecification
+        , TF.assign "scale_in_cooldown" <$> TF.attribute _scaleInCooldown
+        , TF.assign "scale_out_cooldown" <$> TF.attribute _scaleOutCooldown
+        , TF.assign "target_value" <$> TF.attribute _targetValue
+        ]
+
+instance TF.IsValid (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s) where
+    validator = TF.fieldsValidator (\AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting'{..} -> Map.fromList $ P.catMaybes
+        [ if (_customizedMetricSpecification P.== TF.Nil)
+              then P.Nothing
+              else P.Just ("_customizedMetricSpecification",
+                            [ "_predefinedMetricSpecification"
+                            ])
+        , if (_predefinedMetricSpecification P.== TF.Nil)
+              then P.Nothing
+              else P.Just ("_predefinedMetricSpecification",
+                            [ "_customizedMetricSpecification"
+                            ])
+        ])
+           P.<> TF.settingsValidator "_customizedMetricSpecification"
+                  (_customizedMetricSpecification
+                      :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s -> TF.Attr s (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s))
+                  TF.validator
+           P.<> TF.settingsValidator "_predefinedMetricSpecification"
+                  (_predefinedMetricSpecification
+                      :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s -> TF.Attr s (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s))
+                  TF.validator
+
+instance P.HasCustomizedMetricSpecification (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s) (TF.Attr s (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s)) where
+    customizedMetricSpecification =
+        P.lens (_customizedMetricSpecification :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s -> TF.Attr s (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationSetting s))
+               (\s a -> s { _customizedMetricSpecification = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s)
+
+instance P.HasDisableScaleIn (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s) (TF.Attr s P.Bool) where
+    disableScaleIn =
+        P.lens (_disableScaleIn :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _disableScaleIn = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s)
+
+instance P.HasPredefinedMetricSpecification (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s) (TF.Attr s (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s)) where
+    predefinedMetricSpecification =
+        P.lens (_predefinedMetricSpecification :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s -> TF.Attr s (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s))
+               (\s a -> s { _predefinedMetricSpecification = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s)
+
+instance P.HasScaleInCooldown (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s) (TF.Attr s P.Int) where
+    scaleInCooldown =
+        P.lens (_scaleInCooldown :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _scaleInCooldown = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s)
+
+instance P.HasScaleOutCooldown (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s) (TF.Attr s P.Int) where
+    scaleOutCooldown =
+        P.lens (_scaleOutCooldown :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _scaleOutCooldown = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s)
+
+instance P.HasTargetValue (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s) (TF.Attr s P.Double) where
+    targetValue =
+        P.lens (_targetValue :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s -> TF.Attr s P.Double)
+               (\s a -> s { _targetValue = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationSetting s)
+
+-- | @predefined_metric_specification@ nested settings.
+data AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s = AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting'
+    { _predefinedMetricType :: TF.Attr s P.Text
+    -- ^ @predefined_metric_type@ - (Required)
+    --
+    , _resourceLabel        :: TF.Attr s P.Text
+    -- ^ @resource_label@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @predefined_metric_specification@ settings value.
+newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting
+    :: TF.Attr s P.Text -- ^ 'P._predefinedMetricType': @predefined_metric_type@
+    -> AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s
+newAppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting _predefinedMetricType =
+    AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting'
+        { _predefinedMetricType = _predefinedMetricType
+        , _resourceLabel = TF.Nil
+        }
+
+instance TF.IsValue  (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s)
+instance TF.IsObject (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s) where
+    toObject AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting'{..} = P.catMaybes
+        [ TF.assign "predefined_metric_type" <$> TF.attribute _predefinedMetricType
+        , TF.assign "resource_label" <$> TF.attribute _resourceLabel
+        ]
+
+instance TF.IsValid (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s) where
+    validator = P.mempty
+
+instance P.HasPredefinedMetricType (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    predefinedMetricType =
+        P.lens (_predefinedMetricType :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _predefinedMetricType = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s)
+
+instance P.HasResourceLabel (AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    resourceLabel =
+        P.lens (_resourceLabel :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _resourceLabel = a } :: AppautoscalingPolicyTargetTrackingScalingPolicyConfigurationPredefinedMetricSpecificationSetting s)
+
+-- | @scalable_target_action@ nested settings.
+data AppautoscalingScheduledActionScalableTargetActionSetting s = AppautoscalingScheduledActionScalableTargetActionSetting'
+    { _maxCapacity :: TF.Attr s P.Int
+    -- ^ @max_capacity@ - (Optional, Forces New)
+    --
+    , _minCapacity :: TF.Attr s P.Int
+    -- ^ @min_capacity@ - (Optional, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @scalable_target_action@ settings value.
+newAppautoscalingScheduledActionScalableTargetActionSetting
+    :: AppautoscalingScheduledActionScalableTargetActionSetting s
+newAppautoscalingScheduledActionScalableTargetActionSetting =
+    AppautoscalingScheduledActionScalableTargetActionSetting'
+        { _maxCapacity = TF.Nil
+        , _minCapacity = TF.Nil
+        }
+
+instance TF.IsValue  (AppautoscalingScheduledActionScalableTargetActionSetting s)
+instance TF.IsObject (AppautoscalingScheduledActionScalableTargetActionSetting s) where
+    toObject AppautoscalingScheduledActionScalableTargetActionSetting'{..} = P.catMaybes
+        [ TF.assign "max_capacity" <$> TF.attribute _maxCapacity
+        , TF.assign "min_capacity" <$> TF.attribute _minCapacity
+        ]
+
+instance TF.IsValid (AppautoscalingScheduledActionScalableTargetActionSetting s) where
+    validator = P.mempty
+
+instance P.HasMaxCapacity (AppautoscalingScheduledActionScalableTargetActionSetting s) (TF.Attr s P.Int) where
+    maxCapacity =
+        P.lens (_maxCapacity :: AppautoscalingScheduledActionScalableTargetActionSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _maxCapacity = a } :: AppautoscalingScheduledActionScalableTargetActionSetting s)
+
+instance P.HasMinCapacity (AppautoscalingScheduledActionScalableTargetActionSetting s) (TF.Attr s P.Int) where
+    minCapacity =
+        P.lens (_minCapacity :: AppautoscalingScheduledActionScalableTargetActionSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _minCapacity = a } :: AppautoscalingScheduledActionScalableTargetActionSetting s)
+
+-- | @dynamodb_config@ nested settings.
+data AppsyncDatasourceDynamodbConfigSetting s = AppsyncDatasourceDynamodbConfigSetting'
+    { _region               :: TF.Attr s P.Text
+    -- ^ @region@ - (Required)
+    --
+    , _tableName            :: TF.Attr s P.Text
+    -- ^ @table_name@ - (Required)
+    --
+    , _useCallerCredentials :: TF.Attr s P.Bool
+    -- ^ @use_caller_credentials@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @dynamodb_config@ settings value.
+newAppsyncDatasourceDynamodbConfigSetting
+    :: TF.Attr s P.Text -- ^ 'P._tableName': @table_name@
+    -> TF.Attr s P.Text -- ^ 'P._region': @region@
+    -> AppsyncDatasourceDynamodbConfigSetting s
+newAppsyncDatasourceDynamodbConfigSetting _tableName _region =
+    AppsyncDatasourceDynamodbConfigSetting'
+        { _region = _region
+        , _tableName = _tableName
+        , _useCallerCredentials = TF.Nil
+        }
+
+instance TF.IsValue  (AppsyncDatasourceDynamodbConfigSetting s)
+instance TF.IsObject (AppsyncDatasourceDynamodbConfigSetting s) where
+    toObject AppsyncDatasourceDynamodbConfigSetting'{..} = P.catMaybes
+        [ TF.assign "region" <$> TF.attribute _region
+        , TF.assign "table_name" <$> TF.attribute _tableName
+        , TF.assign "use_caller_credentials" <$> TF.attribute _useCallerCredentials
+        ]
+
+instance TF.IsValid (AppsyncDatasourceDynamodbConfigSetting s) where
+    validator = P.mempty
+
+instance P.HasRegion (AppsyncDatasourceDynamodbConfigSetting s) (TF.Attr s P.Text) where
+    region =
+        P.lens (_region :: AppsyncDatasourceDynamodbConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _region = a } :: AppsyncDatasourceDynamodbConfigSetting s)
+
+instance P.HasTableName (AppsyncDatasourceDynamodbConfigSetting s) (TF.Attr s P.Text) where
+    tableName =
+        P.lens (_tableName :: AppsyncDatasourceDynamodbConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _tableName = a } :: AppsyncDatasourceDynamodbConfigSetting s)
+
+instance P.HasUseCallerCredentials (AppsyncDatasourceDynamodbConfigSetting s) (TF.Attr s P.Bool) where
+    useCallerCredentials =
+        P.lens (_useCallerCredentials :: AppsyncDatasourceDynamodbConfigSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _useCallerCredentials = a } :: AppsyncDatasourceDynamodbConfigSetting s)
+
+-- | @elasticsearch_config@ nested settings.
+data AppsyncDatasourceElasticsearchConfigSetting s = AppsyncDatasourceElasticsearchConfigSetting'
+    { _endpoint :: TF.Attr s P.Text
+    -- ^ @endpoint@ - (Required)
+    --
+    , _region   :: TF.Attr s P.Text
+    -- ^ @region@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @elasticsearch_config@ settings value.
+newAppsyncDatasourceElasticsearchConfigSetting
+    :: TF.Attr s P.Text -- ^ 'P._endpoint': @endpoint@
+    -> TF.Attr s P.Text -- ^ 'P._region': @region@
+    -> AppsyncDatasourceElasticsearchConfigSetting s
+newAppsyncDatasourceElasticsearchConfigSetting _endpoint _region =
+    AppsyncDatasourceElasticsearchConfigSetting'
+        { _endpoint = _endpoint
+        , _region = _region
+        }
+
+instance TF.IsValue  (AppsyncDatasourceElasticsearchConfigSetting s)
+instance TF.IsObject (AppsyncDatasourceElasticsearchConfigSetting s) where
+    toObject AppsyncDatasourceElasticsearchConfigSetting'{..} = P.catMaybes
+        [ TF.assign "endpoint" <$> TF.attribute _endpoint
+        , TF.assign "region" <$> TF.attribute _region
+        ]
+
+instance TF.IsValid (AppsyncDatasourceElasticsearchConfigSetting s) where
+    validator = P.mempty
+
+instance P.HasEndpoint (AppsyncDatasourceElasticsearchConfigSetting s) (TF.Attr s P.Text) where
+    endpoint =
+        P.lens (_endpoint :: AppsyncDatasourceElasticsearchConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _endpoint = a } :: AppsyncDatasourceElasticsearchConfigSetting s)
+
+instance P.HasRegion (AppsyncDatasourceElasticsearchConfigSetting s) (TF.Attr s P.Text) where
+    region =
+        P.lens (_region :: AppsyncDatasourceElasticsearchConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _region = a } :: AppsyncDatasourceElasticsearchConfigSetting s)
+
+-- | @lambda_config@ nested settings.
+data AppsyncDatasourceLambdaConfigSetting s = AppsyncDatasourceLambdaConfigSetting'
+    { _functionArn :: TF.Attr s P.Text
+    -- ^ @function_arn@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @lambda_config@ settings value.
+newAppsyncDatasourceLambdaConfigSetting
+    :: TF.Attr s P.Text -- ^ 'P._functionArn': @function_arn@
+    -> AppsyncDatasourceLambdaConfigSetting s
+newAppsyncDatasourceLambdaConfigSetting _functionArn =
+    AppsyncDatasourceLambdaConfigSetting'
+        { _functionArn = _functionArn
+        }
+
+instance TF.IsValue  (AppsyncDatasourceLambdaConfigSetting s)
+instance TF.IsObject (AppsyncDatasourceLambdaConfigSetting s) where
+    toObject AppsyncDatasourceLambdaConfigSetting'{..} = P.catMaybes
+        [ TF.assign "function_arn" <$> TF.attribute _functionArn
+        ]
+
+instance TF.IsValid (AppsyncDatasourceLambdaConfigSetting s) where
+    validator = P.mempty
+
+instance P.HasFunctionArn (AppsyncDatasourceLambdaConfigSetting s) (TF.Attr s P.Text) where
+    functionArn =
+        P.lens (_functionArn :: AppsyncDatasourceLambdaConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _functionArn = a } :: AppsyncDatasourceLambdaConfigSetting s)
+
+-- | @user_pool_config@ nested settings.
+data AppsyncGraphqlApiUserPoolConfigSetting s = AppsyncGraphqlApiUserPoolConfigSetting'
+    { _appIdClientRegex :: TF.Attr s P.Text
+    -- ^ @app_id_client_regex@ - (Optional)
+    --
+    , _awsRegion        :: TF.Attr s P.Text
+    -- ^ @aws_region@ - (Required)
+    --
+    , _defaultAction    :: TF.Attr s P.Text
+    -- ^ @default_action@ - (Required)
+    --
+    , _userPoolId       :: TF.Attr s P.Text
+    -- ^ @user_pool_id@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @user_pool_config@ settings value.
+newAppsyncGraphqlApiUserPoolConfigSetting
+    :: TF.Attr s P.Text -- ^ 'P._defaultAction': @default_action@
+    -> TF.Attr s P.Text -- ^ 'P._userPoolId': @user_pool_id@
+    -> TF.Attr s P.Text -- ^ 'P._awsRegion': @aws_region@
+    -> AppsyncGraphqlApiUserPoolConfigSetting s
+newAppsyncGraphqlApiUserPoolConfigSetting _defaultAction _userPoolId _awsRegion =
+    AppsyncGraphqlApiUserPoolConfigSetting'
+        { _appIdClientRegex = TF.Nil
+        , _awsRegion = _awsRegion
+        , _defaultAction = _defaultAction
+        , _userPoolId = _userPoolId
+        }
+
+instance TF.IsValue  (AppsyncGraphqlApiUserPoolConfigSetting s)
+instance TF.IsObject (AppsyncGraphqlApiUserPoolConfigSetting s) where
+    toObject AppsyncGraphqlApiUserPoolConfigSetting'{..} = P.catMaybes
+        [ TF.assign "app_id_client_regex" <$> TF.attribute _appIdClientRegex
+        , TF.assign "aws_region" <$> TF.attribute _awsRegion
+        , TF.assign "default_action" <$> TF.attribute _defaultAction
+        , TF.assign "user_pool_id" <$> TF.attribute _userPoolId
+        ]
+
+instance TF.IsValid (AppsyncGraphqlApiUserPoolConfigSetting s) where
+    validator = P.mempty
+
+instance P.HasAppIdClientRegex (AppsyncGraphqlApiUserPoolConfigSetting s) (TF.Attr s P.Text) where
+    appIdClientRegex =
+        P.lens (_appIdClientRegex :: AppsyncGraphqlApiUserPoolConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _appIdClientRegex = a } :: AppsyncGraphqlApiUserPoolConfigSetting s)
+
+instance P.HasAwsRegion (AppsyncGraphqlApiUserPoolConfigSetting s) (TF.Attr s P.Text) where
+    awsRegion =
+        P.lens (_awsRegion :: AppsyncGraphqlApiUserPoolConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _awsRegion = a } :: AppsyncGraphqlApiUserPoolConfigSetting s)
+
+instance P.HasDefaultAction (AppsyncGraphqlApiUserPoolConfigSetting s) (TF.Attr s P.Text) where
+    defaultAction =
+        P.lens (_defaultAction :: AppsyncGraphqlApiUserPoolConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _defaultAction = a } :: AppsyncGraphqlApiUserPoolConfigSetting s)
+
+instance P.HasUserPoolId (AppsyncGraphqlApiUserPoolConfigSetting s) (TF.Attr s P.Text) where
+    userPoolId =
+        P.lens (_userPoolId :: AppsyncGraphqlApiUserPoolConfigSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _userPoolId = a } :: AppsyncGraphqlApiUserPoolConfigSetting s)
+
+-- | @assume_role@ nested settings.
+data AssumeRoleSetting = AssumeRoleSetting'
+    { _externalId  :: P.Maybe P.Text
+    -- ^ @external_id@ - (Optional)
+    -- The external ID to use when assuming the role. If omitted, no external ID is
+    -- passed to the AssumeRole call.
+    --
+    , _policy      :: P.Maybe P.Document
+    -- ^ @policy@ - (Optional)
+    -- The permissions applied when assuming a role. You cannot use, this policy to
+    -- grant further permissions that are in excess to those of the,  role that is
+    -- being assumed.
+    --
+    , _roleArn     :: P.Maybe P.Text
+    -- ^ @role_arn@ - (Optional)
+    -- The ARN of an IAM role to assume prior to making API calls.
+    --
+    , _sessionName :: P.Maybe P.Text
+    -- ^ @session_name@ - (Optional)
+    -- The session name to use when assuming the role. If omitted, no session name
+    -- is passed to the AssumeRole call.
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @assume_role@ settings value.
+newAssumeRoleSetting
+    :: AssumeRoleSetting
+newAssumeRoleSetting =
+    AssumeRoleSetting'
+        { _externalId = P.Nothing
+        , _policy = P.Nothing
+        , _roleArn = P.Nothing
+        , _sessionName = P.Nothing
+        }
+
+instance TF.IsValue  (AssumeRoleSetting)
+instance TF.IsObject (AssumeRoleSetting) where
+    toObject AssumeRoleSetting'{..} = P.catMaybes
+        [ TF.assign "external_id" <$> _externalId
+        , TF.assign "policy" <$> _policy
+        , TF.assign "role_arn" <$> _roleArn
+        , TF.assign "session_name" <$> _sessionName
+        ]
+
+instance TF.IsValid (AssumeRoleSetting) where
+    validator = P.mempty
+
+instance P.HasExternalId (AssumeRoleSetting) (P.Maybe P.Text) where
+    externalId =
+        P.lens (_externalId :: AssumeRoleSetting -> P.Maybe P.Text)
+               (\s a -> s { _externalId = a } :: AssumeRoleSetting)
+
+instance P.HasPolicy (AssumeRoleSetting) (P.Maybe P.Document) where
+    policy =
+        P.lens (_policy :: AssumeRoleSetting -> P.Maybe P.Document)
+               (\s a -> s { _policy = a } :: AssumeRoleSetting)
+
+instance P.HasRoleArn (AssumeRoleSetting) (P.Maybe P.Text) where
+    roleArn =
+        P.lens (_roleArn :: AssumeRoleSetting -> P.Maybe P.Text)
+               (\s a -> s { _roleArn = a } :: AssumeRoleSetting)
+
+instance P.HasSessionName (AssumeRoleSetting) (P.Maybe P.Text) where
+    sessionName =
+        P.lens (_sessionName :: AssumeRoleSetting -> P.Maybe P.Text)
+               (\s a -> s { _sessionName = a } :: AssumeRoleSetting)
+
+-- | @initial_lifecycle_hook@ nested settings.
+data AutoscalingGroupInitialLifecycleHookSetting s = AutoscalingGroupInitialLifecycleHookSetting'
+    { _defaultResult         :: TF.Attr s P.Text
+    -- ^ @default_result@ - (Optional)
+    --
+    , _heartbeatTimeout      :: TF.Attr s P.Int
+    -- ^ @heartbeat_timeout@ - (Optional)
+    --
+    , _lifecycleTransition   :: TF.Attr s P.Text
+    -- ^ @lifecycle_transition@ - (Required)
+    --
+    , _name                  :: TF.Attr s P.Text
+    -- ^ @name@ - (Required)
+    --
+    , _notificationMetadata  :: TF.Attr s P.Text
+    -- ^ @notification_metadata@ - (Optional)
+    --
+    , _notificationTargetArn :: TF.Attr s P.Text
+    -- ^ @notification_target_arn@ - (Optional)
+    --
+    , _roleArn               :: TF.Attr s P.Text
+    -- ^ @role_arn@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @initial_lifecycle_hook@ settings value.
+newAutoscalingGroupInitialLifecycleHookSetting
+    :: TF.Attr s P.Text -- ^ 'P._name': @name@
+    -> TF.Attr s P.Text -- ^ 'P._lifecycleTransition': @lifecycle_transition@
+    -> AutoscalingGroupInitialLifecycleHookSetting s
+newAutoscalingGroupInitialLifecycleHookSetting _name _lifecycleTransition =
+    AutoscalingGroupInitialLifecycleHookSetting'
+        { _defaultResult = TF.Nil
+        , _heartbeatTimeout = TF.Nil
+        , _lifecycleTransition = _lifecycleTransition
+        , _name = _name
+        , _notificationMetadata = TF.Nil
+        , _notificationTargetArn = TF.Nil
+        , _roleArn = TF.Nil
+        }
+
+instance TF.IsValue  (AutoscalingGroupInitialLifecycleHookSetting s)
+instance TF.IsObject (AutoscalingGroupInitialLifecycleHookSetting s) where
+    toObject AutoscalingGroupInitialLifecycleHookSetting'{..} = P.catMaybes
+        [ TF.assign "default_result" <$> TF.attribute _defaultResult
+        , TF.assign "heartbeat_timeout" <$> TF.attribute _heartbeatTimeout
+        , TF.assign "lifecycle_transition" <$> TF.attribute _lifecycleTransition
+        , TF.assign "name" <$> TF.attribute _name
+        , TF.assign "notification_metadata" <$> TF.attribute _notificationMetadata
+        , TF.assign "notification_target_arn" <$> TF.attribute _notificationTargetArn
+        , TF.assign "role_arn" <$> TF.attribute _roleArn
+        ]
+
+instance TF.IsValid (AutoscalingGroupInitialLifecycleHookSetting s) where
+    validator = P.mempty
+
+instance P.HasDefaultResult (AutoscalingGroupInitialLifecycleHookSetting s) (TF.Attr s P.Text) where
+    defaultResult =
+        P.lens (_defaultResult :: AutoscalingGroupInitialLifecycleHookSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _defaultResult = a } :: AutoscalingGroupInitialLifecycleHookSetting s)
+
+instance P.HasHeartbeatTimeout (AutoscalingGroupInitialLifecycleHookSetting s) (TF.Attr s P.Int) where
+    heartbeatTimeout =
+        P.lens (_heartbeatTimeout :: AutoscalingGroupInitialLifecycleHookSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _heartbeatTimeout = a } :: AutoscalingGroupInitialLifecycleHookSetting s)
+
+instance P.HasLifecycleTransition (AutoscalingGroupInitialLifecycleHookSetting s) (TF.Attr s P.Text) where
+    lifecycleTransition =
+        P.lens (_lifecycleTransition :: AutoscalingGroupInitialLifecycleHookSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _lifecycleTransition = a } :: AutoscalingGroupInitialLifecycleHookSetting s)
+
+instance P.HasName (AutoscalingGroupInitialLifecycleHookSetting s) (TF.Attr s P.Text) where
+    name =
+        P.lens (_name :: AutoscalingGroupInitialLifecycleHookSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _name = a } :: AutoscalingGroupInitialLifecycleHookSetting s)
+
+instance P.HasNotificationMetadata (AutoscalingGroupInitialLifecycleHookSetting s) (TF.Attr s P.Text) where
+    notificationMetadata =
+        P.lens (_notificationMetadata :: AutoscalingGroupInitialLifecycleHookSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _notificationMetadata = a } :: AutoscalingGroupInitialLifecycleHookSetting s)
+
+instance P.HasNotificationTargetArn (AutoscalingGroupInitialLifecycleHookSetting s) (TF.Attr s P.Text) where
+    notificationTargetArn =
+        P.lens (_notificationTargetArn :: AutoscalingGroupInitialLifecycleHookSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _notificationTargetArn = a } :: AutoscalingGroupInitialLifecycleHookSetting s)
+
+instance P.HasRoleArn (AutoscalingGroupInitialLifecycleHookSetting s) (TF.Attr s P.Text) where
+    roleArn =
+        P.lens (_roleArn :: AutoscalingGroupInitialLifecycleHookSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _roleArn = a } :: AutoscalingGroupInitialLifecycleHookSetting s)
+
+instance s ~ s' => P.HasComputedDefaultResult (TF.Ref s' (AutoscalingGroupInitialLifecycleHookSetting s)) (TF.Attr s P.Text) where
+    computedDefaultResult x = TF.compute (TF.refKey x) "default_result"
+
+-- | @launch_template@ nested settings.
+data AutoscalingGroupLaunchTemplateSetting s = AutoscalingGroupLaunchTemplateSetting'
+    { _id      :: TF.Attr s P.Text
+    -- ^ @id@ - (Optional)
+    --
+    -- Conflicts with:
+    --
+    -- * 'name'
+    , _name    :: TF.Attr s P.Text
+    -- ^ @name@ - (Optional)
+    --
+    -- Conflicts with:
+    --
+    -- * 'id'
+    , _version :: TF.Attr s P.Text
+    -- ^ @version@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @launch_template@ settings value.
+newAutoscalingGroupLaunchTemplateSetting
+    :: AutoscalingGroupLaunchTemplateSetting s
+newAutoscalingGroupLaunchTemplateSetting =
+    AutoscalingGroupLaunchTemplateSetting'
+        { _id = TF.Nil
+        , _name = TF.Nil
+        , _version = TF.Nil
+        }
+
+instance TF.IsValue  (AutoscalingGroupLaunchTemplateSetting s)
+instance TF.IsObject (AutoscalingGroupLaunchTemplateSetting s) where
+    toObject AutoscalingGroupLaunchTemplateSetting'{..} = P.catMaybes
+        [ TF.assign "id" <$> TF.attribute _id
+        , TF.assign "name" <$> TF.attribute _name
+        , TF.assign "version" <$> TF.attribute _version
+        ]
+
+instance TF.IsValid (AutoscalingGroupLaunchTemplateSetting s) where
+    validator = TF.fieldsValidator (\AutoscalingGroupLaunchTemplateSetting'{..} -> Map.fromList $ P.catMaybes
+        [ if (_id P.== TF.Nil)
+              then P.Nothing
+              else P.Just ("_id",
+                            [ "_name"
+                            ])
+        , if (_name P.== TF.Nil)
+              then P.Nothing
+              else P.Just ("_name",
+                            [ "_id"
+                            ])
+        ])
+
+instance P.HasId (AutoscalingGroupLaunchTemplateSetting s) (TF.Attr s P.Text) where
+    id =
+        P.lens (_id :: AutoscalingGroupLaunchTemplateSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _id = a } :: AutoscalingGroupLaunchTemplateSetting s)
+
+instance P.HasName (AutoscalingGroupLaunchTemplateSetting s) (TF.Attr s P.Text) where
+    name =
+        P.lens (_name :: AutoscalingGroupLaunchTemplateSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _name = a } :: AutoscalingGroupLaunchTemplateSetting s)
+
+instance P.HasVersion (AutoscalingGroupLaunchTemplateSetting s) (TF.Attr s P.Text) where
+    version =
+        P.lens (_version :: AutoscalingGroupLaunchTemplateSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _version = a } :: AutoscalingGroupLaunchTemplateSetting s)
+
+instance s ~ s' => P.HasComputedId (TF.Ref s' (AutoscalingGroupLaunchTemplateSetting s)) (TF.Attr s P.Text) where
+    computedId x = TF.compute (TF.refKey x) "id"
+
+instance s ~ s' => P.HasComputedName (TF.Ref s' (AutoscalingGroupLaunchTemplateSetting s)) (TF.Attr s P.Text) where
+    computedName x = TF.compute (TF.refKey x) "name"
+
+-- | @tag@ nested settings.
+data AutoscalingGroupTagSetting s = AutoscalingGroupTagSetting'
+    { _key               :: TF.Attr s P.Text
+    -- ^ @key@ - (Required)
+    --
+    , _propagateAtLaunch :: TF.Attr s P.Bool
+    -- ^ @propagate_at_launch@ - (Required)
+    --
+    , _value             :: TF.Attr s P.Text
+    -- ^ @value@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @tag@ settings value.
+newAutoscalingGroupTagSetting
+    :: TF.Attr s P.Text -- ^ 'P._key': @key@
+    -> TF.Attr s P.Bool -- ^ 'P._propagateAtLaunch': @propagate_at_launch@
+    -> TF.Attr s P.Text -- ^ 'P._value': @value@
+    -> AutoscalingGroupTagSetting s
+newAutoscalingGroupTagSetting _key _propagateAtLaunch _value =
+    AutoscalingGroupTagSetting'
+        { _key = _key
+        , _propagateAtLaunch = _propagateAtLaunch
+        , _value = _value
+        }
+
+instance TF.IsValue  (AutoscalingGroupTagSetting s)
+instance TF.IsObject (AutoscalingGroupTagSetting s) where
+    toObject AutoscalingGroupTagSetting'{..} = P.catMaybes
+        [ TF.assign "key" <$> TF.attribute _key
+        , TF.assign "propagate_at_launch" <$> TF.attribute _propagateAtLaunch
+        , TF.assign "value" <$> TF.attribute _value
+        ]
+
+instance TF.IsValid (AutoscalingGroupTagSetting s) where
+    validator = P.mempty
+
+instance P.HasKey (AutoscalingGroupTagSetting s) (TF.Attr s P.Text) where
+    key =
+        P.lens (_key :: AutoscalingGroupTagSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _key = a } :: AutoscalingGroupTagSetting s)
+
+instance P.HasPropagateAtLaunch (AutoscalingGroupTagSetting s) (TF.Attr s P.Bool) where
+    propagateAtLaunch =
+        P.lens (_propagateAtLaunch :: AutoscalingGroupTagSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _propagateAtLaunch = a } :: AutoscalingGroupTagSetting s)
+
+instance P.HasValue (AutoscalingGroupTagSetting s) (TF.Attr s P.Text) where
+    value =
+        P.lens (_value :: AutoscalingGroupTagSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _value = a } :: AutoscalingGroupTagSetting s)
+
+-- | @filter@ nested settings.
+data AutoscalingGroupsFilterSetting s = AutoscalingGroupsFilterSetting'
+    { _name   :: TF.Attr s P.Text
+    -- ^ @name@ - (Required)
+    --
+    , _values :: TF.Attr s [TF.Attr s P.Text]
+    -- ^ @values@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @filter@ settings value.
+newAutoscalingGroupsFilterSetting
+    :: TF.Attr s P.Text -- ^ 'P._name': @name@
+    -> TF.Attr s [TF.Attr s P.Text] -- ^ 'P._values': @values@
+    -> AutoscalingGroupsFilterSetting s
+newAutoscalingGroupsFilterSetting _name _values =
+    AutoscalingGroupsFilterSetting'
+        { _name = _name
+        , _values = _values
+        }
+
+instance TF.IsValue  (AutoscalingGroupsFilterSetting s)
+instance TF.IsObject (AutoscalingGroupsFilterSetting s) where
+    toObject AutoscalingGroupsFilterSetting'{..} = P.catMaybes
+        [ TF.assign "name" <$> TF.attribute _name
+        , TF.assign "values" <$> TF.attribute _values
+        ]
+
+instance TF.IsValid (AutoscalingGroupsFilterSetting s) where
+    validator = P.mempty
+
+instance P.HasName (AutoscalingGroupsFilterSetting s) (TF.Attr s P.Text) where
+    name =
+        P.lens (_name :: AutoscalingGroupsFilterSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _name = a } :: AutoscalingGroupsFilterSetting s)
+
+instance P.HasValues (AutoscalingGroupsFilterSetting s) (TF.Attr s [TF.Attr s P.Text]) where
+    values =
+        P.lens (_values :: AutoscalingGroupsFilterSetting s -> TF.Attr s [TF.Attr s P.Text])
+               (\s a -> s { _values = a } :: AutoscalingGroupsFilterSetting s)
+
+-- | @step_adjustment@ nested settings.
+data AutoscalingPolicyStepAdjustmentSetting s = AutoscalingPolicyStepAdjustmentSetting'
+    { _metricIntervalLowerBound :: TF.Attr s P.Text
+    -- ^ @metric_interval_lower_bound@ - (Optional)
+    --
+    , _metricIntervalUpperBound :: TF.Attr s P.Text
+    -- ^ @metric_interval_upper_bound@ - (Optional)
+    --
+    , _scalingAdjustment        :: TF.Attr s P.Int
+    -- ^ @scaling_adjustment@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @step_adjustment@ settings value.
+newAutoscalingPolicyStepAdjustmentSetting
+    :: TF.Attr s P.Int -- ^ 'P._scalingAdjustment': @scaling_adjustment@
+    -> AutoscalingPolicyStepAdjustmentSetting s
+newAutoscalingPolicyStepAdjustmentSetting _scalingAdjustment =
+    AutoscalingPolicyStepAdjustmentSetting'
+        { _metricIntervalLowerBound = TF.Nil
+        , _metricIntervalUpperBound = TF.Nil
+        , _scalingAdjustment = _scalingAdjustment
+        }
+
+instance TF.IsValue  (AutoscalingPolicyStepAdjustmentSetting s)
+instance TF.IsObject (AutoscalingPolicyStepAdjustmentSetting s) where
+    toObject AutoscalingPolicyStepAdjustmentSetting'{..} = P.catMaybes
+        [ TF.assign "metric_interval_lower_bound" <$> TF.attribute _metricIntervalLowerBound
+        , TF.assign "metric_interval_upper_bound" <$> TF.attribute _metricIntervalUpperBound
+        , TF.assign "scaling_adjustment" <$> TF.attribute _scalingAdjustment
+        ]
+
+instance TF.IsValid (AutoscalingPolicyStepAdjustmentSetting s) where
+    validator = P.mempty
+
+instance P.HasMetricIntervalLowerBound (AutoscalingPolicyStepAdjustmentSetting s) (TF.Attr s P.Text) where
+    metricIntervalLowerBound =
+        P.lens (_metricIntervalLowerBound :: AutoscalingPolicyStepAdjustmentSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _metricIntervalLowerBound = a } :: AutoscalingPolicyStepAdjustmentSetting s)
+
+instance P.HasMetricIntervalUpperBound (AutoscalingPolicyStepAdjustmentSetting s) (TF.Attr s P.Text) where
+    metricIntervalUpperBound =
+        P.lens (_metricIntervalUpperBound :: AutoscalingPolicyStepAdjustmentSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _metricIntervalUpperBound = a } :: AutoscalingPolicyStepAdjustmentSetting s)
+
+instance P.HasScalingAdjustment (AutoscalingPolicyStepAdjustmentSetting s) (TF.Attr s P.Int) where
+    scalingAdjustment =
+        P.lens (_scalingAdjustment :: AutoscalingPolicyStepAdjustmentSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _scalingAdjustment = a } :: AutoscalingPolicyStepAdjustmentSetting s)
+
+-- | @metric_dimension@ nested settings.
+data AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s = AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting'
+    { _name  :: TF.Attr s P.Text
+    -- ^ @name@ - (Required)
+    --
+    , _value :: TF.Attr s P.Text
+    -- ^ @value@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @metric_dimension@ settings value.
+newAutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting
+    :: TF.Attr s P.Text -- ^ 'P._name': @name@
+    -> TF.Attr s P.Text -- ^ 'P._value': @value@
+    -> AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s
+newAutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting _name _value =
+    AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting'
+        { _name = _name
+        , _value = _value
+        }
+
+instance TF.IsValue  (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s)
+instance TF.IsObject (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s) where
+    toObject AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting'{..} = P.catMaybes
+        [ TF.assign "name" <$> TF.attribute _name
+        , TF.assign "value" <$> TF.attribute _value
+        ]
+
+instance TF.IsValid (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s) where
+    validator = P.mempty
+
+instance P.HasName (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s) (TF.Attr s P.Text) where
+    name =
+        P.lens (_name :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _name = a } :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s)
+
+instance P.HasValue (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s) (TF.Attr s P.Text) where
+    value =
+        P.lens (_value :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _value = a } :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s)
+
+-- | @customized_metric_specification@ nested settings.
+data AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s = AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting'
+    { _metricDimension :: TF.Attr s [TF.Attr s (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s)]
+    -- ^ @metric_dimension@ - (Optional)
+    --
+    , _metricName :: TF.Attr s P.Text
+    -- ^ @metric_name@ - (Required)
+    --
+    , _namespace :: TF.Attr s P.Text
+    -- ^ @namespace@ - (Required)
+    --
+    , _statistic :: TF.Attr s P.Text
+    -- ^ @statistic@ - (Required)
+    --
+    , _unit :: TF.Attr s P.Text
+    -- ^ @unit@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @customized_metric_specification@ settings value.
+newAutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting
+    :: TF.Attr s P.Text -- ^ 'P._metricName': @metric_name@
+    -> TF.Attr s P.Text -- ^ 'P._namespace': @namespace@
+    -> TF.Attr s P.Text -- ^ 'P._statistic': @statistic@
+    -> AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s
+newAutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting _metricName _namespace _statistic =
+    AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting'
+        { _metricDimension = TF.Nil
+        , _metricName = _metricName
+        , _namespace = _namespace
+        , _statistic = _statistic
+        , _unit = TF.Nil
+        }
+
+instance TF.IsValue  (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s)
+instance TF.IsObject (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s) where
+    toObject AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting'{..} = P.catMaybes
+        [ TF.assign "metric_dimension" <$> TF.attribute _metricDimension
+        , TF.assign "metric_name" <$> TF.attribute _metricName
+        , TF.assign "namespace" <$> TF.attribute _namespace
+        , TF.assign "statistic" <$> TF.attribute _statistic
+        , TF.assign "unit" <$> TF.attribute _unit
+        ]
+
+instance TF.IsValid (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s) where
+    validator = P.mempty
+
+instance P.HasMetricDimension (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s) (TF.Attr s [TF.Attr s (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s)]) where
+    metricDimension =
+        P.lens (_metricDimension :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s -> TF.Attr s [TF.Attr s (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimensionSetting s)])
+               (\s a -> s { _metricDimension = a } :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s)
+
+instance P.HasMetricName (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    metricName =
+        P.lens (_metricName :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _metricName = a } :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s)
+
+instance P.HasNamespace (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    namespace =
+        P.lens (_namespace :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _namespace = a } :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s)
+
+instance P.HasStatistic (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    statistic =
+        P.lens (_statistic :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _statistic = a } :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s)
+
+instance P.HasUnit (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    unit =
+        P.lens (_unit :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _unit = a } :: AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s)
+
+-- | @target_tracking_configuration@ nested settings.
+data AutoscalingPolicyTargetTrackingConfigurationSetting s = AutoscalingPolicyTargetTrackingConfigurationSetting'
+    { _customizedMetricSpecification :: TF.Attr s (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s)
+    -- ^ @customized_metric_specification@ - (Optional)
+    --
+    -- Conflicts with:
+    --
+    -- * 'predefinedMetricSpecification'
+    , _disableScaleIn :: TF.Attr s P.Bool
+    -- ^ @disable_scale_in@ - (Optional)
+    --
+    , _predefinedMetricSpecification :: TF.Attr s (AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s)
+    -- ^ @predefined_metric_specification@ - (Optional)
+    --
+    -- Conflicts with:
+    --
+    -- * 'customizedMetricSpecification'
+    , _targetValue :: TF.Attr s P.Double
+    -- ^ @target_value@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @target_tracking_configuration@ settings value.
+newAutoscalingPolicyTargetTrackingConfigurationSetting
+    :: TF.Attr s P.Double -- ^ 'P._targetValue': @target_value@
+    -> AutoscalingPolicyTargetTrackingConfigurationSetting s
+newAutoscalingPolicyTargetTrackingConfigurationSetting _targetValue =
+    AutoscalingPolicyTargetTrackingConfigurationSetting'
+        { _customizedMetricSpecification = TF.Nil
+        , _disableScaleIn = TF.value P.False
+        , _predefinedMetricSpecification = TF.Nil
+        , _targetValue = _targetValue
+        }
+
+instance TF.IsValue  (AutoscalingPolicyTargetTrackingConfigurationSetting s)
+instance TF.IsObject (AutoscalingPolicyTargetTrackingConfigurationSetting s) where
+    toObject AutoscalingPolicyTargetTrackingConfigurationSetting'{..} = P.catMaybes
+        [ TF.assign "customized_metric_specification" <$> TF.attribute _customizedMetricSpecification
+        , TF.assign "disable_scale_in" <$> TF.attribute _disableScaleIn
+        , TF.assign "predefined_metric_specification" <$> TF.attribute _predefinedMetricSpecification
+        , TF.assign "target_value" <$> TF.attribute _targetValue
+        ]
+
+instance TF.IsValid (AutoscalingPolicyTargetTrackingConfigurationSetting s) where
+    validator = TF.fieldsValidator (\AutoscalingPolicyTargetTrackingConfigurationSetting'{..} -> Map.fromList $ P.catMaybes
+        [ if (_customizedMetricSpecification P.== TF.Nil)
+              then P.Nothing
+              else P.Just ("_customizedMetricSpecification",
+                            [ "_predefinedMetricSpecification"
+                            ])
+        , if (_predefinedMetricSpecification P.== TF.Nil)
+              then P.Nothing
+              else P.Just ("_predefinedMetricSpecification",
+                            [ "_customizedMetricSpecification"
+                            ])
+        ])
+           P.<> TF.settingsValidator "_customizedMetricSpecification"
+                  (_customizedMetricSpecification
+                      :: AutoscalingPolicyTargetTrackingConfigurationSetting s -> TF.Attr s (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s))
+                  TF.validator
+           P.<> TF.settingsValidator "_predefinedMetricSpecification"
+                  (_predefinedMetricSpecification
+                      :: AutoscalingPolicyTargetTrackingConfigurationSetting s -> TF.Attr s (AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s))
+                  TF.validator
+
+instance P.HasCustomizedMetricSpecification (AutoscalingPolicyTargetTrackingConfigurationSetting s) (TF.Attr s (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s)) where
+    customizedMetricSpecification =
+        P.lens (_customizedMetricSpecification :: AutoscalingPolicyTargetTrackingConfigurationSetting s -> TF.Attr s (AutoscalingPolicyTargetTrackingConfigurationCustomizedMetricSpecificationSetting s))
+               (\s a -> s { _customizedMetricSpecification = a } :: AutoscalingPolicyTargetTrackingConfigurationSetting s)
+
+instance P.HasDisableScaleIn (AutoscalingPolicyTargetTrackingConfigurationSetting s) (TF.Attr s P.Bool) where
+    disableScaleIn =
+        P.lens (_disableScaleIn :: AutoscalingPolicyTargetTrackingConfigurationSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _disableScaleIn = a } :: AutoscalingPolicyTargetTrackingConfigurationSetting s)
+
+instance P.HasPredefinedMetricSpecification (AutoscalingPolicyTargetTrackingConfigurationSetting s) (TF.Attr s (AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s)) where
+    predefinedMetricSpecification =
+        P.lens (_predefinedMetricSpecification :: AutoscalingPolicyTargetTrackingConfigurationSetting s -> TF.Attr s (AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s))
+               (\s a -> s { _predefinedMetricSpecification = a } :: AutoscalingPolicyTargetTrackingConfigurationSetting s)
+
+instance P.HasTargetValue (AutoscalingPolicyTargetTrackingConfigurationSetting s) (TF.Attr s P.Double) where
+    targetValue =
+        P.lens (_targetValue :: AutoscalingPolicyTargetTrackingConfigurationSetting s -> TF.Attr s P.Double)
+               (\s a -> s { _targetValue = a } :: AutoscalingPolicyTargetTrackingConfigurationSetting s)
+
+-- | @predefined_metric_specification@ nested settings.
+data AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s = AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting'
+    { _predefinedMetricType :: TF.Attr s P.Text
+    -- ^ @predefined_metric_type@ - (Required)
+    --
+    , _resourceLabel        :: TF.Attr s P.Text
+    -- ^ @resource_label@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @predefined_metric_specification@ settings value.
+newAutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting
+    :: TF.Attr s P.Text -- ^ 'P._predefinedMetricType': @predefined_metric_type@
+    -> AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s
+newAutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting _predefinedMetricType =
+    AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting'
+        { _predefinedMetricType = _predefinedMetricType
+        , _resourceLabel = TF.Nil
+        }
+
+instance TF.IsValue  (AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s)
+instance TF.IsObject (AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s) where
+    toObject AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting'{..} = P.catMaybes
+        [ TF.assign "predefined_metric_type" <$> TF.attribute _predefinedMetricType
+        , TF.assign "resource_label" <$> TF.attribute _resourceLabel
+        ]
+
+instance TF.IsValid (AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s) where
+    validator = P.mempty
+
+instance P.HasPredefinedMetricType (AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    predefinedMetricType =
+        P.lens (_predefinedMetricType :: AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _predefinedMetricType = a } :: AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s)
+
+instance P.HasResourceLabel (AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s) (TF.Attr s P.Text) where
+    resourceLabel =
+        P.lens (_resourceLabel :: AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _resourceLabel = a } :: AutoscalingPolicyTargetTrackingConfigurationPredefinedMetricSpecificationSetting s)

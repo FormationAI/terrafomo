@@ -17,12 +17,8 @@
 --
 module Terrafomo.AWS.Resource04
     (
-    -- ** aws_emr_instance_group
-      EmrInstanceGroupResource (..)
-    , emrInstanceGroupResource
-
     -- ** aws_emr_security_configuration
-    , EmrSecurityConfigurationResource (..)
+      EmrSecurityConfigurationResource (..)
     , emrSecurityConfigurationResource
 
     -- ** aws_flow_log
@@ -337,6 +333,10 @@ module Terrafomo.AWS.Resource04
     , MacieMemberAccountAssociationResource (..)
     , macieMemberAccountAssociationResource
 
+    -- ** aws_macie_s3_bucket_association
+    , MacieS3BucketAssociationResource (..)
+    , macieS3BucketAssociationResource
+
     ) where
 
 import Data.Functor ((<$>))
@@ -362,99 +362,6 @@ import qualified Terrafomo.HCL          as TF
 import qualified Terrafomo.Name         as TF
 import qualified Terrafomo.Schema       as TF
 import qualified Terrafomo.Validator    as TF
-
--- | @aws_emr_instance_group@ Resource.
---
--- See the <https://www.terraform.io/docs/providers/aws/r/emr_instance_group.html terraform documentation>
--- for more information.
-data EmrInstanceGroupResource s = EmrInstanceGroupResource'
-    { _clusterId :: TF.Attr s P.Text
-    -- ^ @cluster_id@ - (Required, Forces New)
-    --
-    , _ebsConfig :: TF.Attr s [TF.Attr s (EmrInstanceGroupEbsConfigSetting s)]
-    -- ^ @ebs_config@ - (Optional, Forces New)
-    --
-    , _ebsOptimized :: TF.Attr s P.Bool
-    -- ^ @ebs_optimized@ - (Optional, Forces New)
-    --
-    , _instanceCount :: TF.Attr s P.Int
-    -- ^ @instance_count@ - (Optional)
-    --
-    , _instanceType :: TF.Attr s P.Text
-    -- ^ @instance_type@ - (Required, Forces New)
-    --
-    , _name :: TF.Attr s P.Text
-    -- ^ @name@ - (Optional, Forces New)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Define a new @aws_emr_instance_group@ resource value.
-emrInstanceGroupResource
-    :: TF.Attr s P.Text -- ^ @cluster_id@ ('P._clusterId', 'P.clusterId')
-    -> TF.Attr s P.Text -- ^ @instance_type@ ('P._instanceType', 'P.instanceType')
-    -> P.Resource (EmrInstanceGroupResource s)
-emrInstanceGroupResource _clusterId _instanceType =
-    TF.unsafeResource "aws_emr_instance_group" TF.validator $
-        EmrInstanceGroupResource'
-            { _clusterId = _clusterId
-            , _ebsConfig = TF.Nil
-            , _ebsOptimized = TF.Nil
-            , _instanceCount = TF.value 0
-            , _instanceType = _instanceType
-            , _name = TF.Nil
-            }
-
-instance TF.IsObject (EmrInstanceGroupResource s) where
-    toObject EmrInstanceGroupResource'{..} = P.catMaybes
-        [ TF.assign "cluster_id" <$> TF.attribute _clusterId
-        , TF.assign "ebs_config" <$> TF.attribute _ebsConfig
-        , TF.assign "ebs_optimized" <$> TF.attribute _ebsOptimized
-        , TF.assign "instance_count" <$> TF.attribute _instanceCount
-        , TF.assign "instance_type" <$> TF.attribute _instanceType
-        , TF.assign "name" <$> TF.attribute _name
-        ]
-
-instance TF.IsValid (EmrInstanceGroupResource s) where
-    validator = P.mempty
-
-instance P.HasClusterId (EmrInstanceGroupResource s) (TF.Attr s P.Text) where
-    clusterId =
-        P.lens (_clusterId :: EmrInstanceGroupResource s -> TF.Attr s P.Text)
-               (\s a -> s { _clusterId = a } :: EmrInstanceGroupResource s)
-
-instance P.HasEbsConfig (EmrInstanceGroupResource s) (TF.Attr s [TF.Attr s (EmrInstanceGroupEbsConfigSetting s)]) where
-    ebsConfig =
-        P.lens (_ebsConfig :: EmrInstanceGroupResource s -> TF.Attr s [TF.Attr s (EmrInstanceGroupEbsConfigSetting s)])
-               (\s a -> s { _ebsConfig = a } :: EmrInstanceGroupResource s)
-
-instance P.HasEbsOptimized (EmrInstanceGroupResource s) (TF.Attr s P.Bool) where
-    ebsOptimized =
-        P.lens (_ebsOptimized :: EmrInstanceGroupResource s -> TF.Attr s P.Bool)
-               (\s a -> s { _ebsOptimized = a } :: EmrInstanceGroupResource s)
-
-instance P.HasInstanceCount (EmrInstanceGroupResource s) (TF.Attr s P.Int) where
-    instanceCount =
-        P.lens (_instanceCount :: EmrInstanceGroupResource s -> TF.Attr s P.Int)
-               (\s a -> s { _instanceCount = a } :: EmrInstanceGroupResource s)
-
-instance P.HasInstanceType (EmrInstanceGroupResource s) (TF.Attr s P.Text) where
-    instanceType =
-        P.lens (_instanceType :: EmrInstanceGroupResource s -> TF.Attr s P.Text)
-               (\s a -> s { _instanceType = a } :: EmrInstanceGroupResource s)
-
-instance P.HasName (EmrInstanceGroupResource s) (TF.Attr s P.Text) where
-    name =
-        P.lens (_name :: EmrInstanceGroupResource s -> TF.Attr s P.Text)
-               (\s a -> s { _name = a } :: EmrInstanceGroupResource s)
-
-instance s ~ s' => P.HasComputedId (TF.Ref s' (EmrInstanceGroupResource s)) (TF.Attr s P.Text) where
-    computedId x = TF.compute (TF.refKey x) "id"
-
-instance s ~ s' => P.HasComputedRunningInstanceCount (TF.Ref s' (EmrInstanceGroupResource s)) (TF.Attr s P.Int) where
-    computedRunningInstanceCount x = TF.compute (TF.refKey x) "running_instance_count"
-
-instance s ~ s' => P.HasComputedStatus (TF.Ref s' (EmrInstanceGroupResource s)) (TF.Attr s P.Text) where
-    computedStatus x = TF.compute (TF.refKey x) "status"
 
 -- | @aws_emr_security_configuration@ Resource.
 --
@@ -5595,7 +5502,7 @@ data KmsKeyResource s = KmsKeyResource'
     , _keyUsage             :: TF.Attr s P.Text
     -- ^ @key_usage@ - (Optional, Forces New)
     --
-    , _policy               :: TF.Attr s P.Text
+    , _policy               :: TF.Attr s P.Document
     -- ^ @policy@ - (Optional)
     --
     , _tags                 :: TF.Attr s (P.Map P.Text (TF.Attr s P.Text))
@@ -5657,9 +5564,9 @@ instance P.HasKeyUsage (KmsKeyResource s) (TF.Attr s P.Text) where
         P.lens (_keyUsage :: KmsKeyResource s -> TF.Attr s P.Text)
                (\s a -> s { _keyUsage = a } :: KmsKeyResource s)
 
-instance P.HasPolicy (KmsKeyResource s) (TF.Attr s P.Text) where
+instance P.HasPolicy (KmsKeyResource s) (TF.Attr s P.Document) where
     policy =
-        P.lens (_policy :: KmsKeyResource s -> TF.Attr s P.Text)
+        P.lens (_policy :: KmsKeyResource s -> TF.Attr s P.Document)
                (\s a -> s { _policy = a } :: KmsKeyResource s)
 
 instance P.HasTags (KmsKeyResource s) (TF.Attr s (P.Map P.Text (TF.Attr s P.Text))) where
@@ -6593,7 +6500,7 @@ data LaunchTemplateResource s = LaunchTemplateResource'
     , _disableApiTermination :: TF.Attr s P.Bool
     -- ^ @disable_api_termination@ - (Optional)
     --
-    , _ebsOptimized :: TF.Attr s P.Bool
+    , _ebsOptimized :: TF.Attr s P.Text
     -- ^ @ebs_optimized@ - (Optional)
     --
     , _elasticGpuSpecifications :: TF.Attr s [TF.Attr s (LaunchTemplateElasticGpuSpecificationsSetting s)]
@@ -6791,9 +6698,9 @@ instance P.HasDisableApiTermination (LaunchTemplateResource s) (TF.Attr s P.Bool
         P.lens (_disableApiTermination :: LaunchTemplateResource s -> TF.Attr s P.Bool)
                (\s a -> s { _disableApiTermination = a } :: LaunchTemplateResource s)
 
-instance P.HasEbsOptimized (LaunchTemplateResource s) (TF.Attr s P.Bool) where
+instance P.HasEbsOptimized (LaunchTemplateResource s) (TF.Attr s P.Text) where
     ebsOptimized =
-        P.lens (_ebsOptimized :: LaunchTemplateResource s -> TF.Attr s P.Bool)
+        P.lens (_ebsOptimized :: LaunchTemplateResource s -> TF.Attr s P.Text)
                (\s a -> s { _ebsOptimized = a } :: LaunchTemplateResource s)
 
 instance P.HasElasticGpuSpecifications (LaunchTemplateResource s) (TF.Attr s [TF.Attr s (LaunchTemplateElasticGpuSpecificationsSetting s)]) where
@@ -7026,29 +6933,29 @@ instance s ~ s' => P.HasComputedId (TF.Ref s' (LbListenerCertificateResource s))
 -- See the <https://www.terraform.io/docs/providers/aws/r/lb_listener.html terraform documentation>
 -- for more information.
 data LbListenerResource s = LbListenerResource'
-    { _certificateArn :: TF.Attr s P.Text
+    { _certificateArn  :: TF.Attr s P.Text
     -- ^ @certificate_arn@ - (Optional)
     --
-    , _defaultAction :: TF.Attr s [TF.Attr s (LbListenerDefaultActionSetting s)]
+    , _defaultAction   :: TF.Attr s (LbListenerDefaultActionSetting s)
     -- ^ @default_action@ - (Required)
     --
     , _loadBalancerArn :: TF.Attr s P.Text
     -- ^ @load_balancer_arn@ - (Required, Forces New)
     --
-    , _port :: TF.Attr s P.Int
+    , _port            :: TF.Attr s P.Int
     -- ^ @port@ - (Required)
     --
-    , _protocol :: TF.Attr s P.Text
+    , _protocol        :: TF.Attr s P.Text
     -- ^ @protocol@ - (Optional)
     --
-    , _sslPolicy :: TF.Attr s P.Text
+    , _sslPolicy       :: TF.Attr s P.Text
     -- ^ @ssl_policy@ - (Optional)
     --
     } deriving (P.Show, P.Eq, P.Ord)
 
 -- | Define a new @aws_lb_listener@ resource value.
 lbListenerResource
-    :: TF.Attr s [TF.Attr s (LbListenerDefaultActionSetting s)] -- ^ @default_action@ ('P._defaultAction', 'P.defaultAction')
+    :: TF.Attr s (LbListenerDefaultActionSetting s) -- ^ @default_action@ ('P._defaultAction', 'P.defaultAction')
     -> TF.Attr s P.Text -- ^ @load_balancer_arn@ ('P._loadBalancerArn', 'P.loadBalancerArn')
     -> TF.Attr s P.Int -- ^ @port@ ('P._port', 'P.port')
     -> P.Resource (LbListenerResource s)
@@ -7075,15 +6982,19 @@ instance TF.IsObject (LbListenerResource s) where
 
 instance TF.IsValid (LbListenerResource s) where
     validator = P.mempty
+           P.<> TF.settingsValidator "_defaultAction"
+                  (_defaultAction
+                      :: LbListenerResource s -> TF.Attr s (LbListenerDefaultActionSetting s))
+                  TF.validator
 
 instance P.HasCertificateArn (LbListenerResource s) (TF.Attr s P.Text) where
     certificateArn =
         P.lens (_certificateArn :: LbListenerResource s -> TF.Attr s P.Text)
                (\s a -> s { _certificateArn = a } :: LbListenerResource s)
 
-instance P.HasDefaultAction (LbListenerResource s) (TF.Attr s [TF.Attr s (LbListenerDefaultActionSetting s)]) where
+instance P.HasDefaultAction (LbListenerResource s) (TF.Attr s (LbListenerDefaultActionSetting s)) where
     defaultAction =
-        P.lens (_defaultAction :: LbListenerResource s -> TF.Attr s [TF.Attr s (LbListenerDefaultActionSetting s)])
+        P.lens (_defaultAction :: LbListenerResource s -> TF.Attr s (LbListenerDefaultActionSetting s))
                (\s a -> s { _defaultAction = a } :: LbListenerResource s)
 
 instance P.HasLoadBalancerArn (LbListenerResource s) (TF.Attr s P.Text) where
@@ -8301,3 +8212,76 @@ instance P.HasMemberAccountId (MacieMemberAccountAssociationResource s) (TF.Attr
 
 instance s ~ s' => P.HasComputedId (TF.Ref s' (MacieMemberAccountAssociationResource s)) (TF.Attr s P.Text) where
     computedId x = TF.compute (TF.refKey x) "id"
+
+-- | @aws_macie_s3_bucket_association@ Resource.
+--
+-- See the <https://www.terraform.io/docs/providers/aws/r/macie_s3_bucket_association.html terraform documentation>
+-- for more information.
+data MacieS3BucketAssociationResource s = MacieS3BucketAssociationResource'
+    { _bucketName :: TF.Attr s P.Text
+    -- ^ @bucket_name@ - (Required, Forces New)
+    --
+    , _classificationType :: TF.Attr s (MacieS3BucketAssociationClassificationTypeSetting s)
+    -- ^ @classification_type@ - (Optional)
+    --
+    , _memberAccountId :: TF.Attr s P.Text
+    -- ^ @member_account_id@ - (Optional, Forces New)
+    --
+    , _prefix :: TF.Attr s P.Text
+    -- ^ @prefix@ - (Optional, Forces New)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Define a new @aws_macie_s3_bucket_association@ resource value.
+macieS3BucketAssociationResource
+    :: TF.Attr s P.Text -- ^ @bucket_name@ ('P._bucketName', 'P.bucketName')
+    -> P.Resource (MacieS3BucketAssociationResource s)
+macieS3BucketAssociationResource _bucketName =
+    TF.unsafeResource "aws_macie_s3_bucket_association" TF.validator $
+        MacieS3BucketAssociationResource'
+            { _bucketName = _bucketName
+            , _classificationType = TF.Nil
+            , _memberAccountId = TF.Nil
+            , _prefix = TF.Nil
+            }
+
+instance TF.IsObject (MacieS3BucketAssociationResource s) where
+    toObject MacieS3BucketAssociationResource'{..} = P.catMaybes
+        [ TF.assign "bucket_name" <$> TF.attribute _bucketName
+        , TF.assign "classification_type" <$> TF.attribute _classificationType
+        , TF.assign "member_account_id" <$> TF.attribute _memberAccountId
+        , TF.assign "prefix" <$> TF.attribute _prefix
+        ]
+
+instance TF.IsValid (MacieS3BucketAssociationResource s) where
+    validator = P.mempty
+           P.<> TF.settingsValidator "_classificationType"
+                  (_classificationType
+                      :: MacieS3BucketAssociationResource s -> TF.Attr s (MacieS3BucketAssociationClassificationTypeSetting s))
+                  TF.validator
+
+instance P.HasBucketName (MacieS3BucketAssociationResource s) (TF.Attr s P.Text) where
+    bucketName =
+        P.lens (_bucketName :: MacieS3BucketAssociationResource s -> TF.Attr s P.Text)
+               (\s a -> s { _bucketName = a } :: MacieS3BucketAssociationResource s)
+
+instance P.HasClassificationType (MacieS3BucketAssociationResource s) (TF.Attr s (MacieS3BucketAssociationClassificationTypeSetting s)) where
+    classificationType =
+        P.lens (_classificationType :: MacieS3BucketAssociationResource s -> TF.Attr s (MacieS3BucketAssociationClassificationTypeSetting s))
+               (\s a -> s { _classificationType = a } :: MacieS3BucketAssociationResource s)
+
+instance P.HasMemberAccountId (MacieS3BucketAssociationResource s) (TF.Attr s P.Text) where
+    memberAccountId =
+        P.lens (_memberAccountId :: MacieS3BucketAssociationResource s -> TF.Attr s P.Text)
+               (\s a -> s { _memberAccountId = a } :: MacieS3BucketAssociationResource s)
+
+instance P.HasPrefix (MacieS3BucketAssociationResource s) (TF.Attr s P.Text) where
+    prefix =
+        P.lens (_prefix :: MacieS3BucketAssociationResource s -> TF.Attr s P.Text)
+               (\s a -> s { _prefix = a } :: MacieS3BucketAssociationResource s)
+
+instance s ~ s' => P.HasComputedId (TF.Ref s' (MacieS3BucketAssociationResource s)) (TF.Attr s P.Text) where
+    computedId x = TF.compute (TF.refKey x) "id"
+
+instance s ~ s' => P.HasComputedClassificationType (TF.Ref s' (MacieS3BucketAssociationResource s)) (TF.Attr s (MacieS3BucketAssociationClassificationTypeSetting s)) where
+    computedClassificationType x = TF.compute (TF.refKey x) "classification_type"

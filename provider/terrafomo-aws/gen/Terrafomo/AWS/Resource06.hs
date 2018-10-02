@@ -1498,6 +1498,9 @@ data SpotFleetRequestResource s = SpotFleetRequestResource'
     , _instanceInterruptionBehaviour :: TF.Attr s P.Text
     -- ^ @instance_interruption_behaviour@ - (Optional, Forces New)
     --
+    , _instancePoolsToUseCount :: TF.Attr s P.Int
+    -- ^ @instance_pools_to_use_count@ - (Optional, Forces New)
+    --
     , _launchSpecification :: TF.Attr s [TF.Attr s (SpotFleetRequestLaunchSpecificationSetting s)]
     -- ^ @launch_specification@ - (Required, Forces New)
     --
@@ -1544,6 +1547,7 @@ spotFleetRequestResource _targetCapacity _iamFleetRole _launchSpecification =
             , _fleetType = TF.value "maintain"
             , _iamFleetRole = _iamFleetRole
             , _instanceInterruptionBehaviour = TF.value "terminate"
+            , _instancePoolsToUseCount = TF.value 1
             , _launchSpecification = _launchSpecification
             , _loadBalancers = TF.Nil
             , _replaceUnhealthyInstances = TF.value P.False
@@ -1563,6 +1567,7 @@ instance TF.IsObject (SpotFleetRequestResource s) where
         , TF.assign "fleet_type" <$> TF.attribute _fleetType
         , TF.assign "iam_fleet_role" <$> TF.attribute _iamFleetRole
         , TF.assign "instance_interruption_behaviour" <$> TF.attribute _instanceInterruptionBehaviour
+        , TF.assign "instance_pools_to_use_count" <$> TF.attribute _instancePoolsToUseCount
         , TF.assign "launch_specification" <$> TF.attribute _launchSpecification
         , TF.assign "load_balancers" <$> TF.attribute _loadBalancers
         , TF.assign "replace_unhealthy_instances" <$> TF.attribute _replaceUnhealthyInstances
@@ -1602,6 +1607,11 @@ instance P.HasInstanceInterruptionBehaviour (SpotFleetRequestResource s) (TF.Att
     instanceInterruptionBehaviour =
         P.lens (_instanceInterruptionBehaviour :: SpotFleetRequestResource s -> TF.Attr s P.Text)
                (\s a -> s { _instanceInterruptionBehaviour = a } :: SpotFleetRequestResource s)
+
+instance P.HasInstancePoolsToUseCount (SpotFleetRequestResource s) (TF.Attr s P.Int) where
+    instancePoolsToUseCount =
+        P.lens (_instancePoolsToUseCount :: SpotFleetRequestResource s -> TF.Attr s P.Int)
+               (\s a -> s { _instancePoolsToUseCount = a } :: SpotFleetRequestResource s)
 
 instance P.HasLaunchSpecification (SpotFleetRequestResource s) (TF.Attr s [TF.Attr s (SpotFleetRequestLaunchSpecificationSetting s)]) where
     launchSpecification =

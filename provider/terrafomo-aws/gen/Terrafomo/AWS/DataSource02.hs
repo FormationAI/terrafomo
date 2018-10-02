@@ -1012,6 +1012,9 @@ instance s ~ s' => P.HasComputedCreatedAt (TF.Ref s' (EksClusterData s)) (TF.Att
 instance s ~ s' => P.HasComputedEndpoint (TF.Ref s' (EksClusterData s)) (TF.Attr s P.Text) where
     computedEndpoint x = TF.compute (TF.refKey x) "endpoint"
 
+instance s ~ s' => P.HasComputedPlatformVersion (TF.Ref s' (EksClusterData s)) (TF.Attr s P.Text) where
+    computedPlatformVersion x = TF.compute (TF.refKey x) "platform_version"
+
 instance s ~ s' => P.HasComputedRoleArn (TF.Ref s' (EksClusterData s)) (TF.Attr s P.Text) where
     computedRoleArn x = TF.compute (TF.refKey x) "role_arn"
 
@@ -2364,6 +2367,9 @@ instance s ~ s' => P.HasComputedCidrBlocks (TF.Ref s' (IpRangesData s)) (TF.Attr
 
 instance s ~ s' => P.HasComputedCreateDate (TF.Ref s' (IpRangesData s)) (TF.Attr s P.Text) where
     computedCreateDate x = TF.compute (TF.refKey x) "create_date"
+
+instance s ~ s' => P.HasComputedIpv6CidrBlocks (TF.Ref s' (IpRangesData s)) (TF.Attr s [TF.Attr s P.Text]) where
+    computedIpv6CidrBlocks x = TF.compute (TF.refKey x) "ipv6_cidr_blocks"
 
 instance s ~ s' => P.HasComputedSyncToken (TF.Ref s' (IpRangesData s)) (TF.Attr s P.Int) where
     computedSyncToken x = TF.compute (TF.refKey x) "sync_token"
@@ -5171,8 +5177,11 @@ instance s ~ s' => P.HasComputedValue (TF.Ref s' (SsmParameterData s)) (TF.Attr 
 -- See the <https://www.terraform.io/docs/providers/aws/d/storagegateway_local_disk.html terraform documentation>
 -- for more information.
 data StoragegatewayLocalDiskData s = StoragegatewayLocalDiskData'
-    { _diskPath   :: TF.Attr s P.Text
-    -- ^ @disk_path@ - (Required)
+    { _diskNode   :: TF.Attr s P.Text
+    -- ^ @disk_node@ - (Optional)
+    --
+    , _diskPath   :: TF.Attr s P.Text
+    -- ^ @disk_path@ - (Optional)
     --
     , _gatewayArn :: TF.Attr s P.Text
     -- ^ @gateway_arn@ - (Required)
@@ -5182,23 +5191,29 @@ data StoragegatewayLocalDiskData s = StoragegatewayLocalDiskData'
 -- | Define a new @aws_storagegateway_local_disk@ datasource value.
 storagegatewayLocalDiskData
     :: TF.Attr s P.Text -- ^ @gateway_arn@ ('P._gatewayArn', 'P.gatewayArn')
-    -> TF.Attr s P.Text -- ^ @disk_path@ ('P._diskPath', 'P.diskPath')
     -> P.DataSource (StoragegatewayLocalDiskData s)
-storagegatewayLocalDiskData _gatewayArn _diskPath =
+storagegatewayLocalDiskData _gatewayArn =
     TF.unsafeDataSource "aws_storagegateway_local_disk" TF.validator $
         StoragegatewayLocalDiskData'
-            { _diskPath = _diskPath
+            { _diskNode = TF.Nil
+            , _diskPath = TF.Nil
             , _gatewayArn = _gatewayArn
             }
 
 instance TF.IsObject (StoragegatewayLocalDiskData s) where
     toObject StoragegatewayLocalDiskData'{..} = P.catMaybes
-        [ TF.assign "disk_path" <$> TF.attribute _diskPath
+        [ TF.assign "disk_node" <$> TF.attribute _diskNode
+        , TF.assign "disk_path" <$> TF.attribute _diskPath
         , TF.assign "gateway_arn" <$> TF.attribute _gatewayArn
         ]
 
 instance TF.IsValid (StoragegatewayLocalDiskData s) where
     validator = P.mempty
+
+instance P.HasDiskNode (StoragegatewayLocalDiskData s) (TF.Attr s P.Text) where
+    diskNode =
+        P.lens (_diskNode :: StoragegatewayLocalDiskData s -> TF.Attr s P.Text)
+               (\s a -> s { _diskNode = a } :: StoragegatewayLocalDiskData s)
 
 instance P.HasDiskPath (StoragegatewayLocalDiskData s) (TF.Attr s P.Text) where
     diskPath =

@@ -831,7 +831,7 @@ newSpotInstanceRequestCreditSpecificationSetting
     :: SpotInstanceRequestCreditSpecificationSetting s
 newSpotInstanceRequestCreditSpecificationSetting =
     SpotInstanceRequestCreditSpecificationSetting'
-        { _cpuCredits = TF.value "standard"
+        { _cpuCredits = TF.Nil
         }
 
 instance TF.IsValue  (SpotInstanceRequestCreditSpecificationSetting s)

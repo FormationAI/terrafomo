@@ -17,76 +17,8 @@
 --
 module Terrafomo.AWS.Settings05
     (
-    -- ** cloudwatch_logging_options
-      KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting
-
-    -- ** extended_s3_configuration
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting
-
-    -- ** s3_backup_configuration
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting
-
-    -- ** cloudwatch_logging_options
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting
-
-    -- ** processing_configuration
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting
-
-    -- ** processors
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting
-
-    -- ** parameters
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting
-
-    -- ** data_format_conversion_configuration
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting
-
-    -- ** schema_configuration
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting
-
-    -- ** output_format_configuration
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting
-
-    -- ** serializer
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting
-
-    -- ** parquet_ser_de
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting
-
-    -- ** orc_ser_de
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting
-
-    -- ** input_format_configuration
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting
-
-    -- ** deserializer
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting
-
-    -- ** open_x_json_ser_de
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting
-
-    -- ** hive_json_ser_de
-    , KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting (..)
-    , newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting
-
     -- ** kinesis_source_configuration
-    , KinesisFirehoseDeliveryStreamKinesisSourceConfigurationSetting (..)
+      KinesisFirehoseDeliveryStreamKinesisSourceConfigurationSetting (..)
     , newKinesisFirehoseDeliveryStreamKinesisSourceConfigurationSetting
 
     -- ** cloudwatch_logging_options
@@ -237,13 +169,29 @@ module Terrafomo.AWS.Settings05
     , LbAccessLogsSetting (..)
     , newLbAccessLogsSetting
 
+    -- ** fixed_response
+    , LbListenerDefaultActionFixedResponseSetting (..)
+    , newLbListenerDefaultActionFixedResponseSetting
+
     -- ** default_action
     , LbListenerDefaultActionSetting (..)
     , newLbListenerDefaultActionSetting
 
+    -- ** redirect
+    , LbListenerDefaultActionRedirectSetting (..)
+    , newLbListenerDefaultActionRedirectSetting
+
+    -- ** fixed_response
+    , LbListenerRuleActionFixedResponseSetting (..)
+    , newLbListenerRuleActionFixedResponseSetting
+
     -- ** action
     , LbListenerRuleActionSetting (..)
     , newLbListenerRuleActionSetting
+
+    -- ** redirect
+    , LbListenerRuleActionRedirectSetting (..)
+    , newLbListenerRuleActionRedirectSetting
 
     -- ** condition
     , LbListenerRuleConditionSetting (..)
@@ -333,6 +281,22 @@ module Terrafomo.AWS.Settings05
     , OpsworksApplicationAppSourceSetting (..)
     , newOpsworksApplicationAppSourceSetting
 
+    -- ** environment
+    , OpsworksApplicationEnvironmentSetting (..)
+    , newOpsworksApplicationEnvironmentSetting
+
+    -- ** ssl_configuration
+    , OpsworksApplicationSslConfigurationSetting (..)
+    , newOpsworksApplicationSslConfigurationSetting
+
+    -- ** ebs_volume
+    , OpsworksCustomLayerEbsVolumeSetting (..)
+    , newOpsworksCustomLayerEbsVolumeSetting
+
+    -- ** ebs_volume
+    , OpsworksGangliaLayerEbsVolumeSetting (..)
+    , newOpsworksGangliaLayerEbsVolumeSetting
+
     ) where
 
 import Data.Functor ((<$>))
@@ -355,1126 +319,6 @@ import qualified Terrafomo.AWS.Types as P
 import qualified Terrafomo.HCL       as TF
 import qualified Terrafomo.Name      as TF
 import qualified Terrafomo.Validator as TF
-
--- | @cloudwatch_logging_options@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting'
-    { _enabled       :: TF.Attr s P.Bool
-    -- ^ @enabled@ - (Optional)
-    --
-    , _logGroupName  :: TF.Attr s P.Text
-    -- ^ @log_group_name@ - (Optional)
-    --
-    , _logStreamName :: TF.Attr s P.Text
-    -- ^ @log_stream_name@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @cloudwatch_logging_options@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting
-    :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting'
-        { _enabled = TF.value P.False
-        , _logGroupName = TF.Nil
-        , _logStreamName = TF.Nil
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting'{..} = P.catMaybes
-        [ TF.assign "enabled" <$> TF.attribute _enabled
-        , TF.assign "log_group_name" <$> TF.attribute _logGroupName
-        , TF.assign "log_stream_name" <$> TF.attribute _logStreamName
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s) where
-    validator = P.mempty
-
-instance P.HasEnabled (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s) (TF.Attr s P.Bool) where
-    enabled =
-        P.lens (_enabled :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _enabled = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s)
-
-instance P.HasLogGroupName (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s) (TF.Attr s P.Text) where
-    logGroupName =
-        P.lens (_logGroupName :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _logGroupName = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s)
-
-instance P.HasLogStreamName (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s) (TF.Attr s P.Text) where
-    logStreamName =
-        P.lens (_logStreamName :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _logStreamName = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s)
-
--- | @extended_s3_configuration@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting'
-    { _bucketArn :: TF.Attr s P.Text
-    -- ^ @bucket_arn@ - (Required)
-    --
-    , _bufferInterval :: TF.Attr s P.Int
-    -- ^ @buffer_interval@ - (Optional)
-    --
-    , _bufferSize :: TF.Attr s P.Int
-    -- ^ @buffer_size@ - (Optional)
-    --
-    , _cloudwatchLoggingOptions :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s)
-    -- ^ @cloudwatch_logging_options@ - (Optional)
-    --
-    , _compressionFormat :: TF.Attr s P.Text
-    -- ^ @compression_format@ - (Optional)
-    --
-    , _dataFormatConversionConfiguration :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s)
-    -- ^ @data_format_conversion_configuration@ - (Optional)
-    --
-    , _kmsKeyArn :: TF.Attr s P.Text
-    -- ^ @kms_key_arn@ - (Optional)
-    --
-    , _prefix :: TF.Attr s P.Text
-    -- ^ @prefix@ - (Optional)
-    --
-    , _processingConfiguration :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s)
-    -- ^ @processing_configuration@ - (Optional)
-    --
-    , _roleArn :: TF.Attr s P.Text
-    -- ^ @role_arn@ - (Required)
-    --
-    , _s3BackupConfiguration :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)
-    -- ^ @s3_backup_configuration@ - (Optional)
-    --
-    , _s3BackupMode :: TF.Attr s P.Text
-    -- ^ @s3_backup_mode@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @extended_s3_configuration@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting
-    :: TF.Attr s P.Text -- ^ 'P._bucketArn': @bucket_arn@
-    -> TF.Attr s P.Text -- ^ 'P._roleArn': @role_arn@
-    -> KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting _bucketArn _roleArn =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting'
-        { _bucketArn = _bucketArn
-        , _bufferInterval = TF.value 300
-        , _bufferSize = TF.value 5
-        , _cloudwatchLoggingOptions = TF.Nil
-        , _compressionFormat = TF.value "UNCOMPRESSED"
-        , _dataFormatConversionConfiguration = TF.Nil
-        , _kmsKeyArn = TF.Nil
-        , _prefix = TF.Nil
-        , _processingConfiguration = TF.Nil
-        , _roleArn = _roleArn
-        , _s3BackupConfiguration = TF.Nil
-        , _s3BackupMode = TF.value "Disabled"
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting'{..} = P.catMaybes
-        [ TF.assign "bucket_arn" <$> TF.attribute _bucketArn
-        , TF.assign "buffer_interval" <$> TF.attribute _bufferInterval
-        , TF.assign "buffer_size" <$> TF.attribute _bufferSize
-        , TF.assign "cloudwatch_logging_options" <$> TF.attribute _cloudwatchLoggingOptions
-        , TF.assign "compression_format" <$> TF.attribute _compressionFormat
-        , TF.assign "data_format_conversion_configuration" <$> TF.attribute _dataFormatConversionConfiguration
-        , TF.assign "kms_key_arn" <$> TF.attribute _kmsKeyArn
-        , TF.assign "prefix" <$> TF.attribute _prefix
-        , TF.assign "processing_configuration" <$> TF.attribute _processingConfiguration
-        , TF.assign "role_arn" <$> TF.attribute _roleArn
-        , TF.assign "s3_backup_configuration" <$> TF.attribute _s3BackupConfiguration
-        , TF.assign "s3_backup_mode" <$> TF.attribute _s3BackupMode
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) where
-    validator = P.mempty
-           P.<> TF.settingsValidator "_cloudwatchLoggingOptions"
-                  (_cloudwatchLoggingOptions
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s))
-                  TF.validator
-           P.<> TF.settingsValidator "_dataFormatConversionConfiguration"
-                  (_dataFormatConversionConfiguration
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s))
-                  TF.validator
-           P.<> TF.settingsValidator "_processingConfiguration"
-                  (_processingConfiguration
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s))
-                  TF.validator
-           P.<> TF.settingsValidator "_s3BackupConfiguration"
-                  (_s3BackupConfiguration
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s))
-                  TF.validator
-
-instance P.HasBucketArn (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s P.Text) where
-    bucketArn =
-        P.lens (_bucketArn :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _bucketArn = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance P.HasBufferInterval (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s P.Int) where
-    bufferInterval =
-        P.lens (_bufferInterval :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _bufferInterval = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance P.HasBufferSize (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s P.Int) where
-    bufferSize =
-        P.lens (_bufferSize :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _bufferSize = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance P.HasCloudwatchLoggingOptions (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s)) where
-    cloudwatchLoggingOptions =
-        P.lens (_cloudwatchLoggingOptions :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s))
-               (\s a -> s { _cloudwatchLoggingOptions = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance P.HasCompressionFormat (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s P.Text) where
-    compressionFormat =
-        P.lens (_compressionFormat :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _compressionFormat = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance P.HasDataFormatConversionConfiguration (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s)) where
-    dataFormatConversionConfiguration =
-        P.lens (_dataFormatConversionConfiguration :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s))
-               (\s a -> s { _dataFormatConversionConfiguration = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance P.HasKmsKeyArn (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s P.Text) where
-    kmsKeyArn =
-        P.lens (_kmsKeyArn :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _kmsKeyArn = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance P.HasPrefix (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s P.Text) where
-    prefix =
-        P.lens (_prefix :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _prefix = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance P.HasProcessingConfiguration (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s)) where
-    processingConfiguration =
-        P.lens (_processingConfiguration :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s))
-               (\s a -> s { _processingConfiguration = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance P.HasRoleArn (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s P.Text) where
-    roleArn =
-        P.lens (_roleArn :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _roleArn = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance P.HasS3BackupConfiguration (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)) where
-    s3BackupConfiguration =
-        P.lens (_s3BackupConfiguration :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s))
-               (\s a -> s { _s3BackupConfiguration = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance P.HasS3BackupMode (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s) (TF.Attr s P.Text) where
-    s3BackupMode =
-        P.lens (_s3BackupMode :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _s3BackupMode = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)
-
-instance s ~ s' => P.HasComputedCloudwatchLoggingOptions (TF.Ref s' (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationSetting s)) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationCloudwatchLoggingOptionsSetting s)) where
-    computedCloudwatchLoggingOptions x = TF.compute (TF.refKey x) "cloudwatch_logging_options"
-
--- | @s3_backup_configuration@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting'
-    { _bucketArn :: TF.Attr s P.Text
-    -- ^ @bucket_arn@ - (Required)
-    --
-    , _bufferInterval :: TF.Attr s P.Int
-    -- ^ @buffer_interval@ - (Optional)
-    --
-    , _bufferSize :: TF.Attr s P.Int
-    -- ^ @buffer_size@ - (Optional)
-    --
-    , _cloudwatchLoggingOptions :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s)
-    -- ^ @cloudwatch_logging_options@ - (Optional)
-    --
-    , _compressionFormat :: TF.Attr s P.Text
-    -- ^ @compression_format@ - (Optional)
-    --
-    , _kmsKeyArn :: TF.Attr s P.Text
-    -- ^ @kms_key_arn@ - (Optional)
-    --
-    , _prefix :: TF.Attr s P.Text
-    -- ^ @prefix@ - (Optional)
-    --
-    , _roleArn :: TF.Attr s P.Text
-    -- ^ @role_arn@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @s3_backup_configuration@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting
-    :: TF.Attr s P.Text -- ^ 'P._bucketArn': @bucket_arn@
-    -> TF.Attr s P.Text -- ^ 'P._roleArn': @role_arn@
-    -> KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting _bucketArn _roleArn =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting'
-        { _bucketArn = _bucketArn
-        , _bufferInterval = TF.value 300
-        , _bufferSize = TF.value 5
-        , _cloudwatchLoggingOptions = TF.Nil
-        , _compressionFormat = TF.value "UNCOMPRESSED"
-        , _kmsKeyArn = TF.Nil
-        , _prefix = TF.Nil
-        , _roleArn = _roleArn
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting'{..} = P.catMaybes
-        [ TF.assign "bucket_arn" <$> TF.attribute _bucketArn
-        , TF.assign "buffer_interval" <$> TF.attribute _bufferInterval
-        , TF.assign "buffer_size" <$> TF.attribute _bufferSize
-        , TF.assign "cloudwatch_logging_options" <$> TF.attribute _cloudwatchLoggingOptions
-        , TF.assign "compression_format" <$> TF.attribute _compressionFormat
-        , TF.assign "kms_key_arn" <$> TF.attribute _kmsKeyArn
-        , TF.assign "prefix" <$> TF.attribute _prefix
-        , TF.assign "role_arn" <$> TF.attribute _roleArn
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s) where
-    validator = P.mempty
-           P.<> TF.settingsValidator "_cloudwatchLoggingOptions"
-                  (_cloudwatchLoggingOptions
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s))
-                  TF.validator
-
-instance P.HasBucketArn (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s) (TF.Attr s P.Text) where
-    bucketArn =
-        P.lens (_bucketArn :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _bucketArn = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)
-
-instance P.HasBufferInterval (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s) (TF.Attr s P.Int) where
-    bufferInterval =
-        P.lens (_bufferInterval :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _bufferInterval = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)
-
-instance P.HasBufferSize (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s) (TF.Attr s P.Int) where
-    bufferSize =
-        P.lens (_bufferSize :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _bufferSize = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)
-
-instance P.HasCloudwatchLoggingOptions (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s)) where
-    cloudwatchLoggingOptions =
-        P.lens (_cloudwatchLoggingOptions :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s))
-               (\s a -> s { _cloudwatchLoggingOptions = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)
-
-instance P.HasCompressionFormat (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s) (TF.Attr s P.Text) where
-    compressionFormat =
-        P.lens (_compressionFormat :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _compressionFormat = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)
-
-instance P.HasKmsKeyArn (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s) (TF.Attr s P.Text) where
-    kmsKeyArn =
-        P.lens (_kmsKeyArn :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _kmsKeyArn = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)
-
-instance P.HasPrefix (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s) (TF.Attr s P.Text) where
-    prefix =
-        P.lens (_prefix :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _prefix = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)
-
-instance P.HasRoleArn (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s) (TF.Attr s P.Text) where
-    roleArn =
-        P.lens (_roleArn :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _roleArn = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)
-
-instance s ~ s' => P.HasComputedCloudwatchLoggingOptions (TF.Ref s' (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationSetting s)) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s)) where
-    computedCloudwatchLoggingOptions x = TF.compute (TF.refKey x) "cloudwatch_logging_options"
-
--- | @cloudwatch_logging_options@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting'
-    { _enabled       :: TF.Attr s P.Bool
-    -- ^ @enabled@ - (Optional)
-    --
-    , _logGroupName  :: TF.Attr s P.Text
-    -- ^ @log_group_name@ - (Optional)
-    --
-    , _logStreamName :: TF.Attr s P.Text
-    -- ^ @log_stream_name@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @cloudwatch_logging_options@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting
-    :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting'
-        { _enabled = TF.value P.False
-        , _logGroupName = TF.Nil
-        , _logStreamName = TF.Nil
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting'{..} = P.catMaybes
-        [ TF.assign "enabled" <$> TF.attribute _enabled
-        , TF.assign "log_group_name" <$> TF.attribute _logGroupName
-        , TF.assign "log_stream_name" <$> TF.attribute _logStreamName
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s) where
-    validator = P.mempty
-
-instance P.HasEnabled (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s) (TF.Attr s P.Bool) where
-    enabled =
-        P.lens (_enabled :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _enabled = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s)
-
-instance P.HasLogGroupName (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s) (TF.Attr s P.Text) where
-    logGroupName =
-        P.lens (_logGroupName :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _logGroupName = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s)
-
-instance P.HasLogStreamName (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s) (TF.Attr s P.Text) where
-    logStreamName =
-        P.lens (_logStreamName :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _logStreamName = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptionsSetting s)
-
--- | @processing_configuration@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting'
-    { _enabled :: TF.Attr s P.Bool
-    -- ^ @enabled@ - (Optional)
-    --
-    , _processors :: TF.Attr s [TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s)]
-    -- ^ @processors@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @processing_configuration@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting
-    :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting'
-        { _enabled = TF.Nil
-        , _processors = TF.Nil
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting'{..} = P.catMaybes
-        [ TF.assign "enabled" <$> TF.attribute _enabled
-        , TF.assign "processors" <$> TF.attribute _processors
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s) where
-    validator = P.mempty
-
-instance P.HasEnabled (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s) (TF.Attr s P.Bool) where
-    enabled =
-        P.lens (_enabled :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _enabled = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s)
-
-instance P.HasProcessors (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s) (TF.Attr s [TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s)]) where
-    processors =
-        P.lens (_processors :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s -> TF.Attr s [TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s)])
-               (\s a -> s { _processors = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationSetting s)
-
--- | @processors@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting'
-    { _parameters :: TF.Attr s [TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s)]
-    -- ^ @parameters@ - (Optional)
-    --
-    , _type' :: TF.Attr s P.Text
-    -- ^ @type@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @processors@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting
-    :: TF.Attr s P.Text -- ^ 'P._type'': @type@
-    -> KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting _type' =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting'
-        { _parameters = TF.Nil
-        , _type' = _type'
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting'{..} = P.catMaybes
-        [ TF.assign "parameters" <$> TF.attribute _parameters
-        , TF.assign "type" <$> TF.attribute _type'
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s) where
-    validator = P.mempty
-
-instance P.HasParameters (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s) (TF.Attr s [TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s)]) where
-    parameters =
-        P.lens (_parameters :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s -> TF.Attr s [TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s)])
-               (\s a -> s { _parameters = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s)
-
-instance P.HasType' (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s) (TF.Attr s P.Text) where
-    type' =
-        P.lens (_type' :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _type' = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsSetting s)
-
--- | @parameters@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting'
-    { _parameterName  :: TF.Attr s P.Text
-    -- ^ @parameter_name@ - (Required)
-    --
-    , _parameterValue :: TF.Attr s P.Text
-    -- ^ @parameter_value@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @parameters@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting
-    :: TF.Attr s P.Text -- ^ 'P._parameterName': @parameter_name@
-    -> TF.Attr s P.Text -- ^ 'P._parameterValue': @parameter_value@
-    -> KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting _parameterName _parameterValue =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting'
-        { _parameterName = _parameterName
-        , _parameterValue = _parameterValue
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting'{..} = P.catMaybes
-        [ TF.assign "parameter_name" <$> TF.attribute _parameterName
-        , TF.assign "parameter_value" <$> TF.attribute _parameterValue
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s) where
-    validator = P.mempty
-
-instance P.HasParameterName (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s) (TF.Attr s P.Text) where
-    parameterName =
-        P.lens (_parameterName :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _parameterName = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s)
-
-instance P.HasParameterValue (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s) (TF.Attr s P.Text) where
-    parameterValue =
-        P.lens (_parameterValue :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _parameterValue = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfigurationProcessorsParametersSetting s)
-
--- | @data_format_conversion_configuration@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting'
-    { _enabled :: TF.Attr s P.Bool
-    -- ^ @enabled@ - (Optional)
-    --
-    , _inputFormatConfiguration :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s)
-    -- ^ @input_format_configuration@ - (Required)
-    --
-    , _outputFormatConfiguration :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s)
-    -- ^ @output_format_configuration@ - (Required)
-    --
-    , _schemaConfiguration :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s)
-    -- ^ @schema_configuration@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @data_format_conversion_configuration@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting
-    :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s) -- ^ 'P._inputFormatConfiguration': @input_format_configuration@
-    -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s) -- ^ 'P._outputFormatConfiguration': @output_format_configuration@
-    -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s) -- ^ 'P._schemaConfiguration': @schema_configuration@
-    -> KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting _inputFormatConfiguration _outputFormatConfiguration _schemaConfiguration =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting'
-        { _enabled = TF.value P.True
-        , _inputFormatConfiguration = _inputFormatConfiguration
-        , _outputFormatConfiguration = _outputFormatConfiguration
-        , _schemaConfiguration = _schemaConfiguration
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting'{..} = P.catMaybes
-        [ TF.assign "enabled" <$> TF.attribute _enabled
-        , TF.assign "input_format_configuration" <$> TF.attribute _inputFormatConfiguration
-        , TF.assign "output_format_configuration" <$> TF.attribute _outputFormatConfiguration
-        , TF.assign "schema_configuration" <$> TF.attribute _schemaConfiguration
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s) where
-    validator = P.mempty
-           P.<> TF.settingsValidator "_inputFormatConfiguration"
-                  (_inputFormatConfiguration
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s))
-                  TF.validator
-           P.<> TF.settingsValidator "_outputFormatConfiguration"
-                  (_outputFormatConfiguration
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s))
-                  TF.validator
-           P.<> TF.settingsValidator "_schemaConfiguration"
-                  (_schemaConfiguration
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s))
-                  TF.validator
-
-instance P.HasEnabled (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s) (TF.Attr s P.Bool) where
-    enabled =
-        P.lens (_enabled :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _enabled = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s)
-
-instance P.HasInputFormatConfiguration (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s)) where
-    inputFormatConfiguration =
-        P.lens (_inputFormatConfiguration :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s))
-               (\s a -> s { _inputFormatConfiguration = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s)
-
-instance P.HasOutputFormatConfiguration (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s)) where
-    outputFormatConfiguration =
-        P.lens (_outputFormatConfiguration :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s))
-               (\s a -> s { _outputFormatConfiguration = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s)
-
-instance P.HasSchemaConfiguration (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s)) where
-    schemaConfiguration =
-        P.lens (_schemaConfiguration :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s))
-               (\s a -> s { _schemaConfiguration = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSetting s)
-
--- | @schema_configuration@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting'
-    { _catalogId    :: TF.Attr s P.Text
-    -- ^ @catalog_id@ - (Optional)
-    --
-    , _databaseName :: TF.Attr s P.Text
-    -- ^ @database_name@ - (Required)
-    --
-    , _region       :: TF.Attr s P.Text
-    -- ^ @region@ - (Optional)
-    --
-    , _roleArn      :: TF.Attr s P.Text
-    -- ^ @role_arn@ - (Required)
-    --
-    , _tableName    :: TF.Attr s P.Text
-    -- ^ @table_name@ - (Required)
-    --
-    , _versionId    :: TF.Attr s P.Text
-    -- ^ @version_id@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @schema_configuration@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting
-    :: TF.Attr s P.Text -- ^ 'P._roleArn': @role_arn@
-    -> TF.Attr s P.Text -- ^ 'P._databaseName': @database_name@
-    -> TF.Attr s P.Text -- ^ 'P._tableName': @table_name@
-    -> KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting _roleArn _databaseName _tableName =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting'
-        { _catalogId = TF.Nil
-        , _databaseName = _databaseName
-        , _region = TF.Nil
-        , _roleArn = _roleArn
-        , _tableName = _tableName
-        , _versionId = TF.value "LATEST"
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting'{..} = P.catMaybes
-        [ TF.assign "catalog_id" <$> TF.attribute _catalogId
-        , TF.assign "database_name" <$> TF.attribute _databaseName
-        , TF.assign "region" <$> TF.attribute _region
-        , TF.assign "role_arn" <$> TF.attribute _roleArn
-        , TF.assign "table_name" <$> TF.attribute _tableName
-        , TF.assign "version_id" <$> TF.attribute _versionId
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s) where
-    validator = P.mempty
-
-instance P.HasCatalogId (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s) (TF.Attr s P.Text) where
-    catalogId =
-        P.lens (_catalogId :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _catalogId = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s)
-
-instance P.HasDatabaseName (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s) (TF.Attr s P.Text) where
-    databaseName =
-        P.lens (_databaseName :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _databaseName = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s)
-
-instance P.HasRegion (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s) (TF.Attr s P.Text) where
-    region =
-        P.lens (_region :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _region = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s)
-
-instance P.HasRoleArn (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s) (TF.Attr s P.Text) where
-    roleArn =
-        P.lens (_roleArn :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _roleArn = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s)
-
-instance P.HasTableName (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s) (TF.Attr s P.Text) where
-    tableName =
-        P.lens (_tableName :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _tableName = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s)
-
-instance P.HasVersionId (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s) (TF.Attr s P.Text) where
-    versionId =
-        P.lens (_versionId :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _versionId = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s)
-
-instance s ~ s' => P.HasComputedCatalogId (TF.Ref s' (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s)) (TF.Attr s P.Text) where
-    computedCatalogId x = TF.compute (TF.refKey x) "catalog_id"
-
-instance s ~ s' => P.HasComputedRegion (TF.Ref s' (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfigurationSetting s)) (TF.Attr s P.Text) where
-    computedRegion x = TF.compute (TF.refKey x) "region"
-
--- | @output_format_configuration@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting'
-    { _serializer :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s)
-    -- ^ @serializer@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @output_format_configuration@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting
-    :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s) -- ^ 'P._serializer': @serializer@
-    -> KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting _serializer =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting'
-        { _serializer = _serializer
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting'{..} = P.catMaybes
-        [ TF.assign "serializer" <$> TF.attribute _serializer
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s) where
-    validator = P.mempty
-           P.<> TF.settingsValidator "_serializer"
-                  (_serializer
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s))
-                  TF.validator
-
-instance P.HasSerializer (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s)) where
-    serializer =
-        P.lens (_serializer :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s))
-               (\s a -> s { _serializer = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSetting s)
-
--- | @serializer@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting'
-    { _orcSerDe :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-    -- ^ @orc_ser_de@ - (Optional)
-    --
-    -- Conflicts with:
-    --
-    -- * 'parquetSerDe'
-    , _parquetSerDe :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s)
-    -- ^ @parquet_ser_de@ - (Optional)
-    --
-    -- Conflicts with:
-    --
-    -- * 'orcSerDe'
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @serializer@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting
-    :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting'
-        { _orcSerDe = TF.Nil
-        , _parquetSerDe = TF.Nil
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting'{..} = P.catMaybes
-        [ TF.assign "orc_ser_de" <$> TF.attribute _orcSerDe
-        , TF.assign "parquet_ser_de" <$> TF.attribute _parquetSerDe
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s) where
-    validator = TF.fieldsValidator (\KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting'{..} -> Map.fromList $ P.catMaybes
-        [ if (_orcSerDe P.== TF.Nil)
-              then P.Nothing
-              else P.Just ("_orcSerDe",
-                            [ "_parquetSerDe"
-                            ])
-        , if (_parquetSerDe P.== TF.Nil)
-              then P.Nothing
-              else P.Just ("_parquetSerDe",
-                            [ "_orcSerDe"
-                            ])
-        ])
-           P.<> TF.settingsValidator "_orcSerDe"
-                  (_orcSerDe
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s))
-                  TF.validator
-           P.<> TF.settingsValidator "_parquetSerDe"
-                  (_parquetSerDe
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s))
-                  TF.validator
-
-instance P.HasOrcSerDe (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)) where
-    orcSerDe =
-        P.lens (_orcSerDe :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s))
-               (\s a -> s { _orcSerDe = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s)
-
-instance P.HasParquetSerDe (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s)) where
-    parquetSerDe =
-        P.lens (_parquetSerDe :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s))
-               (\s a -> s { _parquetSerDe = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerSetting s)
-
--- | @parquet_ser_de@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting'
-    { _blockSizeBytes              :: TF.Attr s P.Int
-    -- ^ @block_size_bytes@ - (Optional)
-    --
-    , _compression                 :: TF.Attr s P.Text
-    -- ^ @compression@ - (Optional)
-    --
-    , _enableDictionaryCompression :: TF.Attr s P.Bool
-    -- ^ @enable_dictionary_compression@ - (Optional)
-    --
-    , _maxPaddingBytes             :: TF.Attr s P.Int
-    -- ^ @max_padding_bytes@ - (Optional)
-    --
-    , _pageSizeBytes               :: TF.Attr s P.Int
-    -- ^ @page_size_bytes@ - (Optional)
-    --
-    , _writerVersion               :: TF.Attr s P.Text
-    -- ^ @writer_version@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @parquet_ser_de@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting
-    :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting'
-        { _blockSizeBytes = TF.value 268435456
-        , _compression = TF.value "SNAPPY"
-        , _enableDictionaryCompression = TF.value P.False
-        , _maxPaddingBytes = TF.value 0
-        , _pageSizeBytes = TF.value 1048576
-        , _writerVersion = TF.value "V1"
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting'{..} = P.catMaybes
-        [ TF.assign "block_size_bytes" <$> TF.attribute _blockSizeBytes
-        , TF.assign "compression" <$> TF.attribute _compression
-        , TF.assign "enable_dictionary_compression" <$> TF.attribute _enableDictionaryCompression
-        , TF.assign "max_padding_bytes" <$> TF.attribute _maxPaddingBytes
-        , TF.assign "page_size_bytes" <$> TF.attribute _pageSizeBytes
-        , TF.assign "writer_version" <$> TF.attribute _writerVersion
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s) where
-    validator = P.mempty
-
-instance P.HasBlockSizeBytes (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s) (TF.Attr s P.Int) where
-    blockSizeBytes =
-        P.lens (_blockSizeBytes :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _blockSizeBytes = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s)
-
-instance P.HasCompression (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s) (TF.Attr s P.Text) where
-    compression =
-        P.lens (_compression :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _compression = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s)
-
-instance P.HasEnableDictionaryCompression (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s) (TF.Attr s P.Bool) where
-    enableDictionaryCompression =
-        P.lens (_enableDictionaryCompression :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _enableDictionaryCompression = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s)
-
-instance P.HasMaxPaddingBytes (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s) (TF.Attr s P.Int) where
-    maxPaddingBytes =
-        P.lens (_maxPaddingBytes :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _maxPaddingBytes = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s)
-
-instance P.HasPageSizeBytes (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s) (TF.Attr s P.Int) where
-    pageSizeBytes =
-        P.lens (_pageSizeBytes :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _pageSizeBytes = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s)
-
-instance P.HasWriterVersion (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s) (TF.Attr s P.Text) where
-    writerVersion =
-        P.lens (_writerVersion :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _writerVersion = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDeSetting s)
-
--- | @orc_ser_de@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting'
-    { _blockSizeBytes                      :: TF.Attr s P.Int
-    -- ^ @block_size_bytes@ - (Optional)
-    --
-    , _bloomFilterColumns                  :: TF.Attr s [TF.Attr s P.Text]
-    -- ^ @bloom_filter_columns@ - (Optional)
-    --
-    , _bloomFilterFalsePositiveProbability :: TF.Attr s P.Double
-    -- ^ @bloom_filter_false_positive_probability@ - (Optional)
-    --
-    , _compression                         :: TF.Attr s P.Text
-    -- ^ @compression@ - (Optional)
-    --
-    , _dictionaryKeyThreshold              :: TF.Attr s P.Double
-    -- ^ @dictionary_key_threshold@ - (Optional)
-    --
-    , _enablePadding                       :: TF.Attr s P.Bool
-    -- ^ @enable_padding@ - (Optional)
-    --
-    , _formatVersion                       :: TF.Attr s P.Text
-    -- ^ @format_version@ - (Optional)
-    --
-    , _paddingTolerance                    :: TF.Attr s P.Double
-    -- ^ @padding_tolerance@ - (Optional)
-    --
-    , _rowIndexStride                      :: TF.Attr s P.Int
-    -- ^ @row_index_stride@ - (Optional)
-    --
-    , _stripeSizeBytes                     :: TF.Attr s P.Int
-    -- ^ @stripe_size_bytes@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @orc_ser_de@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting
-    :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting'
-        { _blockSizeBytes = TF.value 268435456
-        , _bloomFilterColumns = TF.Nil
-        , _bloomFilterFalsePositiveProbability = TF.value 5.0e-2
-        , _compression = TF.value "SNAPPY"
-        , _dictionaryKeyThreshold = TF.value 0.0
-        , _enablePadding = TF.value P.False
-        , _formatVersion = TF.value "V0_12"
-        , _paddingTolerance = TF.value 5.0e-2
-        , _rowIndexStride = TF.value 10000
-        , _stripeSizeBytes = TF.value 67108864
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting'{..} = P.catMaybes
-        [ TF.assign "block_size_bytes" <$> TF.attribute _blockSizeBytes
-        , TF.assign "bloom_filter_columns" <$> TF.attribute _bloomFilterColumns
-        , TF.assign "bloom_filter_false_positive_probability" <$> TF.attribute _bloomFilterFalsePositiveProbability
-        , TF.assign "compression" <$> TF.attribute _compression
-        , TF.assign "dictionary_key_threshold" <$> TF.attribute _dictionaryKeyThreshold
-        , TF.assign "enable_padding" <$> TF.attribute _enablePadding
-        , TF.assign "format_version" <$> TF.attribute _formatVersion
-        , TF.assign "padding_tolerance" <$> TF.attribute _paddingTolerance
-        , TF.assign "row_index_stride" <$> TF.attribute _rowIndexStride
-        , TF.assign "stripe_size_bytes" <$> TF.attribute _stripeSizeBytes
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) where
-    validator = P.mempty
-
-instance P.HasBlockSizeBytes (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) (TF.Attr s P.Int) where
-    blockSizeBytes =
-        P.lens (_blockSizeBytes :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _blockSizeBytes = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-
-instance P.HasBloomFilterColumns (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) (TF.Attr s [TF.Attr s P.Text]) where
-    bloomFilterColumns =
-        P.lens (_bloomFilterColumns :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s -> TF.Attr s [TF.Attr s P.Text])
-               (\s a -> s { _bloomFilterColumns = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-
-instance P.HasBloomFilterFalsePositiveProbability (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) (TF.Attr s P.Double) where
-    bloomFilterFalsePositiveProbability =
-        P.lens (_bloomFilterFalsePositiveProbability :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s -> TF.Attr s P.Double)
-               (\s a -> s { _bloomFilterFalsePositiveProbability = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-
-instance P.HasCompression (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) (TF.Attr s P.Text) where
-    compression =
-        P.lens (_compression :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _compression = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-
-instance P.HasDictionaryKeyThreshold (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) (TF.Attr s P.Double) where
-    dictionaryKeyThreshold =
-        P.lens (_dictionaryKeyThreshold :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s -> TF.Attr s P.Double)
-               (\s a -> s { _dictionaryKeyThreshold = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-
-instance P.HasEnablePadding (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) (TF.Attr s P.Bool) where
-    enablePadding =
-        P.lens (_enablePadding :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _enablePadding = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-
-instance P.HasFormatVersion (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) (TF.Attr s P.Text) where
-    formatVersion =
-        P.lens (_formatVersion :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _formatVersion = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-
-instance P.HasPaddingTolerance (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) (TF.Attr s P.Double) where
-    paddingTolerance =
-        P.lens (_paddingTolerance :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s -> TF.Attr s P.Double)
-               (\s a -> s { _paddingTolerance = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-
-instance P.HasRowIndexStride (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) (TF.Attr s P.Int) where
-    rowIndexStride =
-        P.lens (_rowIndexStride :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _rowIndexStride = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-
-instance P.HasStripeSizeBytes (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s) (TF.Attr s P.Int) where
-    stripeSizeBytes =
-        P.lens (_stripeSizeBytes :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _stripeSizeBytes = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerOrcSerDeSetting s)
-
--- | @input_format_configuration@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting'
-    { _deserializer :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s)
-    -- ^ @deserializer@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @input_format_configuration@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting
-    :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s) -- ^ 'P._deserializer': @deserializer@
-    -> KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting _deserializer =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting'
-        { _deserializer = _deserializer
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting'{..} = P.catMaybes
-        [ TF.assign "deserializer" <$> TF.attribute _deserializer
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s) where
-    validator = P.mempty
-           P.<> TF.settingsValidator "_deserializer"
-                  (_deserializer
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s))
-                  TF.validator
-
-instance P.HasDeserializer (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s)) where
-    deserializer =
-        P.lens (_deserializer :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s))
-               (\s a -> s { _deserializer = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationSetting s)
-
--- | @deserializer@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting'
-    { _hiveJsonSerDe :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s)
-    -- ^ @hive_json_ser_de@ - (Optional)
-    --
-    -- Conflicts with:
-    --
-    -- * 'openXJsonSerDe'
-    , _openXJsonSerDe :: TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s)
-    -- ^ @open_x_json_ser_de@ - (Optional)
-    --
-    -- Conflicts with:
-    --
-    -- * 'hiveJsonSerDe'
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @deserializer@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting
-    :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting'
-        { _hiveJsonSerDe = TF.Nil
-        , _openXJsonSerDe = TF.Nil
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting'{..} = P.catMaybes
-        [ TF.assign "hive_json_ser_de" <$> TF.attribute _hiveJsonSerDe
-        , TF.assign "open_x_json_ser_de" <$> TF.attribute _openXJsonSerDe
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s) where
-    validator = TF.fieldsValidator (\KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting'{..} -> Map.fromList $ P.catMaybes
-        [ if (_hiveJsonSerDe P.== TF.Nil)
-              then P.Nothing
-              else P.Just ("_hiveJsonSerDe",
-                            [ "_openXJsonSerDe"
-                            ])
-        , if (_openXJsonSerDe P.== TF.Nil)
-              then P.Nothing
-              else P.Just ("_openXJsonSerDe",
-                            [ "_hiveJsonSerDe"
-                            ])
-        ])
-           P.<> TF.settingsValidator "_hiveJsonSerDe"
-                  (_hiveJsonSerDe
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s))
-                  TF.validator
-           P.<> TF.settingsValidator "_openXJsonSerDe"
-                  (_openXJsonSerDe
-                      :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s))
-                  TF.validator
-
-instance P.HasHiveJsonSerDe (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s)) where
-    hiveJsonSerDe =
-        P.lens (_hiveJsonSerDe :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s))
-               (\s a -> s { _hiveJsonSerDe = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s)
-
-instance P.HasOpenXJsonSerDe (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s) (TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s)) where
-    openXJsonSerDe =
-        P.lens (_openXJsonSerDe :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s -> TF.Attr s (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s))
-               (\s a -> s { _openXJsonSerDe = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerSetting s)
-
--- | @open_x_json_ser_de@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting'
-    { _caseInsensitive :: TF.Attr s P.Bool
-    -- ^ @case_insensitive@ - (Optional)
-    --
-    , _columnToJsonKeyMappings :: TF.Attr s (P.Map P.Text (TF.Attr s P.Text))
-    -- ^ @column_to_json_key_mappings@ - (Optional)
-    --
-    , _convertDotsInJsonKeysToUnderscores :: TF.Attr s P.Bool
-    -- ^ @convert_dots_in_json_keys_to_underscores@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @open_x_json_ser_de@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting
-    :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting'
-        { _caseInsensitive = TF.value P.True
-        , _columnToJsonKeyMappings = TF.Nil
-        , _convertDotsInJsonKeysToUnderscores = TF.value P.False
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting'{..} = P.catMaybes
-        [ TF.assign "case_insensitive" <$> TF.attribute _caseInsensitive
-        , TF.assign "column_to_json_key_mappings" <$> TF.attribute _columnToJsonKeyMappings
-        , TF.assign "convert_dots_in_json_keys_to_underscores" <$> TF.attribute _convertDotsInJsonKeysToUnderscores
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s) where
-    validator = P.mempty
-
-instance P.HasCaseInsensitive (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s) (TF.Attr s P.Bool) where
-    caseInsensitive =
-        P.lens (_caseInsensitive :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _caseInsensitive = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s)
-
-instance P.HasColumnToJsonKeyMappings (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s) (TF.Attr s (P.Map P.Text (TF.Attr s P.Text))) where
-    columnToJsonKeyMappings =
-        P.lens (_columnToJsonKeyMappings :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s -> TF.Attr s (P.Map P.Text (TF.Attr s P.Text)))
-               (\s a -> s { _columnToJsonKeyMappings = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s)
-
-instance P.HasConvertDotsInJsonKeysToUnderscores (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s) (TF.Attr s P.Bool) where
-    convertDotsInJsonKeysToUnderscores =
-        P.lens (_convertDotsInJsonKeysToUnderscores :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _convertDotsInJsonKeysToUnderscores = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerOpenXJsonSerDeSetting s)
-
--- | @hive_json_ser_de@ nested settings.
-data KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s = KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting'
-    { _timestampFormats :: TF.Attr s [TF.Attr s P.Text]
-    -- ^ @timestamp_formats@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @hive_json_ser_de@ settings value.
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting
-    :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s
-newKinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting =
-    KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting'
-        { _timestampFormats = TF.Nil
-        }
-
-instance TF.IsValue  (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s)
-instance TF.IsObject (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s) where
-    toObject KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting'{..} = P.catMaybes
-        [ TF.assign "timestamp_formats" <$> TF.attribute _timestampFormats
-        ]
-
-instance TF.IsValid (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s) where
-    validator = P.mempty
-
-instance P.HasTimestampFormats (KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s) (TF.Attr s [TF.Attr s P.Text]) where
-    timestampFormats =
-        P.lens (_timestampFormats :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s -> TF.Attr s [TF.Attr s P.Text])
-               (\s a -> s { _timestampFormats = a } :: KinesisFirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationInputFormatConfigurationDeserializerHiveJsonSerDeSetting s)
 
 -- | @kinesis_source_configuration@ nested settings.
 data KinesisFirehoseDeliveryStreamKinesisSourceConfigurationSetting s = KinesisFirehoseDeliveryStreamKinesisSourceConfigurationSetting'
@@ -3019,10 +1863,10 @@ instance s ~ s' => P.HasComputedVolumeType (TF.Ref s' (LaunchConfigurationRootBl
 
 -- | @ebs@ nested settings.
 data LaunchTemplateBlockDeviceMappingsEbsSetting s = LaunchTemplateBlockDeviceMappingsEbsSetting'
-    { _deleteOnTermination :: TF.Attr s P.Bool
+    { _deleteOnTermination :: TF.Attr s P.Text
     -- ^ @delete_on_termination@ - (Optional)
     --
-    , _encrypted           :: TF.Attr s P.Bool
+    , _encrypted           :: TF.Attr s P.Text
     -- ^ @encrypted@ - (Optional)
     --
     , _iops                :: TF.Attr s P.Int
@@ -3071,14 +1915,14 @@ instance TF.IsObject (LaunchTemplateBlockDeviceMappingsEbsSetting s) where
 instance TF.IsValid (LaunchTemplateBlockDeviceMappingsEbsSetting s) where
     validator = P.mempty
 
-instance P.HasDeleteOnTermination (LaunchTemplateBlockDeviceMappingsEbsSetting s) (TF.Attr s P.Bool) where
+instance P.HasDeleteOnTermination (LaunchTemplateBlockDeviceMappingsEbsSetting s) (TF.Attr s P.Text) where
     deleteOnTermination =
-        P.lens (_deleteOnTermination :: LaunchTemplateBlockDeviceMappingsEbsSetting s -> TF.Attr s P.Bool)
+        P.lens (_deleteOnTermination :: LaunchTemplateBlockDeviceMappingsEbsSetting s -> TF.Attr s P.Text)
                (\s a -> s { _deleteOnTermination = a } :: LaunchTemplateBlockDeviceMappingsEbsSetting s)
 
-instance P.HasEncrypted (LaunchTemplateBlockDeviceMappingsEbsSetting s) (TF.Attr s P.Bool) where
+instance P.HasEncrypted (LaunchTemplateBlockDeviceMappingsEbsSetting s) (TF.Attr s P.Text) where
     encrypted =
-        P.lens (_encrypted :: LaunchTemplateBlockDeviceMappingsEbsSetting s -> TF.Attr s P.Bool)
+        P.lens (_encrypted :: LaunchTemplateBlockDeviceMappingsEbsSetting s -> TF.Attr s P.Text)
                (\s a -> s { _encrypted = a } :: LaunchTemplateBlockDeviceMappingsEbsSetting s)
 
 instance P.HasIops (LaunchTemplateBlockDeviceMappingsEbsSetting s) (TF.Attr s P.Int) where
@@ -3451,8 +2295,14 @@ data LaunchTemplateNetworkInterfacesSetting s = LaunchTemplateNetworkInterfacesS
     , _deviceIndex              :: TF.Attr s P.Int
     -- ^ @device_index@ - (Optional)
     --
+    , _ipv4AddressCount         :: TF.Attr s P.Int
+    -- ^ @ipv4_address_count@ - (Optional)
+    --
     , _ipv4Addresses            :: TF.Attr s [TF.Attr s P.Text]
     -- ^ @ipv4_addresses@ - (Optional)
+    --
+    , _ipv6AddressCount         :: TF.Attr s P.Int
+    -- ^ @ipv6_address_count@ - (Optional)
     --
     , _ipv6Addresses            :: TF.Attr s [TF.Attr s P.Text]
     -- ^ @ipv6_addresses@ - (Optional)
@@ -3480,7 +2330,9 @@ newLaunchTemplateNetworkInterfacesSetting =
         , _deleteOnTermination = TF.Nil
         , _description = TF.Nil
         , _deviceIndex = TF.Nil
+        , _ipv4AddressCount = TF.Nil
         , _ipv4Addresses = TF.Nil
+        , _ipv6AddressCount = TF.Nil
         , _ipv6Addresses = TF.Nil
         , _networkInterfaceId = TF.Nil
         , _privateIpAddress = TF.Nil
@@ -3495,7 +2347,9 @@ instance TF.IsObject (LaunchTemplateNetworkInterfacesSetting s) where
         , TF.assign "delete_on_termination" <$> TF.attribute _deleteOnTermination
         , TF.assign "description" <$> TF.attribute _description
         , TF.assign "device_index" <$> TF.attribute _deviceIndex
+        , TF.assign "ipv4_address_count" <$> TF.attribute _ipv4AddressCount
         , TF.assign "ipv4_addresses" <$> TF.attribute _ipv4Addresses
+        , TF.assign "ipv6_address_count" <$> TF.attribute _ipv6AddressCount
         , TF.assign "ipv6_addresses" <$> TF.attribute _ipv6Addresses
         , TF.assign "network_interface_id" <$> TF.attribute _networkInterfaceId
         , TF.assign "private_ip_address" <$> TF.attribute _privateIpAddress
@@ -3526,10 +2380,20 @@ instance P.HasDeviceIndex (LaunchTemplateNetworkInterfacesSetting s) (TF.Attr s 
         P.lens (_deviceIndex :: LaunchTemplateNetworkInterfacesSetting s -> TF.Attr s P.Int)
                (\s a -> s { _deviceIndex = a } :: LaunchTemplateNetworkInterfacesSetting s)
 
+instance P.HasIpv4AddressCount (LaunchTemplateNetworkInterfacesSetting s) (TF.Attr s P.Int) where
+    ipv4AddressCount =
+        P.lens (_ipv4AddressCount :: LaunchTemplateNetworkInterfacesSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _ipv4AddressCount = a } :: LaunchTemplateNetworkInterfacesSetting s)
+
 instance P.HasIpv4Addresses (LaunchTemplateNetworkInterfacesSetting s) (TF.Attr s [TF.Attr s P.Text]) where
     ipv4Addresses =
         P.lens (_ipv4Addresses :: LaunchTemplateNetworkInterfacesSetting s -> TF.Attr s [TF.Attr s P.Text])
                (\s a -> s { _ipv4Addresses = a } :: LaunchTemplateNetworkInterfacesSetting s)
+
+instance P.HasIpv6AddressCount (LaunchTemplateNetworkInterfacesSetting s) (TF.Attr s P.Int) where
+    ipv6AddressCount =
+        P.lens (_ipv6AddressCount :: LaunchTemplateNetworkInterfacesSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _ipv6AddressCount = a } :: LaunchTemplateNetworkInterfacesSetting s)
 
 instance P.HasIpv6Addresses (LaunchTemplateNetworkInterfacesSetting s) (TF.Attr s [TF.Attr s P.Text]) where
     ipv6Addresses =
@@ -3555,12 +2419,6 @@ instance P.HasSubnetId (LaunchTemplateNetworkInterfacesSetting s) (TF.Attr s P.T
     subnetId =
         P.lens (_subnetId :: LaunchTemplateNetworkInterfacesSetting s -> TF.Attr s P.Text)
                (\s a -> s { _subnetId = a } :: LaunchTemplateNetworkInterfacesSetting s)
-
-instance s ~ s' => P.HasComputedIpv4AddressCount (TF.Ref s' (LaunchTemplateNetworkInterfacesSetting s)) (TF.Attr s P.Int) where
-    computedIpv4AddressCount x = TF.compute (TF.refKey x) "ipv4_address_count"
-
-instance s ~ s' => P.HasComputedIpv6AddressCount (TF.Ref s' (LaunchTemplateNetworkInterfacesSetting s)) (TF.Attr s P.Int) where
-    computedIpv6AddressCount x = TF.compute (TF.refKey x) "ipv6_address_count"
 
 -- | @placement@ nested settings.
 data LaunchTemplatePlacementSetting s = LaunchTemplatePlacementSetting'
@@ -3739,36 +2597,116 @@ instance s ~ s' => P.HasComputedEnabled (TF.Ref s' (LbAccessLogsSetting s)) (TF.
 instance s ~ s' => P.HasComputedPrefix (TF.Ref s' (LbAccessLogsSetting s)) (TF.Attr s P.Text) where
     computedPrefix x = TF.compute (TF.refKey x) "prefix"
 
+-- | @fixed_response@ nested settings.
+data LbListenerDefaultActionFixedResponseSetting s = LbListenerDefaultActionFixedResponseSetting'
+    { _contentType :: TF.Attr s P.Text
+    -- ^ @content_type@ - (Required)
+    --
+    , _messageBody :: TF.Attr s P.Text
+    -- ^ @message_body@ - (Optional)
+    --
+    , _statusCode  :: TF.Attr s P.Text
+    -- ^ @status_code@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @fixed_response@ settings value.
+newLbListenerDefaultActionFixedResponseSetting
+    :: TF.Attr s P.Text -- ^ 'P._contentType': @content_type@
+    -> LbListenerDefaultActionFixedResponseSetting s
+newLbListenerDefaultActionFixedResponseSetting _contentType =
+    LbListenerDefaultActionFixedResponseSetting'
+        { _contentType = _contentType
+        , _messageBody = TF.Nil
+        , _statusCode = TF.Nil
+        }
+
+instance TF.IsValue  (LbListenerDefaultActionFixedResponseSetting s)
+instance TF.IsObject (LbListenerDefaultActionFixedResponseSetting s) where
+    toObject LbListenerDefaultActionFixedResponseSetting'{..} = P.catMaybes
+        [ TF.assign "content_type" <$> TF.attribute _contentType
+        , TF.assign "message_body" <$> TF.attribute _messageBody
+        , TF.assign "status_code" <$> TF.attribute _statusCode
+        ]
+
+instance TF.IsValid (LbListenerDefaultActionFixedResponseSetting s) where
+    validator = P.mempty
+
+instance P.HasContentType (LbListenerDefaultActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    contentType =
+        P.lens (_contentType :: LbListenerDefaultActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _contentType = a } :: LbListenerDefaultActionFixedResponseSetting s)
+
+instance P.HasMessageBody (LbListenerDefaultActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    messageBody =
+        P.lens (_messageBody :: LbListenerDefaultActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _messageBody = a } :: LbListenerDefaultActionFixedResponseSetting s)
+
+instance P.HasStatusCode (LbListenerDefaultActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    statusCode =
+        P.lens (_statusCode :: LbListenerDefaultActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _statusCode = a } :: LbListenerDefaultActionFixedResponseSetting s)
+
+instance s ~ s' => P.HasComputedStatusCode (TF.Ref s' (LbListenerDefaultActionFixedResponseSetting s)) (TF.Attr s P.Text) where
+    computedStatusCode x = TF.compute (TF.refKey x) "status_code"
+
 -- | @default_action@ nested settings.
 data LbListenerDefaultActionSetting s = LbListenerDefaultActionSetting'
-    { _targetGroupArn :: TF.Attr s P.Text
-    -- ^ @target_group_arn@ - (Required)
+    { _fixedResponse :: TF.Attr s (LbListenerDefaultActionFixedResponseSetting s)
+    -- ^ @fixed_response@ - (Optional)
     --
-    , _type'          :: TF.Attr s P.Text
+    , _redirect :: TF.Attr s (LbListenerDefaultActionRedirectSetting s)
+    -- ^ @redirect@ - (Optional)
+    --
+    , _targetGroupArn :: TF.Attr s P.Text
+    -- ^ @target_group_arn@ - (Optional)
+    --
+    , _type' :: TF.Attr s P.Text
     -- ^ @type@ - (Required)
     --
     } deriving (P.Show, P.Eq, P.Ord)
 
 -- | Construct a new @default_action@ settings value.
 newLbListenerDefaultActionSetting
-    :: TF.Attr s P.Text -- ^ 'P._targetGroupArn': @target_group_arn@
-    -> TF.Attr s P.Text -- ^ 'P._type'': @type@
+    :: TF.Attr s P.Text -- ^ 'P._type'': @type@
     -> LbListenerDefaultActionSetting s
-newLbListenerDefaultActionSetting _targetGroupArn _type' =
+newLbListenerDefaultActionSetting _type' =
     LbListenerDefaultActionSetting'
-        { _targetGroupArn = _targetGroupArn
+        { _fixedResponse = TF.Nil
+        , _redirect = TF.Nil
+        , _targetGroupArn = TF.Nil
         , _type' = _type'
         }
 
 instance TF.IsValue  (LbListenerDefaultActionSetting s)
 instance TF.IsObject (LbListenerDefaultActionSetting s) where
     toObject LbListenerDefaultActionSetting'{..} = P.catMaybes
-        [ TF.assign "target_group_arn" <$> TF.attribute _targetGroupArn
+        [ TF.assign "fixed_response" <$> TF.attribute _fixedResponse
+        , TF.assign "redirect" <$> TF.attribute _redirect
+        , TF.assign "target_group_arn" <$> TF.attribute _targetGroupArn
         , TF.assign "type" <$> TF.attribute _type'
         ]
 
 instance TF.IsValid (LbListenerDefaultActionSetting s) where
     validator = P.mempty
+           P.<> TF.settingsValidator "_fixedResponse"
+                  (_fixedResponse
+                      :: LbListenerDefaultActionSetting s -> TF.Attr s (LbListenerDefaultActionFixedResponseSetting s))
+                  TF.validator
+           P.<> TF.settingsValidator "_redirect"
+                  (_redirect
+                      :: LbListenerDefaultActionSetting s -> TF.Attr s (LbListenerDefaultActionRedirectSetting s))
+                  TF.validator
+
+instance P.HasFixedResponse (LbListenerDefaultActionSetting s) (TF.Attr s (LbListenerDefaultActionFixedResponseSetting s)) where
+    fixedResponse =
+        P.lens (_fixedResponse :: LbListenerDefaultActionSetting s -> TF.Attr s (LbListenerDefaultActionFixedResponseSetting s))
+               (\s a -> s { _fixedResponse = a } :: LbListenerDefaultActionSetting s)
+
+instance P.HasRedirect (LbListenerDefaultActionSetting s) (TF.Attr s (LbListenerDefaultActionRedirectSetting s)) where
+    redirect =
+        P.lens (_redirect :: LbListenerDefaultActionSetting s -> TF.Attr s (LbListenerDefaultActionRedirectSetting s))
+               (\s a -> s { _redirect = a } :: LbListenerDefaultActionSetting s)
 
 instance P.HasTargetGroupArn (LbListenerDefaultActionSetting s) (TF.Attr s P.Text) where
     targetGroupArn =
@@ -3786,10 +2724,149 @@ instance s ~ s' => P.HasComputedTargetGroupArn (TF.Ref s' (LbListenerDefaultActi
 instance s ~ s' => P.HasComputedType (TF.Ref s' (LbListenerDefaultActionSetting s)) (TF.Attr s P.Text) where
     computedType x = TF.compute (TF.refKey x) "type"
 
+-- | @redirect@ nested settings.
+data LbListenerDefaultActionRedirectSetting s = LbListenerDefaultActionRedirectSetting'
+    { _host       :: TF.Attr s P.Text
+    -- ^ @host@ - (Optional)
+    --
+    , _path       :: TF.Attr s P.Text
+    -- ^ @path@ - (Optional)
+    --
+    , _port       :: TF.Attr s P.Text
+    -- ^ @port@ - (Optional)
+    --
+    , _protocol   :: TF.Attr s P.Text
+    -- ^ @protocol@ - (Optional)
+    --
+    , _query      :: TF.Attr s P.Text
+    -- ^ @query@ - (Optional)
+    --
+    , _statusCode :: TF.Attr s P.Text
+    -- ^ @status_code@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @redirect@ settings value.
+newLbListenerDefaultActionRedirectSetting
+    :: TF.Attr s P.Text -- ^ 'P._statusCode': @status_code@
+    -> LbListenerDefaultActionRedirectSetting s
+newLbListenerDefaultActionRedirectSetting _statusCode =
+    LbListenerDefaultActionRedirectSetting'
+        { _host = TF.value "#{host}"
+        , _path = TF.value "/#{path}"
+        , _port = TF.value "#{port}"
+        , _protocol = TF.value "#{protocol}"
+        , _query = TF.value "#{query}"
+        , _statusCode = _statusCode
+        }
+
+instance TF.IsValue  (LbListenerDefaultActionRedirectSetting s)
+instance TF.IsObject (LbListenerDefaultActionRedirectSetting s) where
+    toObject LbListenerDefaultActionRedirectSetting'{..} = P.catMaybes
+        [ TF.assign "host" <$> TF.attribute _host
+        , TF.assign "path" <$> TF.attribute _path
+        , TF.assign "port" <$> TF.attribute _port
+        , TF.assign "protocol" <$> TF.attribute _protocol
+        , TF.assign "query" <$> TF.attribute _query
+        , TF.assign "status_code" <$> TF.attribute _statusCode
+        ]
+
+instance TF.IsValid (LbListenerDefaultActionRedirectSetting s) where
+    validator = P.mempty
+
+instance P.HasHost (LbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    host =
+        P.lens (_host :: LbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _host = a } :: LbListenerDefaultActionRedirectSetting s)
+
+instance P.HasPath (LbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    path =
+        P.lens (_path :: LbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _path = a } :: LbListenerDefaultActionRedirectSetting s)
+
+instance P.HasPort (LbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    port =
+        P.lens (_port :: LbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _port = a } :: LbListenerDefaultActionRedirectSetting s)
+
+instance P.HasProtocol (LbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    protocol =
+        P.lens (_protocol :: LbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _protocol = a } :: LbListenerDefaultActionRedirectSetting s)
+
+instance P.HasQuery (LbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    query =
+        P.lens (_query :: LbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _query = a } :: LbListenerDefaultActionRedirectSetting s)
+
+instance P.HasStatusCode (LbListenerDefaultActionRedirectSetting s) (TF.Attr s P.Text) where
+    statusCode =
+        P.lens (_statusCode :: LbListenerDefaultActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _statusCode = a } :: LbListenerDefaultActionRedirectSetting s)
+
+-- | @fixed_response@ nested settings.
+data LbListenerRuleActionFixedResponseSetting s = LbListenerRuleActionFixedResponseSetting'
+    { _contentType :: TF.Attr s P.Text
+    -- ^ @content_type@ - (Required)
+    --
+    , _messageBody :: TF.Attr s P.Text
+    -- ^ @message_body@ - (Optional)
+    --
+    , _statusCode  :: TF.Attr s P.Text
+    -- ^ @status_code@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @fixed_response@ settings value.
+newLbListenerRuleActionFixedResponseSetting
+    :: TF.Attr s P.Text -- ^ 'P._contentType': @content_type@
+    -> LbListenerRuleActionFixedResponseSetting s
+newLbListenerRuleActionFixedResponseSetting _contentType =
+    LbListenerRuleActionFixedResponseSetting'
+        { _contentType = _contentType
+        , _messageBody = TF.Nil
+        , _statusCode = TF.Nil
+        }
+
+instance TF.IsValue  (LbListenerRuleActionFixedResponseSetting s)
+instance TF.IsObject (LbListenerRuleActionFixedResponseSetting s) where
+    toObject LbListenerRuleActionFixedResponseSetting'{..} = P.catMaybes
+        [ TF.assign "content_type" <$> TF.attribute _contentType
+        , TF.assign "message_body" <$> TF.attribute _messageBody
+        , TF.assign "status_code" <$> TF.attribute _statusCode
+        ]
+
+instance TF.IsValid (LbListenerRuleActionFixedResponseSetting s) where
+    validator = P.mempty
+
+instance P.HasContentType (LbListenerRuleActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    contentType =
+        P.lens (_contentType :: LbListenerRuleActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _contentType = a } :: LbListenerRuleActionFixedResponseSetting s)
+
+instance P.HasMessageBody (LbListenerRuleActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    messageBody =
+        P.lens (_messageBody :: LbListenerRuleActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _messageBody = a } :: LbListenerRuleActionFixedResponseSetting s)
+
+instance P.HasStatusCode (LbListenerRuleActionFixedResponseSetting s) (TF.Attr s P.Text) where
+    statusCode =
+        P.lens (_statusCode :: LbListenerRuleActionFixedResponseSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _statusCode = a } :: LbListenerRuleActionFixedResponseSetting s)
+
+instance s ~ s' => P.HasComputedStatusCode (TF.Ref s' (LbListenerRuleActionFixedResponseSetting s)) (TF.Attr s P.Text) where
+    computedStatusCode x = TF.compute (TF.refKey x) "status_code"
+
 -- | @action@ nested settings.
 data LbListenerRuleActionSetting s = LbListenerRuleActionSetting'
-    { _targetGroupArn :: TF.Attr s P.Text
-    -- ^ @target_group_arn@ - (Required)
+    { _fixedResponse  :: TF.Attr s (LbListenerRuleActionFixedResponseSetting s)
+    -- ^ @fixed_response@ - (Optional)
+    --
+    , _redirect       :: TF.Attr s (LbListenerRuleActionRedirectSetting s)
+    -- ^ @redirect@ - (Optional)
+    --
+    , _targetGroupArn :: TF.Attr s P.Text
+    -- ^ @target_group_arn@ - (Optional)
     --
     , _type'          :: TF.Attr s P.Text
     -- ^ @type@ - (Required)
@@ -3798,24 +2875,45 @@ data LbListenerRuleActionSetting s = LbListenerRuleActionSetting'
 
 -- | Construct a new @action@ settings value.
 newLbListenerRuleActionSetting
-    :: TF.Attr s P.Text -- ^ 'P._targetGroupArn': @target_group_arn@
-    -> TF.Attr s P.Text -- ^ 'P._type'': @type@
+    :: TF.Attr s P.Text -- ^ 'P._type'': @type@
     -> LbListenerRuleActionSetting s
-newLbListenerRuleActionSetting _targetGroupArn _type' =
+newLbListenerRuleActionSetting _type' =
     LbListenerRuleActionSetting'
-        { _targetGroupArn = _targetGroupArn
+        { _fixedResponse = TF.Nil
+        , _redirect = TF.Nil
+        , _targetGroupArn = TF.Nil
         , _type' = _type'
         }
 
 instance TF.IsValue  (LbListenerRuleActionSetting s)
 instance TF.IsObject (LbListenerRuleActionSetting s) where
     toObject LbListenerRuleActionSetting'{..} = P.catMaybes
-        [ TF.assign "target_group_arn" <$> TF.attribute _targetGroupArn
+        [ TF.assign "fixed_response" <$> TF.attribute _fixedResponse
+        , TF.assign "redirect" <$> TF.attribute _redirect
+        , TF.assign "target_group_arn" <$> TF.attribute _targetGroupArn
         , TF.assign "type" <$> TF.attribute _type'
         ]
 
 instance TF.IsValid (LbListenerRuleActionSetting s) where
     validator = P.mempty
+           P.<> TF.settingsValidator "_fixedResponse"
+                  (_fixedResponse
+                      :: LbListenerRuleActionSetting s -> TF.Attr s (LbListenerRuleActionFixedResponseSetting s))
+                  TF.validator
+           P.<> TF.settingsValidator "_redirect"
+                  (_redirect
+                      :: LbListenerRuleActionSetting s -> TF.Attr s (LbListenerRuleActionRedirectSetting s))
+                  TF.validator
+
+instance P.HasFixedResponse (LbListenerRuleActionSetting s) (TF.Attr s (LbListenerRuleActionFixedResponseSetting s)) where
+    fixedResponse =
+        P.lens (_fixedResponse :: LbListenerRuleActionSetting s -> TF.Attr s (LbListenerRuleActionFixedResponseSetting s))
+               (\s a -> s { _fixedResponse = a } :: LbListenerRuleActionSetting s)
+
+instance P.HasRedirect (LbListenerRuleActionSetting s) (TF.Attr s (LbListenerRuleActionRedirectSetting s)) where
+    redirect =
+        P.lens (_redirect :: LbListenerRuleActionSetting s -> TF.Attr s (LbListenerRuleActionRedirectSetting s))
+               (\s a -> s { _redirect = a } :: LbListenerRuleActionSetting s)
 
 instance P.HasTargetGroupArn (LbListenerRuleActionSetting s) (TF.Attr s P.Text) where
     targetGroupArn =
@@ -3826,6 +2924,86 @@ instance P.HasType' (LbListenerRuleActionSetting s) (TF.Attr s P.Text) where
     type' =
         P.lens (_type' :: LbListenerRuleActionSetting s -> TF.Attr s P.Text)
                (\s a -> s { _type' = a } :: LbListenerRuleActionSetting s)
+
+-- | @redirect@ nested settings.
+data LbListenerRuleActionRedirectSetting s = LbListenerRuleActionRedirectSetting'
+    { _host       :: TF.Attr s P.Text
+    -- ^ @host@ - (Optional)
+    --
+    , _path       :: TF.Attr s P.Text
+    -- ^ @path@ - (Optional)
+    --
+    , _port       :: TF.Attr s P.Text
+    -- ^ @port@ - (Optional)
+    --
+    , _protocol   :: TF.Attr s P.Text
+    -- ^ @protocol@ - (Optional)
+    --
+    , _query      :: TF.Attr s P.Text
+    -- ^ @query@ - (Optional)
+    --
+    , _statusCode :: TF.Attr s P.Text
+    -- ^ @status_code@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @redirect@ settings value.
+newLbListenerRuleActionRedirectSetting
+    :: TF.Attr s P.Text -- ^ 'P._statusCode': @status_code@
+    -> LbListenerRuleActionRedirectSetting s
+newLbListenerRuleActionRedirectSetting _statusCode =
+    LbListenerRuleActionRedirectSetting'
+        { _host = TF.value "#{host}"
+        , _path = TF.value "/#{path}"
+        , _port = TF.value "#{port}"
+        , _protocol = TF.value "#{protocol}"
+        , _query = TF.value "#{query}"
+        , _statusCode = _statusCode
+        }
+
+instance TF.IsValue  (LbListenerRuleActionRedirectSetting s)
+instance TF.IsObject (LbListenerRuleActionRedirectSetting s) where
+    toObject LbListenerRuleActionRedirectSetting'{..} = P.catMaybes
+        [ TF.assign "host" <$> TF.attribute _host
+        , TF.assign "path" <$> TF.attribute _path
+        , TF.assign "port" <$> TF.attribute _port
+        , TF.assign "protocol" <$> TF.attribute _protocol
+        , TF.assign "query" <$> TF.attribute _query
+        , TF.assign "status_code" <$> TF.attribute _statusCode
+        ]
+
+instance TF.IsValid (LbListenerRuleActionRedirectSetting s) where
+    validator = P.mempty
+
+instance P.HasHost (LbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    host =
+        P.lens (_host :: LbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _host = a } :: LbListenerRuleActionRedirectSetting s)
+
+instance P.HasPath (LbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    path =
+        P.lens (_path :: LbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _path = a } :: LbListenerRuleActionRedirectSetting s)
+
+instance P.HasPort (LbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    port =
+        P.lens (_port :: LbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _port = a } :: LbListenerRuleActionRedirectSetting s)
+
+instance P.HasProtocol (LbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    protocol =
+        P.lens (_protocol :: LbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _protocol = a } :: LbListenerRuleActionRedirectSetting s)
+
+instance P.HasQuery (LbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    query =
+        P.lens (_query :: LbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _query = a } :: LbListenerRuleActionRedirectSetting s)
+
+instance P.HasStatusCode (LbListenerRuleActionRedirectSetting s) (TF.Attr s P.Text) where
+    statusCode =
+        P.lens (_statusCode :: LbListenerRuleActionRedirectSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _statusCode = a } :: LbListenerRuleActionRedirectSetting s)
 
 -- | @condition@ nested settings.
 data LbListenerRuleConditionSetting s = LbListenerRuleConditionSetting'
@@ -5061,3 +4239,269 @@ instance P.HasUsername (OpsworksApplicationAppSourceSetting s) (TF.Attr s P.Text
     username =
         P.lens (_username :: OpsworksApplicationAppSourceSetting s -> TF.Attr s P.Text)
                (\s a -> s { _username = a } :: OpsworksApplicationAppSourceSetting s)
+
+-- | @environment@ nested settings.
+data OpsworksApplicationEnvironmentSetting s = OpsworksApplicationEnvironmentSetting'
+    { _key    :: TF.Attr s P.Text
+    -- ^ @key@ - (Required)
+    --
+    , _secure :: TF.Attr s P.Bool
+    -- ^ @secure@ - (Optional)
+    --
+    , _value  :: TF.Attr s P.Text
+    -- ^ @value@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @environment@ settings value.
+newOpsworksApplicationEnvironmentSetting
+    :: TF.Attr s P.Text -- ^ 'P._key': @key@
+    -> TF.Attr s P.Text -- ^ 'P._value': @value@
+    -> OpsworksApplicationEnvironmentSetting s
+newOpsworksApplicationEnvironmentSetting _key _value =
+    OpsworksApplicationEnvironmentSetting'
+        { _key = _key
+        , _secure = TF.value P.True
+        , _value = _value
+        }
+
+instance TF.IsValue  (OpsworksApplicationEnvironmentSetting s)
+instance TF.IsObject (OpsworksApplicationEnvironmentSetting s) where
+    toObject OpsworksApplicationEnvironmentSetting'{..} = P.catMaybes
+        [ TF.assign "key" <$> TF.attribute _key
+        , TF.assign "secure" <$> TF.attribute _secure
+        , TF.assign "value" <$> TF.attribute _value
+        ]
+
+instance TF.IsValid (OpsworksApplicationEnvironmentSetting s) where
+    validator = P.mempty
+
+instance P.HasKey (OpsworksApplicationEnvironmentSetting s) (TF.Attr s P.Text) where
+    key =
+        P.lens (_key :: OpsworksApplicationEnvironmentSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _key = a } :: OpsworksApplicationEnvironmentSetting s)
+
+instance P.HasSecure (OpsworksApplicationEnvironmentSetting s) (TF.Attr s P.Bool) where
+    secure =
+        P.lens (_secure :: OpsworksApplicationEnvironmentSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _secure = a } :: OpsworksApplicationEnvironmentSetting s)
+
+instance P.HasValue (OpsworksApplicationEnvironmentSetting s) (TF.Attr s P.Text) where
+    value =
+        P.lens (_value :: OpsworksApplicationEnvironmentSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _value = a } :: OpsworksApplicationEnvironmentSetting s)
+
+-- | @ssl_configuration@ nested settings.
+data OpsworksApplicationSslConfigurationSetting s = OpsworksApplicationSslConfigurationSetting'
+    { _certificate :: TF.Attr s P.Text
+    -- ^ @certificate@ - (Required)
+    --
+    , _chain       :: TF.Attr s P.Text
+    -- ^ @chain@ - (Optional)
+    --
+    , _privateKey  :: TF.Attr s P.Text
+    -- ^ @private_key@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @ssl_configuration@ settings value.
+newOpsworksApplicationSslConfigurationSetting
+    :: TF.Attr s P.Text -- ^ 'P._certificate': @certificate@
+    -> TF.Attr s P.Text -- ^ 'P._privateKey': @private_key@
+    -> OpsworksApplicationSslConfigurationSetting s
+newOpsworksApplicationSslConfigurationSetting _certificate _privateKey =
+    OpsworksApplicationSslConfigurationSetting'
+        { _certificate = _certificate
+        , _chain = TF.Nil
+        , _privateKey = _privateKey
+        }
+
+instance TF.IsValue  (OpsworksApplicationSslConfigurationSetting s)
+instance TF.IsObject (OpsworksApplicationSslConfigurationSetting s) where
+    toObject OpsworksApplicationSslConfigurationSetting'{..} = P.catMaybes
+        [ TF.assign "certificate" <$> TF.attribute _certificate
+        , TF.assign "chain" <$> TF.attribute _chain
+        , TF.assign "private_key" <$> TF.attribute _privateKey
+        ]
+
+instance TF.IsValid (OpsworksApplicationSslConfigurationSetting s) where
+    validator = P.mempty
+
+instance P.HasCertificate (OpsworksApplicationSslConfigurationSetting s) (TF.Attr s P.Text) where
+    certificate =
+        P.lens (_certificate :: OpsworksApplicationSslConfigurationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _certificate = a } :: OpsworksApplicationSslConfigurationSetting s)
+
+instance P.HasChain (OpsworksApplicationSslConfigurationSetting s) (TF.Attr s P.Text) where
+    chain =
+        P.lens (_chain :: OpsworksApplicationSslConfigurationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _chain = a } :: OpsworksApplicationSslConfigurationSetting s)
+
+instance P.HasPrivateKey (OpsworksApplicationSslConfigurationSetting s) (TF.Attr s P.Text) where
+    privateKey =
+        P.lens (_privateKey :: OpsworksApplicationSslConfigurationSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _privateKey = a } :: OpsworksApplicationSslConfigurationSetting s)
+
+-- | @ebs_volume@ nested settings.
+data OpsworksCustomLayerEbsVolumeSetting s = OpsworksCustomLayerEbsVolumeSetting'
+    { _iops          :: TF.Attr s P.Int
+    -- ^ @iops@ - (Optional)
+    --
+    , _mountPoint    :: TF.Attr s P.Text
+    -- ^ @mount_point@ - (Required)
+    --
+    , _numberOfDisks :: TF.Attr s P.Int
+    -- ^ @number_of_disks@ - (Required)
+    --
+    , _raidLevel     :: TF.Attr s P.Text
+    -- ^ @raid_level@ - (Optional)
+    --
+    , _size          :: TF.Attr s P.Int
+    -- ^ @size@ - (Required)
+    --
+    , _type'         :: TF.Attr s P.Text
+    -- ^ @type@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @ebs_volume@ settings value.
+newOpsworksCustomLayerEbsVolumeSetting
+    :: TF.Attr s P.Int -- ^ 'P._numberOfDisks': @number_of_disks@
+    -> TF.Attr s P.Text -- ^ 'P._mountPoint': @mount_point@
+    -> TF.Attr s P.Int -- ^ 'P._size': @size@
+    -> OpsworksCustomLayerEbsVolumeSetting s
+newOpsworksCustomLayerEbsVolumeSetting _numberOfDisks _mountPoint _size =
+    OpsworksCustomLayerEbsVolumeSetting'
+        { _iops = TF.value 0
+        , _mountPoint = _mountPoint
+        , _numberOfDisks = _numberOfDisks
+        , _raidLevel = TF.Nil
+        , _size = _size
+        , _type' = TF.value "standard"
+        }
+
+instance TF.IsValue  (OpsworksCustomLayerEbsVolumeSetting s)
+instance TF.IsObject (OpsworksCustomLayerEbsVolumeSetting s) where
+    toObject OpsworksCustomLayerEbsVolumeSetting'{..} = P.catMaybes
+        [ TF.assign "iops" <$> TF.attribute _iops
+        , TF.assign "mount_point" <$> TF.attribute _mountPoint
+        , TF.assign "number_of_disks" <$> TF.attribute _numberOfDisks
+        , TF.assign "raid_level" <$> TF.attribute _raidLevel
+        , TF.assign "size" <$> TF.attribute _size
+        , TF.assign "type" <$> TF.attribute _type'
+        ]
+
+instance TF.IsValid (OpsworksCustomLayerEbsVolumeSetting s) where
+    validator = P.mempty
+
+instance P.HasIops (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
+    iops =
+        P.lens (_iops :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _iops = a } :: OpsworksCustomLayerEbsVolumeSetting s)
+
+instance P.HasMountPoint (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
+    mountPoint =
+        P.lens (_mountPoint :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _mountPoint = a } :: OpsworksCustomLayerEbsVolumeSetting s)
+
+instance P.HasNumberOfDisks (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
+    numberOfDisks =
+        P.lens (_numberOfDisks :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _numberOfDisks = a } :: OpsworksCustomLayerEbsVolumeSetting s)
+
+instance P.HasRaidLevel (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
+    raidLevel =
+        P.lens (_raidLevel :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _raidLevel = a } :: OpsworksCustomLayerEbsVolumeSetting s)
+
+instance P.HasSize (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
+    size =
+        P.lens (_size :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _size = a } :: OpsworksCustomLayerEbsVolumeSetting s)
+
+instance P.HasType' (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
+    type' =
+        P.lens (_type' :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _type' = a } :: OpsworksCustomLayerEbsVolumeSetting s)
+
+-- | @ebs_volume@ nested settings.
+data OpsworksGangliaLayerEbsVolumeSetting s = OpsworksGangliaLayerEbsVolumeSetting'
+    { _iops          :: TF.Attr s P.Int
+    -- ^ @iops@ - (Optional)
+    --
+    , _mountPoint    :: TF.Attr s P.Text
+    -- ^ @mount_point@ - (Required)
+    --
+    , _numberOfDisks :: TF.Attr s P.Int
+    -- ^ @number_of_disks@ - (Required)
+    --
+    , _raidLevel     :: TF.Attr s P.Text
+    -- ^ @raid_level@ - (Optional)
+    --
+    , _size          :: TF.Attr s P.Int
+    -- ^ @size@ - (Required)
+    --
+    , _type'         :: TF.Attr s P.Text
+    -- ^ @type@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @ebs_volume@ settings value.
+newOpsworksGangliaLayerEbsVolumeSetting
+    :: TF.Attr s P.Int -- ^ 'P._numberOfDisks': @number_of_disks@
+    -> TF.Attr s P.Text -- ^ 'P._mountPoint': @mount_point@
+    -> TF.Attr s P.Int -- ^ 'P._size': @size@
+    -> OpsworksGangliaLayerEbsVolumeSetting s
+newOpsworksGangliaLayerEbsVolumeSetting _numberOfDisks _mountPoint _size =
+    OpsworksGangliaLayerEbsVolumeSetting'
+        { _iops = TF.value 0
+        , _mountPoint = _mountPoint
+        , _numberOfDisks = _numberOfDisks
+        , _raidLevel = TF.Nil
+        , _size = _size
+        , _type' = TF.value "standard"
+        }
+
+instance TF.IsValue  (OpsworksGangliaLayerEbsVolumeSetting s)
+instance TF.IsObject (OpsworksGangliaLayerEbsVolumeSetting s) where
+    toObject OpsworksGangliaLayerEbsVolumeSetting'{..} = P.catMaybes
+        [ TF.assign "iops" <$> TF.attribute _iops
+        , TF.assign "mount_point" <$> TF.attribute _mountPoint
+        , TF.assign "number_of_disks" <$> TF.attribute _numberOfDisks
+        , TF.assign "raid_level" <$> TF.attribute _raidLevel
+        , TF.assign "size" <$> TF.attribute _size
+        , TF.assign "type" <$> TF.attribute _type'
+        ]
+
+instance TF.IsValid (OpsworksGangliaLayerEbsVolumeSetting s) where
+    validator = P.mempty
+
+instance P.HasIops (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
+    iops =
+        P.lens (_iops :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _iops = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
+
+instance P.HasMountPoint (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
+    mountPoint =
+        P.lens (_mountPoint :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _mountPoint = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
+
+instance P.HasNumberOfDisks (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
+    numberOfDisks =
+        P.lens (_numberOfDisks :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _numberOfDisks = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
+
+instance P.HasRaidLevel (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
+    raidLevel =
+        P.lens (_raidLevel :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _raidLevel = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
+
+instance P.HasSize (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
+    size =
+        P.lens (_size :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _size = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
+
+instance P.HasType' (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
+    type' =
+        P.lens (_type' :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _type' = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
