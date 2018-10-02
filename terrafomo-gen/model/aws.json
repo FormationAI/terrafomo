@@ -1717,16 +1717,163 @@
           "forceNew": false,
           "sensitive": false,
           "minItems": 0,
-          "maxItems": 0,
+          "maxItems": 1,
           "resource": {
             "name": "default_action",
             "schemas": [
               {
+                "name": "fixed_response",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 1,
+                "resource": {
+                  "name": "fixed_response",
+                  "schemas": [
+                    {
+                      "name": "content_type",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": false,
+                      "required": true,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    },
+                    {
+                      "name": "message_body",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    },
+                    {
+                      "name": "status_code",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": true,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "redirect",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 1,
+                "resource": {
+                  "name": "redirect",
+                  "schemas": [
+                    {
+                      "name": "host",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{host}"
+                    },
+                    {
+                      "name": "path",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "/#{path}"
+                    },
+                    {
+                      "name": "port",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{port}"
+                    },
+                    {
+                      "name": "protocol",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{protocol}"
+                    },
+                    {
+                      "name": "query",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{query}"
+                    },
+                    {
+                      "name": "status_code",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": false,
+                      "required": true,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    }
+                  ]
+                }
+              },
+              {
                 "name": "target_group_arn",
                 "type": "TypeString",
                 "conflictsWith": [],
-                "optional": false,
-                "required": true,
+                "optional": true,
+                "required": false,
                 "computed": false,
                 "forceNew": false,
                 "sensitive": false,
@@ -1846,11 +1993,158 @@
             "name": "action",
             "schemas": [
               {
+                "name": "fixed_response",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 1,
+                "resource": {
+                  "name": "fixed_response",
+                  "schemas": [
+                    {
+                      "name": "content_type",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": false,
+                      "required": true,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    },
+                    {
+                      "name": "message_body",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    },
+                    {
+                      "name": "status_code",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": true,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "redirect",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 1,
+                "resource": {
+                  "name": "redirect",
+                  "schemas": [
+                    {
+                      "name": "host",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{host}"
+                    },
+                    {
+                      "name": "path",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "/#{path}"
+                    },
+                    {
+                      "name": "port",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{port}"
+                    },
+                    {
+                      "name": "protocol",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{protocol}"
+                    },
+                    {
+                      "name": "query",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{query}"
+                    },
+                    {
+                      "name": "status_code",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": false,
+                      "required": true,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    }
+                  ]
+                }
+              },
+              {
                 "name": "target_group_arn",
                 "type": "TypeString",
                 "conflictsWith": [],
-                "optional": false,
-                "required": true,
+                "optional": true,
+                "required": false,
                 "computed": false,
                 "forceNew": false,
                 "sensitive": false,
@@ -5772,6 +6066,18 @@
         {
           "name": "variables",
           "type": "TypeMap",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "xray_tracing_enabled",
+          "type": "TypeBool",
           "conflictsWith": [],
           "optional": true,
           "required": false,
@@ -10162,6 +10468,19 @@
                       "maxItems": 0
                     },
                     {
+                      "name": "include_body",
+                      "type": "TypeBool",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "false"
+                    },
+                    {
                       "name": "lambda_arn",
                       "type": "TypeString",
                       "conflictsWith": [],
@@ -10621,6 +10940,19 @@
                       "sensitive": false,
                       "minItems": 0,
                       "maxItems": 0
+                    },
+                    {
+                      "name": "include_body",
+                      "type": "TypeBool",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "false"
                     },
                     {
                       "name": "lambda_arn",
@@ -11147,6 +11479,19 @@
                       "sensitive": false,
                       "minItems": 0,
                       "maxItems": 0
+                    },
+                    {
+                      "name": "include_body",
+                      "type": "TypeBool",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "false"
                     },
                     {
                       "name": "lambda_arn",
@@ -11793,6 +12138,87 @@
       ]
     },
     {
+      "name": "aws_cloudfront_public_key",
+      "schemas": [
+        {
+          "name": "caller_reference",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "comment",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "encoded_key",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": true,
+          "computed": false,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "etag",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "name",
+          "type": "TypeString",
+          "conflictsWith": [
+            "name_prefix"
+          ],
+          "optional": true,
+          "required": false,
+          "computed": true,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "name_prefix",
+          "type": "TypeString",
+          "conflictsWith": [
+            "name"
+          ],
+          "optional": true,
+          "required": false,
+          "computed": true,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        }
+      ]
+    },
+    {
       "name": "aws_cloudtrail",
       "schemas": [
         {
@@ -12346,6 +12772,121 @@
           "resource": {
             "name": "ecs_target",
             "schemas": [
+              {
+                "name": "group",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "launch_type",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0,
+                "default": "EC2"
+              },
+              {
+                "name": "network_configuration",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 1,
+                "resource": {
+                  "name": "network_configuration",
+                  "schemas": [
+                    {
+                      "name": "assign_public_ip",
+                      "type": "TypeBool",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "false"
+                    },
+                    {
+                      "name": "security_groups",
+                      "type": "TypeSet",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "schema": {
+                        "name": "security_groups",
+                        "type": "TypeString",
+                        "conflictsWith": [],
+                        "optional": false,
+                        "required": false,
+                        "computed": false,
+                        "forceNew": false,
+                        "sensitive": false,
+                        "minItems": 0,
+                        "maxItems": 0
+                      }
+                    },
+                    {
+                      "name": "subnets",
+                      "type": "TypeSet",
+                      "conflictsWith": [],
+                      "optional": false,
+                      "required": true,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "schema": {
+                        "name": "subnets",
+                        "type": "TypeString",
+                        "conflictsWith": [],
+                        "optional": false,
+                        "required": false,
+                        "computed": false,
+                        "forceNew": false,
+                        "sensitive": false,
+                        "minItems": 0,
+                        "maxItems": 0
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "platform_version",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
               {
                 "name": "task_count",
                 "type": "TypeInt",
@@ -13297,6 +13838,18 @@
       "name": "aws_codebuild_project",
       "schemas": [
         {
+          "name": "arn",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
           "name": "artifacts",
           "type": "TypeSet",
           "conflictsWith": [],
@@ -13310,6 +13863,19 @@
           "resource": {
             "name": "artifacts",
             "schemas": [
+              {
+                "name": "encryption_disabled",
+                "type": "TypeBool",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0,
+                "default": "false"
+              },
               {
                 "name": "location",
                 "type": "TypeString",
@@ -13620,6 +14186,262 @@
           "sensitive": false,
           "minItems": 0,
           "maxItems": 0
+        },
+        {
+          "name": "secondary_artifacts",
+          "type": "TypeSet",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0,
+          "resource": {
+            "name": "secondary_artifacts",
+            "schemas": [
+              {
+                "name": "artifact_identifier",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": false,
+                "required": true,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "encryption_disabled",
+                "type": "TypeBool",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0,
+                "default": "false"
+              },
+              {
+                "name": "location",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "name",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "namespace_type",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "packaging",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "path",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "type",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": false,
+                "required": true,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              }
+            ]
+          }
+        },
+        {
+          "name": "secondary_sources",
+          "type": "TypeSet",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0,
+          "resource": {
+            "name": "secondary_sources",
+            "schemas": [
+              {
+                "name": "auth",
+                "type": "TypeSet",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0,
+                "resource": {
+                  "name": "auth",
+                  "schemas": [
+                    {
+                      "name": "resource",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": true,
+                      "minItems": 0,
+                      "maxItems": 0
+                    },
+                    {
+                      "name": "type",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": false,
+                      "required": true,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "buildspec",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "git_clone_depth",
+                "type": "TypeInt",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "insecure_ssl",
+                "type": "TypeBool",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "location",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "report_build_status",
+                "type": "TypeBool",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "source_identifier",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": false,
+                "required": true,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "type",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": false,
+                "required": true,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              }
+            ]
+          }
         },
         {
           "name": "service_role",
@@ -18117,6 +18939,36 @@
           }
         },
         {
+          "name": "server_side_encryption",
+          "type": "TypeList",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 1,
+          "resource": {
+            "name": "server_side_encryption",
+            "schemas": [
+              {
+                "name": "enabled",
+                "type": "TypeBool",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": true,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0,
+                "default": "false"
+              }
+            ]
+          }
+        },
+        {
           "name": "subnet_group_name",
           "type": "TypeString",
           "conflictsWith": [],
@@ -18797,6 +19649,30 @@
           "optional": true,
           "required": false,
           "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "domain",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "domain_iam_role_name",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
           "forceNew": false,
           "sensitive": false,
           "minItems": 0,
@@ -20979,6 +21855,30 @@
                 }
               },
               {
+                "name": "prefix_list_ids",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0,
+                "schema": {
+                  "name": "prefix_list_ids",
+                  "type": "TypeString",
+                  "conflictsWith": [],
+                  "optional": false,
+                  "required": false,
+                  "computed": false,
+                  "forceNew": false,
+                  "sensitive": false,
+                  "minItems": 0,
+                  "maxItems": 0
+                }
+              },
+              {
                 "name": "protocol",
                 "type": "TypeString",
                 "conflictsWith": [],
@@ -21220,7 +22120,11 @@
           "minItems": 0,
           "maxItems": 0
         }
-      ]
+      ],
+      "timeouts": {
+        "create": 600000000000,
+        "delete": 600000000000
+      }
     },
     {
       "name": "aws_default_vpc",
@@ -22808,6 +23712,99 @@
           "maxItems": 0
         }
       ]
+    },
+    {
+      "name": "aws_dx_bgp_peer",
+      "schemas": [
+        {
+          "name": "address_family",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": true,
+          "computed": false,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "amazon_address",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": true,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "bgp_asn",
+          "type": "TypeInt",
+          "conflictsWith": [],
+          "optional": false,
+          "required": true,
+          "computed": false,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "bgp_auth_key",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": true,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "bgp_status",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "customer_address",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": true,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "virtual_interface_id",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": true,
+          "computed": false,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        }
+      ],
+      "timeouts": {
+        "create": 600000000000,
+        "delete": 600000000000
+      }
     },
     {
       "name": "aws_dx_connection",
@@ -25404,6 +26401,108 @@
             "name": "volume",
             "schemas": [
               {
+                "name": "docker_volume_configuration",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": true,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 1,
+                "resource": {
+                  "name": "docker_volume_configuration",
+                  "schemas": [
+                    {
+                      "name": "autoprovision",
+                      "type": "TypeBool",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": true,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "false"
+                    },
+                    {
+                      "name": "driver",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": true,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    },
+                    {
+                      "name": "driver_opts",
+                      "type": "TypeMap",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": true,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "schema": {
+                        "name": "driver_opts",
+                        "type": "TypeString",
+                        "conflictsWith": [],
+                        "optional": false,
+                        "required": false,
+                        "computed": false,
+                        "forceNew": false,
+                        "sensitive": false,
+                        "minItems": 0,
+                        "maxItems": 0
+                      }
+                    },
+                    {
+                      "name": "labels",
+                      "type": "TypeMap",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": true,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "schema": {
+                        "name": "labels",
+                        "type": "TypeString",
+                        "conflictsWith": [],
+                        "optional": false,
+                        "required": false,
+                        "computed": false,
+                        "forceNew": false,
+                        "sensitive": false,
+                        "minItems": 0,
+                        "maxItems": 0
+                      }
+                    },
+                    {
+                      "name": "scope",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": true,
+                      "forceNew": true,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    }
+                  ]
+                }
+              },
+              {
                 "name": "host_path",
                 "type": "TypeString",
                 "conflictsWith": [],
@@ -25936,6 +27035,18 @@
           "required": true,
           "computed": false,
           "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "platform_version",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
           "sensitive": false,
           "minItems": 0,
           "maxItems": 0
@@ -27081,7 +28192,6 @@
           "name": "replication_group_id",
           "type": "TypeString",
           "conflictsWith": [
-            "availability_zone",
             "availability_zones",
             "az_mode",
             "engine_version",
@@ -28296,6 +29406,35 @@
                 "required": true,
                 "computed": false,
                 "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              }
+            ]
+          }
+        },
+        {
+          "name": "node_to_node_encryption",
+          "type": "TypeList",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 1,
+          "resource": {
+            "name": "node_to_node_encryption",
+            "schemas": [
+              {
+                "name": "enabled",
+                "type": "TypeBool",
+                "conflictsWith": [],
+                "optional": false,
+                "required": true,
+                "computed": false,
+                "forceNew": true,
                 "sensitive": false,
                 "minItems": 0,
                 "maxItems": 0
@@ -35566,8 +36705,7 @@
                 "forceNew": false,
                 "sensitive": false,
                 "minItems": 0,
-                "maxItems": 0,
-                "default": "standard"
+                "maxItems": 0
               }
             ]
           }
@@ -36988,6 +38126,18 @@
                 "conflictsWith": [],
                 "optional": false,
                 "required": true,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "separator",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
                 "computed": false,
                 "forceNew": false,
                 "sensitive": false,
@@ -41428,7 +42578,7 @@
                   "schemas": [
                     {
                       "name": "delete_on_termination",
-                      "type": "TypeBool",
+                      "type": "TypeString",
                       "conflictsWith": [],
                       "optional": true,
                       "required": false,
@@ -41440,7 +42590,7 @@
                     },
                     {
                       "name": "encrypted",
-                      "type": "TypeBool",
+                      "type": "TypeString",
                       "conflictsWith": [],
                       "optional": true,
                       "required": false,
@@ -41607,7 +42757,7 @@
         },
         {
           "name": "ebs_optimized",
-          "type": "TypeBool",
+          "type": "TypeString",
           "conflictsWith": [],
           "optional": true,
           "required": false,
@@ -41990,9 +43140,9 @@
                 "name": "ipv4_address_count",
                 "type": "TypeInt",
                 "conflictsWith": [],
-                "optional": false,
+                "optional": true,
                 "required": false,
-                "computed": true,
+                "computed": false,
                 "forceNew": false,
                 "sensitive": false,
                 "minItems": 0,
@@ -42026,9 +43176,9 @@
                 "name": "ipv6_address_count",
                 "type": "TypeInt",
                 "conflictsWith": [],
-                "optional": false,
+                "optional": true,
                 "required": false,
-                "computed": true,
+                "computed": false,
                 "forceNew": false,
                 "sensitive": false,
                 "minItems": 0,
@@ -42772,16 +43922,163 @@
           "forceNew": false,
           "sensitive": false,
           "minItems": 0,
-          "maxItems": 0,
+          "maxItems": 1,
           "resource": {
             "name": "default_action",
             "schemas": [
               {
+                "name": "fixed_response",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 1,
+                "resource": {
+                  "name": "fixed_response",
+                  "schemas": [
+                    {
+                      "name": "content_type",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": false,
+                      "required": true,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    },
+                    {
+                      "name": "message_body",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    },
+                    {
+                      "name": "status_code",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": true,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "redirect",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 1,
+                "resource": {
+                  "name": "redirect",
+                  "schemas": [
+                    {
+                      "name": "host",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{host}"
+                    },
+                    {
+                      "name": "path",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "/#{path}"
+                    },
+                    {
+                      "name": "port",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{port}"
+                    },
+                    {
+                      "name": "protocol",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{protocol}"
+                    },
+                    {
+                      "name": "query",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{query}"
+                    },
+                    {
+                      "name": "status_code",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": false,
+                      "required": true,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    }
+                  ]
+                }
+              },
+              {
                 "name": "target_group_arn",
                 "type": "TypeString",
                 "conflictsWith": [],
-                "optional": false,
-                "required": true,
+                "optional": true,
+                "required": false,
                 "computed": false,
                 "forceNew": false,
                 "sensitive": false,
@@ -42901,11 +44198,158 @@
             "name": "action",
             "schemas": [
               {
+                "name": "fixed_response",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 1,
+                "resource": {
+                  "name": "fixed_response",
+                  "schemas": [
+                    {
+                      "name": "content_type",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": false,
+                      "required": true,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    },
+                    {
+                      "name": "message_body",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    },
+                    {
+                      "name": "status_code",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": true,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    }
+                  ]
+                }
+              },
+              {
+                "name": "redirect",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 1,
+                "resource": {
+                  "name": "redirect",
+                  "schemas": [
+                    {
+                      "name": "host",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{host}"
+                    },
+                    {
+                      "name": "path",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "/#{path}"
+                    },
+                    {
+                      "name": "port",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{port}"
+                    },
+                    {
+                      "name": "protocol",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{protocol}"
+                    },
+                    {
+                      "name": "query",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": true,
+                      "required": false,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0,
+                      "default": "#{query}"
+                    },
+                    {
+                      "name": "status_code",
+                      "type": "TypeString",
+                      "conflictsWith": [],
+                      "optional": false,
+                      "required": true,
+                      "computed": false,
+                      "forceNew": false,
+                      "sensitive": false,
+                      "minItems": 0,
+                      "maxItems": 0
+                    }
+                  ]
+                }
+              },
+              {
                 "name": "target_group_arn",
                 "type": "TypeString",
                 "conflictsWith": [],
-                "optional": false,
-                "required": true,
+                "optional": true,
+                "required": false,
                 "computed": false,
                 "forceNew": false,
                 "sensitive": false,
@@ -53446,6 +54890,208 @@
       ]
     },
     {
+      "name": "aws_pinpoint_app",
+      "schemas": [
+        {
+          "name": "application_id",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "campaign_hook",
+          "type": "TypeList",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 1,
+          "resource": {
+            "name": "campaign_hook",
+            "schemas": [
+              {
+                "name": "lambda_function_name",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "mode",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "web_url",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              }
+            ]
+          }
+        },
+        {
+          "name": "limits",
+          "type": "TypeList",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 1,
+          "resource": {
+            "name": "limits",
+            "schemas": [
+              {
+                "name": "daily",
+                "type": "TypeInt",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "maximum_duration",
+                "type": "TypeInt",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "messages_per_second",
+                "type": "TypeInt",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "total",
+                "type": "TypeInt",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              }
+            ]
+          }
+        },
+        {
+          "name": "name",
+          "type": "TypeString",
+          "conflictsWith": [
+            "name_prefix"
+          ],
+          "optional": true,
+          "required": false,
+          "computed": true,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "name_prefix",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "quiet_time",
+          "type": "TypeList",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 1,
+          "resource": {
+            "name": "quiet_time",
+            "schemas": [
+              {
+                "name": "end",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              },
+              {
+                "name": "start",
+                "type": "TypeString",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "name": "aws_placement_group",
       "schemas": [
         {
@@ -53996,6 +55642,75 @@
                 "sensitive": false,
                 "minItems": 0,
                 "maxItems": 0
+              }
+            ]
+          }
+        },
+        {
+          "name": "scaling_configuration",
+          "type": "TypeList",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 1,
+          "resource": {
+            "name": "scaling_configuration",
+            "schemas": [
+              {
+                "name": "auto_pause",
+                "type": "TypeBool",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0,
+                "default": "true"
+              },
+              {
+                "name": "max_capacity",
+                "type": "TypeInt",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0,
+                "default": "16"
+              },
+              {
+                "name": "min_capacity",
+                "type": "TypeInt",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0,
+                "default": "2"
+              },
+              {
+                "name": "seconds_until_auto_pause",
+                "type": "TypeInt",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0,
+                "default": "300"
               }
             ]
           }
@@ -54617,7 +56332,7 @@
           "optional": true,
           "required": false,
           "computed": true,
-          "forceNew": false,
+          "forceNew": true,
           "sensitive": false,
           "minItems": 0,
           "maxItems": 0
@@ -59046,6 +60761,30 @@
                 }
               },
               {
+                "name": "prefix_list_ids",
+                "type": "TypeList",
+                "conflictsWith": [],
+                "optional": true,
+                "required": false,
+                "computed": false,
+                "forceNew": false,
+                "sensitive": false,
+                "minItems": 0,
+                "maxItems": 0,
+                "schema": {
+                  "name": "prefix_list_ids",
+                  "type": "TypeString",
+                  "conflictsWith": [],
+                  "optional": false,
+                  "required": false,
+                  "computed": false,
+                  "forceNew": false,
+                  "sensitive": false,
+                  "minItems": 0,
+                  "maxItems": 0
+                }
+              },
+              {
                 "name": "protocol",
                 "type": "TypeString",
                 "conflictsWith": [],
@@ -61693,6 +63432,19 @@
           "default": "terminate"
         },
         {
+          "name": "instance_pools_to_use_count",
+          "type": "TypeInt",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0,
+          "default": "1"
+        },
+        {
           "name": "launch_specification",
           "type": "TypeSet",
           "conflictsWith": [],
@@ -62413,8 +64165,7 @@
                 "forceNew": false,
                 "sensitive": false,
                 "minItems": 0,
-                "maxItems": 0,
-                "default": "standard"
+                "maxItems": 0
               }
             ]
           }
@@ -66016,7 +67767,11 @@
           "minItems": 0,
           "maxItems": 0
         }
-      ]
+      ],
+      "timeouts": {
+        "create": 600000000000,
+        "delete": 600000000000
+      }
     },
     {
       "name": "aws_swf_domain",
@@ -69348,7 +71103,7 @@
             "schemas": [
               {
                 "name": "field_to_match",
-                "type": "TypeSet",
+                "type": "TypeList",
                 "conflictsWith": [],
                 "optional": false,
                 "required": true,
@@ -69442,7 +71197,7 @@
             "schemas": [
               {
                 "name": "field_to_match",
-                "type": "TypeSet",
+                "type": "TypeList",
                 "conflictsWith": [],
                 "optional": false,
                 "required": true,
@@ -72208,6 +73963,72 @@
             "minItems": 0,
             "maxItems": 0
           }
+        },
+        {
+          "name": "sort_ascending",
+          "type": "TypeBool",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0,
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "aws_api_gateway_resource",
+      "schemas": [
+        {
+          "name": "parent_id",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "path",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": true,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "path_part",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "rest_api_id",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": true,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
         }
       ]
     },
@@ -72320,6 +74141,30 @@
     {
       "name": "aws_autoscaling_groups",
       "schemas": [
+        {
+          "name": "arns",
+          "type": "TypeList",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0,
+          "schema": {
+            "name": "arns",
+            "type": "TypeString",
+            "conflictsWith": [],
+            "optional": false,
+            "required": false,
+            "computed": false,
+            "forceNew": false,
+            "sensitive": false,
+            "minItems": 0,
+            "maxItems": 0
+          }
+        },
         {
           "name": "filter",
           "type": "TypeSet",
@@ -73438,6 +75283,47 @@
       ]
     },
     {
+      "name": "aws_db_event_categories",
+      "schemas": [
+        {
+          "name": "event_categories",
+          "type": "TypeSet",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0,
+          "schema": {
+            "name": "event_categories",
+            "type": "TypeString",
+            "conflictsWith": [],
+            "optional": false,
+            "required": false,
+            "computed": false,
+            "forceNew": false,
+            "sensitive": false,
+            "minItems": 0,
+            "maxItems": 0
+          }
+        },
+        {
+          "name": "source_type",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        }
+      ]
+    },
+    {
       "name": "aws_db_instance",
       "schemas": [
         {
@@ -73643,6 +75529,30 @@
           "sensitive": false,
           "minItems": 0,
           "maxItems": 0
+        },
+        {
+          "name": "enabled_cloudwatch_logs_exports",
+          "type": "TypeList",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0,
+          "schema": {
+            "name": "enabled_cloudwatch_logs_exports",
+            "type": "TypeString",
+            "conflictsWith": [],
+            "optional": false,
+            "required": false,
+            "computed": false,
+            "forceNew": false,
+            "sensitive": false,
+            "minItems": 0,
+            "maxItems": 0
+          }
         },
         {
           "name": "endpoint",
@@ -76009,6 +77919,18 @@
           "required": true,
           "computed": false,
           "forceNew": true,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
+          "name": "platform_version",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
           "sensitive": false,
           "minItems": 0,
           "maxItems": 0
@@ -79366,6 +81288,30 @@
           "sensitive": false,
           "minItems": 0,
           "maxItems": 0
+        },
+        {
+          "name": "ipv6_cidr_blocks",
+          "type": "TypeList",
+          "conflictsWith": [],
+          "optional": false,
+          "required": false,
+          "computed": true,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0,
+          "schema": {
+            "name": "ipv6_cidr_blocks",
+            "type": "TypeString",
+            "conflictsWith": [],
+            "optional": false,
+            "required": false,
+            "computed": false,
+            "forceNew": false,
+            "sensitive": false,
+            "minItems": 0,
+            "maxItems": 0
+          }
         },
         {
           "name": "regions",
@@ -85399,11 +87345,23 @@
           "maxItems": 0
         },
         {
+          "name": "disk_node",
+          "type": "TypeString",
+          "conflictsWith": [],
+          "optional": true,
+          "required": false,
+          "computed": false,
+          "forceNew": false,
+          "sensitive": false,
+          "minItems": 0,
+          "maxItems": 0
+        },
+        {
           "name": "disk_path",
           "type": "TypeString",
           "conflictsWith": [],
-          "optional": false,
-          "required": true,
+          "optional": true,
+          "required": false,
           "computed": false,
           "forceNew": false,
           "sensitive": false,

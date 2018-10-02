@@ -45,6 +45,10 @@ module Terrafomo.AWS.DataSource01
     , AmiIdsData (..)
     , amiIdsData
 
+    -- ** aws_api_gateway_resource
+    , ApiGatewayResourceData (..)
+    , apiGatewayResourceData
+
     -- ** aws_api_gateway_rest_api
     , ApiGatewayRestApiData (..)
     , apiGatewayRestApiData
@@ -112,6 +116,10 @@ module Terrafomo.AWS.DataSource01
     -- ** aws_db_cluster_snapshot
     , DbClusterSnapshotData (..)
     , dbClusterSnapshotData
+
+    -- ** aws_db_event_categories
+    , DbEventCategoriesData (..)
+    , dbEventCategoriesData
 
     -- ** aws_db_instance
     , DbInstanceData (..)
@@ -778,6 +786,9 @@ data AmiIdsData s = AmiIdsData'
     , _owners          :: TF.Attr s [TF.Attr s P.Text]
     -- ^ @owners@ - (Optional, Forces New)
     --
+    , _sortAscending   :: TF.Attr s P.Bool
+    -- ^ @sort_ascending@ - (Optional)
+    --
     } deriving (P.Show, P.Eq, P.Ord)
 
 -- | Define a new @aws_ami_ids@ datasource value.
@@ -790,6 +801,7 @@ amiIdsData =
             , _filter = TF.Nil
             , _nameRegex = TF.Nil
             , _owners = TF.Nil
+            , _sortAscending = TF.value P.False
             }
 
 instance TF.IsObject (AmiIdsData s) where
@@ -798,6 +810,7 @@ instance TF.IsObject (AmiIdsData s) where
         , TF.assign "filter" <$> TF.attribute _filter
         , TF.assign "name_regex" <$> TF.attribute _nameRegex
         , TF.assign "owners" <$> TF.attribute _owners
+        , TF.assign "sort_ascending" <$> TF.attribute _sortAscending
         ]
 
 instance TF.IsValid (AmiIdsData s) where
@@ -823,11 +836,69 @@ instance P.HasOwners (AmiIdsData s) (TF.Attr s [TF.Attr s P.Text]) where
         P.lens (_owners :: AmiIdsData s -> TF.Attr s [TF.Attr s P.Text])
                (\s a -> s { _owners = a } :: AmiIdsData s)
 
+instance P.HasSortAscending (AmiIdsData s) (TF.Attr s P.Bool) where
+    sortAscending =
+        P.lens (_sortAscending :: AmiIdsData s -> TF.Attr s P.Bool)
+               (\s a -> s { _sortAscending = a } :: AmiIdsData s)
+
 instance s ~ s' => P.HasComputedId (TF.Ref s' (AmiIdsData s)) (TF.Attr s P.Text) where
     computedId x = TF.compute (TF.refKey x) "id"
 
 instance s ~ s' => P.HasComputedIds (TF.Ref s' (AmiIdsData s)) (TF.Attr s [TF.Attr s P.Text]) where
     computedIds x = TF.compute (TF.refKey x) "ids"
+
+-- | @aws_api_gateway_resource@ DataSource.
+--
+-- See the <https://www.terraform.io/docs/providers/aws/d/api_gateway_resource.html terraform documentation>
+-- for more information.
+data ApiGatewayResourceData s = ApiGatewayResourceData'
+    { _path      :: TF.Attr s P.Text
+    -- ^ @path@ - (Required)
+    --
+    , _restApiId :: TF.Attr s P.Text
+    -- ^ @rest_api_id@ - (Required)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Define a new @aws_api_gateway_resource@ datasource value.
+apiGatewayResourceData
+    :: TF.Attr s P.Text -- ^ @rest_api_id@ ('P._restApiId', 'P.restApiId')
+    -> TF.Attr s P.Text -- ^ @path@ ('P._path', 'P.path')
+    -> P.DataSource (ApiGatewayResourceData s)
+apiGatewayResourceData _restApiId _path =
+    TF.unsafeDataSource "aws_api_gateway_resource" TF.validator $
+        ApiGatewayResourceData'
+            { _path = _path
+            , _restApiId = _restApiId
+            }
+
+instance TF.IsObject (ApiGatewayResourceData s) where
+    toObject ApiGatewayResourceData'{..} = P.catMaybes
+        [ TF.assign "path" <$> TF.attribute _path
+        , TF.assign "rest_api_id" <$> TF.attribute _restApiId
+        ]
+
+instance TF.IsValid (ApiGatewayResourceData s) where
+    validator = P.mempty
+
+instance P.HasPath (ApiGatewayResourceData s) (TF.Attr s P.Text) where
+    path =
+        P.lens (_path :: ApiGatewayResourceData s -> TF.Attr s P.Text)
+               (\s a -> s { _path = a } :: ApiGatewayResourceData s)
+
+instance P.HasRestApiId (ApiGatewayResourceData s) (TF.Attr s P.Text) where
+    restApiId =
+        P.lens (_restApiId :: ApiGatewayResourceData s -> TF.Attr s P.Text)
+               (\s a -> s { _restApiId = a } :: ApiGatewayResourceData s)
+
+instance s ~ s' => P.HasComputedId (TF.Ref s' (ApiGatewayResourceData s)) (TF.Attr s P.Text) where
+    computedId x = TF.compute (TF.refKey x) "id"
+
+instance s ~ s' => P.HasComputedParentId (TF.Ref s' (ApiGatewayResourceData s)) (TF.Attr s P.Text) where
+    computedParentId x = TF.compute (TF.refKey x) "parent_id"
+
+instance s ~ s' => P.HasComputedPathPart (TF.Ref s' (ApiGatewayResourceData s)) (TF.Attr s P.Text) where
+    computedPathPart x = TF.compute (TF.refKey x) "path_part"
 
 -- | @aws_api_gateway_rest_api@ DataSource.
 --
@@ -953,6 +1024,9 @@ instance P.HasFilter (AutoscalingGroupsData s) (TF.Attr s [TF.Attr s (Autoscalin
 
 instance s ~ s' => P.HasComputedId (TF.Ref s' (AutoscalingGroupsData s)) (TF.Attr s P.Text) where
     computedId x = TF.compute (TF.refKey x) "id"
+
+instance s ~ s' => P.HasComputedArns (TF.Ref s' (AutoscalingGroupsData s)) (TF.Attr s [TF.Attr s P.Text]) where
+    computedArns x = TF.compute (TF.refKey x) "arns"
 
 instance s ~ s' => P.HasComputedNames (TF.Ref s' (AutoscalingGroupsData s)) (TF.Attr s [TF.Attr s P.Text]) where
     computedNames x = TF.compute (TF.refKey x) "names"
@@ -1649,6 +1723,44 @@ instance s ~ s' => P.HasComputedStorageEncrypted (TF.Ref s' (DbClusterSnapshotDa
 instance s ~ s' => P.HasComputedVpcId (TF.Ref s' (DbClusterSnapshotData s)) (TF.Attr s P.Text) where
     computedVpcId x = TF.compute (TF.refKey x) "vpc_id"
 
+-- | @aws_db_event_categories@ DataSource.
+--
+-- See the <https://www.terraform.io/docs/providers/aws/d/db_event_categories.html terraform documentation>
+-- for more information.
+data DbEventCategoriesData s = DbEventCategoriesData'
+    { _sourceType :: TF.Attr s P.Text
+    -- ^ @source_type@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Define a new @aws_db_event_categories@ datasource value.
+dbEventCategoriesData
+    :: P.DataSource (DbEventCategoriesData s)
+dbEventCategoriesData =
+    TF.unsafeDataSource "aws_db_event_categories" TF.validator $
+        DbEventCategoriesData'
+            { _sourceType = TF.Nil
+            }
+
+instance TF.IsObject (DbEventCategoriesData s) where
+    toObject DbEventCategoriesData'{..} = P.catMaybes
+        [ TF.assign "source_type" <$> TF.attribute _sourceType
+        ]
+
+instance TF.IsValid (DbEventCategoriesData s) where
+    validator = P.mempty
+
+instance P.HasSourceType (DbEventCategoriesData s) (TF.Attr s P.Text) where
+    sourceType =
+        P.lens (_sourceType :: DbEventCategoriesData s -> TF.Attr s P.Text)
+               (\s a -> s { _sourceType = a } :: DbEventCategoriesData s)
+
+instance s ~ s' => P.HasComputedId (TF.Ref s' (DbEventCategoriesData s)) (TF.Attr s P.Text) where
+    computedId x = TF.compute (TF.refKey x) "id"
+
+instance s ~ s' => P.HasComputedEventCategories (TF.Ref s' (DbEventCategoriesData s)) (TF.Attr s [TF.Attr s P.Text]) where
+    computedEventCategories x = TF.compute (TF.refKey x) "event_categories"
+
 -- | @aws_db_instance@ DataSource.
 --
 -- See the <https://www.terraform.io/docs/providers/aws/d/db_instance.html terraform documentation>
@@ -1726,6 +1838,9 @@ instance s ~ s' => P.HasComputedDbSecurityGroups (TF.Ref s' (DbInstanceData s)) 
 
 instance s ~ s' => P.HasComputedDbSubnetGroup (TF.Ref s' (DbInstanceData s)) (TF.Attr s P.Text) where
     computedDbSubnetGroup x = TF.compute (TF.refKey x) "db_subnet_group"
+
+instance s ~ s' => P.HasComputedEnabledCloudwatchLogsExports (TF.Ref s' (DbInstanceData s)) (TF.Attr s [TF.Attr s P.Text]) where
+    computedEnabledCloudwatchLogsExports x = TF.compute (TF.refKey x) "enabled_cloudwatch_logs_exports"
 
 instance s ~ s' => P.HasComputedEndpoint (TF.Ref s' (DbInstanceData s)) (TF.Attr s P.Text) where
     computedEndpoint x = TF.compute (TF.refKey x) "endpoint"

@@ -45,6 +45,7 @@ module Terrafomo.AWS.Attributes01
     , HasComputedAmi (..)
     , HasComputedAmiId (..)
     , HasComputedAppSource (..)
+    , HasComputedApplicationId (..)
     , HasComputedApplyImmediately (..)
     , HasComputedArchitecture (..)
     , HasComputedArn (..)
@@ -78,6 +79,7 @@ module Terrafomo.AWS.Attributes01
     , HasComputedBadgeUrl (..)
     , HasComputedBaseEndpointDnsNames (..)
     , HasComputedBgpAuthKey (..)
+    , HasComputedBgpStatus (..)
     , HasComputedBlockDeviceMappings (..)
     , HasComputedBlueGreenDeploymentConfig (..)
     , HasComputedBody (..)
@@ -294,6 +296,7 @@ module Terrafomo.AWS.Attributes01
     , HasComputedEphemeralBlockDevice (..)
     , HasComputedEtag (..)
     , HasComputedEvaluateLowSampleCountPercentiles (..)
+    , HasComputedEventCategories (..)
     , HasComputedExecutionArn (..)
     , HasComputedExecutionProperty (..)
     , HasComputedExpiration (..)
@@ -376,13 +379,13 @@ module Terrafomo.AWS.Attributes01
     , HasComputedIpAddress (..)
     , HasComputedIpAddressType (..)
     , HasComputedIpOwnerId (..)
-    , HasComputedIpv4AddressCount (..)
     , HasComputedIpv6Address (..)
     , HasComputedIpv6AddressCount (..)
     , HasComputedIpv6Addresses (..)
     , HasComputedIpv6AssociationId (..)
     , HasComputedIpv6CidrBlock (..)
     , HasComputedIpv6CidrBlockAssociationId (..)
+    , HasComputedIpv6CidrBlocks (..)
     , HasComputedIsStaticIp (..)
     , HasComputedJoinedMethod (..)
     , HasComputedJoinedTimestamp (..)
@@ -469,6 +472,7 @@ module Terrafomo.AWS.Attributes01
     , HasComputedNetworkInterfacePort (..)
     , HasComputedNetworkMode (..)
     , HasComputedNoDevice (..)
+    , HasComputedNodeToNodeEncryption (..)
     , HasComputedNodeType (..)
     , HasComputedNodes (..)
     , HasComputedNonKeyAttributes (..)
@@ -499,12 +503,14 @@ module Terrafomo.AWS.Attributes01
     , HasComputedParameter (..)
     , HasComputedParameterGroupName (..)
     , HasComputedParameters (..)
+    , HasComputedParentId (..)
     , HasComputedPartition (..)
     , HasComputedPassthroughBehavior (..)
     , HasComputedPasswordData (..)
     , HasComputedPasswordPolicy (..)
     , HasComputedPasswordReusePrevention (..)
     , HasComputedPath (..)
+    , HasComputedPathPart (..)
     , HasComputedPayloadUrl (..)
     , HasComputedPeerCidrBlock (..)
     , HasComputedPeerOwnerId (..)
@@ -521,6 +527,7 @@ module Terrafomo.AWS.Attributes01
     , HasComputedPlaintext (..)
     , HasComputedPlatform (..)
     , HasComputedPlatformTypes (..)
+    , HasComputedPlatformVersion (..)
     , HasComputedPointInTimeRecovery (..)
     , HasComputedPolicy (..)
     , HasComputedPolicyBody (..)
@@ -641,6 +648,7 @@ module Terrafomo.AWS.Attributes01
     , HasComputedScanEnabled (..)
     , HasComputedSchedulingStrategy (..)
     , HasComputedSchemaVersion (..)
+    , HasComputedScope (..)
     , HasComputedScopeIdentifiers (..)
     , HasComputedSearchableAttributes (..)
     , HasComputedSecret (..)
@@ -702,6 +710,7 @@ module Terrafomo.AWS.Attributes01
     , HasComputedStatementId (..)
     , HasComputedStaticRoutesOnly (..)
     , HasComputedStatus (..)
+    , HasComputedStatusCode (..)
     , HasComputedStatusMessage (..)
     , HasComputedStatusReason (..)
     , HasComputedStep (..)
@@ -904,6 +913,9 @@ class HasComputedAmiId a b | a -> b where
 class HasComputedAppSource a b | a -> b where
     computedAppSource :: a -> b
 
+class HasComputedApplicationId a b | a -> b where
+    computedApplicationId :: a -> b
+
 class HasComputedApplyImmediately a b | a -> b where
     computedApplyImmediately :: a -> b
 
@@ -1002,6 +1014,9 @@ class HasComputedBaseEndpointDnsNames a b | a -> b where
 
 class HasComputedBgpAuthKey a b | a -> b where
     computedBgpAuthKey :: a -> b
+
+class HasComputedBgpStatus a b | a -> b where
+    computedBgpStatus :: a -> b
 
 class HasComputedBlockDeviceMappings a b | a -> b where
     computedBlockDeviceMappings :: a -> b
@@ -1651,6 +1666,9 @@ class HasComputedEtag a b | a -> b where
 class HasComputedEvaluateLowSampleCountPercentiles a b | a -> b where
     computedEvaluateLowSampleCountPercentiles :: a -> b
 
+class HasComputedEventCategories a b | a -> b where
+    computedEventCategories :: a -> b
+
 class HasComputedExecutionArn a b | a -> b where
     computedExecutionArn :: a -> b
 
@@ -1897,9 +1915,6 @@ class HasComputedIpAddressType a b | a -> b where
 class HasComputedIpOwnerId a b | a -> b where
     computedIpOwnerId :: a -> b
 
-class HasComputedIpv4AddressCount a b | a -> b where
-    computedIpv4AddressCount :: a -> b
-
 class HasComputedIpv6Address a b | a -> b where
     computedIpv6Address :: a -> b
 
@@ -1917,6 +1932,9 @@ class HasComputedIpv6CidrBlock a b | a -> b where
 
 class HasComputedIpv6CidrBlockAssociationId a b | a -> b where
     computedIpv6CidrBlockAssociationId :: a -> b
+
+class HasComputedIpv6CidrBlocks a b | a -> b where
+    computedIpv6CidrBlocks :: a -> b
 
 class HasComputedIsStaticIp a b | a -> b where
     computedIsStaticIp :: a -> b
@@ -2176,6 +2194,9 @@ class HasComputedNetworkMode a b | a -> b where
 class HasComputedNoDevice a b | a -> b where
     computedNoDevice :: a -> b
 
+class HasComputedNodeToNodeEncryption a b | a -> b where
+    computedNodeToNodeEncryption :: a -> b
+
 class HasComputedNodeType a b | a -> b where
     computedNodeType :: a -> b
 
@@ -2266,6 +2287,9 @@ class HasComputedParameterGroupName a b | a -> b where
 class HasComputedParameters a b | a -> b where
     computedParameters :: a -> b
 
+class HasComputedParentId a b | a -> b where
+    computedParentId :: a -> b
+
 class HasComputedPartition a b | a -> b where
     computedPartition :: a -> b
 
@@ -2283,6 +2307,9 @@ class HasComputedPasswordReusePrevention a b | a -> b where
 
 class HasComputedPath a b | a -> b where
     computedPath :: a -> b
+
+class HasComputedPathPart a b | a -> b where
+    computedPathPart :: a -> b
 
 class HasComputedPayloadUrl a b | a -> b where
     computedPayloadUrl :: a -> b
@@ -2331,6 +2358,9 @@ class HasComputedPlatform a b | a -> b where
 
 class HasComputedPlatformTypes a b | a -> b where
     computedPlatformTypes :: a -> b
+
+class HasComputedPlatformVersion a b | a -> b where
+    computedPlatformVersion :: a -> b
 
 class HasComputedPointInTimeRecovery a b | a -> b where
     computedPointInTimeRecovery :: a -> b
@@ -2692,6 +2722,9 @@ class HasComputedSchedulingStrategy a b | a -> b where
 class HasComputedSchemaVersion a b | a -> b where
     computedSchemaVersion :: a -> b
 
+class HasComputedScope a b | a -> b where
+    computedScope :: a -> b
+
 class HasComputedScopeIdentifiers a b | a -> b where
     computedScopeIdentifiers :: a -> b
 
@@ -2874,6 +2907,9 @@ class HasComputedStaticRoutesOnly a b | a -> b where
 
 class HasComputedStatus a b | a -> b where
     computedStatus :: a -> b
+
+class HasComputedStatusCode a b | a -> b where
+    computedStatusCode :: a -> b
 
 class HasComputedStatusMessage a b | a -> b where
     computedStatusMessage :: a -> b

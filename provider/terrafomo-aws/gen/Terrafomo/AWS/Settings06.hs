@@ -17,24 +17,8 @@
 --
 module Terrafomo.AWS.Settings06
     (
-    -- ** environment
-      OpsworksApplicationEnvironmentSetting (..)
-    , newOpsworksApplicationEnvironmentSetting
-
-    -- ** ssl_configuration
-    , OpsworksApplicationSslConfigurationSetting (..)
-    , newOpsworksApplicationSslConfigurationSetting
-
     -- ** ebs_volume
-    , OpsworksCustomLayerEbsVolumeSetting (..)
-    , newOpsworksCustomLayerEbsVolumeSetting
-
-    -- ** ebs_volume
-    , OpsworksGangliaLayerEbsVolumeSetting (..)
-    , newOpsworksGangliaLayerEbsVolumeSetting
-
-    -- ** ebs_volume
-    , OpsworksHaproxyLayerEbsVolumeSetting (..)
+      OpsworksHaproxyLayerEbsVolumeSetting (..)
     , newOpsworksHaproxyLayerEbsVolumeSetting
 
     -- ** ebs_block_device
@@ -81,6 +65,18 @@ module Terrafomo.AWS.Settings06
     , OpsworksStaticWebLayerEbsVolumeSetting (..)
     , newOpsworksStaticWebLayerEbsVolumeSetting
 
+    -- ** campaign_hook
+    , PinpointAppCampaignHookSetting (..)
+    , newPinpointAppCampaignHookSetting
+
+    -- ** limits
+    , PinpointAppLimitsSetting (..)
+    , newPinpointAppLimitsSetting
+
+    -- ** quiet_time
+    , PinpointAppQuietTimeSetting (..)
+    , newPinpointAppQuietTimeSetting
+
     -- ** filters
     , PricingProductFiltersSetting (..)
     , newPricingProductFiltersSetting
@@ -92,6 +88,10 @@ module Terrafomo.AWS.Settings06
     -- ** s3_import
     , RdsClusterS3ImportSetting (..)
     , newRdsClusterS3ImportSetting
+
+    -- ** scaling_configuration
+    , RdsClusterScalingConfigurationSetting (..)
+    , newRdsClusterScalingConfigurationSetting
 
     -- ** logging
     , RedshiftClusterLoggingSetting (..)
@@ -359,272 +359,6 @@ import qualified Terrafomo.AWS.Types as P
 import qualified Terrafomo.HCL       as TF
 import qualified Terrafomo.Name      as TF
 import qualified Terrafomo.Validator as TF
-
--- | @environment@ nested settings.
-data OpsworksApplicationEnvironmentSetting s = OpsworksApplicationEnvironmentSetting'
-    { _key    :: TF.Attr s P.Text
-    -- ^ @key@ - (Required)
-    --
-    , _secure :: TF.Attr s P.Bool
-    -- ^ @secure@ - (Optional)
-    --
-    , _value  :: TF.Attr s P.Text
-    -- ^ @value@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @environment@ settings value.
-newOpsworksApplicationEnvironmentSetting
-    :: TF.Attr s P.Text -- ^ 'P._key': @key@
-    -> TF.Attr s P.Text -- ^ 'P._value': @value@
-    -> OpsworksApplicationEnvironmentSetting s
-newOpsworksApplicationEnvironmentSetting _key _value =
-    OpsworksApplicationEnvironmentSetting'
-        { _key = _key
-        , _secure = TF.value P.True
-        , _value = _value
-        }
-
-instance TF.IsValue  (OpsworksApplicationEnvironmentSetting s)
-instance TF.IsObject (OpsworksApplicationEnvironmentSetting s) where
-    toObject OpsworksApplicationEnvironmentSetting'{..} = P.catMaybes
-        [ TF.assign "key" <$> TF.attribute _key
-        , TF.assign "secure" <$> TF.attribute _secure
-        , TF.assign "value" <$> TF.attribute _value
-        ]
-
-instance TF.IsValid (OpsworksApplicationEnvironmentSetting s) where
-    validator = P.mempty
-
-instance P.HasKey (OpsworksApplicationEnvironmentSetting s) (TF.Attr s P.Text) where
-    key =
-        P.lens (_key :: OpsworksApplicationEnvironmentSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _key = a } :: OpsworksApplicationEnvironmentSetting s)
-
-instance P.HasSecure (OpsworksApplicationEnvironmentSetting s) (TF.Attr s P.Bool) where
-    secure =
-        P.lens (_secure :: OpsworksApplicationEnvironmentSetting s -> TF.Attr s P.Bool)
-               (\s a -> s { _secure = a } :: OpsworksApplicationEnvironmentSetting s)
-
-instance P.HasValue (OpsworksApplicationEnvironmentSetting s) (TF.Attr s P.Text) where
-    value =
-        P.lens (_value :: OpsworksApplicationEnvironmentSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _value = a } :: OpsworksApplicationEnvironmentSetting s)
-
--- | @ssl_configuration@ nested settings.
-data OpsworksApplicationSslConfigurationSetting s = OpsworksApplicationSslConfigurationSetting'
-    { _certificate :: TF.Attr s P.Text
-    -- ^ @certificate@ - (Required)
-    --
-    , _chain       :: TF.Attr s P.Text
-    -- ^ @chain@ - (Optional)
-    --
-    , _privateKey  :: TF.Attr s P.Text
-    -- ^ @private_key@ - (Required)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @ssl_configuration@ settings value.
-newOpsworksApplicationSslConfigurationSetting
-    :: TF.Attr s P.Text -- ^ 'P._certificate': @certificate@
-    -> TF.Attr s P.Text -- ^ 'P._privateKey': @private_key@
-    -> OpsworksApplicationSslConfigurationSetting s
-newOpsworksApplicationSslConfigurationSetting _certificate _privateKey =
-    OpsworksApplicationSslConfigurationSetting'
-        { _certificate = _certificate
-        , _chain = TF.Nil
-        , _privateKey = _privateKey
-        }
-
-instance TF.IsValue  (OpsworksApplicationSslConfigurationSetting s)
-instance TF.IsObject (OpsworksApplicationSslConfigurationSetting s) where
-    toObject OpsworksApplicationSslConfigurationSetting'{..} = P.catMaybes
-        [ TF.assign "certificate" <$> TF.attribute _certificate
-        , TF.assign "chain" <$> TF.attribute _chain
-        , TF.assign "private_key" <$> TF.attribute _privateKey
-        ]
-
-instance TF.IsValid (OpsworksApplicationSslConfigurationSetting s) where
-    validator = P.mempty
-
-instance P.HasCertificate (OpsworksApplicationSslConfigurationSetting s) (TF.Attr s P.Text) where
-    certificate =
-        P.lens (_certificate :: OpsworksApplicationSslConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _certificate = a } :: OpsworksApplicationSslConfigurationSetting s)
-
-instance P.HasChain (OpsworksApplicationSslConfigurationSetting s) (TF.Attr s P.Text) where
-    chain =
-        P.lens (_chain :: OpsworksApplicationSslConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _chain = a } :: OpsworksApplicationSslConfigurationSetting s)
-
-instance P.HasPrivateKey (OpsworksApplicationSslConfigurationSetting s) (TF.Attr s P.Text) where
-    privateKey =
-        P.lens (_privateKey :: OpsworksApplicationSslConfigurationSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _privateKey = a } :: OpsworksApplicationSslConfigurationSetting s)
-
--- | @ebs_volume@ nested settings.
-data OpsworksCustomLayerEbsVolumeSetting s = OpsworksCustomLayerEbsVolumeSetting'
-    { _iops          :: TF.Attr s P.Int
-    -- ^ @iops@ - (Optional)
-    --
-    , _mountPoint    :: TF.Attr s P.Text
-    -- ^ @mount_point@ - (Required)
-    --
-    , _numberOfDisks :: TF.Attr s P.Int
-    -- ^ @number_of_disks@ - (Required)
-    --
-    , _raidLevel     :: TF.Attr s P.Text
-    -- ^ @raid_level@ - (Optional)
-    --
-    , _size          :: TF.Attr s P.Int
-    -- ^ @size@ - (Required)
-    --
-    , _type'         :: TF.Attr s P.Text
-    -- ^ @type@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @ebs_volume@ settings value.
-newOpsworksCustomLayerEbsVolumeSetting
-    :: TF.Attr s P.Int -- ^ 'P._numberOfDisks': @number_of_disks@
-    -> TF.Attr s P.Text -- ^ 'P._mountPoint': @mount_point@
-    -> TF.Attr s P.Int -- ^ 'P._size': @size@
-    -> OpsworksCustomLayerEbsVolumeSetting s
-newOpsworksCustomLayerEbsVolumeSetting _numberOfDisks _mountPoint _size =
-    OpsworksCustomLayerEbsVolumeSetting'
-        { _iops = TF.value 0
-        , _mountPoint = _mountPoint
-        , _numberOfDisks = _numberOfDisks
-        , _raidLevel = TF.Nil
-        , _size = _size
-        , _type' = TF.value "standard"
-        }
-
-instance TF.IsValue  (OpsworksCustomLayerEbsVolumeSetting s)
-instance TF.IsObject (OpsworksCustomLayerEbsVolumeSetting s) where
-    toObject OpsworksCustomLayerEbsVolumeSetting'{..} = P.catMaybes
-        [ TF.assign "iops" <$> TF.attribute _iops
-        , TF.assign "mount_point" <$> TF.attribute _mountPoint
-        , TF.assign "number_of_disks" <$> TF.attribute _numberOfDisks
-        , TF.assign "raid_level" <$> TF.attribute _raidLevel
-        , TF.assign "size" <$> TF.attribute _size
-        , TF.assign "type" <$> TF.attribute _type'
-        ]
-
-instance TF.IsValid (OpsworksCustomLayerEbsVolumeSetting s) where
-    validator = P.mempty
-
-instance P.HasIops (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
-    iops =
-        P.lens (_iops :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _iops = a } :: OpsworksCustomLayerEbsVolumeSetting s)
-
-instance P.HasMountPoint (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
-    mountPoint =
-        P.lens (_mountPoint :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _mountPoint = a } :: OpsworksCustomLayerEbsVolumeSetting s)
-
-instance P.HasNumberOfDisks (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
-    numberOfDisks =
-        P.lens (_numberOfDisks :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _numberOfDisks = a } :: OpsworksCustomLayerEbsVolumeSetting s)
-
-instance P.HasRaidLevel (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
-    raidLevel =
-        P.lens (_raidLevel :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _raidLevel = a } :: OpsworksCustomLayerEbsVolumeSetting s)
-
-instance P.HasSize (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
-    size =
-        P.lens (_size :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _size = a } :: OpsworksCustomLayerEbsVolumeSetting s)
-
-instance P.HasType' (OpsworksCustomLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
-    type' =
-        P.lens (_type' :: OpsworksCustomLayerEbsVolumeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _type' = a } :: OpsworksCustomLayerEbsVolumeSetting s)
-
--- | @ebs_volume@ nested settings.
-data OpsworksGangliaLayerEbsVolumeSetting s = OpsworksGangliaLayerEbsVolumeSetting'
-    { _iops          :: TF.Attr s P.Int
-    -- ^ @iops@ - (Optional)
-    --
-    , _mountPoint    :: TF.Attr s P.Text
-    -- ^ @mount_point@ - (Required)
-    --
-    , _numberOfDisks :: TF.Attr s P.Int
-    -- ^ @number_of_disks@ - (Required)
-    --
-    , _raidLevel     :: TF.Attr s P.Text
-    -- ^ @raid_level@ - (Optional)
-    --
-    , _size          :: TF.Attr s P.Int
-    -- ^ @size@ - (Required)
-    --
-    , _type'         :: TF.Attr s P.Text
-    -- ^ @type@ - (Optional)
-    --
-    } deriving (P.Show, P.Eq, P.Ord)
-
--- | Construct a new @ebs_volume@ settings value.
-newOpsworksGangliaLayerEbsVolumeSetting
-    :: TF.Attr s P.Int -- ^ 'P._numberOfDisks': @number_of_disks@
-    -> TF.Attr s P.Text -- ^ 'P._mountPoint': @mount_point@
-    -> TF.Attr s P.Int -- ^ 'P._size': @size@
-    -> OpsworksGangliaLayerEbsVolumeSetting s
-newOpsworksGangliaLayerEbsVolumeSetting _numberOfDisks _mountPoint _size =
-    OpsworksGangliaLayerEbsVolumeSetting'
-        { _iops = TF.value 0
-        , _mountPoint = _mountPoint
-        , _numberOfDisks = _numberOfDisks
-        , _raidLevel = TF.Nil
-        , _size = _size
-        , _type' = TF.value "standard"
-        }
-
-instance TF.IsValue  (OpsworksGangliaLayerEbsVolumeSetting s)
-instance TF.IsObject (OpsworksGangliaLayerEbsVolumeSetting s) where
-    toObject OpsworksGangliaLayerEbsVolumeSetting'{..} = P.catMaybes
-        [ TF.assign "iops" <$> TF.attribute _iops
-        , TF.assign "mount_point" <$> TF.attribute _mountPoint
-        , TF.assign "number_of_disks" <$> TF.attribute _numberOfDisks
-        , TF.assign "raid_level" <$> TF.attribute _raidLevel
-        , TF.assign "size" <$> TF.attribute _size
-        , TF.assign "type" <$> TF.attribute _type'
-        ]
-
-instance TF.IsValid (OpsworksGangliaLayerEbsVolumeSetting s) where
-    validator = P.mempty
-
-instance P.HasIops (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
-    iops =
-        P.lens (_iops :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _iops = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
-
-instance P.HasMountPoint (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
-    mountPoint =
-        P.lens (_mountPoint :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _mountPoint = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
-
-instance P.HasNumberOfDisks (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
-    numberOfDisks =
-        P.lens (_numberOfDisks :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _numberOfDisks = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
-
-instance P.HasRaidLevel (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
-    raidLevel =
-        P.lens (_raidLevel :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _raidLevel = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
-
-instance P.HasSize (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Int) where
-    size =
-        P.lens (_size :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Int)
-               (\s a -> s { _size = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
-
-instance P.HasType' (OpsworksGangliaLayerEbsVolumeSetting s) (TF.Attr s P.Text) where
-    type' =
-        P.lens (_type' :: OpsworksGangliaLayerEbsVolumeSetting s -> TF.Attr s P.Text)
-               (\s a -> s { _type' = a } :: OpsworksGangliaLayerEbsVolumeSetting s)
 
 -- | @ebs_volume@ nested settings.
 data OpsworksHaproxyLayerEbsVolumeSetting s = OpsworksHaproxyLayerEbsVolumeSetting'
@@ -1564,6 +1298,153 @@ instance P.HasType' (OpsworksStaticWebLayerEbsVolumeSetting s) (TF.Attr s P.Text
         P.lens (_type' :: OpsworksStaticWebLayerEbsVolumeSetting s -> TF.Attr s P.Text)
                (\s a -> s { _type' = a } :: OpsworksStaticWebLayerEbsVolumeSetting s)
 
+-- | @campaign_hook@ nested settings.
+data PinpointAppCampaignHookSetting s = PinpointAppCampaignHookSetting'
+    { _lambdaFunctionName :: TF.Attr s P.Text
+    -- ^ @lambda_function_name@ - (Optional)
+    --
+    , _mode               :: TF.Attr s P.Text
+    -- ^ @mode@ - (Optional)
+    --
+    , _webUrl             :: TF.Attr s P.Text
+    -- ^ @web_url@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @campaign_hook@ settings value.
+newPinpointAppCampaignHookSetting
+    :: PinpointAppCampaignHookSetting s
+newPinpointAppCampaignHookSetting =
+    PinpointAppCampaignHookSetting'
+        { _lambdaFunctionName = TF.Nil
+        , _mode = TF.Nil
+        , _webUrl = TF.Nil
+        }
+
+instance TF.IsValue  (PinpointAppCampaignHookSetting s)
+instance TF.IsObject (PinpointAppCampaignHookSetting s) where
+    toObject PinpointAppCampaignHookSetting'{..} = P.catMaybes
+        [ TF.assign "lambda_function_name" <$> TF.attribute _lambdaFunctionName
+        , TF.assign "mode" <$> TF.attribute _mode
+        , TF.assign "web_url" <$> TF.attribute _webUrl
+        ]
+
+instance TF.IsValid (PinpointAppCampaignHookSetting s) where
+    validator = P.mempty
+
+instance P.HasLambdaFunctionName (PinpointAppCampaignHookSetting s) (TF.Attr s P.Text) where
+    lambdaFunctionName =
+        P.lens (_lambdaFunctionName :: PinpointAppCampaignHookSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _lambdaFunctionName = a } :: PinpointAppCampaignHookSetting s)
+
+instance P.HasMode (PinpointAppCampaignHookSetting s) (TF.Attr s P.Text) where
+    mode =
+        P.lens (_mode :: PinpointAppCampaignHookSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _mode = a } :: PinpointAppCampaignHookSetting s)
+
+instance P.HasWebUrl (PinpointAppCampaignHookSetting s) (TF.Attr s P.Text) where
+    webUrl =
+        P.lens (_webUrl :: PinpointAppCampaignHookSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _webUrl = a } :: PinpointAppCampaignHookSetting s)
+
+-- | @limits@ nested settings.
+data PinpointAppLimitsSetting s = PinpointAppLimitsSetting'
+    { _daily             :: TF.Attr s P.Int
+    -- ^ @daily@ - (Optional)
+    --
+    , _maximumDuration   :: TF.Attr s P.Int
+    -- ^ @maximum_duration@ - (Optional)
+    --
+    , _messagesPerSecond :: TF.Attr s P.Int
+    -- ^ @messages_per_second@ - (Optional)
+    --
+    , _total             :: TF.Attr s P.Int
+    -- ^ @total@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @limits@ settings value.
+newPinpointAppLimitsSetting
+    :: PinpointAppLimitsSetting s
+newPinpointAppLimitsSetting =
+    PinpointAppLimitsSetting'
+        { _daily = TF.Nil
+        , _maximumDuration = TF.Nil
+        , _messagesPerSecond = TF.Nil
+        , _total = TF.Nil
+        }
+
+instance TF.IsValue  (PinpointAppLimitsSetting s)
+instance TF.IsObject (PinpointAppLimitsSetting s) where
+    toObject PinpointAppLimitsSetting'{..} = P.catMaybes
+        [ TF.assign "daily" <$> TF.attribute _daily
+        , TF.assign "maximum_duration" <$> TF.attribute _maximumDuration
+        , TF.assign "messages_per_second" <$> TF.attribute _messagesPerSecond
+        , TF.assign "total" <$> TF.attribute _total
+        ]
+
+instance TF.IsValid (PinpointAppLimitsSetting s) where
+    validator = P.mempty
+
+instance P.HasDaily (PinpointAppLimitsSetting s) (TF.Attr s P.Int) where
+    daily =
+        P.lens (_daily :: PinpointAppLimitsSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _daily = a } :: PinpointAppLimitsSetting s)
+
+instance P.HasMaximumDuration (PinpointAppLimitsSetting s) (TF.Attr s P.Int) where
+    maximumDuration =
+        P.lens (_maximumDuration :: PinpointAppLimitsSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _maximumDuration = a } :: PinpointAppLimitsSetting s)
+
+instance P.HasMessagesPerSecond (PinpointAppLimitsSetting s) (TF.Attr s P.Int) where
+    messagesPerSecond =
+        P.lens (_messagesPerSecond :: PinpointAppLimitsSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _messagesPerSecond = a } :: PinpointAppLimitsSetting s)
+
+instance P.HasTotal (PinpointAppLimitsSetting s) (TF.Attr s P.Int) where
+    total =
+        P.lens (_total :: PinpointAppLimitsSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _total = a } :: PinpointAppLimitsSetting s)
+
+-- | @quiet_time@ nested settings.
+data PinpointAppQuietTimeSetting s = PinpointAppQuietTimeSetting'
+    { _end   :: TF.Attr s P.Text
+    -- ^ @end@ - (Optional)
+    --
+    , _start :: TF.Attr s P.Text
+    -- ^ @start@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @quiet_time@ settings value.
+newPinpointAppQuietTimeSetting
+    :: PinpointAppQuietTimeSetting s
+newPinpointAppQuietTimeSetting =
+    PinpointAppQuietTimeSetting'
+        { _end = TF.Nil
+        , _start = TF.Nil
+        }
+
+instance TF.IsValue  (PinpointAppQuietTimeSetting s)
+instance TF.IsObject (PinpointAppQuietTimeSetting s) where
+    toObject PinpointAppQuietTimeSetting'{..} = P.catMaybes
+        [ TF.assign "end" <$> TF.attribute _end
+        , TF.assign "start" <$> TF.attribute _start
+        ]
+
+instance TF.IsValid (PinpointAppQuietTimeSetting s) where
+    validator = P.mempty
+
+instance P.HasEnd (PinpointAppQuietTimeSetting s) (TF.Attr s P.Text) where
+    end =
+        P.lens (_end :: PinpointAppQuietTimeSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _end = a } :: PinpointAppQuietTimeSetting s)
+
+instance P.HasStart (PinpointAppQuietTimeSetting s) (TF.Attr s P.Text) where
+    start =
+        P.lens (_start :: PinpointAppQuietTimeSetting s -> TF.Attr s P.Text)
+               (\s a -> s { _start = a } :: PinpointAppQuietTimeSetting s)
+
 -- | @filters@ nested settings.
 data PricingProductFiltersSetting s = PricingProductFiltersSetting'
     { _field :: TF.Attr s P.Text
@@ -1728,6 +1609,65 @@ instance P.HasSourceEngineVersion (RdsClusterS3ImportSetting s) (TF.Attr s P.Tex
     sourceEngineVersion =
         P.lens (_sourceEngineVersion :: RdsClusterS3ImportSetting s -> TF.Attr s P.Text)
                (\s a -> s { _sourceEngineVersion = a } :: RdsClusterS3ImportSetting s)
+
+-- | @scaling_configuration@ nested settings.
+data RdsClusterScalingConfigurationSetting s = RdsClusterScalingConfigurationSetting'
+    { _autoPause             :: TF.Attr s P.Bool
+    -- ^ @auto_pause@ - (Optional)
+    --
+    , _maxCapacity           :: TF.Attr s P.Int
+    -- ^ @max_capacity@ - (Optional)
+    --
+    , _minCapacity           :: TF.Attr s P.Int
+    -- ^ @min_capacity@ - (Optional)
+    --
+    , _secondsUntilAutoPause :: TF.Attr s P.Int
+    -- ^ @seconds_until_auto_pause@ - (Optional)
+    --
+    } deriving (P.Show, P.Eq, P.Ord)
+
+-- | Construct a new @scaling_configuration@ settings value.
+newRdsClusterScalingConfigurationSetting
+    :: RdsClusterScalingConfigurationSetting s
+newRdsClusterScalingConfigurationSetting =
+    RdsClusterScalingConfigurationSetting'
+        { _autoPause = TF.value P.True
+        , _maxCapacity = TF.value 16
+        , _minCapacity = TF.value 2
+        , _secondsUntilAutoPause = TF.value 300
+        }
+
+instance TF.IsValue  (RdsClusterScalingConfigurationSetting s)
+instance TF.IsObject (RdsClusterScalingConfigurationSetting s) where
+    toObject RdsClusterScalingConfigurationSetting'{..} = P.catMaybes
+        [ TF.assign "auto_pause" <$> TF.attribute _autoPause
+        , TF.assign "max_capacity" <$> TF.attribute _maxCapacity
+        , TF.assign "min_capacity" <$> TF.attribute _minCapacity
+        , TF.assign "seconds_until_auto_pause" <$> TF.attribute _secondsUntilAutoPause
+        ]
+
+instance TF.IsValid (RdsClusterScalingConfigurationSetting s) where
+    validator = P.mempty
+
+instance P.HasAutoPause (RdsClusterScalingConfigurationSetting s) (TF.Attr s P.Bool) where
+    autoPause =
+        P.lens (_autoPause :: RdsClusterScalingConfigurationSetting s -> TF.Attr s P.Bool)
+               (\s a -> s { _autoPause = a } :: RdsClusterScalingConfigurationSetting s)
+
+instance P.HasMaxCapacity (RdsClusterScalingConfigurationSetting s) (TF.Attr s P.Int) where
+    maxCapacity =
+        P.lens (_maxCapacity :: RdsClusterScalingConfigurationSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _maxCapacity = a } :: RdsClusterScalingConfigurationSetting s)
+
+instance P.HasMinCapacity (RdsClusterScalingConfigurationSetting s) (TF.Attr s P.Int) where
+    minCapacity =
+        P.lens (_minCapacity :: RdsClusterScalingConfigurationSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _minCapacity = a } :: RdsClusterScalingConfigurationSetting s)
+
+instance P.HasSecondsUntilAutoPause (RdsClusterScalingConfigurationSetting s) (TF.Attr s P.Int) where
+    secondsUntilAutoPause =
+        P.lens (_secondsUntilAutoPause :: RdsClusterScalingConfigurationSetting s -> TF.Attr s P.Int)
+               (\s a -> s { _secondsUntilAutoPause = a } :: RdsClusterScalingConfigurationSetting s)
 
 -- | @logging@ nested settings.
 data RedshiftClusterLoggingSetting s = RedshiftClusterLoggingSetting'
@@ -3979,6 +3919,9 @@ data SecurityGroupIngressSetting s = SecurityGroupIngressSetting'
     , _ipv6CidrBlocks :: TF.Attr s [TF.Attr s P.Text]
     -- ^ @ipv6_cidr_blocks@ - (Optional)
     --
+    , _prefixListIds  :: TF.Attr s [TF.Attr s P.Text]
+    -- ^ @prefix_list_ids@ - (Optional)
+    --
     , _protocol       :: TF.Attr s P.Text
     -- ^ @protocol@ - (Required)
     --
@@ -4005,6 +3948,7 @@ newSecurityGroupIngressSetting _fromPort _toPort _protocol =
         , _description = TF.Nil
         , _fromPort = _fromPort
         , _ipv6CidrBlocks = TF.Nil
+        , _prefixListIds = TF.Nil
         , _protocol = _protocol
         , _securityGroups = TF.Nil
         , _self = TF.value P.False
@@ -4018,6 +3962,7 @@ instance TF.IsObject (SecurityGroupIngressSetting s) where
         , TF.assign "description" <$> TF.attribute _description
         , TF.assign "from_port" <$> TF.attribute _fromPort
         , TF.assign "ipv6_cidr_blocks" <$> TF.attribute _ipv6CidrBlocks
+        , TF.assign "prefix_list_ids" <$> TF.attribute _prefixListIds
         , TF.assign "protocol" <$> TF.attribute _protocol
         , TF.assign "security_groups" <$> TF.attribute _securityGroups
         , TF.assign "self" <$> TF.attribute _self
@@ -4046,6 +3991,11 @@ instance P.HasIpv6CidrBlocks (SecurityGroupIngressSetting s) (TF.Attr s [TF.Attr
     ipv6CidrBlocks =
         P.lens (_ipv6CidrBlocks :: SecurityGroupIngressSetting s -> TF.Attr s [TF.Attr s P.Text])
                (\s a -> s { _ipv6CidrBlocks = a } :: SecurityGroupIngressSetting s)
+
+instance P.HasPrefixListIds (SecurityGroupIngressSetting s) (TF.Attr s [TF.Attr s P.Text]) where
+    prefixListIds =
+        P.lens (_prefixListIds :: SecurityGroupIngressSetting s -> TF.Attr s [TF.Attr s P.Text])
+               (\s a -> s { _prefixListIds = a } :: SecurityGroupIngressSetting s)
 
 instance P.HasProtocol (SecurityGroupIngressSetting s) (TF.Attr s P.Text) where
     protocol =

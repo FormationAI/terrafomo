@@ -127,6 +127,7 @@ module Terrafomo.AWS.Arguments01
     , HasArguments (..)
     , HasArn (..)
     , HasArraySize (..)
+    , HasArtifactIdentifier (..)
     , HasArtifactStore (..)
     , HasArtifacts (..)
     , HasAspectRatio (..)
@@ -171,6 +172,7 @@ module Terrafomo.AWS.Arguments01
     , HasAutoBundleOnDeploy (..)
     , HasAutoHealing (..)
     , HasAutoMinorVersionUpgrade (..)
+    , HasAutoPause (..)
     , HasAutoRollbackConfiguration (..)
     , HasAutoScalingType (..)
     , HasAutoVerifiedAttributes (..)
@@ -179,6 +181,7 @@ module Terrafomo.AWS.Arguments01
     , HasAutomaticFailoverEnabled (..)
     , HasAutomaticStopTimeMinutes (..)
     , HasAutomaticallyAfterDays (..)
+    , HasAutoprovision (..)
     , HasAutoscaling (..)
     , HasAutoscalingGroupName (..)
     , HasAutoscalingGroups (..)
@@ -255,6 +258,7 @@ module Terrafomo.AWS.Arguments01
     , HasCachingEnabled (..)
     , HasCallbackUrls (..)
     , HasCallerReference (..)
+    , HasCampaignHook (..)
     , HasCapabilities (..)
     , HasCaseInsensitive (..)
     , HasCatalogId (..)
@@ -382,6 +386,40 @@ module Terrafomo.AWS.Arguments01
     , HasContentEncoding (..)
     , HasContentHandling (..)
     , HasContentLanguage (..)
+    , HasContentType (..)
+    , HasContext (..)
+    , HasContinent (..)
+    , HasContinuous (..)
+    , HasConvertDotsInJsonKeysToUnderscores (..)
+    , HasCookieDuration (..)
+    , HasCookieExpirationPeriod (..)
+    , HasCookieName (..)
+    , HasCookies (..)
+    , HasCooldown (..)
+    , HasCopyOptions (..)
+    , HasCopyTagsToSnapshot (..)
+    , HasCoreInstanceCount (..)
+    , HasCoreInstanceType (..)
+    , HasCorsRule (..)
+    , HasCostFilters (..)
+    , HasCostTypes (..)
+    , HasCountry (..)
+    , HasCpu (..)
+    , HasCpuCoreCount (..)
+    , HasCpuCredits (..)
+    , HasCpuThreadsPerCore (..)
+    , HasCreateAuthChallenge (..)
+    , HasCreatedAt (..)
+    , HasCreationToken (..)
+    , HasCredentials (..)
+    , HasCreditSpecification (..)
+    , HasCrlConfiguration (..)
+    , HasCrossRealmTrustPrincipalPassword (..)
+    , HasCrossZoneLoadBalancing (..)
+    , HasCsr (..)
+    , HasCsvDelimiter (..)
+    , HasCsvRowDelimiter (..)
+    , HasCustomAmiId (..)
     ) where
 import GHC.Base ((.))
 
@@ -1066,6 +1104,12 @@ class HasArraySize a b | a -> b where
 instance HasArraySize a b => HasArraySize (TF.Schema l p a) b where
     arraySize = TF.configuration . arraySize
 
+class HasArtifactIdentifier a b | a -> b where
+    artifactIdentifier :: P.Lens' a b
+
+instance HasArtifactIdentifier a b => HasArtifactIdentifier (TF.Schema l p a) b where
+    artifactIdentifier = TF.configuration . artifactIdentifier
+
 class HasArtifactStore a b | a -> b where
     artifactStore :: P.Lens' a b
 
@@ -1330,6 +1374,12 @@ class HasAutoMinorVersionUpgrade a b | a -> b where
 instance HasAutoMinorVersionUpgrade a b => HasAutoMinorVersionUpgrade (TF.Schema l p a) b where
     autoMinorVersionUpgrade = TF.configuration . autoMinorVersionUpgrade
 
+class HasAutoPause a b | a -> b where
+    autoPause :: P.Lens' a b
+
+instance HasAutoPause a b => HasAutoPause (TF.Schema l p a) b where
+    autoPause = TF.configuration . autoPause
+
 class HasAutoRollbackConfiguration a b | a -> b where
     autoRollbackConfiguration :: P.Lens' a b
 
@@ -1377,6 +1427,12 @@ class HasAutomaticallyAfterDays a b | a -> b where
 
 instance HasAutomaticallyAfterDays a b => HasAutomaticallyAfterDays (TF.Schema l p a) b where
     automaticallyAfterDays = TF.configuration . automaticallyAfterDays
+
+class HasAutoprovision a b | a -> b where
+    autoprovision :: P.Lens' a b
+
+instance HasAutoprovision a b => HasAutoprovision (TF.Schema l p a) b where
+    autoprovision = TF.configuration . autoprovision
 
 class HasAutoscaling a b | a -> b where
     autoscaling :: P.Lens' a b
@@ -1833,6 +1889,12 @@ class HasCallerReference a b | a -> b where
 
 instance HasCallerReference a b => HasCallerReference (TF.Schema l p a) b where
     callerReference = TF.configuration . callerReference
+
+class HasCampaignHook a b | a -> b where
+    campaignHook :: P.Lens' a b
+
+instance HasCampaignHook a b => HasCampaignHook (TF.Schema l p a) b where
+    campaignHook = TF.configuration . campaignHook
 
 class HasCapabilities a b | a -> b where
     capabilities :: P.Lens' a b
@@ -2595,3 +2657,207 @@ class HasContentLanguage a b | a -> b where
 
 instance HasContentLanguage a b => HasContentLanguage (TF.Schema l p a) b where
     contentLanguage = TF.configuration . contentLanguage
+
+class HasContentType a b | a -> b where
+    contentType :: P.Lens' a b
+
+instance HasContentType a b => HasContentType (TF.Schema l p a) b where
+    contentType = TF.configuration . contentType
+
+class HasContext a b | a -> b where
+    context :: P.Lens' a b
+
+instance HasContext a b => HasContext (TF.Schema l p a) b where
+    context = TF.configuration . context
+
+class HasContinent a b | a -> b where
+    continent :: P.Lens' a b
+
+instance HasContinent a b => HasContinent (TF.Schema l p a) b where
+    continent = TF.configuration . continent
+
+class HasContinuous a b | a -> b where
+    continuous :: P.Lens' a b
+
+instance HasContinuous a b => HasContinuous (TF.Schema l p a) b where
+    continuous = TF.configuration . continuous
+
+class HasConvertDotsInJsonKeysToUnderscores a b | a -> b where
+    convertDotsInJsonKeysToUnderscores :: P.Lens' a b
+
+instance HasConvertDotsInJsonKeysToUnderscores a b => HasConvertDotsInJsonKeysToUnderscores (TF.Schema l p a) b where
+    convertDotsInJsonKeysToUnderscores = TF.configuration . convertDotsInJsonKeysToUnderscores
+
+class HasCookieDuration a b | a -> b where
+    cookieDuration :: P.Lens' a b
+
+instance HasCookieDuration a b => HasCookieDuration (TF.Schema l p a) b where
+    cookieDuration = TF.configuration . cookieDuration
+
+class HasCookieExpirationPeriod a b | a -> b where
+    cookieExpirationPeriod :: P.Lens' a b
+
+instance HasCookieExpirationPeriod a b => HasCookieExpirationPeriod (TF.Schema l p a) b where
+    cookieExpirationPeriod = TF.configuration . cookieExpirationPeriod
+
+class HasCookieName a b | a -> b where
+    cookieName :: P.Lens' a b
+
+instance HasCookieName a b => HasCookieName (TF.Schema l p a) b where
+    cookieName = TF.configuration . cookieName
+
+class HasCookies a b | a -> b where
+    cookies :: P.Lens' a b
+
+instance HasCookies a b => HasCookies (TF.Schema l p a) b where
+    cookies = TF.configuration . cookies
+
+class HasCooldown a b | a -> b where
+    cooldown :: P.Lens' a b
+
+instance HasCooldown a b => HasCooldown (TF.Schema l p a) b where
+    cooldown = TF.configuration . cooldown
+
+class HasCopyOptions a b | a -> b where
+    copyOptions :: P.Lens' a b
+
+instance HasCopyOptions a b => HasCopyOptions (TF.Schema l p a) b where
+    copyOptions = TF.configuration . copyOptions
+
+class HasCopyTagsToSnapshot a b | a -> b where
+    copyTagsToSnapshot :: P.Lens' a b
+
+instance HasCopyTagsToSnapshot a b => HasCopyTagsToSnapshot (TF.Schema l p a) b where
+    copyTagsToSnapshot = TF.configuration . copyTagsToSnapshot
+
+class HasCoreInstanceCount a b | a -> b where
+    coreInstanceCount :: P.Lens' a b
+
+instance HasCoreInstanceCount a b => HasCoreInstanceCount (TF.Schema l p a) b where
+    coreInstanceCount = TF.configuration . coreInstanceCount
+
+class HasCoreInstanceType a b | a -> b where
+    coreInstanceType :: P.Lens' a b
+
+instance HasCoreInstanceType a b => HasCoreInstanceType (TF.Schema l p a) b where
+    coreInstanceType = TF.configuration . coreInstanceType
+
+class HasCorsRule a b | a -> b where
+    corsRule :: P.Lens' a b
+
+instance HasCorsRule a b => HasCorsRule (TF.Schema l p a) b where
+    corsRule = TF.configuration . corsRule
+
+class HasCostFilters a b | a -> b where
+    costFilters :: P.Lens' a b
+
+instance HasCostFilters a b => HasCostFilters (TF.Schema l p a) b where
+    costFilters = TF.configuration . costFilters
+
+class HasCostTypes a b | a -> b where
+    costTypes :: P.Lens' a b
+
+instance HasCostTypes a b => HasCostTypes (TF.Schema l p a) b where
+    costTypes = TF.configuration . costTypes
+
+class HasCountry a b | a -> b where
+    country :: P.Lens' a b
+
+instance HasCountry a b => HasCountry (TF.Schema l p a) b where
+    country = TF.configuration . country
+
+class HasCpu a b | a -> b where
+    cpu :: P.Lens' a b
+
+instance HasCpu a b => HasCpu (TF.Schema l p a) b where
+    cpu = TF.configuration . cpu
+
+class HasCpuCoreCount a b | a -> b where
+    cpuCoreCount :: P.Lens' a b
+
+instance HasCpuCoreCount a b => HasCpuCoreCount (TF.Schema l p a) b where
+    cpuCoreCount = TF.configuration . cpuCoreCount
+
+class HasCpuCredits a b | a -> b where
+    cpuCredits :: P.Lens' a b
+
+instance HasCpuCredits a b => HasCpuCredits (TF.Schema l p a) b where
+    cpuCredits = TF.configuration . cpuCredits
+
+class HasCpuThreadsPerCore a b | a -> b where
+    cpuThreadsPerCore :: P.Lens' a b
+
+instance HasCpuThreadsPerCore a b => HasCpuThreadsPerCore (TF.Schema l p a) b where
+    cpuThreadsPerCore = TF.configuration . cpuThreadsPerCore
+
+class HasCreateAuthChallenge a b | a -> b where
+    createAuthChallenge :: P.Lens' a b
+
+instance HasCreateAuthChallenge a b => HasCreateAuthChallenge (TF.Schema l p a) b where
+    createAuthChallenge = TF.configuration . createAuthChallenge
+
+class HasCreatedAt a b | a -> b where
+    createdAt :: P.Lens' a b
+
+instance HasCreatedAt a b => HasCreatedAt (TF.Schema l p a) b where
+    createdAt = TF.configuration . createdAt
+
+class HasCreationToken a b | a -> b where
+    creationToken :: P.Lens' a b
+
+instance HasCreationToken a b => HasCreationToken (TF.Schema l p a) b where
+    creationToken = TF.configuration . creationToken
+
+class HasCredentials a b | a -> b where
+    credentials :: P.Lens' a b
+
+instance HasCredentials a b => HasCredentials (TF.Schema l p a) b where
+    credentials = TF.configuration . credentials
+
+class HasCreditSpecification a b | a -> b where
+    creditSpecification :: P.Lens' a b
+
+instance HasCreditSpecification a b => HasCreditSpecification (TF.Schema l p a) b where
+    creditSpecification = TF.configuration . creditSpecification
+
+class HasCrlConfiguration a b | a -> b where
+    crlConfiguration :: P.Lens' a b
+
+instance HasCrlConfiguration a b => HasCrlConfiguration (TF.Schema l p a) b where
+    crlConfiguration = TF.configuration . crlConfiguration
+
+class HasCrossRealmTrustPrincipalPassword a b | a -> b where
+    crossRealmTrustPrincipalPassword :: P.Lens' a b
+
+instance HasCrossRealmTrustPrincipalPassword a b => HasCrossRealmTrustPrincipalPassword (TF.Schema l p a) b where
+    crossRealmTrustPrincipalPassword = TF.configuration . crossRealmTrustPrincipalPassword
+
+class HasCrossZoneLoadBalancing a b | a -> b where
+    crossZoneLoadBalancing :: P.Lens' a b
+
+instance HasCrossZoneLoadBalancing a b => HasCrossZoneLoadBalancing (TF.Schema l p a) b where
+    crossZoneLoadBalancing = TF.configuration . crossZoneLoadBalancing
+
+class HasCsr a b | a -> b where
+    csr :: P.Lens' a b
+
+instance HasCsr a b => HasCsr (TF.Schema l p a) b where
+    csr = TF.configuration . csr
+
+class HasCsvDelimiter a b | a -> b where
+    csvDelimiter :: P.Lens' a b
+
+instance HasCsvDelimiter a b => HasCsvDelimiter (TF.Schema l p a) b where
+    csvDelimiter = TF.configuration . csvDelimiter
+
+class HasCsvRowDelimiter a b | a -> b where
+    csvRowDelimiter :: P.Lens' a b
+
+instance HasCsvRowDelimiter a b => HasCsvRowDelimiter (TF.Schema l p a) b where
+    csvRowDelimiter = TF.configuration . csvRowDelimiter
+
+class HasCustomAmiId a b | a -> b where
+    customAmiId :: P.Lens' a b
+
+instance HasCustomAmiId a b => HasCustomAmiId (TF.Schema l p a) b where
+    customAmiId = TF.configuration . customAmiId

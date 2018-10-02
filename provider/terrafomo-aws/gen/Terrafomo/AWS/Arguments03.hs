@@ -14,20 +14,7 @@
 module Terrafomo.AWS.Arguments03
     (
     -- ** Arguments
-      HasObjectKeyPrefix (..)
-    , HasOffset (..)
-    , HasOkActions (..)
-    , HasOnFailure (..)
-    , HasOnPremisesInstanceTagFilter (..)
-    , HasOneTime (..)
-    , HasOpacity (..)
-    , HasOpenXJsonSerDe (..)
-    , HasOpenidConnectProviderArns (..)
-    , HasOperatingSystem (..)
-    , HasOperations (..)
-    , HasOption (..)
-    , HasOptionGroupDescription (..)
-    , HasOptionGroupName (..)
+      HasOptionGroupName (..)
     , HasOptionName (..)
     , HasOptionSettings (..)
     , HasOptionalFields (..)
@@ -114,6 +101,7 @@ module Terrafomo.AWS.Arguments03
     , HasPlatform (..)
     , HasPlatformCredential (..)
     , HasPlatformPrincipal (..)
+    , HasPlatformVersion (..)
     , HasPointInTimeRecovery (..)
     , HasPolicy (..)
     , HasPolicyArn (..)
@@ -194,6 +182,7 @@ module Terrafomo.AWS.Arguments03
     , HasQueue (..)
     , HasQueueArn (..)
     , HasQueueUrl (..)
+    , HasQuietTime (..)
     , HasQuotaSettings (..)
     , HasR53 (..)
     , HasRaidLevel (..)
@@ -221,6 +210,7 @@ module Terrafomo.AWS.Arguments03
     , HasRecords (..)
     , HasRecoveryWindowInDays (..)
     , HasRecurrence (..)
+    , HasRedirect (..)
     , HasRedirectAllRequestsTo (..)
     , HasRedrivePolicy (..)
     , HasRedshiftConfiguration (..)
@@ -382,6 +372,7 @@ module Terrafomo.AWS.Arguments03
     , HasScaleInCooldown (..)
     , HasScaleOutCooldown (..)
     , HasScalingAdjustment (..)
+    , HasScalingConfiguration (..)
     , HasScanEnabled (..)
     , HasSchedule (..)
     , HasScheduleExpression (..)
@@ -396,6 +387,9 @@ module Terrafomo.AWS.Arguments03
     , HasScriptLocation (..)
     , HasSearchString (..)
     , HasSearchableAttributes (..)
+    , HasSecondaryArtifacts (..)
+    , HasSecondarySources (..)
+    , HasSecondsUntilAutoPause (..)
     , HasSecret (..)
     , HasSecretId (..)
     , HasSecretKey (..)
@@ -412,6 +406,7 @@ module Terrafomo.AWS.Arguments03
     , HasSelectionPattern (..)
     , HasSelf (..)
     , HasSender (..)
+    , HasSeparator (..)
     , HasSerDeInfo (..)
     , HasSerializationLibrary (..)
     , HasSerializer (..)
@@ -487,6 +482,7 @@ module Terrafomo.AWS.Arguments03
     , HasSnsTopicArn (..)
     , HasSnsTopicName (..)
     , HasSolutionStackName (..)
+    , HasSortAscending (..)
     , HasSortColumns (..)
     , HasSortOrder (..)
     , HasSource (..)
@@ -548,6 +544,7 @@ module Terrafomo.AWS.Arguments03
     , HasStage (..)
     , HasStageDescription (..)
     , HasStageName (..)
+    , HasStart (..)
     , HasStartTime (..)
     , HasStartingPosition (..)
     , HasState (..)
@@ -679,6 +676,7 @@ module Terrafomo.AWS.Arguments03
     , HasToken (..)
     , HasTopic (..)
     , HasTopicArn (..)
+    , HasTotal (..)
     , HasTracingConfig (..)
     , HasTrafficType (..)
     , HasTransitEncryptionEnabled (..)
@@ -794,6 +792,7 @@ module Terrafomo.AWS.Arguments03
     , HasWaitTimeInMinutes (..)
     , HasWarning (..)
     , HasWebAclId (..)
+    , HasWebUrl (..)
     , HasWebsite (..)
     , HasWebsiteDomain (..)
     , HasWebsiteEndpoint (..)
@@ -810,6 +809,7 @@ module Terrafomo.AWS.Arguments03
     , HasWriteCapacity (..)
     , HasWriterVersion (..)
     , HasXmlClassifier (..)
+    , HasXrayTracingEnabled (..)
     , HasXssMatchTuple (..)
     , HasXssMatchTuples (..)
     , HasZoneAwarenessEnabled (..)
@@ -819,84 +819,6 @@ import GHC.Base ((.))
 
 import qualified Lens.Micro       as P
 import qualified Terrafomo.Schema as TF
-
-class HasObjectKeyPrefix a b | a -> b where
-    objectKeyPrefix :: P.Lens' a b
-
-instance HasObjectKeyPrefix a b => HasObjectKeyPrefix (TF.Schema l p a) b where
-    objectKeyPrefix = TF.configuration . objectKeyPrefix
-
-class HasOffset a b | a -> b where
-    offset :: P.Lens' a b
-
-instance HasOffset a b => HasOffset (TF.Schema l p a) b where
-    offset = TF.configuration . offset
-
-class HasOkActions a b | a -> b where
-    okActions :: P.Lens' a b
-
-instance HasOkActions a b => HasOkActions (TF.Schema l p a) b where
-    okActions = TF.configuration . okActions
-
-class HasOnFailure a b | a -> b where
-    onFailure :: P.Lens' a b
-
-instance HasOnFailure a b => HasOnFailure (TF.Schema l p a) b where
-    onFailure = TF.configuration . onFailure
-
-class HasOnPremisesInstanceTagFilter a b | a -> b where
-    onPremisesInstanceTagFilter :: P.Lens' a b
-
-instance HasOnPremisesInstanceTagFilter a b => HasOnPremisesInstanceTagFilter (TF.Schema l p a) b where
-    onPremisesInstanceTagFilter = TF.configuration . onPremisesInstanceTagFilter
-
-class HasOneTime a b | a -> b where
-    oneTime :: P.Lens' a b
-
-instance HasOneTime a b => HasOneTime (TF.Schema l p a) b where
-    oneTime = TF.configuration . oneTime
-
-class HasOpacity a b | a -> b where
-    opacity :: P.Lens' a b
-
-instance HasOpacity a b => HasOpacity (TF.Schema l p a) b where
-    opacity = TF.configuration . opacity
-
-class HasOpenXJsonSerDe a b | a -> b where
-    openXJsonSerDe :: P.Lens' a b
-
-instance HasOpenXJsonSerDe a b => HasOpenXJsonSerDe (TF.Schema l p a) b where
-    openXJsonSerDe = TF.configuration . openXJsonSerDe
-
-class HasOpenidConnectProviderArns a b | a -> b where
-    openidConnectProviderArns :: P.Lens' a b
-
-instance HasOpenidConnectProviderArns a b => HasOpenidConnectProviderArns (TF.Schema l p a) b where
-    openidConnectProviderArns = TF.configuration . openidConnectProviderArns
-
-class HasOperatingSystem a b | a -> b where
-    operatingSystem :: P.Lens' a b
-
-instance HasOperatingSystem a b => HasOperatingSystem (TF.Schema l p a) b where
-    operatingSystem = TF.configuration . operatingSystem
-
-class HasOperations a b | a -> b where
-    operations :: P.Lens' a b
-
-instance HasOperations a b => HasOperations (TF.Schema l p a) b where
-    operations = TF.configuration . operations
-
-class HasOption a b | a -> b where
-    option :: P.Lens' a b
-
-instance HasOption a b => HasOption (TF.Schema l p a) b where
-    option = TF.configuration . option
-
-class HasOptionGroupDescription a b | a -> b where
-    optionGroupDescription :: P.Lens' a b
-
-instance HasOptionGroupDescription a b => HasOptionGroupDescription (TF.Schema l p a) b where
-    optionGroupDescription = TF.configuration . optionGroupDescription
 
 class HasOptionGroupName a b | a -> b where
     optionGroupName :: P.Lens' a b
@@ -1420,6 +1342,12 @@ class HasPlatformPrincipal a b | a -> b where
 instance HasPlatformPrincipal a b => HasPlatformPrincipal (TF.Schema l p a) b where
     platformPrincipal = TF.configuration . platformPrincipal
 
+class HasPlatformVersion a b | a -> b where
+    platformVersion :: P.Lens' a b
+
+instance HasPlatformVersion a b => HasPlatformVersion (TF.Schema l p a) b where
+    platformVersion = TF.configuration . platformVersion
+
 class HasPointInTimeRecovery a b | a -> b where
     pointInTimeRecovery :: P.Lens' a b
 
@@ -1900,6 +1828,12 @@ class HasQueueUrl a b | a -> b where
 instance HasQueueUrl a b => HasQueueUrl (TF.Schema l p a) b where
     queueUrl = TF.configuration . queueUrl
 
+class HasQuietTime a b | a -> b where
+    quietTime :: P.Lens' a b
+
+instance HasQuietTime a b => HasQuietTime (TF.Schema l p a) b where
+    quietTime = TF.configuration . quietTime
+
 class HasQuotaSettings a b | a -> b where
     quotaSettings :: P.Lens' a b
 
@@ -2061,6 +1995,12 @@ class HasRecurrence a b | a -> b where
 
 instance HasRecurrence a b => HasRecurrence (TF.Schema l p a) b where
     recurrence = TF.configuration . recurrence
+
+class HasRedirect a b | a -> b where
+    redirect :: P.Lens' a b
+
+instance HasRedirect a b => HasRedirect (TF.Schema l p a) b where
+    redirect = TF.configuration . redirect
 
 class HasRedirectAllRequestsTo a b | a -> b where
     redirectAllRequestsTo :: P.Lens' a b
@@ -3028,6 +2968,12 @@ class HasScalingAdjustment a b | a -> b where
 instance HasScalingAdjustment a b => HasScalingAdjustment (TF.Schema l p a) b where
     scalingAdjustment = TF.configuration . scalingAdjustment
 
+class HasScalingConfiguration a b | a -> b where
+    scalingConfiguration :: P.Lens' a b
+
+instance HasScalingConfiguration a b => HasScalingConfiguration (TF.Schema l p a) b where
+    scalingConfiguration = TF.configuration . scalingConfiguration
+
 class HasScanEnabled a b | a -> b where
     scanEnabled :: P.Lens' a b
 
@@ -3111,6 +3057,24 @@ class HasSearchableAttributes a b | a -> b where
 
 instance HasSearchableAttributes a b => HasSearchableAttributes (TF.Schema l p a) b where
     searchableAttributes = TF.configuration . searchableAttributes
+
+class HasSecondaryArtifacts a b | a -> b where
+    secondaryArtifacts :: P.Lens' a b
+
+instance HasSecondaryArtifacts a b => HasSecondaryArtifacts (TF.Schema l p a) b where
+    secondaryArtifacts = TF.configuration . secondaryArtifacts
+
+class HasSecondarySources a b | a -> b where
+    secondarySources :: P.Lens' a b
+
+instance HasSecondarySources a b => HasSecondarySources (TF.Schema l p a) b where
+    secondarySources = TF.configuration . secondarySources
+
+class HasSecondsUntilAutoPause a b | a -> b where
+    secondsUntilAutoPause :: P.Lens' a b
+
+instance HasSecondsUntilAutoPause a b => HasSecondsUntilAutoPause (TF.Schema l p a) b where
+    secondsUntilAutoPause = TF.configuration . secondsUntilAutoPause
 
 class HasSecret a b | a -> b where
     secret :: P.Lens' a b
@@ -3207,6 +3171,12 @@ class HasSender a b | a -> b where
 
 instance HasSender a b => HasSender (TF.Schema l p a) b where
     sender = TF.configuration . sender
+
+class HasSeparator a b | a -> b where
+    separator :: P.Lens' a b
+
+instance HasSeparator a b => HasSeparator (TF.Schema l p a) b where
+    separator = TF.configuration . separator
 
 class HasSerDeInfo a b | a -> b where
     serDeInfo :: P.Lens' a b
@@ -3658,6 +3628,12 @@ class HasSolutionStackName a b | a -> b where
 instance HasSolutionStackName a b => HasSolutionStackName (TF.Schema l p a) b where
     solutionStackName = TF.configuration . solutionStackName
 
+class HasSortAscending a b | a -> b where
+    sortAscending :: P.Lens' a b
+
+instance HasSortAscending a b => HasSortAscending (TF.Schema l p a) b where
+    sortAscending = TF.configuration . sortAscending
+
 class HasSortColumns a b | a -> b where
     sortColumns :: P.Lens' a b
 
@@ -4023,6 +3999,12 @@ class HasStageName a b | a -> b where
 
 instance HasStageName a b => HasStageName (TF.Schema l p a) b where
     stageName = TF.configuration . stageName
+
+class HasStart a b | a -> b where
+    start :: P.Lens' a b
+
+instance HasStart a b => HasStart (TF.Schema l p a) b where
+    start = TF.configuration . start
 
 class HasStartTime a b | a -> b where
     startTime :: P.Lens' a b
@@ -4810,6 +4792,12 @@ class HasTopicArn a b | a -> b where
 instance HasTopicArn a b => HasTopicArn (TF.Schema l p a) b where
     topicArn = TF.configuration . topicArn
 
+class HasTotal a b | a -> b where
+    total :: P.Lens' a b
+
+instance HasTotal a b => HasTotal (TF.Schema l p a) b where
+    total = TF.configuration . total
+
 class HasTracingConfig a b | a -> b where
     tracingConfig :: P.Lens' a b
 
@@ -5500,6 +5488,12 @@ class HasWebAclId a b | a -> b where
 instance HasWebAclId a b => HasWebAclId (TF.Schema l p a) b where
     webAclId = TF.configuration . webAclId
 
+class HasWebUrl a b | a -> b where
+    webUrl :: P.Lens' a b
+
+instance HasWebUrl a b => HasWebUrl (TF.Schema l p a) b where
+    webUrl = TF.configuration . webUrl
+
 class HasWebsite a b | a -> b where
     website :: P.Lens' a b
 
@@ -5595,6 +5589,12 @@ class HasXmlClassifier a b | a -> b where
 
 instance HasXmlClassifier a b => HasXmlClassifier (TF.Schema l p a) b where
     xmlClassifier = TF.configuration . xmlClassifier
+
+class HasXrayTracingEnabled a b | a -> b where
+    xrayTracingEnabled :: P.Lens' a b
+
+instance HasXrayTracingEnabled a b => HasXrayTracingEnabled (TF.Schema l p a) b where
+    xrayTracingEnabled = TF.configuration . xrayTracingEnabled
 
 class HasXssMatchTuple a b | a -> b where
     xssMatchTuple :: P.Lens' a b
