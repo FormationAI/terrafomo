@@ -9760,7 +9760,7 @@ data S3BucketResource s = S3BucketResource'
     , _logging :: TF.Attr s [TF.Attr s (S3BucketLoggingSetting s)]
     -- ^ @logging@ - (Optional)
     --
-    , _policy :: TF.Attr s P.Text
+    , _policy :: TF.Attr s P.Document
     -- ^ @policy@ - (Optional)
     --
     , _region :: TF.Attr s P.Region
@@ -9920,9 +9920,9 @@ instance P.HasLogging (S3BucketResource s) (TF.Attr s [TF.Attr s (S3BucketLoggin
         P.lens (_logging :: S3BucketResource s -> TF.Attr s [TF.Attr s (S3BucketLoggingSetting s)])
                (\s a -> s { _logging = a } :: S3BucketResource s)
 
-instance P.HasPolicy (S3BucketResource s) (TF.Attr s P.Text) where
+instance P.HasPolicy (S3BucketResource s) (TF.Attr s P.Document) where
     policy =
-        P.lens (_policy :: S3BucketResource s -> TF.Attr s P.Text)
+        P.lens (_policy :: S3BucketResource s -> TF.Attr s P.Document)
                (\s a -> s { _policy = a } :: S3BucketResource s)
 
 instance P.HasRegion (S3BucketResource s) (TF.Attr s P.Region) where

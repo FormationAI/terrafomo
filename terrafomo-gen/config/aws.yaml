@@ -37,6 +37,7 @@ field-overrides:
     policy: 'TF.Attr s P.Document'
 
   S3BucketResource:
+    policy: 'TF.Attr s P.Document'
     region: 'TF.Attr s P.Region'
 
   SecurityGroupRuleResource:
