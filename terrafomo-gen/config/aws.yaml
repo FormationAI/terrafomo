@@ -40,6 +40,9 @@ field-overrides:
     policy: 'TF.Attr s P.Document'
     region: 'TF.Attr s P.Region'
 
+  S3BucketPolicyResource:
+    policy: 'TF.Attr s P.Document'
+
   SecurityGroupRuleResource:
     type': 'TF.Attr s P.NetworkTraffic'
     protocol: 'TF.Attr s P.NetworkProtocol'

@@ -9680,7 +9680,7 @@ data S3BucketPolicyResource s = S3BucketPolicyResource'
     { _bucket :: TF.Attr s P.Text
     -- ^ @bucket@ - (Required, Forces New)
     --
-    , _policy :: TF.Attr s P.Text
+    , _policy :: TF.Attr s P.Document
     -- ^ @policy@ - (Required)
     --
     } deriving (P.Show, P.Eq, P.Ord)
@@ -9688,7 +9688,7 @@ data S3BucketPolicyResource s = S3BucketPolicyResource'
 -- | Define a new @aws_s3_bucket_policy@ resource value.
 s3BucketPolicyResource
     :: TF.Attr s P.Text -- ^ @bucket@ ('P._bucket', 'P.bucket')
-    -> TF.Attr s P.Text -- ^ @policy@ ('P._policy', 'P.policy')
+    -> TF.Attr s P.Document -- ^ @policy@ ('P._policy', 'P.policy')
     -> P.Resource (S3BucketPolicyResource s)
 s3BucketPolicyResource _bucket _policy =
     TF.unsafeResource "aws_s3_bucket_policy" TF.validator $
@@ -9711,9 +9711,9 @@ instance P.HasBucket (S3BucketPolicyResource s) (TF.Attr s P.Text) where
         P.lens (_bucket :: S3BucketPolicyResource s -> TF.Attr s P.Text)
                (\s a -> s { _bucket = a } :: S3BucketPolicyResource s)
 
-instance P.HasPolicy (S3BucketPolicyResource s) (TF.Attr s P.Text) where
+instance P.HasPolicy (S3BucketPolicyResource s) (TF.Attr s P.Document) where
     policy =
-        P.lens (_policy :: S3BucketPolicyResource s -> TF.Attr s P.Text)
+        P.lens (_policy :: S3BucketPolicyResource s -> TF.Attr s P.Document)
                (\s a -> s { _policy = a } :: S3BucketPolicyResource s)
 
 instance s ~ s' => P.HasComputedId (TF.Ref s' (S3BucketPolicyResource s)) (TF.Attr s P.Text) where
