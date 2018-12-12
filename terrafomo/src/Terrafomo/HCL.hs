@@ -173,7 +173,7 @@ instance Pretty Value where
     pretty     = \case
         Null                    -> "null"
         String  x               -> PP.dquotes (pretty x)
-        HereDoc (pretty -> k) x -> "<<-" <> PP.vsep [k, pretty x, k]
+        HereDoc (pretty -> k) x -> "<<-" <> k <> PP.vsep [PP.nest (-9999) (PP.hardline <> pretty x), k]
         Number  x               -> pretty x
         Float   x               -> pretty x
         Bool    True            -> "true"
