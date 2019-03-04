@@ -24,6 +24,9 @@ module Terrafomo.AWS.Provider
     -- * AWS Specific Aliases
     , DataSource
     , Resource
+
+    -- * AWS Configuration
+    , pinnedVersion
     ) where
 
 import Data.Function ((&))
@@ -55,12 +58,19 @@ import qualified Terrafomo.Validator as TF
 type DataSource a = TF.Schema ()               Provider a
 type Resource   a = TF.Schema (TF.Lifecycle a) Provider a
 
+pinnedVersion :: P.Text
+pinnedVersion = "1.60.0"
+
 -- | The @aws@ Terraform provider configuration.
 --
 -- See the <https://www.terraform.io/docs/providers/aws/index.html terraform documentation>
 -- for more information.
 data Provider = Provider'
-    { _accessKey                 :: P.Maybe P.Text
+    { _version                   :: P.Text
+    -- ^ @version@
+    -- Pin aws provider version
+    --
+    , _accessKey                 :: P.Maybe P.Text
     -- ^ @access_key@ - (Optional)
     -- The access key for API operations. You can retrieve this from the 'Security
     -- & Credentials' section of the AWS console.
@@ -165,7 +175,8 @@ newProvider
     -> Provider
 newProvider _region =
     Provider'
-        { _accessKey = P.Nothing
+        { _version = pinnedVersion
+        , _accessKey = P.Nothing
         , _allowedAccountIds = P.Nothing
         , _assumeRole = P.Nothing
         , _dynamodbEndpoint = P.Nothing
@@ -193,7 +204,8 @@ instance TF.IsProvider Provider where
 instance TF.IsObject Provider where
     toObject Provider'{..} =
         P.catMaybes
-            [ TF.assign "access_key" <$> _accessKey
+            [ P.Just $ TF.assign "version" _version
+            , TF.assign "access_key" <$> _accessKey
             , TF.assign "allowed_account_ids" <$> _allowedAccountIds
             , TF.assign "assume_role" <$> _assumeRole
             , TF.assign "dynamodb_endpoint" <$> _dynamodbEndpoint
@@ -228,6 +240,11 @@ instance TF.IsValid (Provider) where
                             [ "_allowedAccountIds"
                             ])
         ])
+
+instance P.HasVersion (Provider) (P.Text) where
+    version =
+        P.lens (_version :: Provider -> P.Text)
+               (\s a -> s { _version = a } :: Provider)
 
 instance P.HasAccessKey (Provider) (P.Maybe P.Text) where
     accessKey =
