@@ -59,7 +59,7 @@ type DataSource a = TF.Schema ()               Provider a
 type Resource   a = TF.Schema (TF.Lifecycle a) Provider a
 
 pinnedVersion :: P.Text
-pinnedVersion = "1.60.0"
+pinnedVersion = "1.55.0"
 
 -- | The @aws@ Terraform provider configuration.
 --
